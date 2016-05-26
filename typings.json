@@ -5,6 +5,7 @@
   },
   "globalDependencies": {
     "handlebars": "registry:dt/handlebars#3.0.3+20160317120654",
-    "marked": "registry:dt/marked#0.0.0+20160325085301"
+    "marked": "registry:dt/marked#0.0.0+20160325085301",
+    "node": "registry:dt/node#6.0.0+20160524002506"
   }
 }

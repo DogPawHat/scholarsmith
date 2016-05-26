@@ -2,8 +2,10 @@
 <html lang="en">
     <title>{{ title }}</title>
 <body>
-    {{> introduction}}
-    {{> topics}}
-    {{> talk_to_us}}
+    <h1>WELCOME</h1>
+    {{#each pages}}
+        {{> page}}
+    {{/each}}
+    {{> talktous}}
 </body>
 </html>
