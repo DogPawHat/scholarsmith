@@ -1,10 +1,10 @@
 var metalsmith = require("metalsmith"),
-    templates = require("metalsmith-templates"),
+    layouts = require("metalsmith-layouts"),
     markdown = require("metalsmith-markdown"),
     typescript = require("typescript"),
     gulp = require("gulp"),
     webpack = require("webpack"),
-    gutil = require("gulp-util"),
+    gutild = require("gulp-util"),
     webpack_config = require("./webpack.config.js"),
     Handlebars = require('handlebars'),
     fs = require('fs');
@@ -17,18 +17,16 @@ gulp.task("webpack", function (callback) {
     });
 });
 
-gulp.task("partials", funciton(callback){
-    //Register handlebars partials here
-    Handlebars.registerPartial('header', fs.readFileSync(__dirname + '/templates/partials/header.hbt').toString());
-});
-
 gulp.task("metalsmith", "[partials]", function (callback) {
-
-    Handlebars.registerPartial('header', fs.readFileSync(__dirname + '/templates/partials/header.hbt').toString());
 
     metalsmith(__dirname)
         .use(markdown())
-        .use(templates('handlebars'))
+        .use(layouts({
+          engine: "handlebars",
+          default: "index.hbs",
+          rename: true,
+          partials: "templates/partials",
+        }))
         .source('./tutorial')
         .destination('./build')
         .build();

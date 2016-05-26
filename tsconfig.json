@@ -1,15 +1,12 @@
 {
-	// See https://go.microsoft.com/fwlink/?LinkId=759670
-	// for the documentation about the jsconfig.json format
 	"compilerOptions": {
 		"target": "es5",
 		"module": "commonjs",
 		"allowSyntheticDefaultImports": true
 	},
+	"compileOnSave": false,
 	"exclude": [
 		"node_modules",
-        "build",
-		"typings/browser",
-		"typings/browser.d.ts"
+        "build"
 	]
 }

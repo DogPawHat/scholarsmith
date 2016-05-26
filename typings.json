@@ -1,4 +1,10 @@
 {
   "name": "scholarsmith",
-  "dependencies": {}
+  "dependencies": {
+    "gulp": "registry:npm/gulp#3.8.0+20160211003958"
+  },
+  "globalDependencies": {
+    "handlebars": "registry:dt/handlebars#3.0.3+20160317120654",
+    "marked": "registry:dt/marked#0.0.0+20160325085301"
+  }
 }
