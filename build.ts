@@ -1,6 +1,6 @@
-var marked: MarkedStatic = require("marked");
-var handlebars = require("handlebars");
-var fm = require("yaml-front-matter");
+import * as marked from "marked";
+import * as handlebars from "handlebars";
+import * as fm from "yaml-front-matter";
 import * as fs from "fs";
 import * as path from "path";
 
