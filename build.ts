@@ -1,28 +1,25 @@
-import Marked from "marked";
-import Handlebars from "handlebars";
-import fm from "yaml-front-matter";
-import fs from "fs";
-import path from "path";
-
-interface contextStatic{
-    pages: {}[]
-}
+var marked: MarkedStatic = require("marked");
+var handlebars = require("handlebars");
+var fm = require("yaml-front-matter");
+import * as fs from "fs";
+import * as path from "path";
 
 for(let file of fs.readdirSync("templates/partials")){
     let partialName = file.split(".")[0];
-    Handlebars.registerPartial(
+    handlebars.registerPartial(
         partialName,
         fs.readFileSync(path.join(
                 "templates",
                 "partials",
                 file
             )
-        )
+        ).toString()
     );
 }
 
-let context: contextStatic;
-let pages: {}[];
+let context = {
+    pages: []
+};
 for(let file of fs.readdirSync("tutorial")){
     let contentObj = fm.loadFront(
         fs.readFileSync(path.join(
@@ -31,12 +28,14 @@ for(let file of fs.readdirSync("tutorial")){
         ))
     );
 
-    contentObj.__content = marked.parse(contentObj.__content);
+    contentObj.markedContent = marked(contentObj.__content);
 
     context.pages.push(contentObj);
 }
 
+let indexTemplate = handlebars.compile(
+    fs.readFileSync("templates/index.hbs").toString()
+);
 
-let indexTemplate = Handlebars.compile(fs.readFileSync("templates/index.hbs"));
-
-let indexHtml = indexTemplate(context)
+let indexHtml = indexTemplate(context);
+fs.writeFileSync("index.html", indexHtml)

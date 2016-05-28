@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "gulp prebuild"
+    "build": "ts-node build.ts"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -13,6 +13,7 @@
     "gulp": "^3.9.1",
     "handlebars": "^4.0.5",
     "marked": "^0.3.5",
+    "ts-node": "^0.7.3",
     "typescript": "^1.8.10",
     "webpack": "^1.13.0",
     "yaml-front-matter": "^3.4.0"
