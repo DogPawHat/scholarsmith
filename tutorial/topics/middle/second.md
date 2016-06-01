@@ -1,5 +1,5 @@
 ---
-title: Second Yoke
+title: plain
 ---
 
 ## Second!

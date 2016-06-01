@@ -1,4 +1,5 @@
 ---
-title: Third Yoke
+type: plain
 ---
+
 ### Third!
