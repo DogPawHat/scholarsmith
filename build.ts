@@ -11,6 +11,18 @@ function getDirectories(srcpath) {
     });
 }
 
+function parseQuestions() {
+    let questions = [];
+    yaml.safeLoadAll(
+        fs.readFileSync("tutorial/questions.yaml").toString(),
+        function(doc){
+            questions.push(doc);
+        }
+    );
+
+    return questions;
+}
+
 function parseTopics() {
     let topics = [];
     for (let dir of getDirectories("tutorial/topics")) {
@@ -72,10 +84,12 @@ for (let file of fs.readdirSync("templates/partials")) {
 }
 
 let context = {
-    topics: []
+    topics: [],
+    questions: []
 };
 
 context.topics = parseTopics();
+context.questions = parseQuestions();
 
 let indexTemplate = handlebars.compile(
     fs.readFileSync("templates/index.hbs").toString()
