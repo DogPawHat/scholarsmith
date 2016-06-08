@@ -1,9 +1,9 @@
 <div class="testquestion">
-    <h1>Question {{@index}}</h1>
+    <h1>Question {{inc @index}}</h1>
     <p class="stem">{{stem}}</p>
     <form>
     {{#each answers}}
-        <input type="radio" value="{{@index}}">{{this}}</input>
+        <input type="radio" name="radio" value="{{@index}}">{{this}}</input>
     {{/each}}
     <form>
     <p class="feedback">{{feedback}}</p>

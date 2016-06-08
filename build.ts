@@ -83,6 +83,12 @@ for (let file of fs.readdirSync("templates/partials")) {
     );
 }
 
+
+handlebars.registerHelper("inc", function(value, options)
+{
+    return parseInt(value) + 1;
+});
+
 let context = {
     topics: [],
     questions: []
