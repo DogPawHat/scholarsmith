@@ -1,9 +1,9 @@
-import * as marked from "marked";
-import * as handlebars from "handlebars";
-import * as yaml from "js-yaml";
-import * as fm from "yaml-front-matter";
-import * as fs from "fs";
-import * as path from "path";
+import marked from "marked";
+import handlebars from "handlebars";
+import yaml from "js-yaml";
+import fm from "yaml-front-matter";
+import fs from "fs";
+import path from "path";
 
 function getDirectories(srcpath) {
     return fs.readdirSync(srcpath).filter(function(file) {
@@ -14,7 +14,7 @@ function getDirectories(srcpath) {
 function parseQuestions() {
     let questions = [];
     yaml.safeLoadAll(
-        fs.readFileSync("tutorial/questions.yaml").toString(),
+        fs.readFileSync("./tutorial/questions.yaml").toString(),
         function(doc) {
             questions.push(doc);
         }
@@ -25,21 +25,21 @@ function parseQuestions() {
 
 function parseTopics() {
     let topics = [];
-    for (let dir of getDirectories("tutorial/topics")) {
-        console.log(path.join("tutorial",
+    for (let dir of getDirectories("./tutorial/topics")) {
+        console.log(path.join(
+            "tutorial",
             "topics",
             dir,
             "config.yaml"));
         let pages = [];
         let configFile = fs.readFileSync(
-            path.join("tutorial",
+            path.join(
+                "tutorial",
                 "topics",
                 dir,
                 "config.yaml")
         ).toString();
         let configYaml = yaml.safeLoad(configFile);
-
-
 
         for (let file of fs.readdirSync(path.join(
             "tutorial", "topics", dir
@@ -53,14 +53,10 @@ function parseTopics() {
                         file
                     ))
                 );
-
-
                 contentObj.markedContent = marked(contentObj.__content);
-
                 pages.push(contentObj);
             }
         }
-
 
         topics.push({
             title: configYaml.title,
@@ -71,7 +67,7 @@ function parseTopics() {
 }
 
 function build() {
-    for (let file of fs.readdirSync("templates/partials")) {
+    for (let file of fs.readdirSync("./templates/partials")) {
         let partialName = file.split(".")[0];
         handlebars.registerPartial(
             partialName,
@@ -98,11 +94,11 @@ function build() {
     context.questions = parseQuestions();
 
     let indexTemplate = handlebars.compile(
-        fs.readFileSync("templates/index.hbs").toString()
+        fs.readFileSync("./templates/index.hbs").toString()
     );
 
     let indexHtml = indexTemplate(context);
-    fs.writeFileSync("index.html", indexHtml);
+    fs.writeFileSync("./dist/index.html", indexHtml);
 }
 
 build();

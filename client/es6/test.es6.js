@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 let answers: boolean[] = [];
 
-function submitQuestion(event: JQueryEventObject){
+function submitQuestion(event){
     let currentForm = $(event.target);
     let parent = currentForm.parent(".testquestion");
 
