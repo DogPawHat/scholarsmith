@@ -1,4 +1,4 @@
-module.exports = {  
+module.exports = {
   entry: './src/ts/app.ts',
   output: {
     filename: './build/bundle.js'
@@ -8,7 +8,13 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.ts$/, loader: 'ts-loader' }
+        {
+          test: /\.scss$/,
+          loaders: ["style", "css", "sass"]
+      },
+      { test: /\.ts$/,
+          loader: 'ts-loader' }
+
     ]
   }
 }

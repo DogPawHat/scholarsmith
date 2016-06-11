@@ -1,10 +1,11 @@
 <div class="testquestion">
     <h1>Question {{inc @index}}</h1>
     <p class="stem">{{stem}}</p>
-    <form>
-    {{#each answers}}
-        <input type="radio" name="radio" value="{{@index}}">{{this}}</input>
-    {{/each}}
-    <form>
+    <form name="answers_{{@index}}" id="answers_{{@index}}" data-answer="{{correct}}">
+        {{#each answers}}
+	        <input type="radio" name="radio" value="{{@index}}">{{this}}</input>
+        {{/each}}
+	    <input type="submit" value="Submit"/>
+    </form>
     <p class="feedback">{{feedback}}</p>
 </div>

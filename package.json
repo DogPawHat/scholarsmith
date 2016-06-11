@@ -5,18 +5,30 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "webpack",
     "build": "ts-node --project ./tsconfig.json ./build.ts"
   },
   "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
+    "css-loader": "^0.23.1",
     "gulp": "^3.9.1",
+    "gulp-typescript": "^2.13.6",
     "handlebars": "^4.0.5",
     "js-yaml": "^3.6.1",
     "marked": "^0.3.5",
+    "node-sass": "^3.7.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
     "ts-node": "^0.7.3",
     "typescript": "^1.8.10",
     "webpack": "^1.13.0",
     "yaml-front-matter": "^3.4.0"
+  },
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "pipwerks-scorm-api-wrapper": "^0.1.2",
+    "sass-loader": "^3.2.0"
   }
 }

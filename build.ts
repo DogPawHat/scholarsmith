@@ -15,7 +15,7 @@ function parseQuestions() {
     let questions = [];
     yaml.safeLoadAll(
         fs.readFileSync("tutorial/questions.yaml").toString(),
-        function(doc){
+        function(doc) {
             questions.push(doc);
         }
     );
@@ -55,9 +55,9 @@ function parseTopics() {
                 );
 
 
-            contentObj.markedContent = marked(contentObj.__content);
+                contentObj.markedContent = marked(contentObj.__content);
 
-            pages.push(contentObj);
+                pages.push(contentObj);
             }
         }
 
@@ -70,36 +70,39 @@ function parseTopics() {
     return topics
 }
 
-for (let file of fs.readdirSync("templates/partials")) {
-    let partialName = file.split(".")[0];
-    handlebars.registerPartial(
-        partialName,
-        fs.readFileSync(path.join(
-            "templates",
-            "partials",
-            file
-        )
-        ).toString()
+function build() {
+    for (let file of fs.readdirSync("templates/partials")) {
+        let partialName = file.split(".")[0];
+        handlebars.registerPartial(
+            partialName,
+            fs.readFileSync(path.join(
+                "templates",
+                "partials",
+                file
+            )
+            ).toString()
+        );
+    }
+
+
+    handlebars.registerHelper("inc", function(value, options) {
+        return parseInt(value) + 1;
+    });
+
+    let context = {
+        topics: [],
+        questions: []
+    };
+
+    context.topics = parseTopics();
+    context.questions = parseQuestions();
+
+    let indexTemplate = handlebars.compile(
+        fs.readFileSync("templates/index.hbs").toString()
     );
+
+    let indexHtml = indexTemplate(context);
+    fs.writeFileSync("index.html", indexHtml);
 }
 
-
-handlebars.registerHelper("inc", function(value, options)
-{
-    return parseInt(value) + 1;
-});
-
-let context = {
-    topics: [],
-    questions: []
-};
-
-context.topics = parseTopics();
-context.questions = parseQuestions();
-
-let indexTemplate = handlebars.compile(
-    fs.readFileSync("templates/index.hbs").toString()
-);
-
-let indexHtml = indexTemplate(context);
-fs.writeFileSync("index.html", indexHtml)
+build();

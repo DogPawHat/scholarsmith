@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <meta charset="utf-8"/>
     <title></title>
+    <script src="build/bundle.js" />
 <body>
     <h1>WELCOME</h1>
         <div class="topic">
@@ -25,21 +27,23 @@
             <div class="testquestion">
                 <h1>Question 1</h1>
                 <p class="stem">Derp Question 1</p>
-                <form>
-                    <input type="radio" name="radio" value="0">Answer 1</input>
-                    <input type="radio" name="radio" value="1">Answer 2</input>
-                    <input type="radio" name="radio" value="2">Answer 3</input>
-                <form>
+                <form name="answers_0" id="answers_0" data-answer="2">
+            	        <input type="radio" name="radio" value="0">Answer 1</input>
+            	        <input type="radio" name="radio" value="1">Answer 2</input>
+            	        <input type="radio" name="radio" value="2">Answer 3</input>
+            	    <input type="submit" value="Submit"/>
+                </form>
                 <p class="feedback">Derp</p>
             </div>
             <div class="testquestion">
                 <h1>Question 2</h1>
                 <p class="stem">Derp Question 2</p>
-                <form>
-                    <input type="radio" name="radio" value="0">Answer 1</input>
-                    <input type="radio" name="radio" value="1">Answer 2</input>
-                    <input type="radio" name="radio" value="2">Answer 3</input>
-                <form>
+                <form name="answers_1" id="answers_1" data-answer="2">
+            	        <input type="radio" name="radio" value="0">Answer 1</input>
+            	        <input type="radio" name="radio" value="1">Answer 2</input>
+            	        <input type="radio" name="radio" value="2">Answer 3</input>
+            	    <input type="submit" value="Submit"/>
+                </form>
                 <p class="feedback">Derp</p>
             </div>
         <div class="results">
