@@ -1,4 +1,4 @@
-require('../scss/app.scss');
+import '../scss/app.scss';
 
 import $ from 'jquery';
 import {attachSubmitHandlers} from "./test.es6.js";
