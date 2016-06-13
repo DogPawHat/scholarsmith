@@ -3,5 +3,19 @@
   "libs": [
     "browser",
     "jquery"
-  ]
+  ],
+  "loadEagerly": [
+    "./builder/**/*.es6.js",
+    "./client/**/*.es6.js"
+  ],
+  "dontLoad": [
+    "./templates/**/*.js",
+    "./dist/**/*.js"
+  ],
+  "plugins": {
+    "lint": {},
+    "modules": {},
+    "es_modules": {},
+    "node": {}
+  }
 }

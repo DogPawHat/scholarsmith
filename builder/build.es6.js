@@ -16,6 +16,11 @@ function parseQuestions() {
     yaml.safeLoadAll(
         fs.readFileSync("./tutorial/questions.yaml").toString(),
         function(doc) {
+            if(questions.length === 0){
+                doc.class = "testquestion current"
+            }else{
+                doc.class = "testquestion"
+            }
             questions.push(doc);
         }
     );

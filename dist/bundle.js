@@ -10127,12 +10127,13 @@
 	    var radio = currentForm.children('radio[name=radio]');
 	    var val = radio.val();
 	    var correct = currentForm.attr("data-correct");
+	    var next = void 0;
 
 	    answers.push(val === correct);
 
-	    parent.removeClass(".current");
-	    if (parent.next("testquestion")) {
-	        parent.next("testquestion").addClass("current");
+	    parent.removeClass("current");
+	    if (parent.next().hasClass("testquestion")) {
+	        parent.next().addClass("current");
 	    } else {
 	        var result = answers.filter(function (answer) {
 	            return answer;
@@ -10140,14 +10141,14 @@
 	        (0, _jquery2.default)(".results, .talk_to_us").addClass("done");
 	        (0, _jquery2.default)(".results p").text(result);
 	    }
+
+	    return false;
 	}
 
 	function attachSubmitHandlers() {
 	    var form = (0, _jquery2.default)(".tutorialtest > .testquestion > form");
 
 	    form.submit(submitQuestion);
-
-	    (0, _jquery2.default)(".tutorialtest .testquestion:first").addClass(".current");
 	}
 
 /***/ },

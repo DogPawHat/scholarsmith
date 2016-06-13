@@ -9,12 +9,13 @@ function submitQuestion(event){
     let radio = currentForm.children('radio[name=radio]');
     let val = radio.val();
     let correct = currentForm.attr("data-correct");
+    let next
 
     answers.push(val === correct);
 
-    parent.removeClass(".current");
-    if(parent.next("testquestion")){
-        parent.next("testquestion").addClass("current");
+    parent.removeClass("current");
+    if(parent.next().hasClass("testquestion")){
+        parent.next().addClass("current");
     }else{
         let result = answers.filter(
             (answer) => {
@@ -23,12 +24,12 @@ function submitQuestion(event){
         $(".results, .talk_to_us").addClass("done");
         $(".results p").text(result);
     }
+
+    return false;
 }
 
 export function attachSubmitHandlers(){
     let form = $(".tutorialtest > .testquestion > form");
 
     form.submit(submitQuestion);
-
-    $(".tutorialtest .testquestion:first").addClass(".current");
 }
