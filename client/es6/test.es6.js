@@ -9,7 +9,6 @@ function submitQuestion(event){
     let radio = currentForm.children('radio[name=radio]');
     let val = radio.val();
     let correct = currentForm.attr("data-correct");
-    let next
 
     answers.push(val === correct);
 
