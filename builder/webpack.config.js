@@ -10,7 +10,7 @@ module.exports = {
     module: {
         loaders: [{
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract("style", "css", "sass")
+                loaders: ['style', 'css', 'sass']
             }, {
                 test: /\.es6.js?$/,
                 exclude: /(node_modules|bower_components)/,
