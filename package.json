@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "webpack --config builder/webpack.config.js",
     "build": "babel-node ./builder/build.es6.js",
-    "start": "cd ./dist && browser-sync start --server"
+    "start": "cd ./dist && browser-sync start --server --files './dist/index.html, ./dist/styles.css, ./dist/bundle.js'"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -22,6 +22,7 @@
     "browser-sync": "^2.13.0",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "foundation-sites": "^6.2.3",
     "gulp": "^3.9.1",
     "handlebars": "^4.0.5",
     "js-yaml": "^3.6.1",

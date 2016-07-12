@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-let answers: boolean[] = [];
+let answers = [];
 
 function submitQuestion(event){
     let currentForm = $(event.target);

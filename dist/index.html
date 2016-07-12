@@ -5,61 +5,65 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="bundle.js" />
 <body>
-    <h1>WELCOME</h1>
-    <ul class="pagination" role="navigation" aria-label="Topics">
-        <li class="topic">
-            <a href="#" aria-label="Introduction!">Introduction!</a>
-            <h1>Introduction!</h1>
-                <div class="page">
-                    <h1 id="first-">First!</h1>
-                
+    <div id="content">
+    <div class="topics">
+        <h1 class="current">WELCOME</h1>
+            <article class="topic">
+                <h2>Introduction!</h2>
+                    <article class="page">
+                        <p>First!</p>
+                    
+                    </article>
+            </article>
+            <article class="topic">
+                <h2>Middle!</h2>
+                    <article class="page">
+                        <p>Second!</p>
+                    
+                    </article>
+                    <article class="page">
+                        <p>Third!</p>
+                    
+                    </article>
+            </article>
+        <div class="tutorialtest">
+                <div class="testquestion">
+                    <h3>Question 1</h3>
+                    <p class="stem">Derp Question 1</p>
+                    <form name="answers_0" id="answers_0" data-answer="2">
+                	        <input type="radio" name="radio" value="0">Answer 1</input>
+                	        <input type="radio" name="radio" value="1">Answer 2</input>
+                	        <input type="radio" name="radio" value="2">Answer 3</input>
+                	    <input type="submit" value="Submit"/>
+                    </form>
+                    <p class="feedback">Derp</p>
                 </div>
-        </div>
-    </ul>
-    <ul class="pagination" role="navigation" aria-label="Topics">
-        <li class="topic">
-            <a href="#" aria-label="Middle!">Middle!</a>
-            <h1>Middle!</h1>
-                <div class="page">
-                    <h2 id="second-">Second!</h2>
-                
+                <div class="testquestion">
+                    <h3>Question 2</h3>
+                    <p class="stem">Derp Question 2</p>
+                    <form name="answers_1" id="answers_1" data-answer="2">
+                	        <input type="radio" name="radio" value="0">Answer 1</input>
+                	        <input type="radio" name="radio" value="1">Answer 2</input>
+                	        <input type="radio" name="radio" value="2">Answer 3</input>
+                	    <input type="submit" value="Submit"/>
+                    </form>
+                    <p class="feedback">Derp</p>
                 </div>
-                <div class="page">
-                    <h3 id="third-">Third!</h3>
-                
-                </div>
-        </div>
-    </ul>
-    <div class="tutorialtest">
-            <div class="testquestion current">
-                <h1>Question 1</h1>
-                <p class="stem">Derp Question 1</p>
-                <form name="answers_0" id="answers_0" data-answer="2">
-            	        <input type="radio" name="radio" value="0">Answer 1</input>
-            	        <input type="radio" name="radio" value="1">Answer 2</input>
-            	        <input type="radio" name="radio" value="2">Answer 3</input>
-            	    <input type="submit" value="Submit"/>
-                </form>
-                <p class="feedback">Derp</p>
+            <div class="results">
+                <h1>Results</h1>
+                <p>SCORE SHOULD GO HERE</p>
             </div>
-            <div class="testquestion">
-                <h1>Question 2</h1>
-                <p class="stem">Derp Question 2</p>
-                <form name="answers_1" id="answers_1" data-answer="2">
-            	        <input type="radio" name="radio" value="0">Answer 1</input>
-            	        <input type="radio" name="radio" value="1">Answer 2</input>
-            	        <input type="radio" name="radio" value="2">Answer 3</input>
-            	    <input type="submit" value="Submit"/>
-                </form>
-                <p class="feedback">Derp</p>
-            </div>
-        <div class="results">
-            <h1>Results</h1>
-            <p>SCORE SHOULD GO HERE</p>
+        </div>
+        <div class="talk_to_us">
+            <p>Please Talk to us</p>
         </div>
     </div>
-    <div class="talk_to_us">
-        <p>Please Talk to us</p>
+    <ul id="pageselect">
+        <li class="arrow"><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+        <li class="arrow"><a href="#">&raquo;</a></li>
+    </ul>
     </div>
 </body>
 </html>

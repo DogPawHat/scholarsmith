@@ -17,7 +17,7 @@ function parseQuestions() {
         fs.readFileSync("./tutorial/questions.yaml").toString(),
         function(doc) {
             if(questions.length === 0){
-                doc.class = "testquestion current"
+                doc.class = "testquestion"
             }else{
                 doc.class = "testquestion"
             }
