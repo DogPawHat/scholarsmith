@@ -9,9 +9,9 @@ export default function(pager, topics, pages){
 
     const clickLeftArrow = () => {
         let current = pages.find(".current");
-
         current.removeClass("current");
         pager.children().removeClass("current");
+        current.prev
     }
 
     const clickRightArrow = () => {
