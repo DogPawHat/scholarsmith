@@ -68,35 +68,39 @@ function parseTopics() {
             pages: pages
         });
     }
-    return topics
+    return topics;
+}
+
+function buildTopics(topics){
+    let context = [];
+    let topicTemplate = handlebars.compile(
+        fs.readFileSync("./templates/topic.hbs").toString()
+    );
+    for(let topic of topics){
+        context.push(topicTemplate(topic));
+    }
+    return context;
+}
+
+function buildTest(test){
+    let testTemplate = handlebars.compile(
+        fs.readFileSync("./templates/tutorialtest.hbs").toString()
+    );
+    return testTemplate(test);
 }
 
 function build() {
-    for (let file of fs.readdirSync("./templates/partials")) {
-        let partialName = file.split(".")[0];
-        handlebars.registerPartial(
-            partialName,
-            fs.readFileSync(path.join(
-                "templates",
-                "partials",
-                file
-            )
-            ).toString()
-        );
-    }
-
-
     handlebars.registerHelper("inc", function(value, options) {
         return parseInt(value) + 1;
     });
 
     let context = {
-        topics: [],
-        questions: []
+        topics: "",
+        questions: ""
     };
 
-    context.topics = parseTopics();
-    context.questions = parseQuestions();
+    context.topics = buildTopics(parseTopics());
+    context.questions = buildTest(parseQuestions());
 
     let indexTemplate = handlebars.compile(
         fs.readFileSync("./templates/index.hbs").toString()

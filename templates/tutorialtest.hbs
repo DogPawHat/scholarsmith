@@ -1,0 +1,19 @@
+<div class="tutorialtest page">
+    {{#each questions}}
+        <div class="{{class}}">
+            <h3>Question {{inc @index}}</h3>
+            <p class="stem">{{stem}}</p>
+            <form name="answers_{{@index}}" id="answers_{{@index}}" data-answer="{{correct}}">
+                {{#each answers}}
+                    <input type="radio" name="radio" value="{{@index}}">{{this}}</input>
+                {{/each}}
+                <input type="submit" value="Submit" />
+            </form>
+            <p class="feedback">{{feedback}}</p>
+        </div>
+    {{/each}}
+</div>
+<div class="results page">
+    <h1>Results</h1>
+    <p>SCORE SHOULD GO HERE</p>
+</div>

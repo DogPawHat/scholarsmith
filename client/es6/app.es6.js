@@ -6,11 +6,11 @@ import {attachSubmitHandlers} from "./test.es6.js";
 import selectPage from "./pager.es6.js";
 
 $(document).ready(function(){
-    var pages = $(".topics > h6, .topic, .tutorialtest .testquestion, .results, .talk_to_us, .page");
+    var pages = $(".page");
     var topics = $(".topic");
-    var pager = $(".content ul#pageselect");
+    var pager = $("#pageselect");
 
-    selectPage(pager, pages, topics);
+    selectPage(pager, topics, pages);
     attachSubmitHandlers();
 }
 );

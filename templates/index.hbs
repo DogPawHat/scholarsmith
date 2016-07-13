@@ -7,12 +7,14 @@
 <body>
     <div id="content">
     <div class="topics">
-        <h1 class="current">WELCOME</h1>
+        <h1 class="page current">WELCOME</h1>
         {{#each topics}}
-            {{> topic}}
+            {{{ this }}}
         {{/each}}
-        {{> tutorialtest}}
-        {{> talktous}}
+        {{{ tutorialtest }}}
+        <div class="page talk_to_us">
+            <p>Please Talk to us</p>
+        </div>
     </div>
     <ul id="pageselect">
         <li class="arrow"><a href="#">&laquo;</a></li>
