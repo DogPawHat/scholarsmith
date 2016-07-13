@@ -11,15 +11,18 @@ export default function(pager, topics, pages){
         let current = pages.find(".current");
         current.removeClass("current");
         pager.children().removeClass("current");
-        current.prev
+        current.prev().addClass("current");
     }
 
     const clickRightArrow = () => {
-
+        let current = pages.find(".current");
+        current.removeClass("current");
+        pager.children().removeClass("current");
+        current.next().addClass("current");
     }
 
     let arrows = pager.children(".arrow")
     arrows.eq(0).click(clickLeftArrow);
     arrows.eq(1).click(clickRightArrow);
-    pager.children(":not(.arrow)").click(clickNumber);
+    pager.children("li:not(.arrow)").click(clickNumber);
 }
