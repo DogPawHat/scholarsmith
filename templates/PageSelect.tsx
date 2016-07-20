@@ -5,7 +5,11 @@ interface PageSelectState{
     currentPage: number;
 }
 
-class PageSelect extends React.Component<PageSelectProps, PageSelectState> {
+
+class Clicker 
+
+
+export default class extends React.Component<PageSelectProps, PageSelectState> {
     constructor(){
         super();
         this.state = {
