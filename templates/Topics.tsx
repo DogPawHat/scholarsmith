@@ -17,7 +17,7 @@ class Topic extends AbstractPage<TopicProps> {
         <article className="topic">
             <h2 className="page">{ this.props.title }</h2>
             {this.props.pages.map((page, i) => {
-                return Page(page);
+                return new Page(page);
             }) }
         </article>
         );
