@@ -1,5 +1,0 @@
----
-type: plain
----
-
-First!
