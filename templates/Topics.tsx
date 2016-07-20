@@ -1,36 +1,39 @@
 import React from 'react';
 import Marked from 'marked';
 import {PageProps, TopicProps, TopicsProps} from './TemplateProps';
+import AbstractPage from './AbstractPage.tsx';
 
-function Page(props: PageProps): React.ReactElement<PageProps> {
-    return (
-        <article class="page" dangerouslySetInnerHTML={Marked(props.text) } />
-    );
+class Page extends AbstractPage<PageProps> {
+    render(){
+        return (
+            <article class="page" dangerouslySetInnerHTML={Marked(this.props.text) } />
+	    );
+    }
 }
 
-function Topic(props: TopicProps): React.ReactElement<TopicProps> {
-    let pageElements = props.pages.map((page, i) => {
-        return Page(page);
-    })
-    return (
+class Topic extends AbstractPage<TopicProps> {
+    render(){
+        return(
         <article className="topic">
-            <h2 className="page">{ props.title }</h2>
-            {pageElements}
+            <h2 className="page">{ this.props.title }</h2>
+            {this.props.pages.map((page, i) => {
+                return Page(page);
+            }) }
         </article>
-    )
+        );
+    }
 }
 
-interface TopicsState{
+interface TopicsState {
     current: number;
 }
 
-export default class Topics extends React.Component<TopicProps, TopicsState>{
-    render(){
+export function Topics(props: TopicProps): React.ReactElement<TopicProps>{
         return (
             <div className="topics">
                 <h1 className="page current">WELCOME</h1>
                 {this.props.topics.map((topic) => {
-                    return Topic(topic);
+                    return new Topic(topic);
                 }) }
                 {{{ tutorialtest }}}
                 <div className="page talk_to_us">
