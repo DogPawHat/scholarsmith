@@ -14,7 +14,7 @@ function Head(props: { title: string }) {
     );
 }
 
-function Body(props: BodyProps) {
+export default function (props: BodyProps) {
     return (
         <html lang="en">
             <Head title={props.title} />
