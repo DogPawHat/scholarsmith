@@ -16,6 +16,7 @@ abstract class AbstractPage<P> extends React.Component<P, TopicState>{
 	        ? baseClassName + "page current" 
 	        : baseClassName + "page";
     }
+    
 }
 
 export default AbstractPage;
