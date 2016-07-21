@@ -23,8 +23,8 @@ function PageLink(props: PageLinkProps): React.ReactElement<PageLinkProps>{
 
 
 export default class extends React.Component<PageSelectProps, PageSelectState> {
-    constructor(){
-        super();
+    constructor(props: PageSelectProps){
+        super(props);
         this.state = {
             currentPage: 0
         };

@@ -61,7 +61,7 @@ class TalkToUsPage extends AbstractPage<{}>{
     }
 }
 
-export function Topics(props: TopicsProps): React.ReactElement<TopicsProps>{
+export default function(props: TopicsProps): React.ReactElement<TopicsProps>{
         return (
             <div className="topics">
                 <WelcomePage />
