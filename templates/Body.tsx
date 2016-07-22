@@ -16,7 +16,7 @@ function Head(props: { title: string }) {
 
 export default function (props: BodyProps) {
     return (
-        <html lang="en">
+        <html lang="en" id="root">
             <Head title={props.title} />
             <body>
                 <div id="content">

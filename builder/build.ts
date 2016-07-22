@@ -79,6 +79,7 @@ function build() {
         }
     };
 
+    fs.writeFileSync("./dist/props.json", JSON.stringify(context))
     let indexHtml = ReactDOMServer.renderToString(Body(context))
     fs.writeFileSync("./dist/index.html", indexHtml);
 }
