@@ -30,11 +30,27 @@ export interface TopicProps extends React.Attributes{
     pages: PageProps[];
 }
 
-export interface PageProps extends React.Attributes{
-    text: string;
-}
-
 export interface BodyProps extends React.Attributes{
     title: string;
     topics: TopicsProps;
+}
+
+export interface AbstractPageProps extends React.Attributes{
+    initialState?: boolean;
+}
+
+export interface WelcomePageProps extends AbstractPageProps{
+
+}
+
+export interface PageProps extends AbstractPageProps{
+    text: string;
+}
+
+export interface TalkToUsPageProps extends AbstractPageProps{
+
+}
+
+export interface TopicTitlePageProps extends AbstractPageProps{
+    title: string;
 }

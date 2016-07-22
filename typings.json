@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
+    "axios": "registry:dt/axios#0.9.1+20160629101425",
     "classnames": "registry:dt/classnames#0.0.0+20160316155526",
     "marked": "registry:dt/marked#0.0.0+20160325085301",
     "node": "registry:dt/node#6.0.0+20160720070758",

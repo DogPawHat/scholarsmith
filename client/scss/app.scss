@@ -1,0 +1,29 @@
+@import "settings";
+@import "~foundation-sites/scss/foundation";
+
+@include foundation-everything;
+
+* {
+    box-sizing: border-box;
+}
+
+.topics{
+    @extend .column;
+    @extend .large-8;
+    width: 82%;
+    margin: 0 14%;
+}
+
+.page{
+    display: none;
+}
+
+.page.current{
+    display: block
+}
+
+ul#pageselect{
+    @extend .pagination;
+    @extend .text-center;
+    width: 100%
+}

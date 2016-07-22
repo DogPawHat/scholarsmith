@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import marked from "marked";
 import yaml from "js-yaml";
 import fm from "yaml-front-matter";
 import fs from "fs";
@@ -56,7 +55,7 @@ function parseTopics(): AllProps.TopicProps[]{
                         file
                     ))
                 );
-                contentObj.text = marked(contentObj.__content);
+                contentObj.text = contentObj.__content;
                 pages.push(contentObj);
             }
         }
