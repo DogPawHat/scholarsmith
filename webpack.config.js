@@ -1,23 +1,25 @@
+var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
-    entry: './client/es6/app.es6.js',
+    entry: {
+        client: './client/ts/app.ts',
+        server: './builder/build.ts'
+    },
     output: {
-        filename: './dist/bundle.js'
+        path: path.join(__dirname, "dist"),
+        filename: '[name].bundle.js'
     },
     resolve: {
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.js', '.es6.js', '.scss']
+        extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.es6.js', '.scss', '.ts', '.tsx']
     },
     module: {
+        exclude: /(node_modules|bower_components)/,
         loaders: [{
                 test: /\.scss$/,
                 loaders: ['style', 'css', 'sass']
             }, {
-                test: /\.es6.js?$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader', // 'babel-loader' is also a legal name to reference
-                query: {
-                    presets: ['es2015', 'stage-0']
-                }
+                test: /\.ts(x?)$/,
+                loader: "babel?presets[]=es2015!ts-loader?configFileName=./tsconfig.json"
             }
         ]
     },plugins: [
