@@ -8,16 +8,15 @@ import WelcomePage from './WelcomePage';
 import TalkToUsPage from './TalkToUsPage';
 import Topic from './Topic';
 
-export default function(props: TopicsProps): React.ReactElement<TopicsProps>{
-        return (
-            <div className="topics">
-                <WelcomePage initialState={true}/>
-                {this.props.topics.map((topic) => {
-                    return Topic(topic);
-                }) }
-                <TutorialTest questions={props.questions}/>
-                <TalkToUsPage />
-            </div>
-        )
-    }
+export default function (props: TopicsProps): React.ReactElement<TopicsProps> {
+    return (
+        <div className="topics">
+            <WelcomePage initialState={true}/>
+            {this.props.topics.map((topic) => {
+                return Topic(topic);
+            }) }
+            <TutorialTest questions={props.questions}/>
+            <TalkToUsPage />
+        </div>
+    )
 }

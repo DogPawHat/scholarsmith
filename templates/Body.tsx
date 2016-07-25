@@ -1,5 +1,5 @@
 import React from 'react';
-import {BodyProps} from './TemplateProps.ts'
+import {BodyProps} from './TemplateProps'
 import Topics from './Topics'
 import PageSelect from './PageSelect'
 
