@@ -54,3 +54,7 @@ export interface TalkToUsPageProps extends AbstractPageProps{
 export interface TopicTitlePageProps extends AbstractPageProps{
     title: string;
 }
+
+export interface ResultsPageProps extends AbstractPageProps{
+    
+}

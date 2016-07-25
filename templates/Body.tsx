@@ -6,10 +6,10 @@ import PageSelect from './PageSelect'
 function Head(props: { title: string }) {
     return (
         <head>
-            <meta charset="utf-8"/>
+            <meta charSet="utf-8"/>
             <title>{ props.title }</title>
             <link rel="stylesheet" href="styles.css" />
-            <script src="bundle.js" />
+            
         </head>
     );
 }
@@ -23,6 +23,7 @@ export default function (props: BodyProps) {
                     <Topics {...props.topics} />
                     <PageSelect topics={props.topics.topics} />
                 </div>
+                <script src="client.bundle.js" />
             </body>
         </html>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbstractPageProps} from './TemplateProps.ts'
+import {AbstractPageProps} from './TemplateProps'
 
 interface AbstractPageState{
     current: boolean;
@@ -8,14 +8,13 @@ interface AbstractPageState{
 abstract class AbstractPage<P extends AbstractPageProps> extends React.Component<P, AbstractPageState>{
     constructor(props: P){
         super(props);
-        this.state.current = props.initialState;
-    };
-    getDefaultProps(){
-        return{
-            initialState: false
+        
+        this.state={
+            current: typeof props.initialState !== 'undefined' 
+            ? props.initialState
+            : false
         }
     }
-
     shouldComponentUpdate = true;
     getPageClassName(baseClassName: string){
         return this.state.current

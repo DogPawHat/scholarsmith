@@ -29583,7 +29583,8 @@
 	                { id: 'content' },
 	                _react2.default.createElement(_Topics2.default, props.topics),
 	                _react2.default.createElement(_PageSelect2.default, { topics: props.topics.topics })
-	            )
+	            ),
+	            _react2.default.createElement('script', { src: 'client.bundle.js' })
 	        )
 	    );
 	};
@@ -29596,7 +29597,7 @@
 
 	var _Topics2 = _interopRequireDefault(_Topics);
 
-	var _PageSelect = __webpack_require__(214);
+	var _PageSelect = __webpack_require__(217);
 
 	var _PageSelect2 = _interopRequireDefault(_PageSelect);
 
@@ -29606,14 +29607,13 @@
 	    return _react2.default.createElement(
 	        'head',
 	        null,
-	        _react2.default.createElement('meta', { charset: 'utf-8' }),
+	        _react2.default.createElement('meta', { charSet: 'utf-8' }),
 	        _react2.default.createElement(
 	            'title',
 	            null,
 	            props.title
 	        ),
-	        _react2.default.createElement('link', { rel: 'stylesheet', href: 'styles.css' }),
-	        _react2.default.createElement('script', { src: 'bundle.js' })
+	        _react2.default.createElement('link', { rel: 'stylesheet', href: 'styles.css' })
 	    );
 	}
 
@@ -30238,13 +30238,15 @@
 	    value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.default = function (props) {
 	    return _react2.default.createElement(
 	        'div',
 	        { className: 'topics' },
 	        _react2.default.createElement(_WelcomePage2.default, { initialState: true }),
-	        this.props.topics.map(function (topic) {
-	            return (0, _Topic2.default)(topic);
+	        props.topics.map(function (topic, i) {
+	            _react2.default.createElement(_Topic2.default, _extends({}, topic, { key: i }));
 	        }),
 	        _react2.default.createElement(_TutorialTest2.default, { questions: props.questions }),
 	        _react2.default.createElement(_TalkToUsPage2.default, null)
@@ -30259,15 +30261,15 @@
 
 	var _TutorialTest2 = _interopRequireDefault(_TutorialTest);
 
-	var _WelcomePage = __webpack_require__(208);
+	var _WelcomePage = __webpack_require__(211);
 
 	var _WelcomePage2 = _interopRequireDefault(_WelcomePage);
 
-	var _TalkToUsPage = __webpack_require__(209);
+	var _TalkToUsPage = __webpack_require__(212);
 
 	var _TalkToUsPage2 = _interopRequireDefault(_TalkToUsPage);
 
-	var _Topic = __webpack_require__(210);
+	var _Topic = __webpack_require__(213);
 
 	var _Topic2 = _interopRequireDefault(_Topic);
 
@@ -30283,16 +30285,16 @@
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	exports.default = function (props) {
 	    return _react2.default.createElement(
 	        "div",
 	        { className: "tutorialtest" },
 	        props.questions.map(function (question, i) {
-	            return new QuestionPage(question);
+	            _react2.default.createElement(_QuestionPage2.default, _extends({}, question, { key: i }));
 	        }),
-	        _react2.default.createElement(ResultsPage, null)
+	        _react2.default.createElement(_ResultsPage2.default, null)
 	    );
 	};
 
@@ -30300,9 +30302,39 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _AbstractPage3 = __webpack_require__(207);
+	var _QuestionPage = __webpack_require__(207);
 
-	var _AbstractPage4 = _interopRequireDefault(_AbstractPage3);
+	var _QuestionPage2 = _interopRequireDefault(_QuestionPage);
+
+	var _ResultsPage = __webpack_require__(210);
+
+	var _ResultsPage2 = _interopRequireDefault(_ResultsPage);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ },
+/* 207 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(199);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _AbstractPage2 = __webpack_require__(208);
+
+	var _AbstractPage3 = _interopRequireDefault(_AbstractPage2);
+
+	var _Answer = __webpack_require__(209);
+
+	var _Answer2 = _interopRequireDefault(_Answer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30312,97 +30344,59 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	function Answer(props) {
-	    return _react2.default.createElement(
-	        "input",
-	        { type: "radio", name: "radio", value: "{props.key}" },
-	        props.value
-	    );
-	}
+	var _class = function (_AbstractPage) {
+	    _inherits(_class, _AbstractPage);
 
-	var QuestionPage = function (_AbstractPage) {
-	    _inherits(QuestionPage, _AbstractPage);
+	    function _class(props) {
+	        _classCallCheck(this, _class);
 
-	    function QuestionPage(props) {
-	        _classCallCheck(this, QuestionPage);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(QuestionPage).call(this, props));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(_class).call(this, props));
 	    }
 
-	    _createClass(QuestionPage, [{
-	        key: "render",
+	    _createClass(_class, [{
+	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                "div",
-	                { className: "question" },
+	                'div',
+	                { className: 'question' },
 	                _react2.default.createElement(
-	                    "h3",
+	                    'h3',
 	                    null,
-	                    "Question ",
+	                    'Question ',
 	                    this.props.key
 	                ),
 	                _react2.default.createElement(
-	                    "p",
-	                    { "class": "stem" },
+	                    'p',
+	                    { 'class': 'stem' },
 	                    this.props.stem
 	                ),
 	                _react2.default.createElement(
-	                    "form",
-	                    { name: "answers_{this.props.key}", id: "answers_{this.props.key}", "data-answer": "{this.props.key}" },
+	                    'form',
+	                    { name: 'answers_{this.props.key}', id: 'answers_{this.props.key}', 'data-answer': '{this.props.key}' },
 	                    this.props.answers.map(function (answer, i) {
-	                        return _react2.default.createElement(Answer, { key: i, value: answer });
+	                        _react2.default.createElement(_Answer2.default, { key: i, value: answer });
 	                    }),
-	                    _react2.default.createElement("input", { type: "submit", value: "Submit" })
+	                    _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
 	                ),
 	                _react2.default.createElement(
-	                    "p",
-	                    { "class": "feedback" },
+	                    'p',
+	                    { 'class': 'feedback' },
 	                    this.props.feedback
 	                )
 	            );
 	        }
 	    }]);
 
-	    return QuestionPage;
-	}(_AbstractPage4.default);
+	    return _class;
+	}(_AbstractPage3.default);
 
-	var ResultsPage = function (_AbstractPage2) {
-	    _inherits(ResultsPage, _AbstractPage2);
-
-	    function ResultsPage() {
-	        _classCallCheck(this, ResultsPage);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ResultsPage).apply(this, arguments));
-	    }
-
-	    _createClass(ResultsPage, [{
-	        key: "render",
-	        value: function render() {
-	            return _react2.default.createElement(
-	                "div",
-	                { className: "results page" },
-	                _react2.default.createElement(
-	                    "h1",
-	                    null,
-	                    "Results"
-	                ),
-	                _react2.default.createElement(
-	                    "p",
-	                    null,
-	                    "SCORE SHOULD GO HERE"
-	                )
-	            );
-	        }
-	    }]);
-
-	    return ResultsPage;
-	}(_AbstractPage4.default);
+	exports.default = _class;
 
 /***/ },
-/* 207 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -30431,19 +30425,14 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractPage).call(this, props));
 
 	        _this.shouldComponentUpdate = true;
-	        _this.state.current = props.initialState;
+	        _this.state = {
+	            current: typeof props.initialState !== 'undefined' ? props.initialState : false
+	        };
 	        return _this;
 	    }
 
 	    _createClass(AbstractPage, [{
-	        key: "getDefaultProps",
-	        value: function getDefaultProps() {
-	            return {
-	                initialState: false
-	            };
-	        }
-	    }, {
-	        key: "getPageClassName",
+	        key: 'getPageClassName',
 	        value: function getPageClassName(baseClassName) {
 	            return this.state.current ? baseClassName + "page current" : baseClassName + "page";
 	        }
@@ -30455,7 +30444,93 @@
 	exports.default = AbstractPage;
 
 /***/ },
-/* 208 */
+/* 209 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function (props) {
+	    return _react2.default.createElement(
+	        "input",
+	        { type: "radio", name: "radio", value: "{props.key}" },
+	        props.value
+	    );
+	};
+
+	var _react = __webpack_require__(199);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ },
+/* 210 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(199);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _AbstractPage2 = __webpack_require__(208);
+
+	var _AbstractPage3 = _interopRequireDefault(_AbstractPage2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _class = function (_AbstractPage) {
+	    _inherits(_class, _AbstractPage);
+
+	    function _class() {
+	        _classCallCheck(this, _class);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(_class).apply(this, arguments));
+	    }
+
+	    _createClass(_class, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'results page' },
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Results'
+	                ),
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'SCORE SHOULD GO HERE'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return _class;
+	}(_AbstractPage3.default);
+
+	exports.default = _class;
+
+/***/ },
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30470,7 +30545,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _AbstractPage2 = __webpack_require__(207);
+	var _AbstractPage2 = __webpack_require__(208);
 
 	var _AbstractPage3 = _interopRequireDefault(_AbstractPage2);
 
@@ -30508,7 +30583,7 @@
 	exports.default = _class;
 
 /***/ },
-/* 209 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30523,7 +30598,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _AbstractPage2 = __webpack_require__(207);
+	var _AbstractPage2 = __webpack_require__(208);
 
 	var _AbstractPage3 = _interopRequireDefault(_AbstractPage2);
 
@@ -30565,7 +30640,7 @@
 	exports.default = _class;
 
 /***/ },
-/* 210 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30589,18 +30664,18 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Page = __webpack_require__(211);
+	var _Page = __webpack_require__(214);
 
 	var _Page2 = _interopRequireDefault(_Page);
 
-	var _TopicTitlePage = __webpack_require__(213);
+	var _TopicTitlePage = __webpack_require__(216);
 
 	var _TopicTitlePage2 = _interopRequireDefault(_TopicTitlePage);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 211 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30615,11 +30690,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _AbstractPage2 = __webpack_require__(207);
+	var _AbstractPage2 = __webpack_require__(208);
 
 	var _AbstractPage3 = _interopRequireDefault(_AbstractPage2);
 
-	var _marked = __webpack_require__(212);
+	var _marked = __webpack_require__(215);
 
 	var _marked2 = _interopRequireDefault(_marked);
 
@@ -30653,7 +30728,7 @@
 	exports.default = _class;
 
 /***/ },
-/* 212 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -31944,7 +32019,7 @@
 
 
 /***/ },
-/* 213 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31959,7 +32034,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _AbstractPage2 = __webpack_require__(207);
+	var _AbstractPage2 = __webpack_require__(208);
 
 	var _AbstractPage3 = _interopRequireDefault(_AbstractPage2);
 
@@ -31997,7 +32072,7 @@
 	exports.default = _class;
 
 /***/ },
-/* 214 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

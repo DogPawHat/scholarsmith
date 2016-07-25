@@ -12,8 +12,8 @@ export default function (props: TopicsProps): React.ReactElement<TopicsProps> {
     return (
         <div className="topics">
             <WelcomePage initialState={true}/>
-            {this.props.topics.map((topic) => {
-                return Topic(topic);
+            {props.topics.map((topic, i) => {
+                <Topic {...topic} key={i} />
             }) }
             <TutorialTest questions={props.questions}/>
             <TalkToUsPage />
