@@ -9,7 +9,7 @@ export default function(props: TopicProps){
         <article className="topic">
             <TopicTitlePage title={props.title} />
             {props.pages.map((page, i) => {
-                <Page {...page} />
+                return <Page {...page} key={i}/>
             }) }
         </article>
         );

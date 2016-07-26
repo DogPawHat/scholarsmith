@@ -13,7 +13,7 @@ export default function (props: TopicsProps): React.ReactElement<TopicsProps> {
         <div className="topics">
             <WelcomePage initialState={true}/>
             {props.topics.map((topic, i) => {
-                <Topic {...topic} key={i} />
+                return <Topic {...topic} key={i} />
             }) }
             <TutorialTest questions={props.questions}/>
             <TalkToUsPage />

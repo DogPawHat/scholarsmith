@@ -19,8 +19,10 @@ export default function (props: BodyProps) {
         <html lang="en" id="root">
             <Head title={props.title} />
             <body>
-                <div id="content">
+                <div id="topics_root">
                     <Topics {...props.topics} />
+                </div>
+                <div id="page_select_root">
                     <PageSelect topics={props.topics.topics} />
                 </div>
                 <script src="client.bundle.js" />

@@ -29580,8 +29580,12 @@
 	            null,
 	            _react2.default.createElement(
 	                'div',
-	                { id: 'content' },
-	                _react2.default.createElement(_Topics2.default, props.topics),
+	                { id: 'topics_root' },
+	                _react2.default.createElement(_Topics2.default, props.topics)
+	            ),
+	            _react2.default.createElement(
+	                'div',
+	                { id: 'page_select_root' },
 	                _react2.default.createElement(_PageSelect2.default, { topics: props.topics.topics })
 	            ),
 	            _react2.default.createElement('script', { src: 'client.bundle.js' })
@@ -30246,7 +30250,7 @@
 	        { className: 'topics' },
 	        _react2.default.createElement(_WelcomePage2.default, { initialState: true }),
 	        props.topics.map(function (topic, i) {
-	            _react2.default.createElement(_Topic2.default, _extends({}, topic, { key: i }));
+	            return _react2.default.createElement(_Topic2.default, _extends({}, topic, { key: i }));
 	        }),
 	        _react2.default.createElement(_TutorialTest2.default, { questions: props.questions }),
 	        _react2.default.createElement(_TalkToUsPage2.default, null)
@@ -30649,13 +30653,15 @@
 	    value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.default = function (props) {
 	    return _react2.default.createElement(
 	        "article",
 	        { className: "topic" },
 	        _react2.default.createElement(_TopicTitlePage2.default, { title: props.title }),
 	        props.pages.map(function (page, i) {
-	            _react2.default.createElement(_Page2.default, page);
+	            return _react2.default.createElement(_Page2.default, _extends({}, page, { key: i }));
 	        })
 	    );
 	};
@@ -30718,7 +30724,7 @@
 	    _createClass(_class, [{
 	        key: "render",
 	        value: function render() {
-	            return _react2.default.createElement("article", { className: "page", dangerouslySetInnerHTML: (0, _marked2.default)(this.props.text) });
+	            return _react2.default.createElement("article", { className: "page", dangerouslySetInnerHTML: { __html: (0, _marked2.default)(this.props.text) } });
 	        }
 	    }]);
 
@@ -32096,18 +32102,16 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	function PageLink(props) {
-	    var _this = this;
-
 	    var setCurrent = function setCurrent() {
-	        _this.props.changePage(props.key);
+	        props.changePage(props.accessKey);
 	    };
 	    return _react2.default.createElement(
 	        "li",
 	        null,
 	        _react2.default.createElement(
 	            "a",
-	            { onClick: setCurrent, key: props.key },
-	            props.key
+	            { onClick: setCurrent },
+	            props.accessKey
 	        )
 	    );
 	}
@@ -32118,12 +32122,12 @@
 	    function _class(props) {
 	        _classCallCheck(this, _class);
 
-	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(_class).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(_class).call(this, props));
 
-	        _this2.state = {
+	        _this.state = {
 	            currentPage: 0
 	        };
-	        return _this2;
+	        return _this;
 	    }
 
 	    _createClass(_class, [{
@@ -32134,7 +32138,7 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            var _this3 = this;
+	            var _this2 = this;
 
 	            return _react2.default.createElement(
 	                "ul",
@@ -32149,7 +32153,7 @@
 	                    )
 	                ),
 	                this.props.topics.map(function (topic, i) {
-	                    _react2.default.createElement(PageLink, { key: i, changePage: _this3.changeCurrentPage.bind(_this3) });
+	                    return _react2.default.createElement(PageLink, { key: i, accessKey: i, changePage: _this2.changeCurrentPage.bind(_this2) });
 	                }),
 	                _react2.default.createElement(
 	                    "li",

@@ -6,8 +6,8 @@ interface PageSelectState{
 }
 
 interface PageLinkProps{
-    key: React.Key;
-    changePage: () => void;
+    changePage: (number) => void;
+    accessKey: number;
 }
 
 interface PageLinkState{
@@ -16,9 +16,9 @@ interface PageLinkState{
 
 function PageLink(props: PageLinkProps): React.ReactElement<PageLinkProps>{
     const setCurrent = () => {
-        this.props.changePage(props.key);
+        props.changePage(props.accessKey);
     }
-    return <li><a onClick={setCurrent} key={props.key}>{props.key}</a></li>;
+    return <li><a onClick={setCurrent}>{props.accessKey}</a></li>;
 }
 
 
@@ -34,12 +34,12 @@ export default class extends React.Component<PageSelectProps, PageSelectState> {
         this.state.currentPage = i;
     }
 
-    render (){
+    render(){
         return(
         <ul id="pageselect">
             <li className="arrow"><a href="#">&laquo; </a></li>
             {this.props.topics.map((topic, i) => {
-                <PageLink key={i} changePage={this.changeCurrentPage.bind(this)}/>
+                return <PageLink key={i} accessKey={i} changePage={this.changeCurrentPage.bind(this)}/>
             })}
             <li className="arrow"><a href="#">&raquo; </a></li>
         </ul>);

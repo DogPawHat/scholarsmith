@@ -4,9 +4,11 @@ import AbstractPage from "./AbstractPage";
 import Marked from "marked";
 
 export default class extends AbstractPage<PageProps> {
+    
+
     render(){
         return (
-            <article className="page" dangerouslySetInnerHTML={Marked(this.props.text) } />
+            <article className="page" dangerouslySetInnerHTML={{ __html: Marked(this.props.text) }} />
 	    );
     }
 }

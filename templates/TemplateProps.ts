@@ -5,7 +5,6 @@ export interface TutorialTestProps extends React.Attributes{
 }
 
 export interface QuestionProps extends React.Attributes{
-    key: React.Key;
     stem: string;
     answers: string[];
     feedback: string;
