@@ -5,7 +5,7 @@ var commonModule = {
     exclude: /(node_modules|bower_components)/,
     loaders: [{
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loader: ExtractTextPlugin.extract('css!sass')
     }, {
             test: /\.ts(x?)$/,
             loaders: [
@@ -17,7 +17,7 @@ var commonModule = {
 };
 
 var commonPlugins = [
-    new ExtractTextPlugin("./dist/styles.css")
+    new ExtractTextPlugin("./styles.css")
 ]
 
 var commonResolve = {

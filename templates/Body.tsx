@@ -9,7 +9,6 @@ function Head(props: { title: string }) {
             <meta charSet="utf-8"/>
             <title>{ props.title }</title>
             <link rel="stylesheet" href="styles.css" />
-            
         </head>
     );
 }

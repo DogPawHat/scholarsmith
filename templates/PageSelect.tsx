@@ -18,7 +18,7 @@ function PageLink(props: PageLinkProps): React.ReactElement<PageLinkProps>{
     const setCurrent = () => {
         props.changePage(props.accessKey);
     }
-    return <li><a onClick={setCurrent}>{props.accessKey}</a></li>;
+    return <li><a onClick={setCurrent}>{props.accessKey+1}</a></li>;
 }
 
 
