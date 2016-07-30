@@ -1,5 +1,6 @@
 import React from 'react';
 import Marked from 'marked';
+import {Route, IndexRoute} from 'react-router';
 
 import {PageProps, TopicProps, TopicsProps} from './TemplateProps';
 import AbstractPage from './AbstractPage';
@@ -11,12 +12,12 @@ import Topic from './Topic';
 export default function (props: TopicsProps): React.ReactElement<TopicsProps> {
     return (
         <div className="topics">
-            <WelcomePage initialState={true}/>
+            <IndexRoute component={WelcomePage} />
             {props.topics.map((topic, i) => {
-                return <Topic {...topic} key={i} />
+                return <Route {...topic} component={Topic} path="topics/{i}" key={i} />
             }) }
-            <TutorialTest questions={props.questions}/>
-            <TalkToUsPage />
+            <Route component={TutorialTest} questions={props.questions} path="test/"/>
+            <Route component={TalkToUsPage} path="talktous" />
         </div>
     )
 }
