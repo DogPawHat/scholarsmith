@@ -1,5 +1,4 @@
 import React from 'react';
-import {Router, Route} from 'react-router'
 import {BodyProps} from './TemplateProps'
 import Topics from './Topics'
 import PageSelect from './PageSelect'
@@ -16,14 +15,14 @@ function Head(props: { title: string }) {
 
 export default function (props: BodyProps) {
     return (
-        <html lang="en">
+        <html lang="en" id="root">
             <Head title={props.title} />
             <body>
-                <div id="root">
-                    <Router>
-                        <Route {...props.topics} path="/" component={Topics}/>
-                        <PageSelect topics={props.topics.topics} />
-                    </Router>
+                <div id="topics_root">
+                    <Topics {...props.topics} />
+                </div>
+                <div id="page_select_root">
+                    <PageSelect topics={props.topics.topics} />
                 </div>
                 <script src="client.bundle.js" />
             </body>
