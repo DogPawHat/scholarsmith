@@ -9,7 +9,6 @@ function Head(props: { title: string }) {
             <meta charSet="utf-8"/>
             <title>{ props.title }</title>
             <link rel="stylesheet" href="styles.css" />
-            
         </head>
     );
 }
@@ -19,12 +18,7 @@ export default function (props: BodyProps) {
         <html lang="en" id="root">
             <Head title={props.title} />
             <body>
-                <div id="topics_root">
-                    <Topics {...props.topics} />
-                </div>
-                <div id="page_select_root">
-                    <PageSelect topics={props.topics.topics} />
-                </div>
+                
                 <script src="client.bundle.js" />
             </body>
         </html>

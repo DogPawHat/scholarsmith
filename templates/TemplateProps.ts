@@ -24,6 +24,10 @@ export interface PageSelectProps extends React.Attributes{
     topics: TopicProps[];
 }
 
+export interface PageContainerProps extends React.Attributes{
+    children: React.ReactChildren;
+}
+
 export interface TopicProps extends React.Attributes{
     title: string;
     pages: PageProps[];

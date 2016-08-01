@@ -6,5 +6,8 @@
     "node": "registry:dt/node#6.0.0+20160720070758",
     "react": "registry:dt/react#0.14.0+20160720060442",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040"
+  },
+  "dependencies": {
+    "react-redux": "registry:npm/react-redux#4.4.0+20160614222153"
   }
 }
