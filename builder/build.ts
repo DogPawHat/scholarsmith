@@ -7,17 +7,32 @@ import path from "path";
 import AllProps from "../templates/TemplateProps";
 import Body from "../templates/Body";
 
+interface PageData {
+    type: string;
+}
+
+interface TopicPageData extends PageData {
+    tutorial_id: number;
+    title?: string;
+    text?: string;
+}
+
+interface QuestionPage extends PageData {
+
+}
+
 function getDirectories(srcpath) {
-    return fs.readdirSync(srcpath).filter(function(file) {
+    return fs.readdirSync(srcpath).filter(function (file) {
         return fs.statSync(path.join(srcpath, file)).isDirectory();
     });
 }
 
-function parseQuestions(): AllProps.QuestionProps[] {
+function parseQuestions(): QuestionPage[] {
     let questions = [];
     yaml.safeLoadAll(
         fs.readFileSync("./tutorial/questions.yaml").toString(),
-        function(doc) {
+        (doc) => {
+            doc.type = "question";
             questions.push(doc);
         }
     );
@@ -25,15 +40,10 @@ function parseQuestions(): AllProps.QuestionProps[] {
     return questions;
 }
 
-function parseTopics(): AllProps.TopicProps[]{
-    let topics = [];
-    for (let dir of getDirectories("./tutorial/topics")) {
-        console.log(path.join(
-            "tutorial",
-            "topics",
-            dir,
-            "config.yaml"));
-        let pages = [];
+function parseTopics(): TopicPageData[] {
+    let pages = [];
+    getDirectories("./tutorial/topics").map((dir, i, dirs) => {
+
         let configFile = fs.readFileSync(
             path.join(
                 "tutorial",
@@ -41,7 +51,13 @@ function parseTopics(): AllProps.TopicProps[]{
                 dir,
                 "config.yaml")
         ).toString();
+
         let configYaml = yaml.safeLoad(configFile);
+        pages.push({
+            type: "topic_title",
+            topic_id: i,
+            title: configYaml.title
+        });
 
         for (let file of fs.readdirSync(path.join(
             "tutorial", "topics", dir
@@ -55,29 +71,25 @@ function parseTopics(): AllProps.TopicProps[]{
                         file
                     ))
                 );
+                contentObj.topic_id = i;
                 contentObj.text = contentObj.__content;
                 pages.push(contentObj);
             }
         }
-
-        topics.push({
-            title: configYaml.title,
-            pages: pages
-        });
-    }
-    return topics;
+    });
+    return pages;
 }
 
 function build() {
 
-    let context: AllProps.BodyProps= {
+    let context = {
         title: "Hello!",
-        topics: {
-            topics: parseTopics(),
-            questions: parseQuestions()
-        }
+        pages: Array<PageData>().concat(
+            parseTopics(),
+            parseQuestions()
+        )
     };
-
+    
     fs.writeFileSync("./dist/props.json", JSON.stringify(context))
     let indexHtml = ReactDOMServer.renderToString(Body(context))
     fs.writeFileSync("./dist/index.html", indexHtml);
