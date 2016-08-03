@@ -4,6 +4,9 @@
         "allowSyntheticDefaultImports": true,
         "jsx": "preserve"
     },
+    "exclude": [
+        "node_modules"
+    ],
     "compileOnSave": false,
     "compileOnBuild": false
 }
