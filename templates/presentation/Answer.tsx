@@ -1,5 +1,5 @@
 import React from 'react'
-import {AnswerProps} from './TemplateProps'
+import {AnswerProps} from '../types'
 
 export default function(props: AnswerProps){
     return(

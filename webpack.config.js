@@ -21,6 +21,9 @@ var commonPlugins = [
 ]
 
 var commonResolve = {
+    alias: { 
+        templates : './templates'
+    },
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.es6.js', '.scss', '.ts', '.tsx']
 };
 

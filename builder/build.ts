@@ -4,22 +4,8 @@ import yaml from "js-yaml";
 import fm from "yaml-front-matter";
 import fs from "fs";
 import path from "path";
-import AllProps from "../templates/TemplateProps";
+import { ContextData, PageData, TopicPageData, QuestionPage} from "../templates/types";
 import Body from "../templates/server/Body";
-
-interface PageData {
-    type: string;
-}
-
-interface TopicPageData extends PageData {
-    tutorial_id: number;
-    title?: string;
-    text?: string;
-}
-
-interface QuestionPage extends PageData {
-
-}
 
 function getDirectories(srcpath) {
     return fs.readdirSync(srcpath).filter(function (file) {
@@ -82,7 +68,7 @@ function parseTopics(): TopicPageData[] {
 
 function build() {
 
-    let context = {
+    let context: ContextData = {
         title: "Hello!",
         pages: Array<PageData>().concat(
             parseTopics(),

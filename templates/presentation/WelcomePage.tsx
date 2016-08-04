@@ -1,5 +1,5 @@
 import React from 'react';
-import {WelcomePageProps} from "./TemplateProps"
+import {WelcomePageProps} from "templates/types"
 
 
 export default function () {
