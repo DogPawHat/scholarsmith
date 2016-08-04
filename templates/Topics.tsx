@@ -2,7 +2,6 @@ import React from 'react';
 import Marked from 'marked';
 
 import {PageProps, TopicProps, TopicsProps} from './TemplateProps';
-import AbstractPage from './AbstractPage';
 import TutorialTest from './TutorialTest';
 import WelcomePage from './WelcomePage';
 import TalkToUsPage from './TalkToUsPage';

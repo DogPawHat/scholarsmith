@@ -1,6 +1,5 @@
 import {Action, ActionCreator} from 'redux';
 
-
 const NEXT_PAGE = "NEXT_PAGE";
 const PREV_PAGE = "PREV_PAGE";
 const SELECT_TOPIC = "SELECT_TOPIC";
@@ -36,11 +35,14 @@ const createSelectTopicAction: SelectTopicActionCreator = function(topic_id: num
     }
 }
 
-export default {
+export {
     NEXT_PAGE,
     PREV_PAGE,
     SELECT_TOPIC,
+    PageActionCreator,
+    SelectTopicAction,
+    SelectTopicActionCreator,
     createNextPageAction,
     createPrevPageAction,
     createSelectTopicAction
-}
+};
