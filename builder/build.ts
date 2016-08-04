@@ -5,7 +5,7 @@ import fm from "yaml-front-matter";
 import fs from "fs";
 import path from "path";
 import AllProps from "../templates/TemplateProps";
-import Body from "../templates/Body";
+import Body from "../templates/server/Body";
 
 interface PageData {
     type: string;

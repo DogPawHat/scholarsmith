@@ -1,7 +1,7 @@
 import React from 'react';
-import {BodyProps} from './TemplateProps'
-import Topics from './Topics'
-import PageSelect from './PageSelect'
+import {ContextData} from '../TemplateProps'
+import Topics from '../Topics'
+import PageSelect from '../PageSelect'
 
 function Head(props: { title: string }) {
     return (
@@ -13,12 +13,12 @@ function Head(props: { title: string }) {
     );
 }
 
-export default function (props: BodyProps) {
+export default function (props: ContextData) {
     return (
         <html lang="en" id="root">
             <Head title={props.title} />
             <body>
-                
+                <div id="root"></div>
                 <script src="client.bundle.js" />
             </body>
         </html>
