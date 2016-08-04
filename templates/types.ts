@@ -1,12 +1,17 @@
 import React from 'react';
 
+export type PageTypes = 
+    'plain' 
+    | 'topic_title'
+    | 'question'
+
 export interface ContextData{
     title: string;
     pages: Array<PageData>;
 }
 
 export interface PageData {
-    type: string;
+    type: PageTypes;
 }
 
 export interface TopicPageData extends PageData {
@@ -15,6 +20,6 @@ export interface TopicPageData extends PageData {
     text?: string;
 }
 
-export interface QuestionPage extends PageData {
+export interface QuestionPageData extends PageData {
 
 }

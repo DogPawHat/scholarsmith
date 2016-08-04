@@ -4,7 +4,7 @@ import yaml from "js-yaml";
 import fm from "yaml-front-matter";
 import fs from "fs";
 import path from "path";
-import { ContextData, PageData, TopicPageData, QuestionPage} from "../templates/types";
+import { ContextData, PageData, TopicPageData, QuestionPageData, PageTypes} from "../templates/types";
 import Body from "../templates/server/Body";
 
 function getDirectories(srcpath) {
@@ -13,12 +13,12 @@ function getDirectories(srcpath) {
     });
 }
 
-function parseQuestions(): QuestionPage[] {
+function parseQuestions(): QuestionPageData[] {
     let questions = [];
     yaml.safeLoadAll(
         fs.readFileSync("./tutorial/questions.yaml").toString(),
-        (doc) => {
-            doc.type = "question";
+        (doc: QuestionPageData) => {
+            doc.type = 'question';
             questions.push(doc);
         }
     );

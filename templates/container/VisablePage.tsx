@@ -2,27 +2,32 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Immutable from 'immutable';
 
-import WelcomePage from './WelcomePage';
-import TopicTitlePage from './TopicTitlePage';
-import BasicPage from './BasicPage';
-import QuestionPage from './QuestionPage';
-import ResultsPage from './ResultsPage';
-import TalkToUsPage from './TalkToUsPage';
-import PageContainer from './PageContainer';
-import {BodyProps, TopicProps, TopicsProps} from './TemplateProps';
+import WelcomePage from '../presentation/WelcomePage';
+import TopicTitlePage from '../presentation/TopicTitlePage';
+import BasicPage from '../presentation/BasicPage';
+import QuestionPage from '../presentation/QuestionPage';
+import ResultsPage from '../presentation/ResultsPage';
+import TalkToUsPage from '../presentation/TalkToUsPage';
+import Page from '../presentation/Page';
+import {ContextData} from '../types';
 
-const createPageList = (props: BodyProps) => {
+const createPageList = (context: ContextData) => {
     return Immutable.List().withMutations((list) => {
         list.push(<WelcomePage />);
-        props.topics.topics.map((topic) => {
-            list.push(<TopicTitlePage title={topic.title}/>);
-            topic.pages.map((page) => {
-                list.push(<BasicPage {...page}/>);
-            });
-        });
-        props.topics.questions.map((question) => {
-            list.push(<QuestionPage {...question} />);
-        });
+        list.push(
+            context.pages.map((page) => {
+                switch (page.type){
+                    case 'plain':
+                        return BasicPage(page);
+                    case 'topic_title':
+                        return TopicTitlePage(page);
+                    case 'question':
+                        return QuestionPage(page);
+                    default:
+                        return BasicPage(page);
+                };
+            })
+        )
         list.push(<ResultsPage />);
         list.push(<TalkToUsPage />);
     });

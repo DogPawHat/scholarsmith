@@ -1,6 +1,7 @@
 import React from 'react';
-import { PageContainerProps } from './TemplateProps'
 
-export default function(props:PageContainerProps) {
+export default function(props: {
+    children: React.ReactChildren;
+}) {
     return (<section className="page_container">{props.children}</section>)
 }
