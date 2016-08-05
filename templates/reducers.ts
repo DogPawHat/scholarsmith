@@ -37,3 +37,5 @@ const reducers: Reducer<TutoralStateType> = combineReducers<TutoralStateType>({
     CURRENT_PAGE: currentPage,
     CURRENT_SCORE: currentScore
 })
+
+export default reducers;
