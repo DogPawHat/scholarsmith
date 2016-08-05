@@ -1,7 +1,10 @@
 import React from 'react';
+import WelcomePage from './WelcomePage';
 
-export default function(props: {
-    children: React.ReactNode;
+const Page: React.StatelessComponent<{pageContent: React.ReactNode}> = function(props = {
+    pageContent: WelcomePage()
 }) {
-    return (<section className="page_container">{props.children}</section>)
+    return (<section className="page_container">{props.pageContent}</section>)
 }
+
+export default Page;

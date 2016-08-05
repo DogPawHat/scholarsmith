@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function () {
+const ResultsPage: React.StatelessComponent<{}> = function() {
     return (
         <div className="results page">
             <h1>Results</h1>
@@ -8,3 +8,5 @@ export default function () {
         </div>
     );
 }
+
+export default ResultsPage;

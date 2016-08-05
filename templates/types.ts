@@ -1,8 +1,8 @@
 import React from 'react';
 import Immutable from 'immutable';
 
-export type PageTypes = 
-    'plain' 
+export type PageTypes =
+    'plain'
     | 'topic_title'
     | 'question'
     | 'welcome'
@@ -22,9 +22,13 @@ export class TutoralStateType extends Immutable.Record(
         CURRENT_PAGE: 0,
         CURRENT_SCORE: 0
     }
-){};
+) {
+    COURSE_DATA: ContextData;
+    CURRENT_PAGE: number;
+    CURRENT_SCORE: number;
+};
 
-export interface ContextData{
+export interface ContextData {
     title: string;
     pages: Array<PageData>;
 };
@@ -37,11 +41,11 @@ export interface TopicPageData extends PageData {
     tutorial_id: number;
 };
 
-export interface TopicTitlePageData extends TopicPageData{
+export interface TopicTitlePageData extends TopicPageData {
     title: string;
 };
 
-export interface BasicPageData extends TopicPageData{
+export interface BasicPageData extends TopicPageData {
     text: string;
 };
 

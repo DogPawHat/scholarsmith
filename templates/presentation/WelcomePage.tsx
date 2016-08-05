@@ -1,9 +1,10 @@
 import React from 'react';
-import {WelcomePageProps} from "templates/types"
+import { PageData } from '../types';
 
-
-export default function () {
+const WelcomePage: React.StatelessComponent<PageData> = function (props: PageData) {
     return (
         <h1 className="page current">WELCOME</h1>
     );
 }
+
+export default WelcomePage;

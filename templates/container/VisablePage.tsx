@@ -20,7 +20,7 @@ import {ContextData,
     CURRENT_SCORE
 } from '../types';
 
-const RenderedPageTypes = Immutable.Map<PageTypes, React.StatelessComponent<any>>([
+const RenderedPageTypes = Immutable.Map<PageTypes, React.StatelessComponent<PageData>>([
     ['welcome', WelcomePage],
     ['topic_title', TopicTitlePage],
     ['plain', BasicPage],
@@ -41,10 +41,12 @@ const getPages = (id: number, original_pages: PageData[]) => {
     return RenderedPageTypes.get(pages.get(id).type)(pages.get(id));
 }
 
-const mapStateToProps: IMapStateToProps = (state: TutoralStateType) => {
+const mapStateToProps: (state: TutoralStateType) => {pageContent: React.ReactElement<PageData>} = (state: TutoralStateType) => {
     return {
-        children: getPages(state.get(CURRENT_PAGE), state.get(COURSE_DATA).pages)
+        pageContent: getPages(state.CURRENT_PAGE, state.COURSE_DATA.pages)
     }
 }
 
-export default connect(mapStateToProps)(Page);
+const VisablePage = connect(mapStateToProps)(Page);
+
+export default VisablePage;
