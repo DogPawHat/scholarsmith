@@ -15,6 +15,7 @@ import {ContextData,
     PageData,
     PageTypes,
     TutoralStateType,
+    COURSE_DATA,
     CURRENT_PAGE,
     CURRENT_SCORE
 } from '../types';
@@ -28,13 +29,11 @@ const RenderedPageTypes = Immutable.Map<PageTypes, React.StatelessComponent<any>
     ['talktous', TalkToUsPage]
 ]);
 
-const TempContext: ContextData;
-
-const getPages = (id: number) => {
+const getPages = (id: number, original_pages: PageData[]) => {
     const pages = Immutable.List<PageData>().withMutations(
         (list) => {
             list.push({type: 'welcome'});
-            list.push(...context.pages);
+            list.push(...original_pages);
             list.push({type: 'results'});
             list.push({type: 'talktous'})
         }
@@ -44,7 +43,7 @@ const getPages = (id: number) => {
 
 const mapStateToProps: IMapStateToProps = (state: TutoralStateType) => {
     return {
-        children: getPages(state.get(CURRENT_PAGE))
+        children: getPages(state.get(CURRENT_PAGE), state.get(COURSE_DATA).pages)
     }
 }
 

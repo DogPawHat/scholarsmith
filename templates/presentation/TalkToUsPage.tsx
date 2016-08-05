@@ -1,5 +1,4 @@
 import React from "react";
-import {TalkToUsPageProps} from "./TemplateProps";
 
 export default function(){
         return(

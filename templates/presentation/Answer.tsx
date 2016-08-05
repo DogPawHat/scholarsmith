@@ -1,8 +1,10 @@
 import React from 'react'
-import {AnswerProps} from '../types'
 
-export default function(props: AnswerProps){
+export default function(props: {
+    value: string;
+    index: number;
+}){
     return(
-        <input type="radio" name="radio" value="{props.key}">{ props.value }</input>
+        <input type="radio" name="radio" key="{props.index}" value="{props.index}">{ props.value }</input>
     );
 }

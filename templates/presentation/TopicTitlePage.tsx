@@ -1,7 +1,7 @@
 import React from 'react';
-import {TopicTitlePageProps} from './TemplateProps'
+import {TopicTitlePageData} from '../types'
 
-export default function(props: TopicTitlePageProps){
+export default function(props: TopicTitlePageData){
         return(
             <h2 className="page">{ props.title }</h2>
         );

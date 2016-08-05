@@ -1,5 +1,4 @@
 import React from 'react';
-import {PageSelectProps} from './TemplateProps';
 
 interface PageSelectState{
     currentPage: number;
