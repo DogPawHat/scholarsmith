@@ -1,5 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect, IMapDispatchToProps, IMapStateToProps} from 'react-redux';
+import {Dispatch} from 'redux';
 import Immutable from 'immutable';
 
 import WelcomePage from '../presentation/WelcomePage';
@@ -9,30 +10,42 @@ import QuestionPage from '../presentation/QuestionPage';
 import ResultsPage from '../presentation/ResultsPage';
 import TalkToUsPage from '../presentation/TalkToUsPage';
 import Page from '../presentation/Page';
-import {ContextData} from '../types';
 
-const createPageList = (context: ContextData) => {
-    return Immutable.List().withMutations((list) => {
-        list.push(<WelcomePage />);
-        list.push(
-            context.pages.map((page) => {
-                switch (page.type){
-                    case 'plain':
-                        return BasicPage(page);
-                    case 'topic_title':
-                        return TopicTitlePage(page);
-                    case 'question':
-                        return QuestionPage(page);
-                    default:
-                        return BasicPage(page);
-                };
-            })
-        )
-        list.push(<ResultsPage />);
-        list.push(<TalkToUsPage />);
-    });
+import {ContextData, 
+    PageData,
+    PageTypes,
+    TutoralStateType,
+    CURRENT_PAGE,
+    CURRENT_SCORE
+} from '../types';
+
+const RenderedPageTypes = Immutable.Map<PageTypes, React.StatelessComponent<any>>([
+    ['welcome', WelcomePage],
+    ['topic_title', TopicTitlePage],
+    ['plain', BasicPage],
+    ['question', QuestionPage],
+    ['results', ResultsPage],
+    ['talktous', TalkToUsPage]
+]);
+
+const TempContext: ContextData;
+
+const getPages = (id: number) => {
+    const pages = Immutable.List<PageData>().withMutations(
+        (list) => {
+            list.push({type: 'welcome'});
+            list.push(...context.pages);
+            list.push({type: 'results'});
+            list.push({type: 'talktous'})
+        }
+    );
+    return RenderedPageTypes.get(pages.get(id).type)(pages.get(id));
 }
 
-const getTopicPageHeader = (index) => {
-    
+const mapStateToProps: IMapStateToProps = (state: TutoralStateType) => {
+    return {
+        children: getPages(state.get(CURRENT_PAGE))
+    }
 }
+
+export default connect(mapStateToProps)(Page);

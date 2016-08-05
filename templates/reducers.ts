@@ -5,7 +5,7 @@ import { NEXT_PAGE, PREV_PAGE, SELECT_TOPIC, SelectTopicAction} from './actions'
 type TutoralStateType = Immutable.Map<string, any>;
 
 const CURRENT_PAGE = 'CURRENT_PAGE';
-const CURRENT_SCORE = 'CURRENT_SCORE'
+const CURRENT_SCORE = 'CURRENT_SCORE';
 
 const initialCurrentState = Immutable.Map<string, any>([
     [CURRENT_PAGE, 0],
