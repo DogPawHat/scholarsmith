@@ -38,15 +38,20 @@ export interface PageData {
 };
 
 export interface TopicPageData extends PageData {
-    tutorial_id: number;
+    type: PageTypes;
+    topic_id: number;
 };
 
 export interface TopicTitlePageData extends TopicPageData {
+    type: PageTypes;
+    topic_id: number;
     title: string;
 };
 
 export interface BasicPageData extends TopicPageData {
-    text: string;
+    type: PageTypes;
+    topic_id: number;
+    __content: string;
 };
 
 export type AnyTopicPageData = TopicTitlePageData | BasicPageData;

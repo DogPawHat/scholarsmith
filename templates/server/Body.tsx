@@ -1,7 +1,5 @@
 import React from 'react';
-import {ContextData} from '../TemplateProps'
-import Topics from '../Topics'
-import PageSelect from '../PageSelect'
+import {ContextData} from '../types'
 
 function Head(props: { title: string }) {
     return (

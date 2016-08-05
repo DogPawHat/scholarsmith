@@ -4,7 +4,7 @@ import yaml from "js-yaml";
 import fm from "yaml-front-matter";
 import fs from "fs";
 import path from "path";
-import { ContextData, PageData, TopicPageData, QuestionPageData, PageTypes} from "../templates/types";
+import { ContextData, PageData, TopicPageData, TopicTitlePageData, BasicPageData, QuestionPageData, PageTypes} from "../templates/types";
 import Body from "../templates/server/Body";
 
 function getDirectories(srcpath) {
@@ -27,7 +27,7 @@ function parseQuestions(): QuestionPageData[] {
 }
 
 function parseTopics(): TopicPageData[] {
-    let pages = [];
+    let pages: TopicPageData[] = [];
     getDirectories("./tutorial/topics").map((dir, i, dirs) => {
 
         let configFile = fs.readFileSync(
@@ -39,7 +39,7 @@ function parseTopics(): TopicPageData[] {
         ).toString();
 
         let configYaml = yaml.safeLoad(configFile);
-        pages.push({
+        pages.push(<TopicTitlePageData>{
             type: "topic_title",
             topic_id: i,
             title: configYaml.title
@@ -49,7 +49,7 @@ function parseTopics(): TopicPageData[] {
             "tutorial", "topics", dir
         ))) {
             if (file !== "config.yaml") {
-                let contentObj = fm.loadFront(
+                let contentObj: BasicPageData = fm.loadFront(
                     fs.readFileSync(path.join(
                         "tutorial",
                         "topics",
@@ -58,7 +58,6 @@ function parseTopics(): TopicPageData[] {
                     ))
                 );
                 contentObj.topic_id = i;
-                contentObj.text = contentObj.__content;
                 pages.push(contentObj);
             }
         }
