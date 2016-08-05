@@ -136,7 +136,7 @@
 	        pages: (_Array = Array()).concat.apply(_Array, _toConsumableArray(parseTopics()).concat(_toConsumableArray(parseQuestions())))
 	    };
 	    _fs2.default.writeFileSync("./dist/props.json", JSON.stringify(context));
-	    var indexHtml = _server2.default.renderToString((0, _Body2.default)(context));
+	    var indexHtml = _server2.default.renderToStaticMarkup((0, _Body2.default)(context));
 	    _fs2.default.writeFileSync("./dist/index.html", indexHtml);
 	}
 	build();
@@ -29840,7 +29840,7 @@
 	exports.default = function (props) {
 	    return _react2.default.createElement(
 	        "html",
-	        { lang: "en", id: "root" },
+	        { lang: "en" },
 	        _react2.default.createElement(Head, { title: props.title }),
 	        _react2.default.createElement(
 	            "body",

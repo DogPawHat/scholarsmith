@@ -13,7 +13,7 @@ function Head(props: { title: string }) {
 
 export default function (props: ContextData) {
     return (
-        <html lang="en" id="root">
+        <html lang="en">
             <Head title={props.title} />
             <body>
                 <div id="root"></div>

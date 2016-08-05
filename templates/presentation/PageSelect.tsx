@@ -1,4 +1,5 @@
 import React from 'react';
+import {createNextPageAction, createPrevPageAction, createSelectTopicAction} from '../actions'
 
 interface PageSelectState{
     currentPage: number;
