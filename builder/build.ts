@@ -70,8 +70,8 @@ function build() {
     let context: ContextData = {
         title: "Hello!",
         pages: Array<PageData>().concat(
-            parseTopics(),
-            parseQuestions()
+            ...parseTopics(),
+            ...parseQuestions()
         )
     };
     

@@ -43,14 +43,10 @@ export interface TopicPageData extends PageData {
 };
 
 export interface TopicTitlePageData extends TopicPageData {
-    type: PageTypes;
-    topic_id: number;
     title: string;
 };
 
 export interface BasicPageData extends TopicPageData {
-    type: PageTypes;
-    topic_id: number;
     __content: string;
 };
 

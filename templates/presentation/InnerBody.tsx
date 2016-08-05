@@ -1,17 +1,13 @@
 import React from 'react';
 import { createStore } from 'redux';
-import ReactRedux from 'react-redux';
+import { Provider } from 'react-redux';
 import Immutable from 'immutable';
 import VisablePage from '../container/VisablePage';
 import WelcomePage from './WelcomePage'
 import {ContextData, TutoralStateType,COURSE_DATA,CURRENT_PAGE,CURRENT_SCORE} from '../types';
 import reducers from '../reducers';
 
-const Provider = ReactRedux.Provider;
-const connect = ReactRedux.connect;
-
 export default function (props: ContextData) {
-    
 
     const initialCurrentState = new TutoralStateType({
         COURSE_DATA: props,
@@ -20,6 +16,7 @@ export default function (props: ContextData) {
     });
 
     const store = createStore(reducers, initialCurrentState);
+
 
     return (
         <Provider store={ createStore(reducers) }>
