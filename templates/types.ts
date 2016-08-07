@@ -23,10 +23,26 @@ export class TutoralStateType extends Immutable.Record(
         CURRENT_SCORE: 0
     }
 ) {
-    COURSE_DATA: ContextData;
-    CURRENT_PAGE: number;
-    CURRENT_SCORE: number;
-};
+    COURSE_DATA: ContextData
+    CURRENT_PAGE: number
+    CURRENT_SCORE: number
+    CURRENT_TOPIC(){
+        const page = this.COURSE_DATA.pages[CURRENT_PAGE].topic_id;
+        if(page.type === 'topic_title' || page.type === 'plain') {
+            return page.topic_id;
+        }else{
+            return -1;
+        }
+    }
+    GET_TOPIC_WELCOME_PAGE(newPage: number){
+        const topic_id = this.COURSE_DATA.pages[CURRENT_PAGE].topic_id;
+        return this.COURSE_DATA.pages.findIndex(
+            this.COURSE_DATA.pages.find((page) => {
+                return (page.type === 'topic_title' || page.topic_id === topic_id);
+            });
+        );
+    }
+}
 
 export interface ContextData {
     title: string;

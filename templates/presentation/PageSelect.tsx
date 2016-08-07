@@ -1,47 +1,24 @@
 import React from 'react';
+import { Dispatch } from 'redux';
+import { connect, IMapDispatchToProps, IMapStateToProps} from 'react-redux';
 import {createNextPageAction, createPrevPageAction, createSelectTopicAction} from '../actions'
+import { TutoralStateType } from '../types';
 
-interface PageSelectState{
-    currentPage: number;
-}
-
-interface PageLinkProps{
-    changePage: (number) => void;
-    accessKey: number;
-}
-
-interface PageLinkState{
-    current: boolean;
-}
-
-function PageLink(props: PageLinkProps): React.ReactElement<PageLinkProps>{
-    const setCurrent = () => {
-        props.changePage(props.accessKey);
-    }
-    return <li><a onClick={setCurrent}>{props.accessKey+1}</a></li>;
-}
-
-
-export default class extends React.Component<PageSelectProps, PageSelectState> {
-    constructor(props: PageSelectProps){
-        super(props);
-        this.state = {
-            currentPage: 0
-        };
-    }
-
-    changeCurrentPage(i: number){
-        this.state.currentPage = i;
-    }
-
-    render(){
+const Paganation = function(props){
         return(
         <ul id="pageselect">
             <li className="arrow"><a href="#">&laquo; </a></li>
             {this.props.topics.map((topic, i) => {
-                return <PageLink key={i} accessKey={i} changePage={this.changeCurrentPage.bind(this)}/>
+                return <li><a onClick={props.setCurrent}>{props.accessKey+1}</a></li>;
             })}
             <li className="arrow"><a href="#">&raquo; </a></li>
         </ul>);
-    }
 }
+
+const mapStateToProps: IMapStateToProps = (state: TutoralStateType)
+
+const mapDispatchToProps: IMapDispatchToProps = (dispatch: Dispatch<TutoralStateType>) => {
+    return
+};
+
+const PageSelect = connect(mapStateToProps, mapDispatchToProps)(Paganation);
