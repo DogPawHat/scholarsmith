@@ -43,6 +43,17 @@ export class TutoralStateType extends Immutable.Record(
             return -1;
         }
     }
+    GET_ALL_TOPIC_TITLES(){
+        const title_pages = 
+            this.COURSE_DATA.pages.filter((page) => {
+                return page.type==="topic_title";
+            }) as TopicTitlePageData[];
+        return Immutable.Map<number, number>().withMutations((map) => {
+            for(let page of title_pages){
+                map.set(page.topic_id, title_pages.indexOf(page));
+            }
+        })
+    }
 }
 
 export interface ContextData {

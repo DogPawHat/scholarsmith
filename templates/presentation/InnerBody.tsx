@@ -3,7 +3,8 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Immutable from 'immutable';
 import VisablePage from '../container/VisablePage';
-import WelcomePage from './WelcomePage'
+import PageSelect from './PageSelect';
+import WelcomePage from './WelcomePage';
 import {ContextData, TutoralStateType,COURSE_DATA,CURRENT_PAGE,CURRENT_SCORE} from '../types';
 import reducers from '../reducers';
 
@@ -21,6 +22,7 @@ export default function (props: ContextData) {
     return (
         <Provider store={ createStore(reducers) }>
             <VisablePage pageContent={WelcomePage({type: 'welcome'})}/>
+            <PageSelect />
         </Provider>
     )
 }

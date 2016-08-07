@@ -3,39 +3,27 @@ import Immutable from 'immutable';
 import { NEXT_PAGE, PREV_PAGE, SELECT_TOPIC, SelectTopicAction} from './actions';
 import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData} from './types';
 
-type HandlersType = 
-    currentPageHandlersType
-    | courseDataHandlersType
-    | currentScoreHandlersType;
-
-
 const initialCurrentState = new TutoralStateType();
 
-class currentPageHandlersType extends Immutable.Record({
+interface HandlerType {
+    [key: string]: <S>(state: S, action: Action) => S; 
+}
+
+const currentPageHandlers: HandlerType = {
     NEXT_PAGE: (state: number, action: Action) => {
         return state + 1
     },
     PREV_PAGE: (state: number, action: Action) => {
         return state - 1;
     },
-    SELECT_TOPIC: (state: number, action: SelectTopicAction) => {
+    SET_PAGE: (state: number, action: SelectTopicAction) => {
             return action.topic_id;
     }
-}){
-    NEXT_PAGE: Reducer<number>;
-    PREV_PAGE: Reducer<number>;
-    SELECT_TOPIC: Reducer<number>;
 };
+const courseDataHandlers: HandlerType = {};
+const currentScoreHandlers: HandlerType = {};
 
-class courseDataHandlersType extends Immutable.Record({}){};
-
-class currentScoreHandlersType extends Immutable.Record({}){};
-
-const currentPageHandlers = new currentPageHandlersType();
-const courseDataHandlers = new courseDataHandlersType();
-const currentScoreHandlers = new currentScoreHandlersType();
-
-const createReducer = <S>(initalState: S, handlers: HandlersType) => {
+const createReducer = <S, H>(initalState: S, handlers: HandlerType) => {
     return (state: S = initalState, action: Action) => {
         if(handlers.hasOwnProperty(action.type)){
             return handlers[action.type](state, action)

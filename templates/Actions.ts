@@ -2,18 +2,18 @@ import {Action, ActionCreator} from 'redux';
 
 const NEXT_PAGE = "NEXT_PAGE";
 const PREV_PAGE = "PREV_PAGE";
-const SELECT_TOPIC = "SELECT_TOPIC";
+const SET_PAGE = "SET_PAGE";
 
-interface SelectTopicAction extends Action{
-    topic_id: number;
+interface SetPageAction extends Action{
+    new_page: number;
 }
 
 interface PageActionCreator extends ActionCreator<Action> {
     (): Action
 }
 
-interface SelectTopicActionCreator extends ActionCreator<SelectTopicAction> {
-    (topic_id: number): SelectTopicAction
+interface SetPageActionCreator extends ActionCreator<SetPageAction> {
+    (new_page: number): SetPageAction
 }
 
 const createNextPageAction: PageActionCreator = function(){
@@ -28,21 +28,21 @@ const createPrevPageAction: PageActionCreator = function(){
     }
 }
 
-const createSelectTopicAction: SelectTopicActionCreator = function(topic_id: number){
+const createSetPageAction: SetPageActionCreator = function(new_page: number){
     return {
-        type: SELECT_TOPIC,
-        topic_id: topic_id
+        type: SET_PAGE,
+        new_page: new_page
     }
 }
 
 export {
     NEXT_PAGE,
     PREV_PAGE,
-    SELECT_TOPIC,
+    SET_PAGE,
     PageActionCreator,
-    SelectTopicAction,
-    SelectTopicActionCreator,
+    SetPageAction,
+    SetPageActionCreator,
     createNextPageAction,
     createPrevPageAction,
-    createSelectTopicAction
+    createSetPageAction
 };
