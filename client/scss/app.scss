@@ -7,19 +7,11 @@
     box-sizing: border-box;
 }
 
-.topics{
+.page_container{
     @extend .column;
     @extend .large-8;
     width: 82%;
     margin: 0 14%;
-}
-
-.page{
-    display: none;
-}
-
-.page.current{
-    display: block
 }
 
 ul#pageselect{
