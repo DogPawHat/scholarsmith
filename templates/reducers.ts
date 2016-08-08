@@ -1,6 +1,6 @@
 import {Reducer, Action, combineReducers} from 'redux';
 import Immutable from 'immutable';
-import { NEXT_PAGE, PREV_PAGE, SELECT_TOPIC, SelectTopicAction} from './actions';
+import { NEXT_PAGE, PREV_PAGE, SET_PAGE, SetPageAction} from './actions';
 import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData} from './types';
 
 const initialCurrentState = new TutoralStateType();
@@ -16,8 +16,8 @@ const currentPageHandlers: HandlerType = {
     PREV_PAGE: (state: number, action: Action) => {
         return state - 1;
     },
-    SET_PAGE: (state: number, action: SelectTopicAction) => {
-            return action.topic_id;
+    SET_PAGE: (state: number, action: SetPageAction) => {
+            return action.new_page;
     }
 };
 const courseDataHandlers: HandlerType = {};

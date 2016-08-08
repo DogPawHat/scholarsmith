@@ -11,7 +11,7 @@ import ResultsPage from '../presentation/ResultsPage';
 import TalkToUsPage from '../presentation/TalkToUsPage';
 import Page from '../presentation/Page';
 
-import {ContextData, 
+import {ContextData,
     PageData,
     PageTypes,
     TutoralStateType,
@@ -32,21 +32,22 @@ const RenderedPageTypes = Immutable.Map<PageTypes, React.StatelessComponent<Page
 const getPages = (id: number, original_pages: PageData[]) => {
     const pages = Immutable.List<PageData>().withMutations(
         (list) => {
-            list.push({type: 'welcome'});
+            list.push({ type: 'welcome' });
             list.push(...original_pages);
-            list.push({type: 'results'});
-            list.push({type: 'talktous'})
+            list.push({ type: 'results' });
+            list.push({ type: 'talktous' })
         }
     );
     return RenderedPageTypes.get(pages.get(id).type)(pages.get(id));
 }
 
-const mapStateToProps: (state: TutoralStateType) => {pageContent: React.ReactElement<PageData>} = (state: TutoralStateType) => {
+const mapStateToProps: (state: TutoralStateType) => { pageContent: React.ReactElement<PageData> } = (state: TutoralStateType) => {
     return {
         pageContent: getPages(state.CURRENT_PAGE, state.COURSE_DATA.pages)
     }
 }
 
 const VisablePage = connect(mapStateToProps)(Page);
+
 
 export default VisablePage;

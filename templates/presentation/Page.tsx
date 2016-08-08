@@ -1,9 +1,7 @@
 import React from 'react';
 import WelcomePage from './WelcomePage';
 
-const Page: React.StatelessComponent<{pageContent: React.ReactNode}> = function(props = {
-    pageContent: WelcomePage()
-}) {
+const Page = function (props?) {
     return (<section className="page_container">{props.pageContent}</section>)
 }
 
