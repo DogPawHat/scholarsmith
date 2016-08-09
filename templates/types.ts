@@ -13,47 +13,51 @@ export const COURSE_DATA = 'COURSE_DATA';
 export const CURRENT_PAGE = 'CURRENT_PAGE';
 export const CURRENT_SCORE = 'CURRENT_SCORE';
 
-export class TutoralStateType extends Immutable.Record(
-    {
-        COURSE_DATA: {
-            title: '',
-            pages: [],
-        },
-        CURRENT_PAGE: 0,
-        CURRENT_SCORE: 0
-    }
-) {
+export interface TutoralStateType {
     COURSE_DATA: ContextData
     CURRENT_PAGE: number
     CURRENT_SCORE: number
-    CURRENT_TOPIC() {
-        const page = this.COURSE_DATA.pages[CURRENT_PAGE].topic_id;
-        if (page.type === 'topic_title' || page.type === 'plain') {
-            return page.topic_id;
-        } else {
-            return -1;
-        }
-    }
-    GET_TOPIC_TITLE_PAGE(newPage: number) {
-        if(this.CURRENT_TOPIC() !== -1){
-            return this.COURSE_DATA.pages.findIndex((page: TopicPageData) => {
-                return (page.topic_id === this.CURRENT_TOPIC() || page.type === 'topic_title');
-            });
+}
+
+export function TutoralStateHelpers(state: TutoralStateType) {
+    const CURRENT_TOPIC = () => {
+        const page = state.COURSE_DATA.pages[state.CURRENT_PAGE];
+        if(isTopicPageData(page)){
+            return page.topic_id
         }else{
             return -1;
         }
-    }
-    GET_ALL_TOPIC_TITLES(){
-        const title_pages = 
-            this.COURSE_DATA.pages.filter((page) => {
-                return page.type==="topic_title";
+    }, GET_TOPIC_TITLE_PAGE = (newPage: number) => {
+        if (CURRENT_TOPIC() !== -1) {
+            return state.COURSE_DATA.pages.findIndex((page: TopicPageData) => {
+                return (page.topic_id === CURRENT_TOPIC() && page.type === 'topic_title');
+            });
+        } else {
+            return -1;
+        }
+    }, GET_ALL_TOPIC_TITLES = () => {
+        const title_pages =
+            state.COURSE_DATA.pages.filter((page) => {
+                return page.type === "topic_title";
             }) as TopicTitlePageData[];
         return Immutable.Map<number, number>().withMutations((map) => {
-            for(let page of title_pages){
+            for (let page of title_pages) {
                 map.set(page.topic_id, title_pages.indexOf(page));
             }
         })
+    };
+
+    return {
+        CURRENT_TOPIC,
+        GET_TOPIC_TITLE_PAGE,
+        GET_ALL_TOPIC_TITLES
     }
+};
+
+
+
+const isTopicPageData = (page: PageData): page is TopicTitlePageData => {
+    return (<TopicPageData>page).topic_id !== undefined;
 }
 
 export interface ContextData {
@@ -66,7 +70,6 @@ export interface PageData {
 };
 
 export interface TopicPageData extends PageData {
-    type: PageTypes;
     topic_id: number;
 };
 

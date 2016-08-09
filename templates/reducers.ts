@@ -3,7 +3,14 @@ import Immutable from 'immutable';
 import { NEXT_PAGE, PREV_PAGE, SET_PAGE, SetPageAction} from './actions';
 import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData} from './types';
 
-const initialCurrentState = new TutoralStateType();
+const initialCurrentState: TutoralStateType = {
+    COURSE_DATA: {
+        title: '',
+        pages: []
+    },
+    CURRENT_PAGE: 0,
+    CURRENT_SCORE: 0
+}
 
 interface HandlerType {
     [key: string]: <S>(state: S, action: Action) => S; 

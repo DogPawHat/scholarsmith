@@ -7,16 +7,15 @@ import PageSelect from './PageSelect';
 import {ContextData, TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE} from '../types';
 import reducers from '../reducers';
 
-export default function (props?) {
+export default function (props: ContextData) {
 
-    const initialCurrentState = new TutoralStateType({
+    const initialCurrentState: TutoralStateType = {
         COURSE_DATA: props,
         CURRENT_PAGE: 0,
         CURRENT_SCORE: 0
-    });
+    }
 
     const myStore = createStore(reducers, initialCurrentState);
-
 
     return (
         <div>
