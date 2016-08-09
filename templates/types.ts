@@ -42,7 +42,8 @@ export function TutoralStateHelpers(state: TutoralStateType) {
             }) as TopicTitlePageData[];
         return Immutable.Map<number, number>().withMutations((map) => {
             for (let page of title_pages) {
-                map.set(page.topic_id, title_pages.indexOf(page));
+                debugger;
+                map.set(page.topic_id, state.COURSE_DATA.pages.indexOf(page));
             }
         })
     };

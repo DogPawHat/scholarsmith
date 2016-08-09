@@ -32,7 +32,7 @@ const mapDispatchToProps: IMapDispatchToProps = (dispatch: Dispatch<TutoralState
         },
         createGoToTopic(topics: Immutable.Map<number, number>, topic: number) {
             return () => {
-                dispatch(createSetPageAction(topics.get(topic)))
+                dispatch(createSetPageAction(topics.get(topic) + 1))
             };
         }
     }
