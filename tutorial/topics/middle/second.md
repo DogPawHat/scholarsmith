@@ -1,5 +1,5 @@
 ---
-title: plain
+type: plain
 ---
 
 Second!

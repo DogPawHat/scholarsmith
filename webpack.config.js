@@ -21,8 +21,8 @@ var commonPlugins = [
 ]
 
 var commonResolve = {
-    alias: { 
-        templates : './templates'
+    alias: {
+        templates: './templates'
     },
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.es6.js', '.scss', '.ts', '.tsx']
 };
@@ -35,6 +35,11 @@ module.exports = [
             filename: 'client.bundle.js'
         },
         target: 'web',
+        debug: true,
+        devtool: 'cheap-module-eval-source-map',
+        devServer: {
+            contentBase: "./dist",
+        },
         resolve: commonResolve,
         module: commonModule,
         plugins: commonPlugins

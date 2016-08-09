@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "webpack",
+    "prebuild": "webpack -d",
     "build": "node dist/builder.bundle.js",
-    "start": "cd dist && browser-sync start --server"
+    "start": "webpack-dev-server -d --content-base dist/"
   },
   "author": "",
   "license": "UNLICENCED",
@@ -35,6 +35,7 @@
     "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
     "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
     "yaml-front-matter": "^3.4.0"
   }
 }

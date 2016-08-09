@@ -15,7 +15,7 @@ export default function (props: ContextData) {
         CURRENT_SCORE: 0
     }
 
-    const myStore = createStore(reducers, initialCurrentState);
+    const myStore = createStore(reducers, initialCurrentState, (window as any).devToolsExtension && (window as any).devToolsExtension());
 
     return (
         <div>
