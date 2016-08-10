@@ -14,7 +14,8 @@
       "./test/helpers/setup-test-env.js"
     ],
     "files": [
-        "test/*.{js,jsx,ts,tsx}"
+      "test/*.{ts,tsx}",
+      "!test/helpers/**/*"
     ],
     "babel": "inherit"
   },
@@ -41,6 +42,7 @@
     "mocha": "^3.0.2",
     "node-sass": "^3.8.0",
     "react": "^15.3.0",
+    "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.0",
