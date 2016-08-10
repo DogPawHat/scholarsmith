@@ -63,11 +63,7 @@
 	
 	var _fs = __webpack_require__(/*! fs */ 199);
 	
-	var _fs2 = _interopRequireDefault(_fs);
-	
 	var _path = __webpack_require__(/*! path */ 198);
-	
-	var _path2 = _interopRequireDefault(_path);
 	
 	var _Body = __webpack_require__(/*! ../templates/server/Body */ 200);
 	
@@ -78,13 +74,13 @@
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
 	function getDirectories(srcpath) {
-	    return _fs2.default.readdirSync(srcpath).filter(function (file) {
-	        return _fs2.default.statSync(_path2.default.join(srcpath, file)).isDirectory();
+	    return (0, _fs.readdirSync)(srcpath).filter(function (file) {
+	        return (0, _fs.statSync)((0, _path.join)(srcpath, file)).isDirectory();
 	    });
 	}
 	function parseQuestions() {
 	    var questions = [];
-	    _jsYaml2.default.safeLoadAll(_fs2.default.readFileSync("./tutorial/questions.yaml").toString(), function (doc) {
+	    _jsYaml2.default.safeLoadAll((0, _fs.readFileSync)("./tutorial/questions.yaml").toString(), function (doc) {
 	        doc.type = 'question';
 	        questions.push(doc);
 	    });
@@ -93,7 +89,7 @@
 	function parseTopics() {
 	    var pages = [];
 	    getDirectories("./tutorial/topics").map(function (dir, i, dirs) {
-	        var configFile = _fs2.default.readFileSync(_path2.default.join("tutorial", "topics", dir, "config.yaml")).toString();
+	        var configFile = (0, _fs.readFileSync)((0, _path.join)("tutorial", "topics", dir, "config.yaml")).toString();
 	        var configYaml = _jsYaml2.default.safeLoad(configFile);
 	        pages.push({
 	            type: "topic_title",
@@ -105,11 +101,11 @@
 	        var _iteratorError = undefined;
 	
 	        try {
-	            for (var _iterator = _fs2.default.readdirSync(_path2.default.join("tutorial", "topics", dir))[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	            for (var _iterator = (0, _fs.readdirSync)((0, _path.join)("tutorial", "topics", dir))[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	                var file = _step.value;
 	
 	                if (file !== "config.yaml") {
-	                    var contentObj = _yamlFrontMatter2.default.loadFront(_fs2.default.readFileSync(_path2.default.join("tutorial", "topics", dir, file)));
+	                    var contentObj = _yamlFrontMatter2.default.loadFront((0, _fs.readFileSync)((0, _path.join)("tutorial", "topics", dir, file)));
 	                    contentObj.topic_id = i;
 	                    pages.push(contentObj);
 	                }
@@ -138,9 +134,9 @@
 	        title: "Hello!",
 	        pages: (_Array = Array()).concat.apply(_Array, _toConsumableArray(parseTopics()).concat(_toConsumableArray(parseQuestions())))
 	    };
-	    _fs2.default.writeFileSync("./dist/props.json", JSON.stringify(context));
+	    (0, _fs.writeFileSync)("./dist/props.json", JSON.stringify(context));
 	    var indexHtml = _server2.default.renderToStaticMarkup((0, _Body2.default)(context));
-	    _fs2.default.writeFileSync("./dist/index.html", indexHtml);
+	    (0, _fs.writeFileSync)("./dist/index.html", indexHtml);
 	}
 	build();
 

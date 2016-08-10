@@ -3,14 +3,19 @@
     "axios": "registry:dt/axios#0.9.1+20160629101425",
     "classnames": "registry:dt/classnames#0.0.0+20160316155526",
     "marked": "registry:dt/marked#0.0.0+20160325085301",
-    "node": "registry:dt/node#6.0.0+20160720070758",
-    "react": "registry:dt/react#0.14.0+20160720060442",
-    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040"
+    "node": "registry:dt/node#6.0.0+20160720070758"
   },
   "dependencies": {
     "react-redux": "registry:npm/react-redux#4.4.0+20160614222153"
   },
   "devDependencies": {
+    "enzyme": "registry:npm/enzyme#2.2.0+20160322031343",
     "redux-immutable": "registry:npm/redux-immutable#3.0.6+20160310030142"
+  },
+  "globalDevDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "jsdom": "registry:dt/jsdom#2.0.0+20160316155526",
+    "react": "registry:dt/react#0.14.0+20160805125551",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040"
   }
 }

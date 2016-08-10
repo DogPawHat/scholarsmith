@@ -3,16 +3,9 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var commonModule = {
     exclude: /(node_modules|bower_components)/,
-    loaders: [{
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css!sass')
-    }, {
-            test: /\.ts(x?)$/,
-            loaders: [
-                "babel-loader?presets[]=es2015,presets[]=react",
-                "ts-loader?configFileName=./tsconfig.json"
-            ]
-        }
+    loaders: [
+        { test: /\.ts(x?)$/, loader: 'babel-loader!ts-loader' },
+        { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass') }
     ]
 };
 
@@ -49,6 +42,17 @@ module.exports = [
         output: {
             path: path.join(__dirname, "dist"),
             filename: 'builder.bundle.js'
+        },
+        target: 'node',
+        resolve: commonResolve,
+        module: commonModule,
+        plugins: commonPlugins
+    },
+    {
+        entry: './test/main.js',
+        output: {
+            path: path.join(__dirname, "dist"),
+            filename: 'test.bundle.js'
         },
         target: 'node',
         resolve: commonResolve,

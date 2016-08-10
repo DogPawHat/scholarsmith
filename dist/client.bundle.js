@@ -30368,7 +30368,7 @@
 	        },
 	        createGoToTopic: function createGoToTopic(topics, topic) {
 	            return function () {
-	                dispatch((0, _actions.createSetPageAction)(topics.get(topic)));
+	                dispatch((0, _actions.createSetPageAction)(topics.get(topic) + 1));
 	            };
 	        }
 	    };
@@ -30463,7 +30463,8 @@
 	                for (var _iterator = title_pages[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	                    var page = _step.value;
 	
-	                    map.set(page.topic_id, title_pages.indexOf(page));
+	                    debugger;
+	                    map.set(page.topic_id, state.COURSE_DATA.pages.indexOf(page));
 	                }
 	            } catch (err) {
 	                _didIteratorError = true;
