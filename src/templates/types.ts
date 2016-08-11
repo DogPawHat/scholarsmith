@@ -19,7 +19,7 @@ export interface TutoralStateType {
     CURRENT_SCORE: number
 }
 
-export function TutoralStateHelpers(state: TutoralStateType) {
+export const TutoralStateHelpers = (state: TutoralStateType) => {
     const CURRENT_TOPIC = () => {
         const page = state.COURSE_DATA.pages[state.CURRENT_PAGE];
         if(isTopicPageData(page)){

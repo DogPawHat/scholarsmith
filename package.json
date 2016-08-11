@@ -37,7 +37,8 @@
         "exclude": [
             "test/**/*",
             "dist/**/*",
-            "coverage/**/*"
+            "coverage/**/*",
+            "webpack.config.js"
         ],
         "sourceMap": true
     },
