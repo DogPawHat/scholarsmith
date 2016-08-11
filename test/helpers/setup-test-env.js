@@ -1,4 +1,5 @@
-require('ts-babel-node/register')
+require("babel-polyfill");
+require('babel-register');
 
 global.document = require('jsdom').jsdom('<body></body>')
 global.window = document.defaultView

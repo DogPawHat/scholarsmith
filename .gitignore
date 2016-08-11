@@ -3,5 +3,5 @@ typings
 .awcache
 *.js
 *.jsx
-!dist\*.js
-!test\*.js
+!dist/*
+!test/*
