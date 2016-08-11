@@ -34,8 +34,10 @@
             "html"
         ],
         "all": true,
-        "include": [
-            "src/**/*.{js,jsx}"
+        "exclude": [
+            "test/**/*",
+            "dist/**/*",
+            "coverage/**/*"
         ],
         "sourceMap": true
     },
