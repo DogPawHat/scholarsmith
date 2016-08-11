@@ -5,15 +5,15 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "webpack -d",
-    "pretest": "tsc",
+    "pretest": "tsc --outDir test/test_lib",
     "test": "ava --tap | tap-nyan",
-    "cover": "nyc ava",
+    "cover": "nyc npm run test",
     "build": "node dist/builder.bundle.js",
     "start": "webpack-dev-server -d --content-base dist/"
   },
   "ava": {
     "require": [
-      "./test/helpers/setup-test-env.js"
+      "./src/test/helpers/setup-test-env.js"
     ],
     "babel": "inherit"
   },
@@ -28,7 +28,12 @@
       "lcov",
       "text",
       "html"
-    ]
+    ],
+    "all": true,
+    "include": [
+        "src/**/*"
+    ],
+    "sourceMap": true
   },
   "author": "",
   "license": "UNLICENCED",

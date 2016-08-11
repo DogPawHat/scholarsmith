@@ -22,7 +22,7 @@ var commonResolve = {
 
 module.exports = [
     {
-        entry: './client/ts/app.ts',
+        entry: './src/client/ts/app.ts',
         output: {
             path: path.join(__dirname, "dist"),
             filename: 'client.bundle.js'
@@ -38,21 +38,10 @@ module.exports = [
         plugins: commonPlugins
     },
     {
-        entry: './builder/build.ts',
+        entry: './src/builder/build.ts',
         output: {
             path: path.join(__dirname, "dist"),
             filename: 'builder.bundle.js'
-        },
-        target: 'node',
-        resolve: commonResolve,
-        module: commonModule,
-        plugins: commonPlugins
-    },
-    {
-        entry: './test/main.js',
-        output: {
-            path: path.join(__dirname, "dist"),
-            filename: 'test.bundle.js'
         },
         target: 'node',
         resolve: commonResolve,

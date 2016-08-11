@@ -15,7 +15,10 @@
         "!node_modules/**"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "coverage",
+        "dist",
+        "test"
     ],
     "awesomeTypescriptLoaderOptions": {
         "useBabel": true,
