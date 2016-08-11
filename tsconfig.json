@@ -5,7 +5,9 @@
         "jsx": "preserve",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "sourceMap": true
+        "sourceMap": false,
+        "inlineSourceMap": true,
+        "inlineSources": true
     },
     "filesGlob": [
         "**/*.ts",
