@@ -13,10 +13,6 @@
     "require": [
       "./test/helpers/setup-test-env.js"
     ],
-    "files": [
-      "test/*.{ts,tsx}",
-      "!test/helpers/**/*"
-    ],
     "babel": "inherit"
   },
   "author": "",
