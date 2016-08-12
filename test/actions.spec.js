@@ -1,6 +1,4 @@
 import test from 'ava';
-import React from 'react';
-import { shallow, mount } from 'enzyme';
 import {NEXT_PAGE, PREV_PAGE, SET_PAGE, createNextPageAction, createPrevPageAction, createSetPageAction} from '../src/templates/actions';
 
 test('should return action of type NEXT_PAGE', async (t) => {

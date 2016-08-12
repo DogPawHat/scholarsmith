@@ -19,48 +19,6 @@ export interface TutoralStateType {
     CURRENT_SCORE: number
 }
 
-export const TutoralStateHelpers = (state: TutoralStateType) => {
-    const CURRENT_TOPIC = () => {
-        const page = state.COURSE_DATA.pages[state.CURRENT_PAGE];
-        if(isTopicPageData(page)){
-            return page.topic_id
-        }else{
-            return -1;
-        }
-    }, GET_TOPIC_TITLE_PAGE = (newPage: number) => {
-        if (CURRENT_TOPIC() !== -1) {
-            return state.COURSE_DATA.pages.findIndex((page: TopicPageData) => {
-                return (page.topic_id === CURRENT_TOPIC() && page.type === 'topic_title');
-            });
-        } else {
-            return -1;
-        }
-    }, GET_ALL_TOPIC_TITLES = () => {
-        const title_pages =
-            state.COURSE_DATA.pages.filter((page) => {
-                return page.type === "topic_title";
-            }) as TopicTitlePageData[];
-        return Immutable.Map<number, number>().withMutations((map) => {
-            for (let page of title_pages) {
-                debugger;
-                map.set(page.topic_id, state.COURSE_DATA.pages.indexOf(page));
-            }
-        })
-    };
-
-    return {
-        CURRENT_TOPIC,
-        GET_TOPIC_TITLE_PAGE,
-        GET_ALL_TOPIC_TITLES
-    }
-};
-
-
-
-const isTopicPageData = (page: PageData): page is TopicTitlePageData => {
-    return (<TopicPageData>page).topic_id !== undefined;
-}
-
 export interface ContextData {
     title: string;
     pages: Array<PageData>;
@@ -90,4 +48,44 @@ export interface QuestionPageData extends PageData {
     correct: number;
     feedback: string;
     index: number;
+};
+
+const isTopicPageData = (page: PageData): page is TopicTitlePageData => {
+    return (<TopicPageData>page).topic_id !== undefined;
+}
+
+export const TutoralStateHelpers = (state: TutoralStateType) => {
+    const CURRENT_TOPIC = () => {
+        const page = state.COURSE_DATA.pages[state.CURRENT_PAGE];
+        if(isTopicPageData(page)){
+            return page.topic_id
+        }else{
+            return -1;
+        }
+    }, GET_TOPIC_TITLE_PAGE = () => {
+        if (CURRENT_TOPIC() !== -1) {
+            return state.COURSE_DATA.pages.findIndex((page: TopicPageData) => {
+                return (page.topic_id === CURRENT_TOPIC() && page.type === 'topic_title');
+            });
+        } else {
+            return -1;
+        }
+    }, GET_ALL_TOPIC_TITLES = () => {
+        const title_pages =
+            state.COURSE_DATA.pages.filter((page) => {
+                return page.type === "topic_title";
+            }) as TopicTitlePageData[];
+        return Immutable.Map<number, number>().withMutations((map) => {
+            for (let page of title_pages) {
+                debugger;
+                map.set(page.topic_id, state.COURSE_DATA.pages.indexOf(page));
+            }
+        })
+    };
+
+    return {
+        CURRENT_TOPIC,
+        GET_TOPIC_TITLE_PAGE,
+        GET_ALL_TOPIC_TITLES
+    }
 };

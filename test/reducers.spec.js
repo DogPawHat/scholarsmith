@@ -1,6 +1,4 @@
 import test from 'ava';
-import React from 'react';
-import { shallow, mount } from 'enzyme';
 import reducers from '../src/templates/reducers';
 import {NEXT_PAGE, PREV_PAGE, SET_PAGE} from '../src/templates/actions';
 
