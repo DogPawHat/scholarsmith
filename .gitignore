@@ -6,4 +6,5 @@ coverage
 src/**/*.js
 src/**/*.jsx
 src/**/*.map
-test/**/*.spec.js
+test/**/*.js
+test/**/*.jsx
