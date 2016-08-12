@@ -18,5 +18,5 @@ const testPage2: BasicPageData = {
 
 test('should be text in basic page', async (t) => {
     const wrapper = shallow(BasicPage(testPage1));
-    await t.is(wrapper.find('article.page p').text(), 'Second!');
+    await t.is(wrapper.html(), 'Second!');
 });
