@@ -21,7 +21,7 @@ export interface TutoralStateType {
 
 export interface ContextData {
     title: string;
-    pages: Array<PageData>;
+    pages: AnyPageData[];
 };
 
 export interface PageData {
@@ -29,26 +29,32 @@ export interface PageData {
 };
 
 export interface TopicPageData extends PageData {
+    type: 'topic_title' | 'plain';
     topic_id: number;
 };
 
 export interface TopicTitlePageData extends TopicPageData {
+    type: 'topic_title',
     title: string;
 };
 
 export interface BasicPageData extends TopicPageData {
+    type: 'plain',
     __content: string;
 };
 
-export type AnyTopicPageData = TopicTitlePageData | BasicPageData;
-
 export interface QuestionPageData extends PageData {
+    type: 'question',
     stem: string;
     answers: Array<string>;
     correct: number;
     feedback: string;
     index: number;
 };
+
+export type AnyTopicPageData = TopicTitlePageData | BasicPageData;
+
+export type AnyPageData = PageData | AnyTopicPageData | QuestionPageData;
 
 const isTopicPageData = (page: PageData): page is TopicTitlePageData => {
     return (<TopicPageData>page).topic_id !== undefined;
@@ -64,7 +70,7 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
         }
     }, GET_TOPIC_TITLE_PAGE = () => {
         if (CURRENT_TOPIC() !== -1) {
-            return state.COURSE_DATA.pages.findIndex((page: TopicPageData) => {
+            return state.COURSE_DATA.pages.findIndex((page: AnyTopicPageData) => {
                 return (page.topic_id === CURRENT_TOPIC() && page.type === 'topic_title');
             });
         } else {

@@ -4,7 +4,7 @@ import yaml from "js-yaml";
 import fm from "yaml-front-matter";
 import { readdirSync, statSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
-import { ContextData, PageData, TopicPageData, TopicTitlePageData, BasicPageData, QuestionPageData, PageTypes} from "../templates/types";
+import { ContextData, AnyPageData,PageData, TopicPageData, TopicTitlePageData, BasicPageData, QuestionPageData, PageTypes} from "../templates/types";
 import Body from "../templates/server/Body";
 
 function getDirectories(srcpath) {
@@ -23,7 +23,7 @@ function parseQuestions(): QuestionPageData[] {
         }
     );
 
-    return questions;
+    return questions.map((q, i) => {q.index = i; return q});
 }
 
 function parseTopics(): TopicPageData[] {
@@ -69,7 +69,7 @@ function build() {
 
     let context: ContextData = {
         title: "Hello!",
-        pages: Array<PageData>().concat(
+        pages: Array<AnyPageData>().concat(
             ...parseTopics(),
             ...parseQuestions()
         )

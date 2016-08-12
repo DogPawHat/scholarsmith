@@ -2,10 +2,16 @@ import React from "react";
 import {BasicPageData} from "../types";
 import Marked from "marked";
 
-const BasicPage: React.StatelessComponent<BasicPageData> = function(props: BasicPageData){
-        return (
-            <article className="page" dangerouslySetInnerHTML={{ __html: Marked(props.__content) }} />
-	    );
+const getDangrousHtmlObject = (content: string) => {
+    return { __html: Marked(content) };
+}
+
+const BasicPage: React.StatelessComponent<BasicPageData> = function (props: BasicPageData) {
+
+    const innerHtml = getDangrousHtmlObject(props.__content);
+    return (
+        <article className="page" dangerouslySetInnerHTML={innerHtml} />
+    );
 }
 
 export default BasicPage;

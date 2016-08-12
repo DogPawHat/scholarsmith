@@ -5,6 +5,5 @@ coverage
 .nyc_output
 src/**/*.js
 src/**/*.jsx
-src/*.map
-!dist/*
-!test/*
+src/**/*.map
+*.spec.js
