@@ -23,7 +23,7 @@ test('should be text in basic page', (t) => {
 });
 
 test('should be text in basic page', (t) => {
-    const wrapper = shallow(BasicPage(testPage1));
+    const wrapper = shallow(BasicPage(testPage2));
     t.is(wrapper.html().indexOf('Second!'), -1);
     t.not(wrapper.html().indexOf('Third!'), -1);
 });
