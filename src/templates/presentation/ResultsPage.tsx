@@ -1,10 +1,11 @@
 import React from 'react';
+import {ResultsData} from '../types';
 
-const ResultsPage: React.StatelessComponent<{}> = function() {
+const ResultsPage: React.StatelessComponent<ResultsData> = function(props: ResultsData) {
     return (
         <div className="results page">
             <h1>Results</h1>
-            <p>SCORE SHOULD GO HERE</p>
+            <p>{ props.score }</p>
         </div>
     );
 }

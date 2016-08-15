@@ -52,6 +52,10 @@ export interface QuestionPageData extends PageData {
     index: number;
 };
 
+export interface ResultsData {
+    score: string;
+}
+
 export type AnyTopicPageData = TopicTitlePageData | BasicPageData;
 
 export type AnyPageData = PageData | AnyTopicPageData | QuestionPageData;
