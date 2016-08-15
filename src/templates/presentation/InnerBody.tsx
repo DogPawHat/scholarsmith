@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Immutable from 'immutable';
 import VisablePage from '../container/VisablePage';
-import PageSelect from './PageSelect';
+import ActivePageSelect from '../container/ActivePageSelect';
 import {ContextData, TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE} from '../types';
 import reducers from '../reducers';
 
@@ -23,7 +23,7 @@ export default function (props: ContextData) {
                 <VisablePage />
             </Provider>
             <Provider store={ myStore }>
-                <PageSelect />
+                <ActivePageSelect />
             </Provider>
         </div>
     )
