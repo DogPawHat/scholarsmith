@@ -3,8 +3,6 @@ typings
 .awcache
 coverage
 .nyc_output
-src/**/*.js
-src/**/*.jsx
-src/**/*.map
-test/**/*.js
-test/**/*.jsx
+**/*.js
+**/*.jsx
+*.map
