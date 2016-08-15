@@ -2,8 +2,8 @@ import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Immutable from 'immutable';
-import VisablePage from '../container/VisablePage';
-import ActivePageSelect from '../container/ActivePageSelect';
+import VisablePage from './VisablePage';
+import ActivePageSelect from './ActivePageSelect';
 import {ContextData, TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE} from '../types';
 import reducers from '../reducers';
 
