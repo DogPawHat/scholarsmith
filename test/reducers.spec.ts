@@ -3,7 +3,7 @@ import reducers from '../src/templates/reducers';
 import {NEXT_PAGE, PREV_PAGE, SET_PAGE} from '../src/templates/actions';
 
 
-test('unrecognised actions should return same state',async (t) => {
+test('unrecognised actions should return same state', (t) => {
     const oldState = {
         COURSE_DATA: {
             title: '',
@@ -21,11 +21,11 @@ test('unrecognised actions should return same state',async (t) => {
 
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
-    await t.is(newState.CURRENT_PAGE, oldState.CURRENT_PAGE);
+    t.is(newState.CURRENT_PAGE, oldState.CURRENT_PAGE);
 
 });
 
-test('NEXT_PAGE should only change CURRENT_PAGE',async (t) => {
+test('NEXT_PAGE should only change CURRENT_PAGE', (t) => {
     const oldState = {
         COURSE_DATA: {
             title: '',
@@ -52,11 +52,10 @@ test('NEXT_PAGE should only change CURRENT_PAGE',async (t) => {
 
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
-    await t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
-
+    t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
 });
 
-test('NEXT_PAGE should only change CURRENT_PAGE',async (t) => {
+test('NEXT_PAGE should only change CURRENT_PAGE', (t) => {
     const oldState = {
         COURSE_DATA: {
             title: '',
@@ -83,11 +82,11 @@ test('NEXT_PAGE should only change CURRENT_PAGE',async (t) => {
 
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
-    await t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
+    t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
 
 });
 
-test('SET_PAGE should only change CURRENT_PAGE',async (t) => {
+test('SET_PAGE should only change CURRENT_PAGE', (t) => {
     const oldState = {
         COURSE_DATA: {
             title: '',
@@ -115,6 +114,6 @@ test('SET_PAGE should only change CURRENT_PAGE',async (t) => {
 
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
-    await t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
+    t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
 
 });

@@ -73,35 +73,35 @@ const testState3: TutoralStateType = {
     CURRENT_SCORE: 0
 }
 
-test('should get the CURRENT_TOPIC at page 1', async (t) => {
-    await t.is(TutoralStateHelpers(testState1).CURRENT_TOPIC(), 0);
+test('should get the CURRENT_TOPIC at page 1', (t) => {
+    t.is(TutoralStateHelpers(testState1).CURRENT_TOPIC(), 0);
 });
 
-test('should get the CURRENT_TOPIC at page 3', async (t) => {
-    await t.is(TutoralStateHelpers(testState2).CURRENT_TOPIC(), 1);
+test('should get the CURRENT_TOPIC at page 3', (t) => {
+    t.is(TutoralStateHelpers(testState2).CURRENT_TOPIC(), 1);
 });
 
-test('should get the CURRENT_TOPIC at page 5', async (t) => {
-    await t.is(TutoralStateHelpers(testState3).CURRENT_TOPIC(), -1);
+test('should get the CURRENT_TOPIC at page 5', (t) => {
+    t.is(TutoralStateHelpers(testState3).CURRENT_TOPIC(), -1);
 });
 
-test('should GET_TOPIC_TITLE_PAGE at page 1', async (t) => {
-    await t.is(TutoralStateHelpers(testState1).GET_TOPIC_TITLE_PAGE(), 0);
+test('should GET_TOPIC_TITLE_PAGE at page 1', (t) => {
+    t.is(TutoralStateHelpers(testState1).GET_TOPIC_TITLE_PAGE(), 0);
 });
 
-test('should GET_TOPIC_TITLE_PAGE at page 3', async (t) => {
-    await t.is(TutoralStateHelpers(testState2).GET_TOPIC_TITLE_PAGE(), 2);
+test('should GET_TOPIC_TITLE_PAGE at page 3', (t) => {
+    t.is(TutoralStateHelpers(testState2).GET_TOPIC_TITLE_PAGE(), 2);
 });
 
-test('should GET_TOPIC_TITLE_PAGE at page 5', async (t) => {
-    await t.is(TutoralStateHelpers(testState3).GET_TOPIC_TITLE_PAGE(), -1);
+test('should GET_TOPIC_TITLE_PAGE at page 5', (t) => {
+    t.is(TutoralStateHelpers(testState3).GET_TOPIC_TITLE_PAGE(), -1);
 });
 
-test('should GET_ALL_TOPIC_TITLES', async (t) => {
+test('should GET_ALL_TOPIC_TITLES', (t) => {
     const expectedMap = Immutable.Map([
         [0, 0],
         [1, 2]
     ]);
     t.deepEqual(TutoralStateHelpers(testState1).GET_ALL_TOPIC_TITLES(), expectedMap);
-    await t.deepEqual(TutoralStateHelpers(testState3).GET_ALL_TOPIC_TITLES(), expectedMap);
+    t.deepEqual(TutoralStateHelpers(testState3).GET_ALL_TOPIC_TITLES(), expectedMap);
 });

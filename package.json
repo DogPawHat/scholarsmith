@@ -13,6 +13,7 @@
     },
     "ava": {
         "require": [
+            "babel-register",
             "./test/helpers/setup-test-env.js"
         ],
         "exclude": [
