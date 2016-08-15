@@ -5,5 +5,6 @@ import TalkToUsPage from '../src/templates/presentation/TalkToUsPage';
 
 test('should be welcoming', t =>{
     const wrapper = shallow(TalkToUsPage());
-    t.not(wrapper.html().indexOf('Please Talk to us</p>'), -1);
+    const p = wrapper.find('p');
+    t.is(wrapper.text(), 'Please Talk to us');
 })

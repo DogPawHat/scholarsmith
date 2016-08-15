@@ -13,5 +13,6 @@ test('should be welcoming', t =>{
         title: 'derp'
     }
     const wrapper = shallow(TopicTitlePage(props));
-    t.not(wrapper.html().indexOf('derp</h2>'), -1);
+    const header = wrapper.find('h2');
+    t.is(header.text(), 'derp');
 })
