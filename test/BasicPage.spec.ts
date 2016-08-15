@@ -18,5 +18,12 @@ const testPage2: BasicPageData = {
 
 test('should be text in basic page', (t) => {
     const wrapper = shallow(BasicPage(testPage1));
+    t.is(wrapper.html().indexOf('Third!'), -1);
     t.not(wrapper.html().indexOf('Second!'), -1);
+});
+
+test('should be text in basic page', (t) => {
+    const wrapper = shallow(BasicPage(testPage1));
+    t.is(wrapper.html().indexOf('Second!'), -1);
+    t.not(wrapper.html().indexOf('Third!'), -1);
 });
