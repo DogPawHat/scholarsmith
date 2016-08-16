@@ -1,9 +1,10 @@
-import {test, CallbackTestContext} from 'ava';
+import {test, ContextualTestContext} from 'ava';
 import React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {TutoralStateType, ContextData} from '../src/templates/types';
+import {TutoralStateType, ContextData, PageTypes} from '../src/templates/types';
+import {createNextPageAction, createSetPageAction, createPrevPageAction} from '../src/templates/actions'
 import reducers from '../src/templates/reducers';
 import VisiblePage from '../src/templates/container/VisablePage';
 
@@ -60,21 +61,40 @@ const courseData: ContextData = {
     ]
 };
 
-
-const testVisiblePage = (t:CallbackTestContext, initialState: TutoralStateType) => {
+const createProviderWrapper = (initialState: TutoralStateType) => {
     const testStore = createStore(reducers, initialState);
     const provider = React.createElement(
         Provider,
         {store: testStore},
-        VisiblePage(null));
-    const wrapper = shallow(provider);
+        React.createElement(
+            VisiblePage,
+            null
+    ));
+    const wrapper = mount(provider);
+    return {testStore, wrapper};
 }
 
 
-test('', t => {
+test('test state 1', t => {
     const initialState: TutoralStateType = {
         COURSE_DATA: courseData,
         CURRENT_PAGE: 3,
         CURRENT_SCORE: 0
-    }
+    };
+    const providerOpts = createProviderWrapper(initialState);
+    t.is(providerOpts.wrapper.html().indexOf('Second!'), -1);
+    providerOpts.testStore.dispatch(createNextPageAction());
+    t.is(providerOpts.wrapper.html().indexOf('Third!'), -1);
+});
+
+test('test state 2', t => {
+    const initialState: TutoralStateType = {
+        COURSE_DATA: courseData,
+        CURRENT_PAGE: 3,
+        CURRENT_SCORE: 0
+    };
+    const providerOpts = createProviderWrapper(initialState);
+    t.is(providerOpts.wrapper.html().indexOf('Second!'), -1);
+    providerOpts.testStore.dispatch(createPrevPageAction());
+    t.is(providerOpts.wrapper.html().indexOf('Third!'), -1);
 })
