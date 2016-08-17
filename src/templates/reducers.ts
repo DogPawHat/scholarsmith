@@ -10,15 +10,15 @@ const initialCurrentState: TutoralStateType = {
     },
     CURRENT_PAGE: 0,
     CURRENT_SCORE: 0
-}
+};
 
 interface HandlerType {
-    [key: string]: <S>(state: S, action: Action) => S; 
+    [key: string]: <S>(state: S, action: Action) => S;
 }
 
 const currentPageHandlers: HandlerType = {
     NEXT_PAGE: (state: number, action: Action) => {
-        return state + 1
+        return state + 1;
     },
     PREV_PAGE: (state: number, action: Action) => {
         return state - 1;
@@ -32,18 +32,18 @@ const currentScoreHandlers: HandlerType = {};
 
 const createReducer = <S, H>(initalState: S, handlers: HandlerType) => {
     return (state: S = initalState, action: Action) => {
-        if(handlers.hasOwnProperty(action.type)){
-            return handlers[action.type](state, action)
+        if (handlers.hasOwnProperty(action.type)) {
+            return handlers[action.type](state, action);
         } else {
             return state;
         }
-    }
+    };
 };
 
 const reducers: Reducer<TutoralStateType> = combineReducers<TutoralStateType>({
     COURSE_DATA: createReducer(initialCurrentState.COURSE_DATA, courseDataHandlers),
     CURRENT_PAGE: createReducer(initialCurrentState.CURRENT_PAGE, currentPageHandlers),
     CURRENT_SCORE: createReducer(initialCurrentState.CURRENT_SCORE, currentScoreHandlers)
-})
+});
 
 export default reducers;

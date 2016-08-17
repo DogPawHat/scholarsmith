@@ -3,11 +3,19 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var commonModule = {
     exclude: /(node_modules|bower_components)/,
+    preLoaders: [
+        { test: /\.ts(x?)$/, loader : 'tslint' }
+    ],
     loaders: [
         { test: /\.ts(x?)$/, loader: 'babel-loader!ts-loader' },
         { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass') }
     ]
 };
+
+var commonTsLint = {
+    emitErrors: true,
+    failOnHint: true
+}
 
 var commonPlugins = [
     new ExtractTextPlugin("./styles.css")
@@ -17,7 +25,7 @@ var commonResolve = {
     alias: {
         templates: './templates'
     },
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.es6.js', '.scss', '.ts', '.tsx']
+    extensions: ['', '.webpack.js', '.web.js', '.scss', '.ts', '.tsx']
 };
 
 module.exports = [
@@ -35,6 +43,7 @@ module.exports = [
         },
         resolve: commonResolve,
         module: commonModule,
+        tslint: commonTsLint,
         plugins: commonPlugins
     },
     {
@@ -46,6 +55,7 @@ module.exports = [
         target: 'node',
         resolve: commonResolve,
         module: commonModule,
+        tslint: commonTsLint,
         plugins: commonPlugins
     }
 ];

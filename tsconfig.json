@@ -9,11 +9,6 @@
         "inlineSourceMap": true,
         "inlineSources": true
     },
-    "filesGlob": [
-        "**/*.ts",
-        "**/*.tsx",
-        "!node_modules/**"
-    ],
     "exclude": [
         "node_modules",
         "coverage",

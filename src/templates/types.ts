@@ -14,9 +14,9 @@ export const CURRENT_PAGE = 'CURRENT_PAGE';
 export const CURRENT_SCORE = 'CURRENT_SCORE';
 
 export interface TutoralStateType {
-    COURSE_DATA: ContextData
-    CURRENT_PAGE: number
-    CURRENT_SCORE: number
+    COURSE_DATA: ContextData;
+    CURRENT_PAGE: number;
+    CURRENT_SCORE: number;
 }
 
 export interface ContextData {
@@ -34,17 +34,17 @@ export interface TopicPageData extends PageData {
 };
 
 export interface TopicTitlePageData extends TopicPageData {
-    type: 'topic_title',
+    type: 'topic_title';
     title: string;
 };
 
 export interface BasicPageData extends TopicPageData {
-    type: 'plain',
+    type: 'plain';
     __content: string;
 };
 
 export interface QuestionPageData extends PageData {
-    type: 'question',
+    type: 'question';
     stem: string;
     answers: Array<string>;
     correct: number;
@@ -62,14 +62,14 @@ export type AnyPageData = PageData | AnyTopicPageData | QuestionPageData;
 
 const isTopicPageData = (page: PageData): page is TopicTitlePageData => {
     return (<TopicPageData>page).topic_id !== undefined;
-}
+};
 
 export const TutoralStateHelpers = (state: TutoralStateType) => {
     const CURRENT_TOPIC = () => {
         const page = state.COURSE_DATA.pages[state.CURRENT_PAGE];
-        if(isTopicPageData(page)){
-            return page.topic_id
-        }else{
+        if (isTopicPageData(page)) {
+            return page.topic_id;
+        }else {
             return -1;
         }
     }, GET_TOPIC_TITLE_PAGE = () => {
@@ -83,19 +83,19 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
     }, GET_ALL_TOPIC_TITLES = () => {
         const title_pages =
             state.COURSE_DATA.pages.filter((page) => {
-                return page.type === "topic_title";
+                return page.type === 'topic_title';
             }) as TopicTitlePageData[];
         return Immutable.Map<number, number>().withMutations((map) => {
             for (let page of title_pages) {
                 debugger;
                 map.set(page.topic_id, state.COURSE_DATA.pages.indexOf(page));
             }
-        })
+        });
     };
 
     return {
         CURRENT_TOPIC,
         GET_TOPIC_TITLE_PAGE,
         GET_ALL_TOPIC_TITLES
-    }
+    };
 };

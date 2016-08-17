@@ -13,7 +13,7 @@ export default function (props: ContextData) {
         COURSE_DATA: props,
         CURRENT_PAGE: 0,
         CURRENT_SCORE: 0
-    }
+    };
 
     const myStore = createStore(reducers, initialCurrentState, (window as any).devToolsExtension && (window as any).devToolsExtension());
 
@@ -26,5 +26,5 @@ export default function (props: ContextData) {
                 <ActivePageSelect />
             </Provider>
         </div>
-    )
+    );
 }
