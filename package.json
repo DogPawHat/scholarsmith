@@ -9,7 +9,8 @@
     "test": "cross-env BABEL_DISABLE_CACHE=1 ava --verbose",
     "cover": "nyc npm run test",
     "build": "node dist/builder.bundle.js",
-    "start": "webpack-dev-server -d --content-base dist/"
+    "start": "webpack-dev-server -d --content-base dist/",
+    "lint": "tslint -c tslint.json --test ./src"
   },
   "ava": {
     "require": [

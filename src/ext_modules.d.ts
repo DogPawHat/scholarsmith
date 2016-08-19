@@ -13,27 +13,27 @@ declare module "js-yaml"{
             filename?:string,
             onWarning?:(any) => any, 
             schema?: schemaTypes,
-            json?: boolean): {};
+            json?: boolean): any;
 
         function load(document: string,
             filename?:string,
             onWarning?:(any) => any, 
             schema?: schemaTypes,
-            json?: boolean): {};
+            json?: boolean): any;
 
         function safeLoadAll(document: string,
             iterator: (any) => any,
             filename?:string,
             onWarning?:(any) => any, 
             schema?: schemaTypes,
-            json?: boolean): {};
+            json?: boolean): any;
 
         function loadAll(document: string,
             iterator: (any) => any,
             filename?:string,
             onWarning?:(any) => any, 
             schema?: schemaTypes,
-            json?: boolean): {};
+            json?: boolean): any;
     }
 
     export = jsYaml;

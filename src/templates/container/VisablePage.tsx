@@ -35,17 +35,17 @@ const getPages = (id: number, original_pages: AnyPageData[]) => {
             list.push({ type: 'welcome' });
             list.push(...original_pages);
             list.push({ type: 'results' });
-            list.push({ type: 'talktous' })
+            list.push({ type: 'talktous' });
         }
     );
     return RenderedPageTypes.get(pages.get(id).type)(pages.get(id));
-}
+};
 
 const mapStateToProps: (state: TutoralStateType) => { pageContent: React.ReactElement<AnyPageData> } = (state: TutoralStateType) => {
     return {
         pageContent: getPages(state.CURRENT_PAGE, state.COURSE_DATA.pages)
-    }
-}
+    };
+};
 
 const VisablePage = connect(mapStateToProps)(Page);
 
