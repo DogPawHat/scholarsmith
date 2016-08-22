@@ -7,14 +7,14 @@ import { join } from 'path';
 import { ContextData, AnyPageData, PageData, TopicPageData, TopicTitlePageData, BasicPageData, QuestionPageData, PageTypes} from '../templates/types';
 import Body from '../templates/server/Body';
 
-function getDirectories(srcpath) {
-    return readdirSync(srcpath).filter(function (file) {
+const getDirectories = (srcpath: string) => {
+    return readdirSync(srcpath).filter( (file) => {
         return statSync(join(srcpath, file)).isDirectory();
     });
-}
+};
 
-function parseQuestions(): QuestionPageData[] {
-    let questions = [];
+const parseQuestions = () => {
+    let questions: QuestionPageData[] = [];
     yaml.safeLoadAll(
         readFileSync('./tutorial/questions.yaml').toString(),
         (doc: QuestionPageData) => {
@@ -24,9 +24,9 @@ function parseQuestions(): QuestionPageData[] {
     );
 
     return questions.map((q, i) => {q.index = i; return q; });
-}
+};
 
-function parseTopics(): TopicPageData[] {
+const parseTopics = () => {
     let pages: TopicPageData[] = [];
     getDirectories('./tutorial/topics').map((dir, i, dirs) => {
 
@@ -63,9 +63,9 @@ function parseTopics(): TopicPageData[] {
         }
     });
     return pages;
-}
+};
 
-function build() {
+const build = () => {
 
     let context: ContextData = {
         title: 'Hello!',
@@ -78,6 +78,6 @@ function build() {
     writeFileSync('./dist/props.json', JSON.stringify(context));
     let indexHtml = ReactDOMServer.renderToStaticMarkup(Body(context));
     writeFileSync('./dist/index.html', indexHtml);
-}
+};
 
 build();

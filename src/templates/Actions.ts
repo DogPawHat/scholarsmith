@@ -16,19 +16,19 @@ export interface SetPageActionCreator extends ActionCreator<SetPageAction> {
     (new_page: number): SetPageAction;
 }
 
-export const createNextPageAction: PageActionCreator = function(){
+export const createNextPageAction: PageActionCreator = () => {
     return {
         type: NEXT_PAGE
     };
 };
 
-export const createPrevPageAction: PageActionCreator = function(){
+export const createPrevPageAction: PageActionCreator = () => {
     return {
         type: PREV_PAGE
     };
 };
 
-export const createSetPageAction: SetPageActionCreator = function(new_page: number){
+export const createSetPageAction: SetPageActionCreator = (new_page: number) => {
     return {
         type: SET_PAGE,
         new_page: new_page

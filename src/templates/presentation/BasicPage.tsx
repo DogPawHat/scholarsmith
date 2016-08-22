@@ -6,7 +6,7 @@ const getDangrousHtmlObject = (content: string) => {
     return { __html: Marked(content) };
 };
 
-const BasicPage: React.StatelessComponent<BasicPageData> = function (props: BasicPageData) {
+const BasicPage: React.StatelessComponent<BasicPageData> = (props: BasicPageData) => {
 
     const innerHtml = getDangrousHtmlObject(props.__content);
     return (

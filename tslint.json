@@ -9,6 +9,7 @@
             true,
             "spaces"
         ],
+        "only-arrow-functions": true,
         "no-duplicate-variable": true,
         "no-eval": true,
         "no-internal-module": true,

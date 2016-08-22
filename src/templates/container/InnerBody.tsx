@@ -7,7 +7,7 @@ import ActivePageSelect from './ActivePageSelect';
 import {ContextData, TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE} from '../types';
 import reducers from '../reducers';
 
-export default function (props: ContextData) {
+const InnerBody = (props: ContextData) => {
 
     const initialCurrentState: TutoralStateType = {
         COURSE_DATA: props,
@@ -27,4 +27,6 @@ export default function (props: ContextData) {
             </Provider>
         </div>
     );
-}
+};
+
+export default InnerBody;

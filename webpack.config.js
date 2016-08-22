@@ -7,14 +7,14 @@ var commonModule = {
         { test: /\.ts(x?)$/, loader : 'tslint' }
     ],
     loaders: [
-        { test: /\.ts(x?)$/, loader: 'babel-loader!ts-loader' },
+        { test: /\.ts(x?)$/, loader: 'awesome-typescript' },
         { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass') }
     ]
 };
 
 var commonTsLint = {
     emitErrors: true,
-    failOnHint: true
+    failOnHint: false
 }
 
 var commonPlugins = [
@@ -25,7 +25,7 @@ var commonResolve = {
     alias: {
         templates: './templates'
     },
-    extensions: ['', '.webpack.js', '.web.js', '.scss', '.ts', '.tsx']
+    extensions: ['', '.webpack.js', '.web.js', '.scss', '.ts', '.tsx', '.js', '.jsx']
 };
 
 module.exports = [
@@ -39,7 +39,7 @@ module.exports = [
         debug: true,
         devtool: 'cheap-module-eval-source-map',
         devServer: {
-            contentBase: "./dist",
+            contentBase: "./dist"
         },
         resolve: commonResolve,
         module: commonModule,

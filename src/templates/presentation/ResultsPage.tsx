@@ -1,7 +1,7 @@
 import React from 'react';
 import {ResultsData} from '../types';
 
-const ResultsPage: React.StatelessComponent<ResultsData> = function(props: ResultsData) {
+const ResultsPage: React.StatelessComponent<ResultsData> = (props: ResultsData) => {
     return (
         <div className='results page'>
             <h1>Results</h1>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {ContextData} from '../types';
 
-function Head(props: { title: string }) {
+const Head = (props: { title: string }) => {
     return (
         <head>
             <meta charSet='utf-8'/>
@@ -9,9 +9,9 @@ function Head(props: { title: string }) {
             <link rel='stylesheet' href='styles.css' />
         </head>
     );
-}
+};
 
-export default function (props: ContextData) {
+const Body = (props: ContextData) => {
     return (
         <html lang='en'>
             <Head title={props.title} />
@@ -21,4 +21,6 @@ export default function (props: ContextData) {
             </body>
         </html>
     );
-}
+};
+
+export default Body;

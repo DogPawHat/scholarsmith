@@ -2,7 +2,7 @@ import React from 'react';
 import {QuestionPageData} from '../types';
 import Answer from './Answer';
 
-const QuestionPage: React.StatelessComponent<QuestionPageData> = function (props: QuestionPageData) {
+const QuestionPage: React.StatelessComponent<QuestionPageData> = (props: QuestionPageData) => {
     return (
         <div className='question'>
             <h3>Question { props.index + 1}</h3>

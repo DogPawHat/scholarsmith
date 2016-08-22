@@ -16,17 +16,21 @@ interface HandlerType {
     [key: string]: <S>(state: S, action: Action) => S;
 }
 
-const currentPageHandlers: HandlerType = {
-    NEXT_PAGE: (state: number, action: Action) => {
-        return state + 1;
-    },
-    PREV_PAGE: (state: number, action: Action) => {
-        return state - 1;
-    },
-    SET_PAGE: (state: number, action: SetPageAction) => {
+// Page increment needs number of pages to prevent out of range
+const createCurrentPageHandlers = (pageLength: number) => {
+    return <HandlerType>{
+        NEXT_PAGE: (state: number, action: Action) => {
+            return state > pageLength ? state + 1 : state;
+        },
+        PREV_PAGE: (state: number, action: Action) => {
+            return state < 0 ? state - 1 : state;
+        },
+        SET_PAGE: (state: number, action: SetPageAction) => {
             return action.new_page;
-    }
+        }
+    };
 };
+
 const courseDataHandlers: HandlerType = {};
 const currentScoreHandlers: HandlerType = {};
 
@@ -42,7 +46,7 @@ const createReducer = <S, H>(initalState: S, handlers: HandlerType) => {
 
 const reducers: Reducer<TutoralStateType> = combineReducers<TutoralStateType>({
     COURSE_DATA: createReducer(initialCurrentState.COURSE_DATA, courseDataHandlers),
-    CURRENT_PAGE: createReducer(initialCurrentState.CURRENT_PAGE, currentPageHandlers),
+    CURRENT_PAGE: createReducer(initialCurrentState.CURRENT_PAGE, createCurrentPageHandlers(initialCurrentState.COURSE_DATA.pages.length)),
     CURRENT_SCORE: createReducer(initialCurrentState.CURRENT_SCORE, currentScoreHandlers)
 });
 
