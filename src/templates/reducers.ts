@@ -1,7 +1,7 @@
-import {Reducer, Action, combineReducers} from 'redux';
+import {Reducer, Action, combineReducers, Store} from 'redux';
 import Immutable from 'immutable';
-import { NEXT_PAGE, PREV_PAGE, SET_PAGE, SetPageAction} from './actions';
-import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData} from './types';
+import { NEXT_PAGE, PREV_PAGE, SET_PAGE, SetPageAction, PageAction} from './actions';
+import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData, AnyPageData, getPages} from './types';
 
 const initialCurrentState: TutoralStateType = {
     COURSE_DATA: {
@@ -17,18 +17,16 @@ interface HandlerType {
 }
 
 // Page increment needs number of pages to prevent out of range
-const createCurrentPageHandlers = (pageLength: number) => {
-    return <HandlerType>{
-        NEXT_PAGE: (state: number, action: Action) => {
-            return state > pageLength ? state + 1 : state;
-        },
-        PREV_PAGE: (state: number, action: Action) => {
-            return state < 0 ? state - 1 : state;
-        },
-        SET_PAGE: (state: number, action: SetPageAction) => {
-            return action.new_page;
-        }
-    };
+const currentPageHandlers: HandlerType = {
+    NEXT_PAGE: (state: number, action: PageAction) => {
+        return state < action.page_length - 1 ? state + 1 : state;
+    },
+    PREV_PAGE: (state: number, action: PageAction) => {
+        return state > 0 ? state - 1 : state;
+    },
+    SET_PAGE: (state: number, action: SetPageAction) => {
+        return action.new_page;
+    }
 };
 
 const courseDataHandlers: HandlerType = {};
@@ -46,7 +44,7 @@ const createReducer = <S, H>(initalState: S, handlers: HandlerType) => {
 
 const reducers: Reducer<TutoralStateType> = combineReducers<TutoralStateType>({
     COURSE_DATA: createReducer(initialCurrentState.COURSE_DATA, courseDataHandlers),
-    CURRENT_PAGE: createReducer(initialCurrentState.CURRENT_PAGE, createCurrentPageHandlers(initialCurrentState.COURSE_DATA.pages.length)),
+    CURRENT_PAGE: createReducer(initialCurrentState.CURRENT_PAGE, currentPageHandlers),
     CURRENT_SCORE: createReducer(initialCurrentState.CURRENT_SCORE, currentScoreHandlers)
 });
 

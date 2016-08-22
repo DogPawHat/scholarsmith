@@ -2,8 +2,15 @@ import test from 'ava';
 import {NEXT_PAGE, PREV_PAGE, SET_PAGE, createNextPageAction, createPrevPageAction, createSetPageAction} from '../src/templates/actions';
 
 test('should return action of type NEXT_PAGE', (t) => {
-    const wrapper = createNextPageAction();
+    const wrapper = createNextPageAction(3);
     t.is(wrapper.type, NEXT_PAGE);
+    t.is(wrapper.page_length, 3);
+});
+
+test('should return action of type NEXT_PAGE', (t) => {
+    const wrapper = createNextPageAction(6);
+    t.is(wrapper.type, NEXT_PAGE);
+    t.is(wrapper.page_length, 6);
 });
 
 test('should return action of type PREV_PAGE', (t) => {

@@ -64,12 +64,23 @@ const isTopicPageData = (page: PageData): page is TopicTitlePageData => {
     return (<TopicPageData>page).topic_id !== undefined;
 };
 
+export const getPages = (original_pages: AnyPageData[]) => {
+    return Immutable.List<AnyPageData>().withMutations(
+        (list) => {
+            list.push({ type: 'welcome' });
+            list.push(...original_pages);
+            list.push({ type: 'results' });
+            list.push({ type: 'talktous' });
+        }
+    );
+};
+
 export const TutoralStateHelpers = (state: TutoralStateType) => {
     const CURRENT_TOPIC = () => {
         const page = state.COURSE_DATA.pages[state.CURRENT_PAGE];
         if (isTopicPageData(page)) {
             return page.topic_id;
-        }else {
+        } else {
             return -1;
         }
     }, GET_TOPIC_TITLE_PAGE = () => {
@@ -90,11 +101,24 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
                 map.set(page.topic_id, state.COURSE_DATA.pages.indexOf(page));
             }
         });
+    }, GET_PAGES = () => {
+        return Immutable.List<AnyPageData>().withMutations(
+            (list) => {
+                list.push({ type: 'welcome' });
+                list.push(...state.COURSE_DATA.pages);
+                list.push({ type: 'results' });
+                list.push({ type: 'talktous' });
+            }
+        );
+    }, GET_PAGE_LENGTH = () => {
+        return GET_PAGES().size;
     };
 
     return {
         CURRENT_TOPIC,
         GET_TOPIC_TITLE_PAGE,
-        GET_ALL_TOPIC_TITLES
+        GET_ALL_TOPIC_TITLES,
+        GET_PAGES,
+        GET_PAGE_LENGTH
     };
 };

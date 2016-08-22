@@ -8,28 +8,25 @@ export interface SetPageAction extends Action {
     new_page: number;
 }
 
-export interface PageActionCreator extends ActionCreator<Action> {
-    (): Action;
+export interface PageAction extends Action {
+    page_length?: number;
 }
 
-export interface SetPageActionCreator extends ActionCreator<SetPageAction> {
-    (new_page: number): SetPageAction;
-}
-
-export const createNextPageAction: PageActionCreator = () => {
-    return {
-        type: NEXT_PAGE
+export const createNextPageAction = (page_length: number) => {
+    return <PageAction>{
+        type: NEXT_PAGE,
+        page_length: page_length
     };
 };
 
-export const createPrevPageAction: PageActionCreator = () => {
-    return {
+export const createPrevPageAction = () => {
+    return <PageAction>{
         type: PREV_PAGE
     };
 };
 
-export const createSetPageAction: SetPageActionCreator = (new_page: number) => {
-    return {
+export const createSetPageAction = (new_page: number) => {
+    return <SetPageAction>{
         type: SET_PAGE,
         new_page: new_page
     };

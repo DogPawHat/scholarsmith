@@ -45,7 +45,8 @@ test('NEXT_PAGE should only change CURRENT_PAGE', (t) => {
     }
 
     const action = {
-        type: NEXT_PAGE
+        type: NEXT_PAGE,
+        page_length: 6
     }
 
     const newState = reducers(oldState, action);
