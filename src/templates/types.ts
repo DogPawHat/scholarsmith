@@ -87,7 +87,6 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
             }) as TopicTitlePageData[];
         return Immutable.Map<number, number>().withMutations((map) => {
             for (let page of title_pages) {
-                debugger;
                 map.set(page.topic_id, state.COURSE_DATA.pages.indexOf(page));
             }
         });

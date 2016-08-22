@@ -1,7 +1,7 @@
 import React from 'react';
 import Immutable from 'immutable';
 
-const PageSelect: React.StatelessComponent<{
+const PageSelect = (props: {
     goBack?: () => void,
     goForward?: () => void,
     createGoToTopic?: (
@@ -9,13 +9,13 @@ const PageSelect: React.StatelessComponent<{
         topic: number
     ) => void,
     topics?: Immutable.Map<number, number>
-}> = (props) => {
+}) => {
     return (
         <ul id='pageselect'>
             <li className='arrow' onClick={props.goBack}><a href='#'>&laquo; </a></li>
             {props.topics.map((topic, i) => {
-                return <li><a onClick={props.createGoToTopic(props.topics, i) }>{i + 1}</a></li>;
-            }) }
+                return <li key={i}><a onClick={props.createGoToTopic(props.topics, i) }>{i + 1}</a></li>;
+            }).toArray() }
             <li className='arrow' onClick={props.goForward}><a href='#'>&raquo; </a></li>
         </ul>);
 };
