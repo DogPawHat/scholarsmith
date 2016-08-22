@@ -1,56 +1,56 @@
 import test from 'ava';
 import Immutable from 'immutable';
-import { TutoralStateType, TutoralStateHelpers, ContextData, AnyTopicPageData} from '../src/templates/types';
+import { TutoralStateType, TutoralStateHelpers, ContextData, AnyTopicPageData, AnyPageData} from '../src/templates/types';
 
 const courseData: ContextData = {
-    title: "Hello!",
+    title: 'Hello!',
     pages: [
         {
-            type: "topic_title",
+            type: 'topic_title',
             topic_id: 0,
-            title: "Introduction!"
+            title: 'Introduction!'
         },
         {
-            type: "plain",
-            __content: "\r\n\r\nFirst!\r\n",
+            type: 'plain',
+            __content: '\r\n\r\nFirst!\r\n',
             topic_id: 0
         },
         {
-            type: "topic_title",
+            type: 'topic_title',
             topic_id: 1,
-            title: "Middle!"
+            title: 'Middle!'
         },
         {
-            type: "plain",
-            __content: "\r\n\r\nSecond!\r\n",
+            type: 'plain',
+            __content: '\r\n\r\nSecond!\r\n',
             topic_id: 1
         },
         {
-            type: "plain",
-            __content: "\r\n\r\nThird!\r\n",
+            type: 'plain',
+            __content: '\r\n\r\nThird!\r\n',
             topic_id: 1
         },
         {
-            stem: "Derp Question 1",
+            stem: 'Derp Question 1',
             answers: [
-                "Answer 1",
-                "Answer 2",
-                "Answer 3"
+                'Answer 1',
+                'Answer 2',
+                'Answer 3'
             ],
             correct: 2,
-            feedback: "Derp",
-            type: "question"
+            feedback: 'Derp',
+            type: 'question'
         },
         {
-            stem: "Derp Question 2",
+            stem: 'Derp Question 2',
             answers: [
-                "Answer 1",
-                "Answer 2",
-                "Answer 3"
+                'Answer 1',
+                'Answer 2',
+                'Answer 3'
             ],
             correct: 2,
-            feedback: "Derp",
-            type: "question"
+            feedback: 'Derp',
+            type: 'question'
         }
     ]
 };
@@ -59,19 +59,19 @@ const testState1: TutoralStateType = {
     COURSE_DATA: courseData,
     CURRENT_PAGE: 1,
     CURRENT_SCORE: 0
-}
+};
 
 const testState2: TutoralStateType = {
     COURSE_DATA: courseData,
     CURRENT_PAGE: 3,
     CURRENT_SCORE: 0
-}
+};
 
 const testState3: TutoralStateType = {
     COURSE_DATA: courseData,
     CURRENT_PAGE: 5,
     CURRENT_SCORE: 0
-}
+};
 
 test('should get the CURRENT_TOPIC at page 1', (t) => {
     t.is(TutoralStateHelpers(testState1).CURRENT_TOPIC(), 0);
@@ -104,4 +104,23 @@ test('should GET_ALL_TOPIC_TITLES', (t) => {
     ]);
     t.deepEqual(TutoralStateHelpers(testState1).GET_ALL_TOPIC_TITLES(), expectedMap);
     t.deepEqual(TutoralStateHelpers(testState3).GET_ALL_TOPIC_TITLES(), expectedMap);
+});
+
+test('should GET_PAGES', (t) => {
+    const expectedList = Immutable.List<AnyPageData>().withMutations(
+            (list) => {
+                list.push({ type: 'welcome' });
+                list.push(...courseData.pages);
+                list.push({ type: 'results' });
+                list.push({ type: 'talktous' });
+            }
+        );
+    t.deepEqual(TutoralStateHelpers(testState1).GET_PAGES(), expectedList);
+    t.deepEqual(TutoralStateHelpers(testState3).GET_PAGES(), expectedList);
+});
+
+test('should GET_PAGE_LENGTH', (t) => {
+    const expectedLength = courseData.pages.length + 3;
+    t.deepEqual(TutoralStateHelpers(testState1).GET_PAGE_LENGTH(), expectedLength);
+    t.deepEqual(TutoralStateHelpers(testState3).GET_PAGE_LENGTH(), expectedLength);
 });

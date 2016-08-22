@@ -21332,7 +21332,29 @@
 	    value: true
 	});
 	
-	exports.default = function (props) {
+	var _react = __webpack_require__(/*! react */ 169);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _redux = __webpack_require__(/*! redux */ 175);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 189);
+	
+	var _VisablePage = __webpack_require__(/*! ./VisablePage */ 198);
+	
+	var _VisablePage2 = _interopRequireDefault(_VisablePage);
+	
+	var _ActivePageSelect = __webpack_require__(/*! ./ActivePageSelect */ 210);
+	
+	var _ActivePageSelect2 = _interopRequireDefault(_ActivePageSelect);
+	
+	var _reducers = __webpack_require__(/*! ../reducers */ 213);
+	
+	var _reducers2 = _interopRequireDefault(_reducers);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var InnerBody = function InnerBody(props) {
 	    var initialCurrentState = {
 	        COURSE_DATA: props,
 	        CURRENT_PAGE: 0,
@@ -21354,28 +21376,7 @@
 	        )
 	    );
 	};
-	
-	var _react = __webpack_require__(/*! react */ 169);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _redux = __webpack_require__(/*! redux */ 175);
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 189);
-	
-	var _VisablePage = __webpack_require__(/*! ./VisablePage */ 198);
-	
-	var _VisablePage2 = _interopRequireDefault(_VisablePage);
-	
-	var _ActivePageSelect = __webpack_require__(/*! ./ActivePageSelect */ 209);
-	
-	var _ActivePageSelect2 = _interopRequireDefault(_ActivePageSelect);
-	
-	var _reducers = __webpack_require__(/*! ../reducers */ 213);
-	
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	exports.default = InnerBody;
 
 /***/ },
 /* 169 */
@@ -23680,23 +23681,17 @@
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
+	var _types = __webpack_require__(/*! ../types */ 209);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	var RenderedPageTypes = _immutable2.default.Map([['welcome', _WelcomePage2.default], ['topic_title', _TopicTitlePage2.default], ['plain', _BasicPage2.default], ['question', _QuestionPage2.default], ['results', _ResultsPage2.default], ['talktous', _TalkToUsPage2.default]]);
-	var getPages = function getPages(id, original_pages) {
-	    var pages = _immutable2.default.List().withMutations(function (list) {
-	        list.push({ type: 'welcome' });
-	        list.push.apply(list, _toConsumableArray(original_pages));
-	        list.push({ type: 'results' });
-	        list.push({ type: 'talktous' });
-	    });
-	    return RenderedPageTypes.get(pages.get(id).type)(pages.get(id));
+	var getRenderedPage = function getRenderedPage(id, pages) {
+	    return RenderedPageTypes.get(pages[id].type)(pages[id]);
 	};
 	var mapStateToProps = function mapStateToProps(state) {
 	    return {
-	        pageContent: getPages(state.CURRENT_PAGE, state.COURSE_DATA.pages)
+	        pageContent: getRenderedPage(state.CURRENT_PAGE, (0, _types.TutoralStateHelpers)(state).GET_PAGES().toArray())
 	    };
 	};
 	var VisablePage = (0, _reactRedux.connect)(mapStateToProps)(_Page2.default);
@@ -30141,19 +30136,20 @@
 	    value: true
 	});
 	
-	exports.default = function (props) {
+	var _react = __webpack_require__(/*! react */ 169);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Answer = function Answer(props) {
 	    return _react2.default.createElement(
 	        'input',
 	        { type: 'radio', name: 'radio', key: '{props.index}', value: '{props.index}' },
 	        props.value
 	    );
 	};
-	
-	var _react = __webpack_require__(/*! react */ 169);
-	
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	exports.default = Answer;
 
 /***/ },
 /* 206 */
@@ -30254,86 +30250,6 @@
 
 /***/ },
 /* 209 */
-/*!******************************************************!*\
-  !*** ./src/templates/container/ActivePageSelect.tsx ***!
-  \******************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 189);
-	
-	var _actions = __webpack_require__(/*! ../actions */ 210);
-	
-	var _types = __webpack_require__(/*! ../types */ 211);
-	
-	var _PageSelect = __webpack_require__(/*! ../presentation/PageSelect */ 212);
-	
-	var _PageSelect2 = _interopRequireDefault(_PageSelect);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        topics: (0, _types.TutoralStateHelpers)(state).GET_ALL_TOPIC_TITLES()
-	    };
-	};
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	    return {
-	        goBack: function goBack() {
-	            dispatch((0, _actions.createPrevPageAction)());
-	        },
-	        goForward: function goForward() {
-	            dispatch((0, _actions.createNextPageAction)());
-	        },
-	        createGoToTopic: function createGoToTopic(topics, topic) {
-	            return function () {
-	                dispatch((0, _actions.createSetPageAction)(topics.get(topic) + 1));
-	            };
-	        }
-	    };
-	};
-	var ActivePageSelect = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PageSelect2.default);
-	exports.default = ActivePageSelect;
-
-/***/ },
-/* 210 */
-/*!**********************************!*\
-  !*** ./src/templates/actions.ts ***!
-  \**********************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	var NEXT_PAGE = exports.NEXT_PAGE = 'NEXT_PAGE';
-	var PREV_PAGE = exports.PREV_PAGE = 'PREV_PAGE';
-	var SET_PAGE = exports.SET_PAGE = 'SET_PAGE';
-	var createNextPageAction = exports.createNextPageAction = function createNextPageAction() {
-	    return {
-	        type: NEXT_PAGE
-	    };
-	};
-	var createPrevPageAction = exports.createPrevPageAction = function createPrevPageAction() {
-	    return {
-	        type: PREV_PAGE
-	    };
-	};
-	var createSetPageAction = exports.createSetPageAction = function createSetPageAction(new_page) {
-	    return {
-	        type: SET_PAGE,
-	        new_page: new_page
-	    };
-	};
-
-/***/ },
-/* 211 */
 /*!********************************!*\
   !*** ./src/templates/types.ts ***!
   \********************************/
@@ -30351,6 +30267,8 @@
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
 	var COURSE_DATA = exports.COURSE_DATA = 'COURSE_DATA';
 	var CURRENT_PAGE = exports.CURRENT_PAGE = 'CURRENT_PAGE';
@@ -30395,7 +30313,6 @@
 	                for (var _iterator = title_pages[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	                    var page = _step.value;
 	
-	                    debugger;
 	                    map.set(page.topic_id, state.COURSE_DATA.pages.indexOf(page));
 	                }
 	            } catch (err) {
@@ -30413,11 +30330,106 @@
 	                }
 	            }
 	        });
+	    },
+	        GET_PAGES = function GET_PAGES() {
+	        return _immutable2.default.List().withMutations(function (list) {
+	            list.push({ type: 'welcome' });
+	            list.push.apply(list, _toConsumableArray(state.COURSE_DATA.pages));
+	            list.push({ type: 'results' });
+	            list.push({ type: 'talktous' });
+	        });
+	    },
+	        GET_PAGE_LENGTH = function GET_PAGE_LENGTH() {
+	        return GET_PAGES().size;
 	    };
 	    return {
 	        CURRENT_TOPIC: CURRENT_TOPIC,
 	        GET_TOPIC_TITLE_PAGE: GET_TOPIC_TITLE_PAGE,
-	        GET_ALL_TOPIC_TITLES: GET_ALL_TOPIC_TITLES
+	        GET_ALL_TOPIC_TITLES: GET_ALL_TOPIC_TITLES,
+	        GET_PAGES: GET_PAGES,
+	        GET_PAGE_LENGTH: GET_PAGE_LENGTH
+	    };
+	};
+
+/***/ },
+/* 210 */
+/*!******************************************************!*\
+  !*** ./src/templates/container/ActivePageSelect.tsx ***!
+  \******************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 189);
+	
+	var _actions = __webpack_require__(/*! ../actions */ 211);
+	
+	var _types = __webpack_require__(/*! ../types */ 209);
+	
+	var _PageSelect = __webpack_require__(/*! ../presentation/PageSelect */ 212);
+	
+	var _PageSelect2 = _interopRequireDefault(_PageSelect);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        topics: (0, _types.TutoralStateHelpers)(state).GET_ALL_TOPIC_TITLES(),
+	        pageLength: (0, _types.TutoralStateHelpers)(state).GET_PAGE_LENGTH()
+	    };
+	};
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        goBack: function goBack() {
+	            dispatch((0, _actions.createPrevPageAction)());
+	        },
+	        goForward: function goForward(page_length) {
+	            dispatch((0, _actions.createNextPageAction)(page_length));
+	        },
+	        createGoToTopic: function createGoToTopic(topics, topic) {
+	            return function () {
+	                dispatch((0, _actions.createSetPageAction)(topics.get(topic) + 1));
+	            };
+	        }
+	    };
+	};
+	var ActivePageSelect = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PageSelect2.default);
+	exports.default = ActivePageSelect;
+
+/***/ },
+/* 211 */
+/*!**********************************!*\
+  !*** ./src/templates/actions.ts ***!
+  \**********************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var NEXT_PAGE = exports.NEXT_PAGE = 'NEXT_PAGE';
+	var PREV_PAGE = exports.PREV_PAGE = 'PREV_PAGE';
+	var SET_PAGE = exports.SET_PAGE = 'SET_PAGE';
+	var createNextPageAction = exports.createNextPageAction = function createNextPageAction(page_length) {
+	    return {
+	        type: NEXT_PAGE,
+	        page_length: page_length
+	    };
+	};
+	var createPrevPageAction = exports.createPrevPageAction = function createPrevPageAction() {
+	    return {
+	        type: PREV_PAGE
+	    };
+	};
+	var createSetPageAction = exports.createSetPageAction = function createSetPageAction(new_page) {
+	    return {
+	        type: SET_PAGE,
+	        new_page: new_page
 	    };
 	};
 
@@ -30441,6 +30453,9 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var PageSelect = function PageSelect(props) {
+	    var completeGoForward = function completeGoForward() {
+	        props.goForward(props.pageLength);
+	    };
 	    return _react2.default.createElement(
 	        'ul',
 	        { id: 'pageselect' },
@@ -30456,17 +30471,17 @@
 	        props.topics.map(function (topic, i) {
 	            return _react2.default.createElement(
 	                'li',
-	                null,
+	                { key: i },
 	                _react2.default.createElement(
 	                    'a',
 	                    { onClick: props.createGoToTopic(props.topics, i) },
 	                    i + 1
 	                )
 	            );
-	        }),
+	        }).toArray(),
 	        _react2.default.createElement(
 	            'li',
-	            { className: 'arrow', onClick: props.goForward },
+	            { className: 'arrow', onClick: completeGoForward },
 	            _react2.default.createElement(
 	                'a',
 	                { href: '#' },
@@ -30500,12 +30515,13 @@
 	    CURRENT_PAGE: 0,
 	    CURRENT_SCORE: 0
 	};
+	// Page increment needs number of pages to prevent out of range
 	var currentPageHandlers = {
 	    NEXT_PAGE: function NEXT_PAGE(state, action) {
-	        return state + 1;
+	        return state < action.page_length - 1 ? state + 1 : state;
 	    },
 	    PREV_PAGE: function PREV_PAGE(state, action) {
-	        return state - 1;
+	        return state > 0 ? state - 1 : state;
 	    },
 	    SET_PAGE: function SET_PAGE(state, action) {
 	        return action.new_page;

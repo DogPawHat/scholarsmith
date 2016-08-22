@@ -64,17 +64,6 @@ const isTopicPageData = (page: PageData): page is TopicTitlePageData => {
     return (<TopicPageData>page).topic_id !== undefined;
 };
 
-export const getPages = (original_pages: AnyPageData[]) => {
-    return Immutable.List<AnyPageData>().withMutations(
-        (list) => {
-            list.push({ type: 'welcome' });
-            list.push(...original_pages);
-            list.push({ type: 'results' });
-            list.push({ type: 'talktous' });
-        }
-    );
-};
-
 export const TutoralStateHelpers = (state: TutoralStateType) => {
     const CURRENT_TOPIC = () => {
         const page = state.COURSE_DATA.pages[state.CURRENT_PAGE];

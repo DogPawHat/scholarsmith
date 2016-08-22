@@ -56,7 +56,39 @@ test('NEXT_PAGE should only change CURRENT_PAGE', (t) => {
     t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
 });
 
-test('NEXT_PAGE should only change CURRENT_PAGE', (t) => {
+
+test('NEXT_PAGE should not go past page length', (t) => {
+    const oldState = {
+        COURSE_DATA: {
+            title: '',
+            pages: []
+        },
+        CURRENT_PAGE: 5,
+        CURRENT_SCORE: 0
+    }
+
+    const expectedState = {
+        COURSE_DATA: {
+            title: '',
+            pages:[]
+        },
+        CURRENT_PAGE: 5,
+        CURRENT_SCORE: 0
+    }
+
+    const action = {
+        type: NEXT_PAGE,
+        page_length: 6
+    }
+
+    const newState = reducers(oldState, action);
+
+    t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
+    t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
+    t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
+});
+
+test('PREV_PAGE should only change CURRENT_PAGE', (t) => {
     const oldState = {
         COURSE_DATA: {
             title: '',
@@ -72,6 +104,37 @@ test('NEXT_PAGE should only change CURRENT_PAGE', (t) => {
             pages:[]
         },
         CURRENT_PAGE: 3,
+        CURRENT_SCORE: 0
+    }
+
+    const action = {
+        type: PREV_PAGE
+    }
+
+    const newState = reducers(oldState, action);
+
+    t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
+    t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
+    t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
+
+});
+
+test('PREV_PAGE should not go below zero', (t) => {
+    const oldState = {
+        COURSE_DATA: {
+            title: '',
+            pages: []
+        },
+        CURRENT_PAGE: 0,
+        CURRENT_SCORE: 0
+    }
+
+    const expectedState = {
+        COURSE_DATA: {
+            title: '',
+            pages:[]
+        },
+        CURRENT_PAGE: 0,
         CURRENT_SCORE: 0
     }
 

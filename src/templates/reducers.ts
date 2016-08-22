@@ -1,7 +1,7 @@
 import {Reducer, Action, combineReducers, Store} from 'redux';
 import Immutable from 'immutable';
 import { NEXT_PAGE, PREV_PAGE, SET_PAGE, SetPageAction, PageAction} from './actions';
-import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData, AnyPageData, getPages} from './types';
+import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData, AnyPageData} from './types';
 
 const initialCurrentState: TutoralStateType = {
     COURSE_DATA: {

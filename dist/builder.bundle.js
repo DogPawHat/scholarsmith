@@ -78,7 +78,7 @@
 	        return (0, _fs.statSync)((0, _path.join)(srcpath, file)).isDirectory();
 	    });
 	};
-	function parseQuestions() {
+	var parseQuestions = function parseQuestions() {
 	    var questions = [];
 	    _jsYaml2.default.safeLoadAll((0, _fs.readFileSync)('./tutorial/questions.yaml').toString(), function (doc) {
 	        doc.type = 'question';
@@ -87,7 +87,7 @@
 	    return questions.map(function (q, i) {
 	        q.index = i;return q;
 	    });
-	}
+	};
 	var parseTopics = function parseTopics() {
 	    var pages = [];
 	    getDirectories('./tutorial/topics').map(function (dir, i, dirs) {
@@ -30224,7 +30224,26 @@
 	    value: true
 	});
 	
-	exports.default = function (props) {
+	var _react = __webpack_require__(/*! react */ 197);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Head = function Head(props) {
+	    return _react2.default.createElement(
+	        'head',
+	        null,
+	        _react2.default.createElement('meta', { charSet: 'utf-8' }),
+	        _react2.default.createElement(
+	            'title',
+	            null,
+	            props.title
+	        ),
+	        _react2.default.createElement('link', { rel: 'stylesheet', href: 'styles.css' })
+	    );
+	};
+	var Body = function Body(props) {
 	    return _react2.default.createElement(
 	        'html',
 	        { lang: 'en' },
@@ -30237,26 +30256,7 @@
 	        )
 	    );
 	};
-	
-	var _react = __webpack_require__(/*! react */ 197);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function Head(props) {
-	    return _react2.default.createElement(
-	        'head',
-	        null,
-	        _react2.default.createElement('meta', { charSet: 'utf-8' }),
-	        _react2.default.createElement(
-	            'title',
-	            null,
-	            props.title
-	        ),
-	        _react2.default.createElement('link', { rel: 'stylesheet', href: 'styles.css' })
-	    );
-	}
+	exports.default = Body;
 
 /***/ },
 /* 197 */
