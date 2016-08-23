@@ -21346,7 +21346,7 @@
 	
 	var _VisablePage2 = _interopRequireDefault(_VisablePage);
 	
-	var _ActivePageSelect = __webpack_require__(/*! ./ActivePageSelect */ 213);
+	var _ActivePageSelect = __webpack_require__(/*! ./ActivePageSelect */ 214);
 	
 	var _ActivePageSelect2 = _interopRequireDefault(_ActivePageSelect);
 	
@@ -23729,29 +23729,30 @@
 	
 	var _BasicPage2 = _interopRequireDefault(_BasicPage);
 	
-	var _QuestionPage = __webpack_require__(/*! ../presentation/QuestionPage */ 207);
+	var _ActiveQuestionPage = __webpack_require__(/*! ./ActiveQuestionPage */ 207);
 	
-	var _QuestionPage2 = _interopRequireDefault(_QuestionPage);
+	var _ActiveQuestionPage2 = _interopRequireDefault(_ActiveQuestionPage);
 	
-	var _ResultsPage = __webpack_require__(/*! ../presentation/ResultsPage */ 209);
+	var _ResultsPage = __webpack_require__(/*! ../presentation/ResultsPage */ 210);
 	
 	var _ResultsPage2 = _interopRequireDefault(_ResultsPage);
 	
-	var _TalkToUsPage = __webpack_require__(/*! ../presentation/TalkToUsPage */ 210);
+	var _TalkToUsPage = __webpack_require__(/*! ../presentation/TalkToUsPage */ 211);
 	
 	var _TalkToUsPage2 = _interopRequireDefault(_TalkToUsPage);
 	
-	var _Page = __webpack_require__(/*! ../presentation/Page */ 211);
+	var _Page = __webpack_require__(/*! ../presentation/Page */ 212);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
-	var _types = __webpack_require__(/*! ../types */ 212);
+	var _types = __webpack_require__(/*! ../types */ 213);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var RenderedPageTypes = _immutable2.default.Map([['welcome', _WelcomePage2.default], ['topic_title', _TopicTitlePage2.default], ['plain', _BasicPage2.default], ['question', _QuestionPage2.default], ['results', _ResultsPage2.default], ['talktous', _TalkToUsPage2.default]]);
+	var RenderedPageTypes = _immutable2.default.Map([['welcome', _WelcomePage2.default], ['topic_title', _TopicTitlePage2.default], ['plain', _BasicPage2.default], ['question', _ActiveQuestionPage2.default], ['results', _ResultsPage2.default], ['talktous', _TalkToUsPage2.default]]);
 	var getRenderedPage = function getRenderedPage(id, pages) {
-	    return RenderedPageTypes.get(pages[id].type)(pages[id]);
+	    var page = RenderedPageTypes.get(pages[id].type);
+	    return new page();
 	};
 	var mapStateToProps = function mapStateToProps(state) {
 	    return {
@@ -30134,6 +30135,42 @@
 
 /***/ },
 /* 207 */
+/*!********************************************************!*\
+  !*** ./src/templates/container/ActiveQuestionPage.tsx ***!
+  \********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 192);
+	
+	var _QuestionPage = __webpack_require__(/*! ../presentation/QuestionPage */ 208);
+	
+	var _QuestionPage2 = _interopRequireDefault(_QuestionPage);
+	
+	var _actions = __webpack_require__(/*! ../actions */ 209);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {};
+	};
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        submitQuestion: function submitQuestion(question_key, answer, correct) {
+	            dispatch((0, _actions.createAnswerQuestionAction)(question_key, answer, correct));
+	        }
+	    };
+	};
+	var ActiveQuestionPage = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_QuestionPage2.default);
+	exports.default = ActiveQuestionPage;
+
+/***/ },
+/* 208 */
 /*!*****************************************************!*\
   !*** ./src/templates/presentation/QuestionPage.tsx ***!
   \*****************************************************/
@@ -30149,13 +30186,18 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Answer = __webpack_require__(/*! ./Answer */ 208);
-	
-	var _Answer2 = _interopRequireDefault(_Answer);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var QuestionPage = function QuestionPage(props) {
+	    var currentAnswer = 0;
+	    var updateAnswer = function updateAnswer(index) {
+	        return function () {
+	            currentAnswer = index;
+	        };
+	    };
+	    var answerQuestion = function answerQuestion() {
+	        props.submitQuestion(currentAnswer === props.correct);
+	    };
 	    return _react2.default.createElement(
 	        'div',
 	        { className: 'question' },
@@ -30172,11 +30214,15 @@
 	        ),
 	        _react2.default.createElement(
 	            'form',
-	            { name: 'answers_{props.index}', id: 'answers_{props.index}', 'data-answer': '{props.index}' },
+	            { name: 'answers_{props.index}', id: 'answers_{props.index}', 'data-answer': '{props.correct}' },
 	            props.answers.map(function (answer, i) {
-	                _react2.default.createElement(_Answer2.default, { key: i, index: i, value: answer });
+	                _react2.default.createElement(
+	                    'input',
+	                    { type: 'radio', name: 'radio', key: i, value: i, onClick: updateAnswer(i) },
+	                    answer
+	                );
 	            }),
-	            _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+	            _react2.default.createElement('input', { type: 'submit', value: 'Submit', onSubmit: answerQuestion })
 	        ),
 	        _react2.default.createElement(
 	            'p',
@@ -30188,35 +30234,49 @@
 	exports.default = QuestionPage;
 
 /***/ },
-/* 208 */
-/*!***********************************************!*\
-  !*** ./src/templates/presentation/Answer.tsx ***!
-  \***********************************************/
-/***/ function(module, exports, __webpack_require__) {
+/* 209 */
+/*!**********************************!*\
+  !*** ./src/templates/actions.ts ***!
+  \**********************************/
+/***/ function(module, exports) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	
-	var _react = __webpack_require__(/*! react */ 171);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Answer = function Answer(props) {
-	    return _react2.default.createElement(
-	        'input',
-	        { type: 'radio', name: 'radio', key: '{props.index}', value: '{props.index}' },
-	        props.value
-	    );
+	var NEXT_PAGE = exports.NEXT_PAGE = 'NEXT_PAGE';
+	var PREV_PAGE = exports.PREV_PAGE = 'PREV_PAGE';
+	var SET_PAGE = exports.SET_PAGE = 'SET_PAGE';
+	var ANSWER_QUESTION = exports.ANSWER_QUESTION = 'ANSWER_QUESTION';
+	var createAnswerQuestionAction = exports.createAnswerQuestionAction = function createAnswerQuestionAction(question_key, answer, correct) {
+	    return {
+	        type: ANSWER_QUESTION,
+	        question_key: question_key,
+	        answer: answer,
+	        correct: correct
+	    };
 	};
-	exports.default = Answer;
+	var createNextPageAction = exports.createNextPageAction = function createNextPageAction(page_length) {
+	    return {
+	        type: NEXT_PAGE,
+	        page_length: page_length
+	    };
+	};
+	var createPrevPageAction = exports.createPrevPageAction = function createPrevPageAction() {
+	    return {
+	        type: PREV_PAGE
+	    };
+	};
+	var createSetPageAction = exports.createSetPageAction = function createSetPageAction(new_page) {
+	    return {
+	        type: SET_PAGE,
+	        new_page: new_page
+	    };
+	};
 
 /***/ },
-/* 209 */
+/* 210 */
 /*!****************************************************!*\
   !*** ./src/templates/presentation/ResultsPage.tsx ***!
   \****************************************************/
@@ -30253,7 +30313,7 @@
 	exports.default = ResultsPage;
 
 /***/ },
-/* 210 */
+/* 211 */
 /*!*****************************************************!*\
   !*** ./src/templates/presentation/TalkToUsPage.tsx ***!
   \*****************************************************/
@@ -30285,7 +30345,7 @@
 	exports.default = TalkToUsPage;
 
 /***/ },
-/* 211 */
+/* 212 */
 /*!*********************************************!*\
   !*** ./src/templates/presentation/Page.tsx ***!
   \*********************************************/
@@ -30313,7 +30373,7 @@
 	exports.default = Page;
 
 /***/ },
-/* 212 */
+/* 213 */
 /*!********************************!*\
   !*** ./src/templates/types.ts ***!
   \********************************/
@@ -30416,7 +30476,7 @@
 	};
 
 /***/ },
-/* 213 */
+/* 214 */
 /*!******************************************************!*\
   !*** ./src/templates/container/ActivePageSelect.tsx ***!
   \******************************************************/
@@ -30430,9 +30490,9 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 192);
 	
-	var _actions = __webpack_require__(/*! ../actions */ 214);
+	var _actions = __webpack_require__(/*! ../actions */ 209);
 	
-	var _types = __webpack_require__(/*! ../types */ 212);
+	var _types = __webpack_require__(/*! ../types */ 213);
 	
 	var _PageSelect = __webpack_require__(/*! ../presentation/PageSelect */ 215);
 	
@@ -30463,48 +30523,6 @@
 	};
 	var ActivePageSelect = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PageSelect2.default);
 	exports.default = ActivePageSelect;
-
-/***/ },
-/* 214 */
-/*!**********************************!*\
-  !*** ./src/templates/actions.ts ***!
-  \**********************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	var NEXT_PAGE = exports.NEXT_PAGE = 'NEXT_PAGE';
-	var PREV_PAGE = exports.PREV_PAGE = 'PREV_PAGE';
-	var SET_PAGE = exports.SET_PAGE = 'SET_PAGE';
-	var ANSWER_QUESTION = exports.ANSWER_QUESTION = 'ANSWER_QUESTION';
-	var createAnswerQuestionAction = exports.createAnswerQuestionAction = function createAnswerQuestionAction(question_key, answer, correct) {
-	    return {
-	        type: ANSWER_QUESTION,
-	        question_key: question_key,
-	        answer: answer,
-	        correct: correct
-	    };
-	};
-	var createNextPageAction = exports.createNextPageAction = function createNextPageAction(page_length) {
-	    return {
-	        type: NEXT_PAGE,
-	        page_length: page_length
-	    };
-	};
-	var createPrevPageAction = exports.createPrevPageAction = function createPrevPageAction() {
-	    return {
-	        type: PREV_PAGE
-	    };
-	};
-	var createSetPageAction = exports.createSetPageAction = function createSetPageAction(new_page) {
-	    return {
-	        type: SET_PAGE,
-	        new_page: new_page
-	    };
-	};
 
 /***/ },
 /* 215 */

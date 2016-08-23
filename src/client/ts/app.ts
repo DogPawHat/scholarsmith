@@ -1,7 +1,6 @@
 import '../scss/app.scss';
 
 import React from 'react';
-import {createStore} from 'redux';
 import {render} from 'react-dom';
 import InnerBody from '../../templates/container/InnerBody';
 import { ContextData } from '../../templates/types';

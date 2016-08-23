@@ -11,7 +11,7 @@ const QuestionPage: React.StatelessComponent<QuestionPageData> = (props: Questio
     };
 
     const answerQuestion = () => {
-        props.submitQuestion(currentAnswer === props.correct)
+        props.submitQuestion(currentAnswer === props.correct);
     };
 
     return (
