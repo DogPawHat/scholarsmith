@@ -61,3 +61,4 @@ test('should be welcoming 2', t =>{
     t.is(feedback.text(), FEEDBACK);
     t.is(h3.text(), 'Question 5');
 })
+

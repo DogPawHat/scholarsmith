@@ -13,6 +13,10 @@
         "no-debugger": true,
         "no-duplicate-variable": true,
         "no-eval": true,
+        "no-unused-variable": [
+            true,
+            "react"
+        ],
         "no-internal-module": true,
         "no-trailing-whitespace": true,
         "no-unsafe-finally": true,

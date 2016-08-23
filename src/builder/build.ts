@@ -4,7 +4,7 @@ import yaml from 'js-yaml';
 import fm from 'yaml-front-matter';
 import { readdirSync, statSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { ContextData, AnyPageData, PageData, TopicPageData, TopicTitlePageData, BasicPageData, QuestionPageData, PageTypes} from '../templates/types';
+import { ContextData, AnyPageData, TopicPageData, TopicTitlePageData, BasicPageData, QuestionPageData} from '../templates/types';
 import Body from '../templates/server/Body';
 
 const getDirectories = (srcpath: string) => {

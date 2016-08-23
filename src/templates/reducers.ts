@@ -1,7 +1,16 @@
 import {Reducer, Action, combineReducers, Store} from 'redux';
 import Immutable from 'immutable';
-import { NEXT_PAGE, PREV_PAGE, SET_PAGE, SetPageAction, PageAction} from './actions';
+import { AnswerQuestionAction, SetPageAction, PageAction} from './actions';
 import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData, AnyPageData} from './types';
+
+
+interface HandlerType {
+    <S>(state: S, action: Action): S;
+}
+
+interface HandlerCollectionType {
+    [key: string]: HandlerType;
+}
 
 const initialCurrentState: TutoralStateType = {
     COURSE_DATA: {
@@ -12,12 +21,8 @@ const initialCurrentState: TutoralStateType = {
     CURRENT_SCORE: 0
 };
 
-interface HandlerType {
-    [key: string]: <S>(state: S, action: Action) => S;
-}
-
 // Page increment needs number of pages to prevent out of range
-const currentPageHandlers: HandlerType = {
+const currentPageHandlers: HandlerCollectionType = {
     NEXT_PAGE: (state: number, action: PageAction) => {
         return state < action.page_length - 1 ? state + 1 : state;
     },
@@ -29,13 +34,17 @@ const currentPageHandlers: HandlerType = {
     }
 };
 
-const courseDataHandlers: HandlerType = {};
-const currentScoreHandlers: HandlerType = {};
+const courseDataHandlers: HandlerCollectionType = {};
+const currentScoreHandlers: HandlerCollectionType = {
+    ANSWER_QUESTION: (state: number, action: AnswerQuestionAction) => {
+        return action.correct ? state + 1 : state;
+    }
+};
 
-const createReducer = <S, H>(initalState: S, handlers: HandlerType) => {
+const createReducer = <S>(initalState: S, handlers: HandlerCollectionType) => {
     return (state: S = initalState, action: Action) => {
         if (handlers.hasOwnProperty(action.type)) {
-            return handlers[action.type](state, action);
+            return <S>(handlers[action.type](state, action));
         } else {
             return state;
         }
