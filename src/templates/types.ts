@@ -1,17 +1,19 @@
 import React from 'react';
 import Immutable from 'immutable';
 
-export type PageTypes =
-    'plain'
-    | 'topic_title'
-    | 'question'
-    | 'welcome'
-    | 'results'
-    | 'talktous';
+export const enum PageTypes {
+    plain,
+    topic_title,
+    question,
+    welcome,
+    results,
+    talktous
+}
 
-export const COURSE_DATA = 'COURSE_DATA';
-export const CURRENT_PAGE = 'CURRENT_PAGE';
-export const CURRENT_SCORE = 'CURRENT_SCORE';
+
+export type COURSE_DATA = 'COURSE_DATA';
+export type CURRENT_PAGE = 'CURRENT_PAGE';
+export type CURRENT_SCORE = 'CURRENT_SCORE';
 
 export interface TutoralStateType {
     COURSE_DATA: ContextData;
@@ -29,22 +31,18 @@ export interface PageData {
 };
 
 export interface TopicPageData extends PageData {
-    type: 'topic_title' | 'plain';
     topic_id: number;
 };
 
 export interface TopicTitlePageData extends TopicPageData {
-    type: 'topic_title';
     title: string;
 };
 
 export interface BasicPageData extends TopicPageData {
-    type: 'plain';
     __content: string;
 };
 
 export interface QuestionPageData extends PageData {
-    type: 'question';
     stem: string;
     answers: Array<string>;
     correct: number;
@@ -76,7 +74,7 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
     }, GET_TOPIC_TITLE_PAGE = () => {
         if (CURRENT_TOPIC() !== -1) {
             return state.COURSE_DATA.pages.findIndex((page: AnyTopicPageData) => {
-                return (page.topic_id === CURRENT_TOPIC() && page.type === 'topic_title');
+                return (page.topic_id === CURRENT_TOPIC() && page.type === PageTypes.topic_title);
             });
         } else {
             return -1;
@@ -84,7 +82,7 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
     }, GET_ALL_TOPIC_TITLES = () => {
         const title_pages =
             state.COURSE_DATA.pages.filter((page) => {
-                return page.type === 'topic_title';
+                return page.type === PageTypes.topic_title;
             }) as TopicTitlePageData[];
         return Immutable.Map<number, number>().withMutations((map) => {
             for (let page of title_pages) {
@@ -94,10 +92,10 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
     }, GET_PAGES = () => {
         return Immutable.List<AnyPageData>().withMutations(
             (list) => {
-                list.push({ type: 'welcome' });
+                list.push({ type: PageTypes.welcome });
                 list.push(...state.COURSE_DATA.pages);
-                list.push({ type: 'results' });
-                list.push({ type: 'talktous' });
+                list.push({ type: PageTypes.results });
+                list.push({ type: PageTypes.talktous });
             }
         );
     }, GET_PAGE_LENGTH = () => {

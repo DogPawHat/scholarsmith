@@ -6,34 +6,44 @@ import Immutable from 'immutable';
 import WelcomePage from '../presentation/WelcomePage';
 import TopicTitlePage from '../presentation/TopicTitlePage';
 import BasicPage from '../presentation/BasicPage';
-import ActiveQuestionPage from './ActiveQuestionPage';
+import QuestionPage from '../presentation/QuestionPage';
 import ResultsPage from '../presentation/ResultsPage';
 import TalkToUsPage from '../presentation/TalkToUsPage';
 import Page from '../presentation/Page';
 
-import {AnyPageData,
+import {
+    PageData,
     PageTypes,
     TutoralStateType,
     TutoralStateHelpers
 } from '../types';
 
-const RenderedPageTypes = Immutable.Map<PageTypes, any>([
-    ['welcome', WelcomePage],
-    ['topic_title', TopicTitlePage],
-    ['plain', BasicPage],
-    ['question', ActiveQuestionPage],
-    ['results', ResultsPage],
-    ['talktous', TalkToUsPage]
-]);
+import {createAnswerQuestionAction} from '../actions';
 
-const getRenderedPage = (id: number, pages: AnyPageData[]) => {
-    const page = RenderedPageTypes.get(pages[id].type);
-    return new page();
+const RenderedPageTypes = {
+    [PageTypes.welcome]: WelcomePage,
+    [PageTypes.topic_title]: TopicTitlePage,
+    [PageTypes.plain]: BasicPage,
+    [PageTypes.question]: QuestionPage,
+    [PageTypes.results]: ResultsPage,
+    [PageTypes.talktous]: TalkToUsPage
 };
 
-const mapStateToProps: (state: TutoralStateType) => { pageContent: React.ReactElement<AnyPageData> } = (state: TutoralStateType) => {
+const getRenderedPage = (id: number, pages: PageData[]) => {
+    return RenderedPageTypes[pages[id].type];
+};
+
+const mapStateToProps: (state: TutoralStateType) => { pageContent: React.ReactElement<PageData> } = (state: TutoralStateType) => {
     return {
         pageContent: getRenderedPage(state.CURRENT_PAGE, TutoralStateHelpers(state).GET_PAGES().toArray())
+    };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<TutoralStateType>) => {
+    return {
+        submitQuestion(question_key: number, answer: string, correct: boolean) {
+            dispatch(createAnswerQuestionAction(question_key, answer, correct));
+        }
     };
 };
 
