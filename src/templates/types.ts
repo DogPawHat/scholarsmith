@@ -1,14 +1,12 @@
 import React from 'react';
 import Immutable from 'immutable';
 
-export const enum PageTypes {
-    plain,
-    topic_title,
-    question,
-    welcome,
-    results,
-    talktous
-}
+export type PageTypes = 'plain' |
+    'topic_title' |
+    'question' |
+    'welcome' |
+    'results' |
+    'talktous';
 
 
 export type COURSE_DATA = 'COURSE_DATA';

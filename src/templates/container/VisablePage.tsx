@@ -21,12 +21,12 @@ import {
 import {createAnswerQuestionAction} from '../actions';
 
 const RenderedPageTypes = {
-    [PageTypes.welcome]: WelcomePage,
-    [PageTypes.topic_title]: TopicTitlePage,
-    [PageTypes.plain]: BasicPage,
-    [PageTypes.question]: QuestionPage,
-    [PageTypes.results]: ResultsPage,
-    [PageTypes.talktous]: TalkToUsPage
+    'welcome': WelcomePage,
+    'topic_type': TopicTitlePage,
+    'plain': BasicPage,
+    'question': QuestionPage,
+    'results': ResultsPage,
+    'talktous': TalkToUsPage
 };
 
 const getRenderedPage = (id: number, pages: PageData[]) => {
@@ -47,7 +47,11 @@ const mapDispatchToProps = (dispatch: Dispatch<TutoralStateType>) => {
     };
 };
 
-const VisablePage = connect(mapStateToProps)(Page);
+const mergeProps = (mapStateToProps, mapDispatchToProps, ownProps: any) => {
+    
+}
+
+const VisablePage = connect(mapStateToProps, mapDispatchToProps)(Page);
 
 
 export default VisablePage;

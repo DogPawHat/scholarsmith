@@ -1,5 +1,6 @@
 import React from 'react';
 import WelcomePage from './WelcomePage';
+import QuestionPage from './QuestionPage';
 
 const Page: React.StatelessComponent<{
     pageContent?: React.ReactElement<any>;
