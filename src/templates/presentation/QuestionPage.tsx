@@ -5,27 +5,29 @@ const QuestionPage: React.StatelessComponent<QuestionPageData> = (props: Questio
     let currentAnswer = 0;
 
     const updateAnswer = (index: number) => {
-        return () => {
+        return (e: Event) => {
             currentAnswer = index;
         };
     };
 
-    const answerQuestion = () => {
+    const answerQuestion = (e: Event) => {
         props.submitQuestion(currentAnswer === props.correct);
+        e.stopPropagation();
+        e.preventDefault();
     };
 
     return (
         <div className='question'>
             <h3>Question { props.index + 1}</h3>
             <p className='stem'>{props.stem}</p>
-            <form name={ 'answers_' + props.index } id={ 'answers_' + props.index} data-answer = { props.correct }>
+            <form name={ 'answers_' + props.index } id={ 'answers_' + props.index} data-answer = { props.correct } onSubmit={answerQuestion} >
                 {props.answers.map((answer, i) => (
                     <div key={i}>
                         <input type='radio' name='radio' id={'radio_' + + props.index + '_' + i }  value={i} onClick={updateAnswer(i) } />
                         <label htmlFor={'radio_' + + props.index + '_' + i }>Answer {i + 1}</label>
                     </div>
                 )) }
-                <input type='submit' value='Submit' onSubmit={answerQuestion} />
+                <input type='submit' value='Submit' />
             </form>
             <p className='feedback'>{ props.feedback }</p>
         </div>

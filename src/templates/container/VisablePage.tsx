@@ -38,7 +38,8 @@ const getRenderedPage = (id: number, pages: PageData[]) => {
 const mapStateToProps = (state: TutoralStateType) => {
     return {
         childPage: getRenderedPage(state.CURRENT_PAGE, TutoralStateHelpers(state).GET_PAGES().toArray()),
-        pageData: TutoralStateHelpers(state).GET_PAGES().get(state.CURRENT_PAGE)
+        pageData: TutoralStateHelpers(state).GET_PAGES().get(state.CURRENT_PAGE),
+        score: () => { return state.CURRENT_SCORE; }
     };
 };
 
@@ -50,13 +51,18 @@ const mapDispatchToProps = (dispatch: Dispatch<TutoralStateType>) => {
     };
 };
 
-const mergeProps = (mapStateToPropsResult: { pageData: AnyPageData, childPage: React.StatelessComponent<any> }, mapDispatchToPropsResult: { submitQuestion: (answer: boolean) => void }, ownProps: Object) => {
+const mergeProps = (mapStateToPropsResult: { pageData: AnyPageData, childPage: React.StatelessComponent<any>, score: () => number }, mapDispatchToPropsResult: { submitQuestion: (answer: boolean) => void }, ownProps: Object) => {
 
     return {
         childPage: mapStateToPropsResult.childPage,
-        pageData: mapStateToPropsResult.pageData.type === 'question'
-            ? Object.assign({}, mapStateToPropsResult.pageData, { submitQuestion: mapDispatchToPropsResult.submitQuestion })
-            : mapStateToPropsResult.pageData
+        pageData: Object.assign(
+            {},
+            mapStateToPropsResult.pageData,
+            {
+                submitQuestion: mapDispatchToPropsResult.submitQuestion,
+                score: mapStateToPropsResult.score
+            }
+        )
     };
 };
 

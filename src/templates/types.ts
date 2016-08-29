@@ -50,7 +50,7 @@ export interface QuestionPageData extends PageData {
 };
 
 export interface ResultsData {
-    score: string;
+    score: () => string;
 }
 
 export type AnyTopicPageData = TopicTitlePageData | BasicPageData;

@@ -5,7 +5,7 @@ const ResultsPage: React.StatelessComponent<ResultsData> = (props: ResultsData) 
     return (
         <div className='results page'>
             <h1>Results</h1>
-            <p>{ props.score }</p>
+            <p>{ props.score() }</p>
         </div>
     );
 };
