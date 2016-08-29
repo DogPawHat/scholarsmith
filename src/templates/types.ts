@@ -98,6 +98,11 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
         );
     }, GET_PAGE_LENGTH = () => {
         return GET_PAGES().size;
+    }, GET_PROPER_SCORE = () => {
+        // Calculate the Hammings weight of the score. TODO: Make sure this works outside of 32 bit
+        let v = state.CURRENT_SCORE - ((state.CURRENT_SCORE >> 1) & 0x55555555);
+        v = (v & 0x33333333) + ((v >> 2) & 0x33333333);
+        return ((v + (v >> 4) & 0xF0F0F0F) * 0x1010101) >> 24;
     };
 
     return {
@@ -105,6 +110,7 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
         GET_TOPIC_TITLE_PAGE,
         GET_ALL_TOPIC_TITLES,
         GET_PAGES,
-        GET_PAGE_LENGTH
+        GET_PAGE_LENGTH,
+        GET_PROPER_SCORE
     };
 };

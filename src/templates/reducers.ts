@@ -37,7 +37,8 @@ const currentPageHandlers: HandlerCollectionType = {
 const courseDataHandlers: HandlerCollectionType = {};
 const currentScoreHandlers: HandlerCollectionType = {
     ANSWER_QUESTION: (state: number, action: AnswerQuestionAction) => {
-        return action.correct ? state + 1 : state;
+        let correctNum = action.correct ? 1 : 0;
+        return(state | (correctNum << action.question_key));
     }
 };
 

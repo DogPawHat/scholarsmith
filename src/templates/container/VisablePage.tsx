@@ -39,7 +39,7 @@ const mapStateToProps = (state: TutoralStateType) => {
     return {
         childPage: getRenderedPage(state.CURRENT_PAGE, TutoralStateHelpers(state).GET_PAGES().toArray()),
         pageData: TutoralStateHelpers(state).GET_PAGES().get(state.CURRENT_PAGE),
-        score: () => { return state.CURRENT_SCORE; }
+        score: () => { return TutoralStateHelpers(state).GET_PROPER_SCORE(); }
     };
 };
 
