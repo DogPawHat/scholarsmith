@@ -72,7 +72,7 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
     }, GET_TOPIC_TITLE_PAGE = () => {
         if (CURRENT_TOPIC() !== -1) {
             return state.COURSE_DATA.pages.findIndex((page: AnyTopicPageData) => {
-                return (page.topic_id === CURRENT_TOPIC() && page.type === PageTypes.topic_title);
+                return (page.topic_id === CURRENT_TOPIC() && page.type === 'topic_title');
             });
         } else {
             return -1;
@@ -80,7 +80,7 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
     }, GET_ALL_TOPIC_TITLES = () => {
         const title_pages =
             state.COURSE_DATA.pages.filter((page) => {
-                return page.type === PageTypes.topic_title;
+                return page.type === 'topic_title';
             }) as TopicTitlePageData[];
         return Immutable.Map<number, number>().withMutations((map) => {
             for (let page of title_pages) {
@@ -90,10 +90,10 @@ export const TutoralStateHelpers = (state: TutoralStateType) => {
     }, GET_PAGES = () => {
         return Immutable.List<AnyPageData>().withMutations(
             (list) => {
-                list.push({ type: PageTypes.welcome });
+                list.push({ type: 'welcome' });
                 list.push(...state.COURSE_DATA.pages);
-                list.push({ type: PageTypes.results });
-                list.push({ type: PageTypes.talktous });
+                list.push({ type: 'results' });
+                list.push({ type: 'talktous' });
             }
         );
     }, GET_PAGE_LENGTH = () => {

@@ -18,10 +18,13 @@ const QuestionPage: React.StatelessComponent<QuestionPageData> = (props: Questio
         <div className='question'>
             <h3>Question { props.index + 1}</h3>
             <p className='stem'>{props.stem}</p>
-            <form name='answers_{props.index}' id='answers_{props.index}' data-answer='{props.correct}'>
-                {props.answers.map((answer, i) => {
-                    <input type='radio' name='radio' key={i} value={i} onClick={updateAnswer(i)}>{ answer }</input>;
-                }) }
+            <form name={ 'answers_' + props.index } id={ 'answers_' + props.index} data-answer = { props.correct }>
+                {props.answers.map((answer, i) => (
+                    <div key={i}>
+                        <input type='radio' name='radio' id={'radio_' + + props.index + '_' + i }  value={i} onClick={updateAnswer(i) } />
+                        <label htmlFor={'radio_' + + props.index + '_' + i }>Answer {i + 1}</label>
+                    </div>
+                )) }
                 <input type='submit' value='Submit' onSubmit={answerQuestion} />
             </form>
             <p className='feedback'>{ props.feedback }</p>

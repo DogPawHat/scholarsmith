@@ -12,6 +12,8 @@ import TalkToUsPage from '../presentation/TalkToUsPage';
 import Page from '../presentation/Page';
 
 import {
+    AnyPageData,
+    QuestionPageData,
     PageData,
     PageTypes,
     TutoralStateType,
@@ -22,7 +24,7 @@ import {createAnswerQuestionAction} from '../actions';
 
 const RenderedPageTypes = {
     'welcome': WelcomePage,
-    'topic_type': TopicTitlePage,
+    'topic_title': TopicTitlePage,
     'plain': BasicPage,
     'question': QuestionPage,
     'results': ResultsPage,
@@ -33,9 +35,10 @@ const getRenderedPage = (id: number, pages: PageData[]) => {
     return RenderedPageTypes[pages[id].type];
 };
 
-const mapStateToProps: (state: TutoralStateType) => { pageContent: React.ReactElement<PageData> } = (state: TutoralStateType) => {
+const mapStateToProps = (state: TutoralStateType) => {
     return {
-        pageContent: getRenderedPage(state.CURRENT_PAGE, TutoralStateHelpers(state).GET_PAGES().toArray())
+        childPage: getRenderedPage(state.CURRENT_PAGE, TutoralStateHelpers(state).GET_PAGES().toArray()),
+        pageData: TutoralStateHelpers(state).GET_PAGES().get(state.CURRENT_PAGE)
     };
 };
 
@@ -47,11 +50,17 @@ const mapDispatchToProps = (dispatch: Dispatch<TutoralStateType>) => {
     };
 };
 
-const mergeProps = (mapStateToProps, mapDispatchToProps, ownProps: any) => {
-    
-}
+const mergeProps = (mapStateToPropsResult: { pageData: AnyPageData, childPage: React.StatelessComponent<any> }, mapDispatchToPropsResult: { submitQuestion: (answer: boolean) => void }, ownProps: Object) => {
 
-const VisablePage = connect(mapStateToProps, mapDispatchToProps)(Page);
+    return {
+        childPage: mapStateToPropsResult.childPage,
+        pageData: mapStateToPropsResult.pageData.type === 'question'
+            ? Object.assign({}, mapStateToPropsResult.pageData, { submitQuestion: mapDispatchToPropsResult.submitQuestion })
+            : mapStateToPropsResult.pageData
+    };
+};
+
+const VisablePage = connect(mapStateToProps, mapDispatchToProps, mergeProps)(Page);
 
 
 export default VisablePage;
