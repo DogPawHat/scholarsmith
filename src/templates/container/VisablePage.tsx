@@ -45,13 +45,13 @@ const mapStateToProps = (state: TutoralStateType) => {
 
 const mapDispatchToProps = (dispatch: Dispatch<TutoralStateType>) => {
     return {
-        submitQuestion(question_key: number, answer: string, correct: boolean) {
+        submitQuestion: (question_key: number, answer: string, correct: boolean) => {
             dispatch(createAnswerQuestionAction(question_key, answer, correct));
         }
     };
 };
 
-const mergeProps = (mapStateToPropsResult: { pageData: AnyPageData, childPage: React.StatelessComponent<any>, score: () => number }, mapDispatchToPropsResult: { submitQuestion: (answer: boolean) => void }, ownProps: Object) => {
+const mergeProps = (mapStateToPropsResult: { pageData: AnyPageData, childPage: React.StatelessComponent<any>, score: () => number }, mapDispatchToPropsResult: { submitQuestion: (question_key: number, answer: string, correct: boolean) => void }, ownProps: Object) => {
 
     return {
         childPage: mapStateToPropsResult.childPage,

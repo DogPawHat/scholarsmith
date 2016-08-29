@@ -46,7 +46,7 @@ export interface QuestionPageData extends PageData {
     correct: number;
     feedback: string;
     index: number;
-    submitQuestion?: (answer: boolean) => void;
+    submitQuestion?: (question_key: number, answer: string, correct: boolean) => void;
 };
 
 export interface ResultsData {
