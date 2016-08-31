@@ -7,16 +7,17 @@ import Page from '../src/templates/presentation/Page';
 
 
 const testPage: BasicPageData = {
-    type: "plain",
-    __content: "Second!",
+    type: 'plain',
+    __content: 'Second!',
     topic_id: 1
-}
+};
 
 const getPageInPage = () => {
     return {
-        pageContent: BasicPage(testPage)
-    }
-}
+        childPage: BasicPage,
+        pageData: testPage
+    };
+};
 
 test('should have children', (t) => {
     const wrapper = shallow(Page(getPageInPage()));

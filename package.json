@@ -64,6 +64,8 @@
     "enzyme": "^2.4.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "foundation-sites": "^6.2.3",
+    "glup": "^1.0.14",
+    "gulp-ava": "^0.14.1",
     "immutable": "^3.8.1",
     "js-yaml": "^3.6.1",
     "jsdom": "^9.4.1",

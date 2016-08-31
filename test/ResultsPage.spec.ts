@@ -6,7 +6,7 @@ import ResultsPage from '../src/templates/presentation/ResultsPage';
 
 const testScore = (t: ContextualTestContext, SCORE: string ) => {
     const data: ResultsData = {
-        score: SCORE
+        score: () => {return SCORE;}
     }
 
     const wrapper = shallow(ResultsPage(data));
