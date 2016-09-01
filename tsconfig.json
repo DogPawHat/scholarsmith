@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "target": "es2015",
-        "module": "es2015",
-        "jsx": "preserve",
+        "target": "es5",
+        "module": "commonjs",
+        "jsx": "react",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "sourceMap": false,
@@ -15,8 +15,7 @@
         "dist"
     ],
     "awesomeTypescriptLoaderOptions": {
-        "useBabel": true,
-        "useCache": true
+        "useBabel": false
     },
     "compileOnSave": false,
     "compileOnBuild": false
