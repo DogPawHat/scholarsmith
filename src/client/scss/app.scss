@@ -7,15 +7,13 @@
     box-sizing: border-box;
 }
 
-body{
-    background-color: lightgoldenrodyellow;
-}
-
 .page_container{
-    @extend .column;
-    @extend .large-8;
-    margin: 2% 16% 1%;
+    margin: 6vmin 7vmin 3vmin;
+    padding: 2vmin;
+    width: auto;
     border: 1px solid black;
+    border-radius: 5px;
+    
 }
 
 ul#pageselect{
