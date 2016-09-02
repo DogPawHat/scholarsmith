@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
+        "target": "es6",
+        "module": "es6",
         "jsx": "react",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
@@ -15,7 +15,8 @@
         "dist"
     ],
     "awesomeTypescriptLoaderOptions": {
-        "useBabel": false
+        "useBabel": true,
+        "useCashe": false
     },
     "compileOnSave": false,
     "compileOnBuild": false

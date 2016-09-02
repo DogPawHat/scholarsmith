@@ -3485,7 +3485,7 @@ table.hover tr:nth-of-type(even):hover {
 
 .page_container {
   width: 82%;
-  margin: 0 14%; }
+  margin: 8% 14% 0; }
 
 ul#pageselect {
   width: 100%; }

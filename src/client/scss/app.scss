@@ -7,11 +7,15 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: lightgoldenrodyellow;
+}
+
 .page_container{
     @extend .column;
     @extend .large-8;
-    width: 82%;
-    margin: 0 14%;
+    margin: 2% 16% 1%;
+    border: 1px solid black;
 }
 
 ul#pageselect{

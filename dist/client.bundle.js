@@ -227,25 +227,40 @@
 	var cachedSetTimeout;
 	var cachedClearTimeout;
 	
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
 	(function () {
 	    try {
-	        cachedSetTimeout = setTimeout;
-	    } catch (e) {
-	        cachedSetTimeout = function () {
-	            throw new Error('setTimeout is not defined');
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
 	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
 	    }
 	    try {
-	        cachedClearTimeout = clearTimeout;
-	    } catch (e) {
-	        cachedClearTimeout = function () {
-	            throw new Error('clearTimeout is not defined');
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
 	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
 	    }
 	} ())
 	function runTimeout(fun) {
 	    if (cachedSetTimeout === setTimeout) {
 	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
 	        return setTimeout(fun, 0);
 	    }
 	    try {
@@ -266,6 +281,11 @@
 	function runClearTimeout(marker) {
 	    if (cachedClearTimeout === clearTimeout) {
 	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
 	        return clearTimeout(marker);
 	    }
 	    try {
@@ -21361,20 +21381,7 @@
 	        CURRENT_SCORE: 0
 	    };
 	    var myStore = (0, _redux.createStore)(_reducers2.default, initialCurrentState, window.devToolsExtension && window.devToolsExtension());
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            _reactRedux.Provider,
-	            { store: myStore },
-	            _react2.default.createElement(_VisablePage2.default, null)
-	        ),
-	        _react2.default.createElement(
-	            _reactRedux.Provider,
-	            { store: myStore },
-	            _react2.default.createElement(_ActivePageSelect2.default, null)
-	        )
-	    );
+	    return _react2.default.createElement("div", null, _react2.default.createElement(_reactRedux.Provider, { store: myStore }, _react2.default.createElement(_VisablePage2.default, null)), _react2.default.createElement(_reactRedux.Provider, { store: myStore }, _react2.default.createElement(_ActivePageSelect2.default, null)));
 	};
 	exports.default = InnerBody;
 
@@ -23742,11 +23749,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var WelcomePage = function WelcomePage(props) {
-	    return _react2.default.createElement(
-	        'h1',
-	        { className: 'page current' },
-	        'WELCOME'
-	    );
+	    return _react2.default.createElement("h1", { className: 'page current' }, "WELCOME");
 	};
 	exports.default = WelcomePage;
 
@@ -23770,11 +23773,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var TopicTitlePage = function TopicTitlePage(props) {
-	    return _react2.default.createElement(
-	        'h2',
-	        { className: 'page' },
-	        props.title
-	    );
+	    return _react2.default.createElement("h2", { className: 'page' }, props.title);
 	};
 	exports.default = TopicTitlePage;
 
@@ -23806,7 +23805,7 @@
 	};
 	var BasicPage = function BasicPage(props) {
 	    var innerHtml = getDangrousHtmlObject(props.__content);
-	    return _react2.default.createElement('article', { className: 'page', dangerouslySetInnerHTML: innerHtml });
+	    return _react2.default.createElement("article", { className: 'page', dangerouslySetInnerHTML: innerHtml });
 	};
 	exports.default = BasicPage;
 
@@ -25137,44 +25136,9 @@
 	        e.stopPropagation();
 	        e.preventDefault();
 	    };
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'question' },
-	        _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Question ',
-	            props.index + 1
-	        ),
-	        _react2.default.createElement(
-	            'p',
-	            { className: 'stem' },
-	            props.stem
-	        ),
-	        _react2.default.createElement(
-	            'form',
-	            { name: 'answers_' + props.index, id: 'answers_' + props.index, 'data-answer': props.correct, onSubmit: answerQuestion },
-	            props.answers.map(function (answer, i) {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { key: i },
-	                    _react2.default.createElement('input', { type: 'radio', name: 'radio', id: 'radio_' + +props.index + '_' + i, value: i, onClick: updateAnswer(i) }),
-	                    _react2.default.createElement(
-	                        'label',
-	                        { htmlFor: 'radio_' + +props.index + '_' + i },
-	                        'Answer ',
-	                        i + 1
-	                    )
-	                );
-	            }),
-	            _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
-	        ),
-	        _react2.default.createElement(
-	            'p',
-	            { className: 'feedback' },
-	            props.feedback
-	        )
-	    );
+	    return _react2.default.createElement("div", { className: 'question' }, _react2.default.createElement("h3", null, "Question ", props.index + 1), _react2.default.createElement("p", { className: 'stem' }, props.stem), _react2.default.createElement("form", { name: 'answers_' + props.index, id: 'answers_' + props.index, "data-answer": props.correct, onSubmit: answerQuestion }, props.answers.map(function (answer, i) {
+	        return _react2.default.createElement("div", { key: i }, _react2.default.createElement("input", { type: 'radio', name: 'radio', id: 'radio_' + +props.index + '_' + i, value: i, onClick: updateAnswer(i) }), _react2.default.createElement("label", { htmlFor: 'radio_' + +props.index + '_' + i }, "Answer ", i + 1));
+	    }), _react2.default.createElement("input", { type: 'submit', value: 'Submit' })), _react2.default.createElement("p", { className: 'feedback' }, props.feedback));
 	};
 	exports.default = QuestionPage;
 
@@ -25188,7 +25152,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	        value: true
+	    value: true
 	});
 	
 	var _react = __webpack_require__(/*! react */ 169);
@@ -25198,20 +25162,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var ResultsPage = function ResultsPage(props) {
-	        return _react2.default.createElement(
-	                'div',
-	                { className: 'results page' },
-	                _react2.default.createElement(
-	                        'h1',
-	                        null,
-	                        'Results'
-	                ),
-	                _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        props.score()
-	                )
-	        );
+	    return _react2.default.createElement("div", { className: 'results page' }, _react2.default.createElement("h1", null, "Results"), _react2.default.createElement("p", null, props.score()));
 	};
 	exports.default = ResultsPage;
 
@@ -25235,15 +25186,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var TalkToUsPage = function TalkToUsPage(props) {
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'page talk_to_us' },
-	        _react2.default.createElement(
-	            'p',
-	            null,
-	            'Please Talk to us'
-	        )
-	    );
+	    return _react2.default.createElement("div", { className: 'page talk_to_us' }, _react2.default.createElement("p", null, "Please Talk to us"));
 	};
 	exports.default = TalkToUsPage;
 
@@ -25266,12 +25209,18 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	var __assign = undefined && undefined.__assign || Object.assign || function (t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) {
+	            if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+	        }
+	    }
+	    return t;
+	};
+	
 	var Page = function Page(props) {
-	    return _react2.default.createElement(
-	        'section',
-	        { className: 'page_container' },
-	        _react2.default.createElement(props.childPage, props.pageData)
-	    );
+	    return _react2.default.createElement("section", { className: 'page_container' }, _react2.default.createElement(props.childPage, __assign({}, props.pageData)));
 	};
 	exports.default = Page;
 
@@ -30483,39 +30432,9 @@
 	    var completeGoForward = function completeGoForward() {
 	        props.goForward(props.pageLength);
 	    };
-	    return _react2.default.createElement(
-	        'ul',
-	        { id: 'pageselect' },
-	        _react2.default.createElement(
-	            'li',
-	            { className: 'arrow', onClick: props.goBack },
-	            _react2.default.createElement(
-	                'a',
-	                { href: '#' },
-	                '« '
-	            )
-	        ),
-	        props.topics.map(function (topic, i) {
-	            return _react2.default.createElement(
-	                'li',
-	                { key: i },
-	                _react2.default.createElement(
-	                    'a',
-	                    { onClick: props.createGoToTopic(props.topics, i) },
-	                    i + 1
-	                )
-	            );
-	        }).toArray(),
-	        _react2.default.createElement(
-	            'li',
-	            { className: 'arrow', onClick: completeGoForward },
-	            _react2.default.createElement(
-	                'a',
-	                { href: '#' },
-	                '» '
-	            )
-	        )
-	    );
+	    return _react2.default.createElement("ul", { id: 'pageselect' }, _react2.default.createElement("li", { className: 'arrow', onClick: props.goBack }, _react2.default.createElement("a", { href: '#' }, "« ")), props.topics.map(function (topic, i) {
+	        return _react2.default.createElement("li", { key: i }, _react2.default.createElement("a", { onClick: props.createGoToTopic(props.topics, i) }, i + 1));
+	    }).toArray(), _react2.default.createElement("li", { className: 'arrow', onClick: completeGoForward }, _react2.default.createElement("a", { href: '#' }, "» ")));
 	};
 	exports.default = PageSelect;
 

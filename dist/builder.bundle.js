@@ -24910,6 +24910,7 @@
 	        try {
 	            return new RegExp(pattern, flags);
 	        } catch (exception) {
+	            /* istanbul ignore next */
 	            return null;
 	        }
 	    }
@@ -25106,7 +25107,7 @@
 	            return value && (value.length > 1) && (value[0] >= 'a') && (value[0] <= 'z');
 	        }
 	
-	        previous = extra.tokenValues[extra.tokens.length - 1];
+	        previous = extra.tokenValues[extra.tokenValues.length - 1];
 	        regex = (previous !== null);
 	
 	        switch (previous) {
@@ -29292,7 +29293,7 @@
 	    }
 	
 	    // Sync with *.json manifests.
-	    exports.version = '2.7.2';
+	    exports.version = '2.7.3';
 	
 	    exports.tokenize = tokenize;
 	
@@ -30218,7 +30219,7 @@
   \***************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -30231,30 +30232,10 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Head = function Head(props) {
-	    return _react2.default.createElement(
-	        'head',
-	        null,
-	        _react2.default.createElement('meta', { charSet: 'utf-8' }),
-	        _react2.default.createElement(
-	            'title',
-	            null,
-	            props.title
-	        ),
-	        _react2.default.createElement('link', { rel: 'stylesheet', href: 'styles.css' })
-	    );
+	    return _react2.default.createElement("head", null, _react2.default.createElement("meta", { charSet: 'utf-8' }), _react2.default.createElement("title", null, props.title), _react2.default.createElement("link", { rel: 'stylesheet', href: 'styles.css' }));
 	};
 	var Body = function Body(props) {
-	    return _react2.default.createElement(
-	        'html',
-	        { lang: 'en' },
-	        _react2.default.createElement(Head, { title: props.title }),
-	        _react2.default.createElement(
-	            'body',
-	            null,
-	            _react2.default.createElement('div', { id: 'root' }),
-	            _react2.default.createElement('script', { src: 'client.bundle.js' })
-	        )
-	    );
+	    return _react2.default.createElement("html", { lang: 'en' }, _react2.default.createElement(Head, { title: props.title }), _react2.default.createElement("body", null, _react2.default.createElement("div", { id: 'root' }), _react2.default.createElement("script", { src: 'client.bundle.js' })));
 	};
 	exports.default = Body;
 
