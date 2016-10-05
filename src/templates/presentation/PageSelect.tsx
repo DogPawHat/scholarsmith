@@ -2,12 +2,12 @@ import React from 'react';
 import Immutable from 'immutable';
 
 const PageSelect = (props: {
-    goBack?: () => void,
-    goForward?: (page_length: number) => void,
-    createGoToTopic?: (
+    goBack?(): void,
+    goForward?(page_length: number): void,
+    createGoToTopic?(
         topics: Immutable.Map<number, number>,
         topic: number
-    ) => void,
+    ): () => void,
     pageLength?: number,
     topics?: Immutable.Map<number, number>
 }) => {
