@@ -10,7 +10,7 @@ const BasicPage: React.StatelessComponent<BasicPageData> = (props: BasicPageData
 
     const innerHtml = getDangrousHtmlObject(props.__content);
     return (
-        <article className='page' dangerouslySetInnerHTML={innerHtml} ></article>
+        <article className='page basic' dangerouslySetInnerHTML={innerHtml} ></article>
     );
 };
 

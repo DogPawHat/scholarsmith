@@ -23749,7 +23749,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var WelcomePage = function WelcomePage(props) {
-	    return _react2.default.createElement("h1", { className: 'page current' }, "WELCOME");
+	    return _react2.default.createElement("h1", { className: 'page welcome' }, "WELCOME");
 	};
 	exports.default = WelcomePage;
 
@@ -23773,7 +23773,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var TopicTitlePage = function TopicTitlePage(props) {
-	    return _react2.default.createElement("h2", { className: 'page' }, props.title);
+	    return _react2.default.createElement("h2", { className: 'page topic_title' }, props.title);
 	};
 	exports.default = TopicTitlePage;
 
@@ -23805,7 +23805,7 @@
 	};
 	var BasicPage = function BasicPage(props) {
 	    var innerHtml = getDangrousHtmlObject(props.__content);
-	    return _react2.default.createElement("article", { className: 'page', dangerouslySetInnerHTML: innerHtml });
+	    return _react2.default.createElement("article", { className: 'page basic', dangerouslySetInnerHTML: innerHtml });
 	};
 	exports.default = BasicPage;
 
@@ -25136,7 +25136,7 @@
 	        e.stopPropagation();
 	        e.preventDefault();
 	    };
-	    return _react2.default.createElement("div", { className: 'question' }, _react2.default.createElement("h3", null, "Question ", props.index + 1), _react2.default.createElement("p", { className: 'stem' }, props.stem), _react2.default.createElement("form", { name: 'answers_' + props.index, id: 'answers_' + props.index, "data-answer": props.correct, onSubmit: answerQuestion }, props.answers.map(function (answer, i) {
+	    return _react2.default.createElement("article", { className: 'page question' }, _react2.default.createElement("h3", null, "Question ", props.index + 1), _react2.default.createElement("p", { className: 'stem' }, props.stem), _react2.default.createElement("form", { name: 'answers_' + props.index, id: 'answers_' + props.index, "data-answer": props.correct, onSubmit: answerQuestion }, props.answers.map(function (answer, i) {
 	        return _react2.default.createElement("div", { key: i }, _react2.default.createElement("input", { type: 'radio', name: 'radio', id: 'radio_' + +props.index + '_' + i, value: i, onClick: updateAnswer(i) }), _react2.default.createElement("label", { htmlFor: 'radio_' + +props.index + '_' + i }, "Answer ", i + 1));
 	    }), _react2.default.createElement("input", { type: 'submit', value: 'Submit' })), _react2.default.createElement("p", { className: 'feedback' }, props.feedback));
 	};
@@ -25162,7 +25162,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var ResultsPage = function ResultsPage(props) {
-	    return _react2.default.createElement("div", { className: 'results page' }, _react2.default.createElement("h1", null, "Results"), _react2.default.createElement("p", null, props.score()));
+	    return _react2.default.createElement("div", { className: 'page results' }, _react2.default.createElement("h1", null, "Results"), _react2.default.createElement("p", null, props.score()));
 	};
 	exports.default = ResultsPage;
 

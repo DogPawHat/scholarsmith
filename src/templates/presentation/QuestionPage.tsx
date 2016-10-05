@@ -17,7 +17,7 @@ const QuestionPage: React.StatelessComponent<QuestionPageData> = (props: Questio
     };
 
     return (
-        <div className='question'>
+        <article className='page question'>
             <h3>Question { props.index + 1}</h3>
             <p className='stem'>{props.stem}</p>
             <form name={ 'answers_' + props.index } id={ 'answers_' + props.index} data-answer = { props.correct } onSubmit={answerQuestion} >
@@ -30,7 +30,7 @@ const QuestionPage: React.StatelessComponent<QuestionPageData> = (props: Questio
                 <input type='submit' value='Submit' />
             </form>
             <p className='feedback'>{ props.feedback }</p>
-        </div>
+        </article>
     );
 };
 

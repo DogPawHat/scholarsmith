@@ -3,7 +3,7 @@ import { PageData } from '../types';
 
 const WelcomePage: React.StatelessComponent<PageData> = (props: PageData) => {
     return (
-        <h1 className='page current'>WELCOME</h1>
+        <h1 className='page welcome'>WELCOME</h1>
     );
 };
 
