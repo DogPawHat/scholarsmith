@@ -6,3 +6,4 @@ coverage
 **/*.js
 **/*.jsx
 *.map
+npm-debug*.log.*
