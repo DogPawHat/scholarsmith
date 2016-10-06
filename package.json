@@ -42,7 +42,7 @@
     "sourceMap": true
   },
   "author": "",
-  "license": "UNLICENCED",
+  "license": "MIT",
   "devDependencies": {
     "ava": "^0.16.0",
     "awesome-typescript-loader": "^2.2.4",
