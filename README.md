@@ -4,28 +4,35 @@ Static Generator of E-Learning Content
 
 Mostly a learning exercise for React, Redux, Typescript, ES6 and a bunch of other stuff.
 
-Code is made avaliable under the terms of the MIT Licence.
+Code is made available under the terms of the MIT Licence.
 
-Don't use this for anything your salary depends on, it will probaly not go well
+Don't use this for anything your salary depends on, it will probably not go well
 
-## Archteture
+## Architecture
 
 Repo atm consists of the template and building code in `src`, what unit tests there are in `test,` and a sample course in `tutorial`.
 
-The tutorial folder had a strict structure that needs to be followed or else the course will fail to build (and fail pretty hard in current iteration). Structior is as follows
+The tutorial folder had a strict structure that needs to be followed or else the course will fail to build. Structure is as follows
 
 ```
 tutorial
     |
-    |-topics
+    |- topics
     |   |
-    |   |-topic1
+    |   |- topic1
+    |   |   |
+    |   |   |- *.md files (pages)
+    |   |
+    |   |- topic2
+    |   |
+    |   |- etc...
     |
+    |- questions.yaml
 
 TODO: Rest of this graph
 ```
 
-Pages consist of single .md files with yaml front matter discribing the page. Questions are listed in the questions.yaml file.
+Pages consist of single .md files with yaml front matter describing the page. Questions are listed in the questions.yaml file.
 
 ## How to Run
 
