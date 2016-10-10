@@ -1,4 +1,4 @@
-import test from 'ava';
+import * as test from 'tape';
 import {NEXT_PAGE, PREV_PAGE, SET_PAGE, createNextPageAction, createPrevPageAction, createSetPageAction} from '../src/templates/actions';
 
 test('should return action of type NEXT_PAGE', (t) => {
