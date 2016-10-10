@@ -1,4 +1,4 @@
-import test from 'ava';
+import * as test from 'tape';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import TalkToUsPage from '../src/templates/presentation/TalkToUsPage';

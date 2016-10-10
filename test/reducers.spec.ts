@@ -1,4 +1,4 @@
-import test from 'ava';
+import * as test from 'tape';
 import reducers from '../src/templates/reducers';
 import {NEXT_PAGE, PREV_PAGE, SET_PAGE} from '../src/templates/actions';
 

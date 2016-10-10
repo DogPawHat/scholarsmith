@@ -1,4 +1,4 @@
-import test from 'ava';
+import * as test from 'tape';
 import Immutable from 'immutable';
 import { TutoralStateType, TutoralStateHelpers, ContextData, AnyTopicPageData, AnyPageData} from '../src/templates/types';
 
