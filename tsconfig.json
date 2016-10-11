@@ -5,7 +5,10 @@
             "es2015"
         ],
         "jsx": "react",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     },
     "exclude": [
         "node_modules",
@@ -13,8 +16,5 @@
         "src/templates/container/ActiveQuestionPage.tsx"
     ],
     "compileOnSave": false,
-    "compileOnBuild": false,
-    "awesomeTypescriptLoaderOptions": {
-        "compiler": "ntypescript"
-    }
+    "compileOnBuild": false
 }

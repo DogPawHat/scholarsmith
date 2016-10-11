@@ -7,7 +7,7 @@ var commonModule = {
         { test: /\.ts(x?)$/, loader : 'tslint' }
     ],
     loaders: [
-        { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+        { test: /\.tsx?$/, loader: 'ts-loader' },
         { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass') }
     ]
 };
