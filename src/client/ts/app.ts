@@ -1,10 +1,10 @@
 import '../scss/app.scss';
 
-import React from 'react';
+import * as React from 'react';
 import {render} from 'react-dom';
 import InnerBody from '../../templates/container/InnerBody';
 import { ContextData } from '../../templates/types';
-import axios from 'axios';
+import * as axios from 'axios';
 
 
 axios.get('props.json').then((value) => {

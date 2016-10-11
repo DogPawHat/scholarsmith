@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {ContextData} from '../types';
 
 const Head = (props: { title: string }) => {

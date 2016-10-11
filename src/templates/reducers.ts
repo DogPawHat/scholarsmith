@@ -1,5 +1,5 @@
 import {Reducer, Action, combineReducers, Store} from 'redux';
-import Immutable from 'immutable';
+import * as Immutable from 'immutable';
 import { AnswerQuestionAction, SetPageAction, PageAction} from './actions';
 import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData, AnyPageData} from './types';
 

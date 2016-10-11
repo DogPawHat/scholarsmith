@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import QuestionPage from '../presentation/QuestionPage';

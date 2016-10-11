@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import {BasicPageData} from '../types';
-import Marked from 'marked';
+import * as Marked from 'marked';
 
 const getDangrousHtmlObject = (content: string) => {
     return { __html: Marked(content) };

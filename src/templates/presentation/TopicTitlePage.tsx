@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {TopicTitlePageData} from '../types';
 
 const TopicTitlePage: React.StatelessComponent<TopicTitlePageData> = (props: TopicTitlePageData) => {

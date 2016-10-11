@@ -1,19 +1,19 @@
-import React from 'react';
-import Immutable from 'immutable';
+import * as React from 'react';
+import * as Immutable from 'immutable';
 import { Dispatch, Store } from 'redux';
-import { connect, IMapDispatchToProps, IMapStateToProps} from 'react-redux';
+import { connect } from 'react-redux';
 import {createNextPageAction, createPrevPageAction, createSetPageAction} from '../actions';
 import { TutoralStateType, TutoralStateHelpers } from '../types';
 import PageSelect from '../presentation/PageSelect';
 
-const mapStateToProps: IMapStateToProps = (state: TutoralStateType) => {
+const mapStateToProps = (state: TutoralStateType) => {
     return {
         topics: TutoralStateHelpers(state).GET_ALL_TOPIC_TITLES(),
         pageLength: TutoralStateHelpers(state).GET_PAGE_LENGTH()
     };
 };
 
-const mapDispatchToProps: IMapDispatchToProps = (dispatch: Dispatch<TutoralStateType>) => {
+const mapDispatchToProps = (dispatch: Dispatch<TutoralStateType>) => {
     return {
         goBack() {
             dispatch(createPrevPageAction());

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {ResultsData} from '../types';
 
 const ResultsPage: React.StatelessComponent<ResultsData> = (props: ResultsData) => {

@@ -1,5 +1,5 @@
 import * as test from 'tape';
-import Immutable from 'immutable';
+import * as Immutable from 'immutable';
 import { TutoralStateType, TutoralStateHelpers, ContextData, AnyTopicPageData, AnyPageData} from '../src/templates/types';
 
 const courseData: ContextData = {

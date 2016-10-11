@@ -1,16 +1,16 @@
-import React from 'react';
+import * as React from 'react';
 import {QuestionPageData} from '../types';
 
-const QuestionPage: React.StatelessComponent<QuestionPageData> = (props: QuestionPageData) => {
+const QuestionPage: React.StatelessComponent<QuestionPageData> = (props) => {
     let currentAnswer = 0;
 
     const updateAnswer = (index: number) => {
-        return (e: React.FormEvent) => {
+        return (e: React.FormEvent<any>) => {
             currentAnswer = index;
         };
     };
 
-    const answerQuestion = (e: React.FormEvent) => {
+    const answerQuestion = (e: React.FormEvent<any>) => {
         props.submitQuestion(props.index, currentAnswer.toString(), currentAnswer === props.correct);
         e.stopPropagation();
         e.preventDefault();

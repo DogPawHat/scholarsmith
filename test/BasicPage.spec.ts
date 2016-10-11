@@ -1,5 +1,5 @@
 import * as test from 'tape';
-import React from 'react';
+import * as React from 'react';
 import { shallow, mount } from 'enzyme';
 import { BasicPageData} from '../src/templates/types';
 import BasicPage from '../src/templates/presentation/BasicPage';

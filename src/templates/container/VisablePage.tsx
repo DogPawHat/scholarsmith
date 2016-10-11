@@ -1,7 +1,7 @@
-import React from 'react';
-import {connect, IMapDispatchToProps, IMapStateToProps} from 'react-redux';
+import * as React from 'react';
+import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import Immutable from 'immutable';
+import * as Immutable from 'immutable';
 
 import WelcomePage from '../presentation/WelcomePage';
 import TopicTitlePage from '../presentation/TopicTitlePage';
@@ -31,7 +31,7 @@ const RenderedPageTypes = {
     'talktous': TalkToUsPage
 };
 
-const getRenderedPage = (id: number, pages: PageData[]) => {
+const getRenderedPage: (id: number, pages: AnyPageData[]) => React.StatelessComponent<AnyPageData> = (id, pages) => {
     return RenderedPageTypes[pages[id].type];
 };
 
@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch: Dispatch<TutoralStateType>) => {
     };
 };
 
-const mergeProps = (mapStateToPropsResult: { pageData: AnyPageData, childPage: React.StatelessComponent<any>, score: () => number }, mapDispatchToPropsResult: { submitQuestion: (question_key: number, answer: string, correct: boolean) => void }, ownProps: Object) => {
+const mergeProps = (mapStateToPropsResult, mapDispatchToPropsResult, ownProps) => {
 
     return {
         childPage: mapStateToPropsResult.childPage,

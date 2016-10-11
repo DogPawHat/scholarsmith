@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import yaml from 'js-yaml';
-import fm from 'yaml-front-matter';
+import * as React from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
+import {safeLoadAll, safeLoad} from 'js-yaml';
+import * as fm from 'yaml-front-matter';
 import { readdirSync, statSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { ContextData, AnyPageData, TopicPageData, TopicTitlePageData, BasicPageData, QuestionPageData} from '../templates/types';
@@ -15,7 +15,7 @@ const getDirectories = (srcpath: string) => {
 
 const parseQuestions = () => {
     let questions: QuestionPageData[] = [];
-    yaml.safeLoadAll(
+    safeLoadAll(
         readFileSync('./tutorial/questions.yaml').toString(),
         (doc: QuestionPageData) => {
             doc.type = 'question';
@@ -38,7 +38,7 @@ const parseTopics = () => {
                 'config.yaml')
         ).toString();
 
-        let configYaml = yaml.safeLoad(configFile);
+        let configYaml = safeLoad(configFile);
         pages.push(<TopicTitlePageData>{
             type: 'topic_title',
             topic_id: i,
@@ -76,7 +76,7 @@ const build = () => {
     };
 
     writeFileSync('./dist/props.json', JSON.stringify(context));
-    let indexHtml = ReactDOMServer.renderToStaticMarkup(Body(context));
+    let indexHtml = renderToStaticMarkup(Body(context));
     writeFileSync('./dist/index.html', indexHtml);
 };
 
