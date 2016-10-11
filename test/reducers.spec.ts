@@ -22,7 +22,7 @@ test('unrecognised actions should return same state', (t) => {
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
     t.is(newState.CURRENT_PAGE, oldState.CURRENT_PAGE);
-
+    t.end();
 });
 
 test('NEXT_PAGE should only change CURRENT_PAGE', (t) => {
@@ -54,6 +54,7 @@ test('NEXT_PAGE should only change CURRENT_PAGE', (t) => {
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
     t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
+    t.end();
 });
 
 
@@ -86,6 +87,7 @@ test('NEXT_PAGE should not go past page length', (t) => {
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
     t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
+    t.end();
 });
 
 test('PREV_PAGE should only change CURRENT_PAGE', (t) => {
@@ -116,7 +118,7 @@ test('PREV_PAGE should only change CURRENT_PAGE', (t) => {
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
     t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
-
+    t.end();
 });
 
 test('PREV_PAGE should not go below zero', (t) => {
@@ -147,7 +149,7 @@ test('PREV_PAGE should not go below zero', (t) => {
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
     t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
-
+    t.end();
 });
 
 test('SET_PAGE should only change CURRENT_PAGE', (t) => {
@@ -179,5 +181,5 @@ test('SET_PAGE should only change CURRENT_PAGE', (t) => {
     t.is(newState.CURRENT_SCORE, oldState.CURRENT_SCORE);
     t.is(newState.COURSE_DATA, oldState.COURSE_DATA);
     t.is(newState.CURRENT_PAGE, expectedState.CURRENT_PAGE);
-
+    t.end();
 });

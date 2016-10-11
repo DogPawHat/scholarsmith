@@ -75,26 +75,32 @@ const testState3: TutoralStateType = {
 
 test('should get the CURRENT_TOPIC at page 1', (t) => {
     t.is(TutoralStateHelpers(testState1).CURRENT_TOPIC(), 0);
+    t.end();
 });
 
 test('should get the CURRENT_TOPIC at page 3', (t) => {
     t.is(TutoralStateHelpers(testState2).CURRENT_TOPIC(), 1);
+    t.end();
 });
 
 test('should get the CURRENT_TOPIC at page 5', (t) => {
     t.is(TutoralStateHelpers(testState3).CURRENT_TOPIC(), -1);
+    t.end();
 });
 
 test('should GET_TOPIC_TITLE_PAGE at page 1', (t) => {
     t.is(TutoralStateHelpers(testState1).GET_TOPIC_TITLE_PAGE(), 0);
+    t.end();
 });
 
 test('should GET_TOPIC_TITLE_PAGE at page 3', (t) => {
     t.is(TutoralStateHelpers(testState2).GET_TOPIC_TITLE_PAGE(), 2);
+    t.end();
 });
 
 test('should GET_TOPIC_TITLE_PAGE at page 5', (t) => {
     t.is(TutoralStateHelpers(testState3).GET_TOPIC_TITLE_PAGE(), -1);
+    t.end();
 });
 
 test('should GET_ALL_TOPIC_TITLES', (t) => {
@@ -104,6 +110,7 @@ test('should GET_ALL_TOPIC_TITLES', (t) => {
     ]);
     t.deepEqual(TutoralStateHelpers(testState1).GET_ALL_TOPIC_TITLES(), expectedMap);
     t.deepEqual(TutoralStateHelpers(testState3).GET_ALL_TOPIC_TITLES(), expectedMap);
+    t.end();
 });
 
 test('should GET_PAGES', (t) => {
@@ -117,10 +124,12 @@ test('should GET_PAGES', (t) => {
         );
     t.deepEqual(TutoralStateHelpers(testState1).GET_PAGES(), expectedList);
     t.deepEqual(TutoralStateHelpers(testState3).GET_PAGES(), expectedList);
+    t.end();
 });
 
 test('should GET_PAGE_LENGTH', (t) => {
     const expectedLength = courseData.pages.length + 3;
     t.deepEqual(TutoralStateHelpers(testState1).GET_PAGE_LENGTH(), expectedLength);
     t.deepEqual(TutoralStateHelpers(testState3).GET_PAGE_LENGTH(), expectedLength);
+    t.end();
 });

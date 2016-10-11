@@ -1,3 +1,4 @@
+import './helpers/setup-test-env.ts';
 import * as test from 'tape';
 import * as React from 'react';
 import {shallow, mount} from 'enzyme';
@@ -85,6 +86,7 @@ test('test state 1', t => {
     t.is(providerOpts.wrapper.html().indexOf('Second!'), -1);
     providerOpts.testStore.dispatch(createNextPageAction(3));
     t.is(providerOpts.wrapper.html().indexOf('Third!'), -1);
+    t.end();
 });
 
 test('test state 2', t => {
@@ -97,4 +99,5 @@ test('test state 2', t => {
     t.is(providerOpts.wrapper.html().indexOf('Second!'), -1);
     providerOpts.testStore.dispatch(createPrevPageAction());
     t.is(providerOpts.wrapper.html().indexOf('Third!'), -1);
+    t.end();
 });

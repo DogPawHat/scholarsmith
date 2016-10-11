@@ -24,4 +24,5 @@ test('should have children', (t) => {
     t.is(wrapper.html().indexOf('Third!</p>'), -1);
     t.not(wrapper.html().indexOf('Second!</p>'), -1);
     t.is(wrapper.html().indexOf('Second!</p>') < wrapper.html().indexOf('</section>'), true);
+    t.end();
 });

@@ -13,4 +13,5 @@ test('should be welcoming', t => {
     const wrapper = shallow(TopicTitlePage(props));
     const header = wrapper.find('h2');
     t.is(header.text(), 'derp');
+    t.end();
 })

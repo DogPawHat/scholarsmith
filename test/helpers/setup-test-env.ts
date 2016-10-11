@@ -1,5 +1,15 @@
-import {jsdom} from 'jsdom';
+import * as jsdom from 'jsdom';
 
-global['document'] = jsdom('<body></body>');
-global['window'] = document.defaultView;
-global['navigator'] = window.navigator;
+const setupDom = () => {
+  if (typeof document !== 'undefined') {
+    return;
+  }
+
+  const doco = jsdom.jsdom('<html><body></body></html>');
+
+  global['document'] = doco;
+  global['window'] = doco.defaultView;
+  global['navigator'] = doco.defaultView.navigator;
+};
+
+setupDom();

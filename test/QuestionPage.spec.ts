@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme';
 import { QuestionPageData } from '../src/templates/types';
 import QuestionPage from '../src/templates/presentation/QuestionPage';
 
-test('should be welcoming 1', t =>{
+test('should be welcoming 1', t => {
     const STEM = 'this should be the title';
     const ANSWERS = [
         'is this the answer',
@@ -20,7 +20,7 @@ test('should be welcoming 1', t =>{
         correct: 2,
         feedback: FEEDBACK,
         index: 0
-    }
+    };
 
     const wrapper = shallow(QuestionPage(props));
     const stem = wrapper.find('.stem');
@@ -31,9 +31,10 @@ test('should be welcoming 1', t =>{
     t.is(stem.text(), STEM);
     t.is(feedback.text(), FEEDBACK);
     t.is(h3.text(), 'Question 1');
-})
+    t.end();
+});
 
-test('should be welcoming 2', t =>{
+test('should be welcoming 2', t => {
     const STEM = 'this is another title';
     const ANSWERS = [
         'is this the answer',
@@ -49,7 +50,7 @@ test('should be welcoming 2', t =>{
         correct: 2,
         feedback: FEEDBACK,
         index: 4
-    }
+    };
 
     const wrapper = shallow(QuestionPage(props));
     const stem = wrapper.find('.stem');
@@ -60,5 +61,6 @@ test('should be welcoming 2', t =>{
     t.is(stem.text(), STEM);
     t.is(feedback.text(), FEEDBACK);
     t.is(h3.text(), 'Question 5');
-})
+    t.end();
+});
 

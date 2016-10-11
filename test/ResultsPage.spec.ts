@@ -6,18 +6,20 @@ import ResultsPage from '../src/templates/presentation/ResultsPage';
 
 const testScore = (t: test.Test, SCORE: string ) => {
     const data: ResultsData = {
-        score: () => {return SCORE;}
-    }
+        score: () => {return SCORE; }
+    };
 
     const wrapper = shallow(ResultsPage(data));
     const score_p = wrapper.find('.results p');
     t.is(score_p.text(), SCORE);
-}
+};
 
 test('should show the score 1', t => {
     testScore(t, '40%');
-})
+    t.end();
+});
 
 test('should show the score 2', t => {
     testScore(t, '80%');
-})
+    t.end();
+});

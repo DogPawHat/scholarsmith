@@ -6,5 +6,6 @@ import WelcomePage from '../src/templates/presentation/WelcomePage';
 
 test('should be welcoming', t => {
     const wrapper = shallow(WelcomePage({type: 'welcome'}));
-    t.not(wrapper.html().indexOf('<h1 class="page current">WELCOME</h1>'), -1);
+    t.not(wrapper.html().indexOf('<h1 class="page welcome">WELCOME</h1>'), -1);
+    t.end();
 });
