@@ -1,7 +1,15 @@
 {
-  "name": "scholarsmith-react",
-  "version": "1.0.0",
-  "description": "",
+  "name": "scholarsmith",
+  "version": "2.0.0",
+  "repository": {
+    "url": "https://github.com/DogPawHat/scholarsmith",
+    "type": "git"
+  },
+  "author": {
+    "name": "Ciarán Curley",
+    "email": "ciaran.curley.11.11@gmail.com"
+  },
+  "description": "Static Generator of E-learning content",
   "main": "index.js",
   "scripts": {
     "prebuild": "webpack -d",
@@ -11,9 +19,6 @@
     "test": "tape -r ts-node/register ./test/*.spec.ts"
   },
   "nyc": {
-    "require": [
-      "ts-babel-node/register"
-    ],
     "extension": [
       ".tsx"
     ],
