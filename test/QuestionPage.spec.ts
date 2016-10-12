@@ -5,14 +5,14 @@ import { shallow, mount } from 'enzyme';
 import { QuestionPageData } from '../src/templates/types';
 import QuestionPage from '../src/templates/presentation/QuestionPage';
 
-const submitQuestionMockCorrect = (t: test.Test) => {
+const submitQuestionMockCorrectAndEndTest = (t: test.Test) => {
     return (question_key: number, answer: string, correct: boolean) => {
         t.true(correct);
         t.end();
     };
 };
 
-const submitQuestionMockIncorrect = (t: test.Test) => {
+const submitQuestionMockIncorrectAndEndTest = (t: test.Test) => {
     return (question_key: number, answer: string, correct: boolean) => {
         t.false(correct);
         t.end();
@@ -35,7 +35,7 @@ test('should be a question 1', t => {
         correct: 2,
         feedback: FEEDBACK,
         index: 0,
-        submitQuestion: submitQuestionMockCorrect(t)
+        submitQuestion: submitQuestionMockCorrectAndEndTest(t)
     };
 
     const wrapper = shallow(QuestionPage(props));
@@ -66,7 +66,7 @@ test('should be a question 2', t => {
         correct: 2,
         feedback: FEEDBACK,
         index: 4,
-        submitQuestion: submitQuestionMockCorrect(t)
+        submitQuestion: submitQuestionMockCorrectAndEndTest(t)
     };
 
     const wrapper = shallow(QuestionPage(props));
@@ -81,7 +81,7 @@ test('should be a question 2', t => {
     t.end();
 });
 
-test('should answer the question', t => {
+test('should answer the question correcly', t => {
     const STEM = 'this is another title';
     const ANSWERS = [
         'is this the answer',
@@ -97,11 +97,39 @@ test('should answer the question', t => {
         correct: 2,
         feedback: FEEDBACK,
         index: 4,
-        submitQuestion: submitQuestionMockCorrect(t)
+        submitQuestion: submitQuestionMockCorrectAndEndTest(t)
     };
 
     const wrapper = mount(QuestionPage(props)).find('.page');
     const inputAnswer = wrapper.find('#radio_4_2');
+    const form = wrapper.find('form');
+    t.equal(wrapper.length, 1);
+    t.equal(inputAnswer.length, 1);
+    inputAnswer.simulate('click');
+    form.simulate('submit');
+});
+
+test('should answer the question incorrectly', t => {
+    const STEM = 'this is another title';
+    const ANSWERS = [
+        'is this the answer',
+            'or is this',
+            'maybe this'
+    ];
+    const FEEDBACK = 'you did the thing! I DO care, color me suprised';
+
+    const props: QuestionPageData = {
+        type: 'question',
+        stem: STEM,
+        answers: ANSWERS,
+        correct: 2,
+        feedback: FEEDBACK,
+        index: 4,
+        submitQuestion: submitQuestionMockIncorrectAndEndTest(t)
+    };
+
+    const wrapper = mount(QuestionPage(props)).find('.page');
+    const inputAnswer = wrapper.find('#radio_4_0');
     const form = wrapper.find('form');
     t.equal(wrapper.length, 1);
     t.equal(inputAnswer.length, 1);
