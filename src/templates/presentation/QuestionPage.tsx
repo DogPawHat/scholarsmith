@@ -23,7 +23,7 @@ const QuestionPage: React.StatelessComponent<QuestionPageData> = (props) => {
             <form name={ 'answers_' + props.index } id={ 'answers_' + props.index} data-answer = { props.correct } onSubmit={answerQuestion} >
                 {props.answers.map((answer, i) => (
                     <div key={i}>
-                        <input type='radio' name='radio' id={'radio_' + props.index.toString() + '_' + i.toString }  value={i.toString()} onClick={updateAnswer(i) } />
+                        <input type='radio' name='radio' id={'radio_' + props.index.toString() + '_' + i.toString() }  value={i.toString()} onClick={updateAnswer(i) } />
                         <label htmlFor={'radio_' + props.index.toString() + '_' + i }>Answer {i + 1}</label>
                     </div>
                 )) }
