@@ -1,4 +1,4 @@
-import './helpers/setup-test-env.ts'
+import './helpers/setup-test-env.ts';
 import * as test from 'tape';
 import * as React from 'react';
 import * as Immutable from 'Immutable';
@@ -8,8 +8,8 @@ import { PageSelectData } from '../src/templates/types';
 
 const getTestPage = (t: test.Test) => {
     const r: PageSelectData = {
-        goBack: () => { t.pass("went back") },
-        goForward: (pageLength: number) => { t.pass("went forward")},
+        goBack: () => { t.pass('went back'); },
+        goForward: (pageLength: number) => { t.pass('went forward');},
         createGoToTopic: (
             topics: Immutable.Map<number, number>,
             topic: number
@@ -34,8 +34,8 @@ test('should initialize things properly', (t: test.Test) => {
     const wrapper = mount(PageSelect(testPage));
     const forward = wrapper.find('.arrow').at(0);
     const back = wrapper.find('.arrow').at(1);
-    const second = wrapper.find('.pageselect li').at(1);
+    const second = wrapper.find('li').at(2);
     forward.simulate('click');
     back.simulate('click');
-    //second.simulate('click');
+    second.simulate('click');
 });
