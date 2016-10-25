@@ -1,16 +1,8 @@
 import * as React from 'react';
 import * as Immutable from 'immutable';
+import {PageSelectData} from '../types';
 
-const PageSelect = (props: {
-    goBack?(): void,
-    goForward?(page_length: number): void,
-    createGoToTopic?(
-        topics: Immutable.Map<number, number>,
-        topic: number
-    ): () => void,
-    pageLength?: number,
-    topics?: Immutable.Map<number, number>
-}) => {
+const PageSelect: React.StatelessComponent<PageSelectData> = (props) => {
     const completeGoForward = () => {
         props.goForward(props.pageLength);
     };
