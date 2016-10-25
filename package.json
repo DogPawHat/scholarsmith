@@ -17,7 +17,7 @@
     "start": "webpack-dev-server -d --content-base dist/",
     "lint": "tslint -c tslint.json --test ./src",
     "test": "tape -r ts-node/register ./test/*.spec.ts",
-    "cover": "nyc npm test"
+    "cover": "nyc yarn test"
   },
   "nyc": {
     "require": [
