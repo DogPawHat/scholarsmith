@@ -1,7 +1,7 @@
 import './helpers/setup-test-env.ts';
 import * as test from 'tape';
 import * as React from 'react';
-import * as Immutable from 'Immutable';
+import * as Immutable from 'immutable';
 import { mount } from 'enzyme';
 import PageSelect from '../src/templates/presentation/PageSelect';
 import { PageSelectData } from '../src/templates/types';
