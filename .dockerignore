@@ -1,0 +1,10 @@
+*/node_modules*
+*/typings*
+*/.awcache*
+*/coverage*
+*/.nyc_output*
+**/*.js
+**/*.jsx
+*.map
+npm-debug.log.*
+yarn-error.log
