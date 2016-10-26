@@ -45,3 +45,5 @@ Then:
 Default address is
 
 `localhost:8080`
+
+(Works with [yarn](https://yarnpkg.com/) as well)
