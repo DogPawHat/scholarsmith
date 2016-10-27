@@ -1,10 +1,11 @@
-*/node_modules*
 */typings*
 */.awcache*
 */coverage*
 */.nyc_output*
 **/*.js
 **/*.jsx
+!node_modules/**/*.js
+!node_modules/**/*.jsx
 *.map
 npm-debug.log.*
 yarn-error.log

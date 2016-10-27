@@ -1,15 +1,14 @@
-FROM risingstack/alpine:3.3-v4.3.1-3.0.1
+FROM mhart/alpine-node:base-7
 
 MAINTAINER Ciarán Curley version: 0.1.0
 
-RUN apk update && apk add python gcc g++ make
-RUN curl -o- -sL https://yarnpkg.com/install.sh | sh && \
+RUN apk update && \
     mkdir scholarsmith
 
-COPY ./* scholarsmith
+COPY . scholarsmith/
 
 RUN cd scholarsmith && \
-    yarn && yarn test
+    ./node_modules/.bin/tape -r ts-node/register ./test/*.spec.ts,
 
-
-ENTRYPOINT yarn run start
+EXPOSE 8080
+ENTRYPOINT ./node_modules/.bin/webpack-dev-server -d --content-base dist/
