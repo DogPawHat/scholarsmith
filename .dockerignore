@@ -4,8 +4,8 @@
 */.nyc_output*
 **/*.js
 **/*.jsx
-!node_modules/**/*.js
-!node_modules/**/*.jsx
+*/node_modules*
+!webpack.config.js
 *.map
 npm-debug.log.*
 yarn-error.log

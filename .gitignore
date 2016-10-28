@@ -5,6 +5,7 @@ coverage
 .nyc_output
 **/*.js
 **/*.jsx
+!webpack.config.js
 *.map
 npm-debug.log.*
 yarn-error.log
