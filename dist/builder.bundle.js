@@ -48,39 +48,38 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var server_1 = __webpack_require__(/*! react-dom/server */ 1);
-	var js_yaml_1 = __webpack_require__(/*! js-yaml */ 160);
-	var fm = __webpack_require__(/*! yaml-front-matter */ 192);
-	var fs_1 = __webpack_require__(/*! fs */ 195);
-	var path_1 = __webpack_require__(/*! path */ 194);
-	var Body_1 = __webpack_require__(/*! ../templates/server/Body */ 196);
-	var getDirectories = function (srcpath) {
-	    return fs_1.readdirSync(srcpath).filter(function (file) {
+	const server_1 = __webpack_require__(/*! react-dom/server */ 1);
+	const js_yaml_1 = __webpack_require__(/*! js-yaml */ 160);
+	const fm = __webpack_require__(/*! yaml-front-matter */ 192);
+	const fs_1 = __webpack_require__(/*! fs */ 195);
+	const path_1 = __webpack_require__(/*! path */ 194);
+	const Body_1 = __webpack_require__(/*! ../templates/server/Body */ 196);
+	const getDirectories = (srcpath) => {
+	    return fs_1.readdirSync(srcpath).filter((file) => {
 	        return fs_1.statSync(path_1.join(srcpath, file)).isDirectory();
 	    });
 	};
-	var parseQuestions = function () {
-	    var questions = [];
-	    js_yaml_1.safeLoadAll(fs_1.readFileSync('./tutorial/questions.yaml').toString(), function (doc) {
+	const parseQuestions = () => {
+	    let questions = [];
+	    js_yaml_1.safeLoadAll(fs_1.readFileSync('./tutorial/questions.yaml').toString(), (doc) => {
 	        doc.type = 'question';
 	        questions.push(doc);
 	    });
-	    return questions.map(function (q, i) { q.index = i; return q; });
+	    return questions.map((q, i) => { q.index = i; return q; });
 	};
-	var parseTopics = function () {
-	    var pages = [];
-	    getDirectories('./tutorial/topics').map(function (dir, i, dirs) {
-	        var configFile = fs_1.readFileSync(path_1.join('tutorial', 'topics', dir, 'config.yaml')).toString();
-	        var configYaml = js_yaml_1.safeLoad(configFile);
+	const parseTopics = () => {
+	    let pages = [];
+	    getDirectories('./tutorial/topics').map((dir, i, dirs) => {
+	        let configFile = fs_1.readFileSync(path_1.join('tutorial', 'topics', dir, 'config.yaml')).toString();
+	        let configYaml = js_yaml_1.safeLoad(configFile);
 	        pages.push({
 	            type: 'topic_title',
 	            topic_id: i,
 	            title: configYaml.title
 	        });
-	        for (var _i = 0, _a = fs_1.readdirSync(path_1.join('tutorial', 'topics', dir)); _i < _a.length; _i++) {
-	            var file = _a[_i];
+	        for (let file of fs_1.readdirSync(path_1.join('tutorial', 'topics', dir))) {
 	            if (file !== 'config.yaml') {
-	                var contentObj = fm.loadFront(fs_1.readFileSync(path_1.join('tutorial', 'topics', dir, file)));
+	                let contentObj = fm.loadFront(fs_1.readFileSync(path_1.join('tutorial', 'topics', dir, file)));
 	                contentObj.topic_id = i;
 	                pages.push(contentObj);
 	            }
@@ -88,18 +87,17 @@
 	    });
 	    return pages;
 	};
-	var build = function () {
-	    var context = {
+	const build = () => {
+	    let context = {
 	        title: 'Hello!',
-	        pages: (_a = Array()).concat.apply(_a, parseTopics().concat(parseQuestions()))
+	        pages: Array().concat(...parseTopics(), ...parseQuestions())
 	    };
 	    fs_1.writeFileSync('./dist/props.json', JSON.stringify(context));
-	    var indexHtml = server_1.renderToStaticMarkup(Body_1["default"](context));
+	    let indexHtml = server_1.renderToStaticMarkup(Body_1.default(context));
 	    fs_1.writeFileSync('./dist/index.html', indexHtml);
-	    var _a;
 	};
 	build();
-
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYnVpbGQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJidWlsZC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EseUJBQW1DLGtCQUFrQixDQUFDLENBQUE7QUFDdEQsMEJBQW9DLFNBQVMsQ0FBQyxDQUFBO0FBQzlDLE1BQVksRUFBRSxXQUFNLG1CQUFtQixDQUFDLENBQUE7QUFDeEMscUJBQW1FLElBQUksQ0FBQyxDQUFBO0FBQ3hFLHVCQUFxQixNQUFNLENBQUMsQ0FBQTtBQUU1Qix1QkFBaUIsMEJBQTBCLENBQUMsQ0FBQTtBQUU1QyxNQUFNLGNBQWMsR0FBRyxDQUFDLE9BQWU7SUFDbkMsTUFBTSxDQUFDLGdCQUFXLENBQUMsT0FBTyxDQUFDLENBQUMsTUFBTSxDQUFFLENBQUMsSUFBSTtRQUNyQyxNQUFNLENBQUMsYUFBUSxDQUFDLFdBQUksQ0FBQyxPQUFPLEVBQUUsSUFBSSxDQUFDLENBQUMsQ0FBQyxXQUFXLEVBQUUsQ0FBQztJQUN2RCxDQUFDLENBQUMsQ0FBQztBQUNQLENBQUMsQ0FBQztBQUVGLE1BQU0sY0FBYyxHQUFHO0lBQ25CLElBQUksU0FBUyxHQUF1QixFQUFFLENBQUM7SUFDdkMscUJBQVcsQ0FDUCxpQkFBWSxDQUFDLDJCQUEyQixDQUFDLENBQUMsUUFBUSxFQUFFLEVBQ3BELENBQUMsR0FBcUI7UUFDbEIsR0FBRyxDQUFDLElBQUksR0FBRyxVQUFVLENBQUM7UUFDdEIsU0FBUyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsQ0FBQztJQUN4QixDQUFDLENBQ0osQ0FBQztJQUVGLE1BQU0sQ0FBQyxTQUFTLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQyxFQUFFLENBQUMsT0FBTSxDQUFDLENBQUMsS0FBSyxHQUFHLENBQUMsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQztBQUM5RCxDQUFDLENBQUM7QUFFRixNQUFNLFdBQVcsR0FBRztJQUNoQixJQUFJLEtBQUssR0FBb0IsRUFBRSxDQUFDO0lBQ2hDLGNBQWMsQ0FBQyxtQkFBbUIsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxDQUFDLEdBQUcsRUFBRSxDQUFDLEVBQUUsSUFBSTtRQUVqRCxJQUFJLFVBQVUsR0FBRyxpQkFBWSxDQUN6QixXQUFJLENBQ0EsVUFBVSxFQUNWLFFBQVEsRUFDUixHQUFHLEVBQ0gsYUFBYSxDQUFDLENBQ3JCLENBQUMsUUFBUSxFQUFFLENBQUM7UUFFYixJQUFJLFVBQVUsR0FBRyxrQkFBUSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1FBQ3RDLEtBQUssQ0FBQyxJQUFJLENBQXFCO1lBQzNCLElBQUksRUFBRSxhQUFhO1lBQ25CLFFBQVEsRUFBRSxDQUFDO1lBQ1gsS0FBSyxFQUFFLFVBQVUsQ0FBQyxLQUFLO1NBQzFCLENBQUMsQ0FBQztRQUVILEdBQUcsQ0FBQyxDQUFDLElBQUksSUFBSSxJQUFJLGdCQUFXLENBQUMsV0FBSSxDQUM3QixVQUFVLEVBQUUsUUFBUSxFQUFFLEdBQUcsQ0FDNUIsQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUNELEVBQUUsQ0FBQyxDQUFDLElBQUksS0FBSyxhQUFhLENBQUMsQ0FBQyxDQUFDO2dCQUN6QixJQUFJLFVBQVUsR0FBa0IsRUFBRSxDQUFDLFNBQVMsQ0FDeEMsaUJBQVksQ0FBQyxXQUFJLENBQ2IsVUFBVSxFQUNWLFFBQVEsRUFDUixHQUFHLEVBQ0gsSUFBSSxDQUNQLENBQUMsQ0FDTCxDQUFDO2dCQUNGLFVBQVUsQ0FBQyxRQUFRLEdBQUcsQ0FBQyxDQUFDO2dCQUN4QixLQUFLLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1lBQzNCLENBQUM7UUFDTCxDQUFDO0lBQ0wsQ0FBQyxDQUFDLENBQUM7SUFDSCxNQUFNLENBQUMsS0FBSyxDQUFDO0FBQ2pCLENBQUMsQ0FBQztBQUVGLE1BQU0sS0FBSyxHQUFHO0lBRVYsSUFBSSxPQUFPLEdBQWdCO1FBQ3ZCLEtBQUssRUFBRSxRQUFRO1FBQ2YsS0FBSyxFQUFFLEtBQUssRUFBZSxDQUFDLE1BQU0sQ0FDOUIsR0FBRyxXQUFXLEVBQUUsRUFDaEIsR0FBRyxjQUFjLEVBQUUsQ0FDdEI7S0FDSixDQUFDO0lBRUYsa0JBQWEsQ0FBQyxtQkFBbUIsRUFBRSxJQUFJLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUM7SUFDNUQsSUFBSSxTQUFTLEdBQUcsNkJBQW9CLENBQUMsY0FBSSxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUM7SUFDcEQsa0JBQWEsQ0FBQyxtQkFBbUIsRUFBRSxTQUFTLENBQUMsQ0FBQztBQUNsRCxDQUFDLENBQUM7QUFFRixLQUFLLEVBQUUsQ0FBQyJ9
 
 /***/ },
 /* 1 */
@@ -30175,23 +30173,23 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var React = __webpack_require__(/*! react */ 197);
-	var Head = function (props) {
+	const React = __webpack_require__(/*! react */ 197);
+	const Head = (props) => {
 	    return (React.createElement("head", null, 
 	        React.createElement("meta", {charSet: 'utf-8'}), 
 	        React.createElement("title", null, props.title), 
 	        React.createElement("link", {rel: 'stylesheet', href: 'styles.css'})));
 	};
-	var Body = function (props) {
+	const Body = (props) => {
 	    return (React.createElement("html", {lang: 'en'}, 
 	        React.createElement(Head, {title: props.title}), 
 	        React.createElement("body", null, 
 	            React.createElement("div", {id: 'root'}), 
 	            React.createElement("script", {src: 'client.bundle.js'}))));
 	};
-	exports.__esModule = true;
-	exports["default"] = Body;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Body;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQm9keS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkJvZHkudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxNQUFZLEtBQUssV0FBTSxPQUFPLENBQUMsQ0FBQTtBQUcvQixNQUFNLElBQUksR0FBRyxDQUFDLEtBQXdCO0lBQ2xDLE1BQU0sQ0FBQyxDQUNILHFCQUFDLElBQUk7UUFDRCxxQkFBQyxJQUFJLElBQUMsT0FBTyxFQUFDLE9BQU8sRUFBRTtRQUN2QixxQkFBQyxLQUFLLFNBQUcsS0FBSyxDQUFDLEtBQU8sQ0FBUTtRQUM5QixxQkFBQyxJQUFJLElBQUMsR0FBRyxFQUFDLFlBQVksRUFBQyxJQUFJLEVBQUMsWUFBWSxFQUFHLENBQ3hDLENBQ1YsQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGLE1BQU0sSUFBSSxHQUFHLENBQUMsS0FBa0I7SUFDNUIsTUFBTSxDQUFDLENBQ0gscUJBQUMsSUFBSSxJQUFDLElBQUksRUFBQyxJQUFJO1FBQ1gsb0JBQUMsSUFBSSxHQUFDLEtBQUssRUFBRSxLQUFLLENBQUMsS0FBTSxFQUFHO1FBQzVCLHFCQUFDLElBQUk7WUFDRCxxQkFBQyxHQUFHLElBQUMsRUFBRSxFQUFDLE1BQU0sRUFBTztZQUNyQixxQkFBQyxNQUFNLElBQUMsR0FBRyxFQUFDLGtCQUFrQixFQUFHLENBQzlCLENBQ0osQ0FDVixDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBRUY7a0JBQWUsSUFBSSxDQUFDIn0=
 
 /***/ },
 /* 197 */

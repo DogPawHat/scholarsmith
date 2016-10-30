@@ -49,14 +49,14 @@
 
 	"use strict";
 	__webpack_require__(/*! ../scss/app.scss */ 1);
-	var react_dom_1 = __webpack_require__(/*! react-dom */ 3);
-	var InnerBody_1 = __webpack_require__(/*! ../../templates/container/InnerBody */ 168);
-	var axios_1 = __webpack_require__(/*! axios */ 218);
-	axios_1["default"].get('props.json').then(function (value) {
-	    var body = value.data;
-	    react_dom_1.render(InnerBody_1["default"](body), document.getElementById('root'));
+	const react_dom_1 = __webpack_require__(/*! react-dom */ 3);
+	const InnerBody_1 = __webpack_require__(/*! ../../templates/container/InnerBody */ 168);
+	const axios = __webpack_require__(/*! axios */ 214);
+	axios.get('props.json').then((value) => {
+	    let body = value.data;
+	    react_dom_1.render(InnerBody_1.default(body), document.getElementById('root'));
 	});
-
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiYXBwLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxRQUFPLGtCQUFrQixDQUFDLENBQUE7QUFHMUIsNEJBQXFCLFdBQVcsQ0FBQyxDQUFBO0FBQ2pDLDRCQUFzQixxQ0FBcUMsQ0FBQyxDQUFBO0FBRTVELE1BQVksS0FBSyxXQUFNLE9BQU8sQ0FBQyxDQUFBO0FBRy9CLEtBQUssQ0FBQyxHQUFHLENBQUMsWUFBWSxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUMsS0FBSztJQUMvQixJQUFJLElBQUksR0FBZ0IsS0FBSyxDQUFDLElBQUksQ0FBQztJQUNuQyxrQkFBTSxDQUFDLG1CQUFTLENBQUMsSUFBSSxDQUFDLEVBQUUsUUFBUSxDQUFDLGNBQWMsQ0FBQyxNQUFNLENBQUMsQ0FBQyxDQUFDO0FBQzdELENBQUMsQ0FBQyxDQUFDIn0=
 
 /***/ },
 /* 1 */
@@ -21333,30 +21333,30 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var React = __webpack_require__(/*! react */ 169);
-	var redux_1 = __webpack_require__(/*! redux */ 175);
-	var react_redux_1 = __webpack_require__(/*! react-redux */ 190);
-	var VisablePage_1 = __webpack_require__(/*! ./VisablePage */ 203);
-	var ActivePageSelect_1 = __webpack_require__(/*! ./ActivePageSelect */ 215);
-	var reducers_1 = __webpack_require__(/*! ../reducers */ 217);
-	var InnerBody = function (props) {
-	    var initialCurrentState = {
+	const React = __webpack_require__(/*! react */ 169);
+	const redux_1 = __webpack_require__(/*! redux */ 175);
+	const react_redux_1 = __webpack_require__(/*! react-redux */ 190);
+	const VisablePage_1 = __webpack_require__(/*! ./VisablePage */ 199);
+	const ActivePageSelect_1 = __webpack_require__(/*! ./ActivePageSelect */ 211);
+	const reducers_1 = __webpack_require__(/*! ../reducers */ 213);
+	const InnerBody = (props) => {
+	    const initialCurrentState = {
 	        COURSE_DATA: props,
 	        CURRENT_PAGE: 0,
 	        CURRENT_SCORE: 0
 	    };
-	    var myStore = redux_1.createStore(reducers_1["default"], initialCurrentState, window.devToolsExtension && window.devToolsExtension());
+	    const myStore = redux_1.createStore(reducers_1.default, initialCurrentState, window.devToolsExtension && window.devToolsExtension());
 	    return (React.createElement("div", null, 
 	        React.createElement(react_redux_1.Provider, {store: myStore}, 
-	            React.createElement(VisablePage_1["default"], null)
+	            React.createElement(VisablePage_1.default, null)
 	        ), 
 	        React.createElement(react_redux_1.Provider, {store: myStore}, 
-	            React.createElement(ActivePageSelect_1["default"], null)
+	            React.createElement(ActivePageSelect_1.default, null)
 	        )));
 	};
-	exports.__esModule = true;
-	exports["default"] = InnerBody;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = InnerBody;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSW5uZXJCb2R5LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiSW5uZXJCb2R5LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsTUFBWSxLQUFLLFdBQU0sT0FBTyxDQUFDLENBQUE7QUFDL0Isd0JBQTRCLE9BQU8sQ0FBQyxDQUFBO0FBQ3BDLDhCQUF5QixhQUFhLENBQUMsQ0FBQTtBQUN2Qyw4QkFBd0IsZUFBZSxDQUFDLENBQUE7QUFDeEMsbUNBQTZCLG9CQUFvQixDQUFDLENBQUE7QUFFbEQsMkJBQXFCLGFBQWEsQ0FBQyxDQUFBO0FBRW5DLE1BQU0sU0FBUyxHQUFHLENBQUMsS0FBa0I7SUFFakMsTUFBTSxtQkFBbUIsR0FBcUI7UUFDMUMsV0FBVyxFQUFFLEtBQUs7UUFDbEIsWUFBWSxFQUFFLENBQUM7UUFDZixhQUFhLEVBQUUsQ0FBQztLQUNuQixDQUFDO0lBRUYsTUFBTSxPQUFPLEdBQUcsbUJBQVcsQ0FBQyxrQkFBUSxFQUFFLG1CQUFtQixFQUFHLE1BQWMsQ0FBQyxpQkFBaUIsSUFBSyxNQUFjLENBQUMsaUJBQWlCLEVBQUUsQ0FBQyxDQUFDO0lBRXJJLE1BQU0sQ0FBQyxDQUNILHFCQUFDLEdBQUc7UUFDQSxvQkFBQyxzQkFBUSxHQUFDLEtBQUssRUFBRyxPQUFTO1lBQ3ZCLG9CQUFDLHFCQUFXLE9BQUc7U0FDUjtRQUNYLG9CQUFDLHNCQUFRLEdBQUMsS0FBSyxFQUFHLE9BQVM7WUFDdkIsb0JBQUMsMEJBQWdCLE9BQUc7U0FDYixDQUNULENBQ1QsQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGO2tCQUFlLFNBQVMsQ0FBQyJ9
 
 /***/ },
 /* 169 */
@@ -22307,9 +22307,9 @@
 
 /***/ },
 /* 177 */
-/*!*******************************************!*\
-  !*** ./~/redux/~/lodash/isPlainObject.js ***!
-  \*******************************************/
+/*!***********************************!*\
+  !*** ./~/lodash/isPlainObject.js ***!
+  \***********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var getPrototype = __webpack_require__(/*! ./_getPrototype */ 178),
@@ -22384,9 +22384,9 @@
 
 /***/ },
 /* 178 */
-/*!*******************************************!*\
-  !*** ./~/redux/~/lodash/_getPrototype.js ***!
-  \*******************************************/
+/*!***********************************!*\
+  !*** ./~/lodash/_getPrototype.js ***!
+  \***********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var overArg = __webpack_require__(/*! ./_overArg */ 179);
@@ -22399,9 +22399,9 @@
 
 /***/ },
 /* 179 */
-/*!**************************************!*\
-  !*** ./~/redux/~/lodash/_overArg.js ***!
-  \**************************************/
+/*!******************************!*\
+  !*** ./~/lodash/_overArg.js ***!
+  \******************************/
 /***/ function(module, exports) {
 
 	/**
@@ -22423,9 +22423,9 @@
 
 /***/ },
 /* 180 */
-/*!******************************************!*\
-  !*** ./~/redux/~/lodash/isObjectLike.js ***!
-  \******************************************/
+/*!**********************************!*\
+  !*** ./~/lodash/isObjectLike.js ***!
+  \**********************************/
 /***/ function(module, exports) {
 
 	/**
@@ -22461,9 +22461,9 @@
 
 /***/ },
 /* 181 */
-/*!**********************************************!*\
-  !*** ./~/redux/~/symbol-observable/index.js ***!
-  \**********************************************/
+/*!**************************************!*\
+  !*** ./~/symbol-observable/index.js ***!
+  \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(/*! ./lib/index */ 182);
@@ -22471,12 +22471,12 @@
 
 /***/ },
 /* 182 */
-/*!**************************************************!*\
-  !*** ./~/redux/~/symbol-observable/lib/index.js ***!
-  \**************************************************/
+/*!******************************************!*\
+  !*** ./~/symbol-observable/lib/index.js ***!
+  \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module, global) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22488,7 +22488,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var root = module; /* global window */
+	var root; /* global window */
 	
 	
 	if (typeof self !== 'undefined') {
@@ -22497,13 +22497,15 @@
 	  root = window;
 	} else if (typeof global !== 'undefined') {
 	  root = global;
+	} else if (true) {
+	  root = module;
 	} else {
 	  root = Function('return this')();
 	}
 	
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../webpack/buildin/module.js */ 183)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(/*! ./../../webpack/buildin/module.js */ 183)(module)))
 
 /***/ },
 /* 183 */
@@ -22526,9 +22528,9 @@
 
 /***/ },
 /* 184 */
-/*!*****************************************************!*\
-  !*** ./~/redux/~/symbol-observable/lib/ponyfill.js ***!
-  \*****************************************************/
+/*!*********************************************!*\
+  !*** ./~/symbol-observable/lib/ponyfill.js ***!
+  \*********************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23105,15 +23107,15 @@
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 197);
+	var _isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 177);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _hoistNonReactStatics = __webpack_require__(/*! hoist-non-react-statics */ 201);
+	var _hoistNonReactStatics = __webpack_require__(/*! hoist-non-react-statics */ 197);
 	
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 202);
+	var _invariant = __webpack_require__(/*! invariant */ 198);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -23531,160 +23533,6 @@
 
 /***/ },
 /* 197 */
-/*!*************************************************!*\
-  !*** ./~/react-redux/~/lodash/isPlainObject.js ***!
-  \*************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var getPrototype = __webpack_require__(/*! ./_getPrototype */ 198),
-	    isObjectLike = __webpack_require__(/*! ./isObjectLike */ 200);
-	
-	/** `Object#toString` result references. */
-	var objectTag = '[object Object]';
-	
-	/** Used for built-in method references. */
-	var funcProto = Function.prototype,
-	    objectProto = Object.prototype;
-	
-	/** Used to resolve the decompiled source of functions. */
-	var funcToString = funcProto.toString;
-	
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-	
-	/** Used to infer the `Object` constructor. */
-	var objectCtorString = funcToString.call(Object);
-	
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
-	
-	/**
-	 * Checks if `value` is a plain object, that is, an object created by the
-	 * `Object` constructor or one with a `[[Prototype]]` of `null`.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.8.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
-	 * @example
-	 *
-	 * function Foo() {
-	 *   this.a = 1;
-	 * }
-	 *
-	 * _.isPlainObject(new Foo);
-	 * // => false
-	 *
-	 * _.isPlainObject([1, 2, 3]);
-	 * // => false
-	 *
-	 * _.isPlainObject({ 'x': 0, 'y': 0 });
-	 * // => true
-	 *
-	 * _.isPlainObject(Object.create(null));
-	 * // => true
-	 */
-	function isPlainObject(value) {
-	  if (!isObjectLike(value) || objectToString.call(value) != objectTag) {
-	    return false;
-	  }
-	  var proto = getPrototype(value);
-	  if (proto === null) {
-	    return true;
-	  }
-	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-	  return (typeof Ctor == 'function' &&
-	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
-	}
-	
-	module.exports = isPlainObject;
-
-
-/***/ },
-/* 198 */
-/*!*************************************************!*\
-  !*** ./~/react-redux/~/lodash/_getPrototype.js ***!
-  \*************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var overArg = __webpack_require__(/*! ./_overArg */ 199);
-	
-	/** Built-in value references. */
-	var getPrototype = overArg(Object.getPrototypeOf, Object);
-	
-	module.exports = getPrototype;
-
-
-/***/ },
-/* 199 */
-/*!********************************************!*\
-  !*** ./~/react-redux/~/lodash/_overArg.js ***!
-  \********************************************/
-/***/ function(module, exports) {
-
-	/**
-	 * Creates a unary function that invokes `func` with its argument transformed.
-	 *
-	 * @private
-	 * @param {Function} func The function to wrap.
-	 * @param {Function} transform The argument transform.
-	 * @returns {Function} Returns the new function.
-	 */
-	function overArg(func, transform) {
-	  return function(arg) {
-	    return func(transform(arg));
-	  };
-	}
-	
-	module.exports = overArg;
-
-
-/***/ },
-/* 200 */
-/*!************************************************!*\
-  !*** ./~/react-redux/~/lodash/isObjectLike.js ***!
-  \************************************************/
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is object-like. A value is object-like if it's not `null`
-	 * and has a `typeof` result of "object".
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-	 * @example
-	 *
-	 * _.isObjectLike({});
-	 * // => true
-	 *
-	 * _.isObjectLike([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObjectLike(_.noop);
-	 * // => false
-	 *
-	 * _.isObjectLike(null);
-	 * // => false
-	 */
-	function isObjectLike(value) {
-	  return value != null && typeof value == 'object';
-	}
-	
-	module.exports = isObjectLike;
-
-
-/***/ },
-/* 201 */
 /*!********************************************!*\
   !*** ./~/hoist-non-react-statics/index.js ***!
   \********************************************/
@@ -23743,7 +23591,7 @@
 
 
 /***/ },
-/* 202 */
+/* 198 */
 /*!********************************!*\
   !*** ./~/invariant/browser.js ***!
   \********************************/
@@ -23804,49 +23652,49 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 5)))
 
 /***/ },
-/* 203 */
+/* 199 */
 /*!*************************************************!*\
   !*** ./src/templates/container/VisablePage.tsx ***!
   \*************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var react_redux_1 = __webpack_require__(/*! react-redux */ 190);
-	var WelcomePage_1 = __webpack_require__(/*! ../presentation/WelcomePage */ 204);
-	var TopicTitlePage_1 = __webpack_require__(/*! ../presentation/TopicTitlePage */ 205);
-	var BasicPage_1 = __webpack_require__(/*! ../presentation/BasicPage */ 206);
-	var QuestionPage_1 = __webpack_require__(/*! ../presentation/QuestionPage */ 208);
-	var ResultsPage_1 = __webpack_require__(/*! ../presentation/ResultsPage */ 209);
-	var TalkToUsPage_1 = __webpack_require__(/*! ../presentation/TalkToUsPage */ 210);
-	var Page_1 = __webpack_require__(/*! ../presentation/Page */ 211);
-	var types_1 = __webpack_require__(/*! ../types */ 212);
-	var actions_1 = __webpack_require__(/*! ../actions */ 214);
-	var RenderedPageTypes = {
-	    'welcome': WelcomePage_1["default"],
-	    'topic_title': TopicTitlePage_1["default"],
-	    'plain': BasicPage_1["default"],
-	    'question': QuestionPage_1["default"],
-	    'results': ResultsPage_1["default"],
-	    'talktous': TalkToUsPage_1["default"]
+	const react_redux_1 = __webpack_require__(/*! react-redux */ 190);
+	const WelcomePage_1 = __webpack_require__(/*! ../presentation/WelcomePage */ 200);
+	const TopicTitlePage_1 = __webpack_require__(/*! ../presentation/TopicTitlePage */ 201);
+	const BasicPage_1 = __webpack_require__(/*! ../presentation/BasicPage */ 202);
+	const QuestionPage_1 = __webpack_require__(/*! ../presentation/QuestionPage */ 204);
+	const ResultsPage_1 = __webpack_require__(/*! ../presentation/ResultsPage */ 205);
+	const TalkToUsPage_1 = __webpack_require__(/*! ../presentation/TalkToUsPage */ 206);
+	const Page_1 = __webpack_require__(/*! ../presentation/Page */ 207);
+	const types_1 = __webpack_require__(/*! ../types */ 208);
+	const actions_1 = __webpack_require__(/*! ../actions */ 210);
+	const RenderedPageTypes = {
+	    'welcome': WelcomePage_1.default,
+	    'topic_title': TopicTitlePage_1.default,
+	    'plain': BasicPage_1.default,
+	    'question': QuestionPage_1.default,
+	    'results': ResultsPage_1.default,
+	    'talktous': TalkToUsPage_1.default
 	};
-	var getRenderedPage = function (id, pages) {
+	const getRenderedPage = (id, pages) => {
 	    return RenderedPageTypes[pages[id].type];
 	};
-	var mapStateToProps = function (state) {
+	const mapStateToProps = (state) => {
 	    return {
 	        childPage: getRenderedPage(state.CURRENT_PAGE, types_1.TutoralStateHelpers(state).GET_PAGES().toArray()),
 	        pageData: types_1.TutoralStateHelpers(state).GET_PAGES().get(state.CURRENT_PAGE),
-	        score: function () { return types_1.TutoralStateHelpers(state).GET_PROPER_SCORE(); }
+	        score: () => { return types_1.TutoralStateHelpers(state).GET_PROPER_SCORE(); }
 	    };
 	};
-	var mapDispatchToProps = function (dispatch) {
+	const mapDispatchToProps = (dispatch) => {
 	    return {
-	        submitQuestion: function (question_key, answer, correct) {
+	        submitQuestion: (question_key, answer, correct) => {
 	            dispatch(actions_1.createAnswerQuestionAction(question_key, answer, correct));
 	        }
 	    };
 	};
-	var mergeProps = function (mapStateToPropsResult, mapDispatchToPropsResult, ownProps) {
+	const mergeProps = (mapStateToPropsResult, mapDispatchToPropsResult, ownProps) => {
 	    return {
 	        childPage: mapStateToPropsResult.childPage,
 	        pageData: Object.assign({}, mapStateToPropsResult.pageData, {
@@ -23855,66 +23703,66 @@
 	        })
 	    };
 	};
-	var VisablePage = react_redux_1.connect(mapStateToProps, mapDispatchToProps, mergeProps)(Page_1["default"]);
-	exports.__esModule = true;
-	exports["default"] = VisablePage;
-
+	const VisablePage = react_redux_1.connect(mapStateToProps, mapDispatchToProps, mergeProps)(Page_1.default);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = VisablePage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVmlzYWJsZVBhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJWaXNhYmxlUGFnZS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBLDhCQUFzQixhQUFhLENBQUMsQ0FBQTtBQUlwQyw4QkFBd0IsNkJBQTZCLENBQUMsQ0FBQTtBQUN0RCxpQ0FBMkIsZ0NBQWdDLENBQUMsQ0FBQTtBQUM1RCw0QkFBc0IsMkJBQTJCLENBQUMsQ0FBQTtBQUNsRCwrQkFBeUIsOEJBQThCLENBQUMsQ0FBQTtBQUN4RCw4QkFBd0IsNkJBQTZCLENBQUMsQ0FBQTtBQUN0RCwrQkFBeUIsOEJBQThCLENBQUMsQ0FBQTtBQUN4RCx1QkFBaUIsc0JBQXNCLENBQUMsQ0FBQTtBQUV4Qyx3QkFPTyxVQUFVLENBQUMsQ0FBQTtBQUVsQiwwQkFBeUMsWUFBWSxDQUFDLENBQUE7QUFFdEQsTUFBTSxpQkFBaUIsR0FBRztJQUN0QixTQUFTLEVBQUUscUJBQVc7SUFDdEIsYUFBYSxFQUFFLHdCQUFjO0lBQzdCLE9BQU8sRUFBRSxtQkFBUztJQUNsQixVQUFVLEVBQUUsc0JBQVk7SUFDeEIsU0FBUyxFQUFFLHFCQUFXO0lBQ3RCLFVBQVUsRUFBRSxzQkFBWTtDQUMzQixDQUFDO0FBRUYsTUFBTSxlQUFlLEdBQWdGLENBQUMsRUFBRSxFQUFFLEtBQUs7SUFDM0csTUFBTSxDQUFDLGlCQUFpQixDQUFDLEtBQUssQ0FBQyxFQUFFLENBQUMsQ0FBQyxJQUFJLENBQUMsQ0FBQztBQUM3QyxDQUFDLENBQUM7QUFFRixNQUFNLGVBQWUsR0FBRyxDQUFDLEtBQXVCO0lBQzVDLE1BQU0sQ0FBQztRQUNILFNBQVMsRUFBRSxlQUFlLENBQUMsS0FBSyxDQUFDLFlBQVksRUFBRSwyQkFBbUIsQ0FBQyxLQUFLLENBQUMsQ0FBQyxTQUFTLEVBQUUsQ0FBQyxPQUFPLEVBQUUsQ0FBQztRQUNoRyxRQUFRLEVBQUUsMkJBQW1CLENBQUMsS0FBSyxDQUFDLENBQUMsU0FBUyxFQUFFLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxZQUFZLENBQUM7UUFDeEUsS0FBSyxFQUFFLFFBQVEsTUFBTSxDQUFDLDJCQUFtQixDQUFDLEtBQUssQ0FBQyxDQUFDLGdCQUFnQixFQUFFLENBQUMsQ0FBQyxDQUFDO0tBQ3pFLENBQUM7QUFDTixDQUFDLENBQUM7QUFFRixNQUFNLGtCQUFrQixHQUFHLENBQUMsUUFBb0M7SUFDNUQsTUFBTSxDQUFDO1FBQ0gsY0FBYyxFQUFFLENBQUMsWUFBb0IsRUFBRSxNQUFjLEVBQUUsT0FBZ0I7WUFDbkUsUUFBUSxDQUFDLG9DQUEwQixDQUFDLFlBQVksRUFBRSxNQUFNLEVBQUUsT0FBTyxDQUFDLENBQUMsQ0FBQztRQUN4RSxDQUFDO0tBQ0osQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGLE1BQU0sVUFBVSxHQUFHLENBQUMscUJBQXFCLEVBQUUsd0JBQXdCLEVBQUUsUUFBUTtJQUV6RSxNQUFNLENBQUM7UUFDSCxTQUFTLEVBQUUscUJBQXFCLENBQUMsU0FBUztRQUMxQyxRQUFRLEVBQUUsTUFBTSxDQUFDLE1BQU0sQ0FDbkIsRUFBRSxFQUNGLHFCQUFxQixDQUFDLFFBQVEsRUFDOUI7WUFDSSxjQUFjLEVBQUUsd0JBQXdCLENBQUMsY0FBYztZQUN2RCxLQUFLLEVBQUUscUJBQXFCLENBQUMsS0FBSztTQUNyQyxDQUNKO0tBQ0osQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGLE1BQU0sV0FBVyxHQUFHLHFCQUFPLENBQUMsZUFBZSxFQUFFLGtCQUFrQixFQUFFLFVBQVUsQ0FBQyxDQUFDLGNBQUksQ0FBQyxDQUFDO0FBR25GO2tCQUFlLFdBQVcsQ0FBQyJ9
 
 /***/ },
-/* 204 */
+/* 200 */
 /*!****************************************************!*\
   !*** ./src/templates/presentation/WelcomePage.tsx ***!
   \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var React = __webpack_require__(/*! react */ 169);
-	var WelcomePage = function (props) {
+	const React = __webpack_require__(/*! react */ 169);
+	const WelcomePage = (props) => {
 	    return (React.createElement("h1", {className: 'page welcome'}, "WELCOME"));
 	};
-	exports.__esModule = true;
-	exports["default"] = WelcomePage;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = WelcomePage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiV2VsY29tZVBhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJXZWxjb21lUGFnZS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE1BQVksS0FBSyxXQUFNLE9BQU8sQ0FBQyxDQUFBO0FBRy9CLE1BQU0sV0FBVyxHQUF1QyxDQUFDLEtBQUs7SUFDMUQsTUFBTSxDQUFDLENBQ0gscUJBQUMsRUFBRSxJQUFDLFNBQVMsRUFBQyxjQUFjLEdBQUMsU0FBTyxDQUFLLENBQzVDLENBQUM7QUFDTixDQUFDLENBQUM7QUFFRjtrQkFBZSxXQUFXLENBQUMifQ==
 
 /***/ },
-/* 205 */
+/* 201 */
 /*!*******************************************************!*\
   !*** ./src/templates/presentation/TopicTitlePage.tsx ***!
   \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var React = __webpack_require__(/*! react */ 169);
-	var TopicTitlePage = function (props) {
+	const React = __webpack_require__(/*! react */ 169);
+	const TopicTitlePage = (props) => {
 	    return (React.createElement("h2", {className: 'page topic_title'}, props.title));
 	};
-	exports.__esModule = true;
-	exports["default"] = TopicTitlePage;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = TopicTitlePage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVG9waWNUaXRsZVBhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJUb3BpY1RpdGxlUGFnZS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE1BQVksS0FBSyxXQUFNLE9BQU8sQ0FBQyxDQUFBO0FBRy9CLE1BQU0sY0FBYyxHQUFpRCxDQUFDLEtBQXlCO0lBQzNGLE1BQU0sQ0FBQyxDQUNILHFCQUFDLEVBQUUsSUFBQyxTQUFTLEVBQUMsa0JBQWtCLEdBQUcsS0FBSyxDQUFDLEtBQU8sQ0FBSyxDQUN4RCxDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBRUY7a0JBQWUsY0FBYyxDQUFDIn0=
 
 /***/ },
-/* 206 */
+/* 202 */
 /*!**************************************************!*\
   !*** ./src/templates/presentation/BasicPage.tsx ***!
   \**************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var React = __webpack_require__(/*! react */ 169);
-	var Marked = __webpack_require__(/*! marked */ 207);
-	var getDangrousHtmlObject = function (content) {
+	const React = __webpack_require__(/*! react */ 169);
+	const Marked = __webpack_require__(/*! marked */ 203);
+	const getDangrousHtmlObject = (content) => {
 	    return { __html: Marked(content) };
 	};
-	var BasicPage = function (props) {
-	    var innerHtml = getDangrousHtmlObject(props.__content);
+	const BasicPage = (props) => {
+	    const innerHtml = getDangrousHtmlObject(props.__content);
 	    return (React.createElement("article", {className: 'page basic', dangerouslySetInnerHTML: innerHtml}));
 	};
-	exports.__esModule = true;
-	exports["default"] = BasicPage;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = BasicPage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQmFzaWNQYWdlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiQmFzaWNQYWdlLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsTUFBWSxLQUFLLFdBQU0sT0FBTyxDQUFDLENBQUE7QUFFL0IsTUFBWSxNQUFNLFdBQU0sUUFBUSxDQUFDLENBQUE7QUFFakMsTUFBTSxxQkFBcUIsR0FBRyxDQUFDLE9BQWU7SUFDMUMsTUFBTSxDQUFDLEVBQUUsTUFBTSxFQUFFLE1BQU0sQ0FBQyxPQUFPLENBQUMsRUFBRSxDQUFDO0FBQ3ZDLENBQUMsQ0FBQztBQUVGLE1BQU0sU0FBUyxHQUE0QyxDQUFDLEtBQW9CO0lBRTVFLE1BQU0sU0FBUyxHQUFHLHFCQUFxQixDQUFDLEtBQUssQ0FBQyxTQUFTLENBQUMsQ0FBQztJQUN6RCxNQUFNLENBQUMsQ0FDSCxxQkFBQyxPQUFPLElBQUMsU0FBUyxFQUFDLFlBQVksRUFBQyx1QkFBdUIsRUFBRSxTQUFVLEVBQVksQ0FDbEYsQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGO2tCQUFlLFNBQVMsQ0FBQyJ9
 
 /***/ },
-/* 207 */
+/* 203 */
 /*!********************************!*\
   !*** ./~/marked/lib/marked.js ***!
   \********************************/
@@ -25210,22 +25058,22 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 208 */
+/* 204 */
 /*!*****************************************************!*\
   !*** ./src/templates/presentation/QuestionPage.tsx ***!
   \*****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var React = __webpack_require__(/*! react */ 169);
-	var QuestionPage = function (props) {
-	    var currentAnswer = 0;
-	    var updateAnswer = function (index) {
-	        return function (e) {
+	const React = __webpack_require__(/*! react */ 169);
+	const QuestionPage = (props) => {
+	    let currentAnswer = 0;
+	    const updateAnswer = (index) => {
+	        return (e) => {
 	            currentAnswer = index;
 	        };
 	    };
-	    var answerQuestion = function (e) {
+	    const answerQuestion = (e) => {
 	        props.submitQuestion(props.index, currentAnswer.toString(), currentAnswer === props.correct);
 	        e.stopPropagation();
 	        e.preventDefault();
@@ -25236,56 +25084,56 @@
 	            props.index + 1), 
 	        React.createElement("p", {className: 'stem'}, props.stem), 
 	        React.createElement("form", {name: 'answers_' + props.index, id: 'answers_' + props.index, "data-answer": props.correct, onSubmit: answerQuestion}, 
-	            props.answers.map(function (answer, i) { return (React.createElement("div", {key: i}, 
-	                React.createElement("input", {type: 'radio', name: 'radio', id: 'radio_' + props.index.toString() + '_' + i.toString, value: i.toString(), onClick: updateAnswer(i)}), 
+	            props.answers.map((answer, i) => (React.createElement("div", {key: i}, 
+	                React.createElement("input", {type: 'radio', name: 'radio', id: 'radio_' + props.index.toString() + '_' + i.toString(), value: i.toString(), onClick: updateAnswer(i)}), 
 	                React.createElement("label", {htmlFor: 'radio_' + props.index.toString() + '_' + i}, 
 	                    "Answer ", 
-	                    i + 1))); }), 
+	                    i + 1)))), 
 	            React.createElement("input", {type: 'submit', value: 'Submit'})), 
 	        React.createElement("p", {className: 'feedback'}, props.feedback)));
 	};
-	exports.__esModule = true;
-	exports["default"] = QuestionPage;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = QuestionPage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUXVlc3Rpb25QYWdlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiUXVlc3Rpb25QYWdlLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsTUFBWSxLQUFLLFdBQU0sT0FBTyxDQUFDLENBQUE7QUFHL0IsTUFBTSxZQUFZLEdBQStDLENBQUMsS0FBSztJQUNuRSxJQUFJLGFBQWEsR0FBRyxDQUFDLENBQUM7SUFFdEIsTUFBTSxZQUFZLEdBQUcsQ0FBQyxLQUFhO1FBQy9CLE1BQU0sQ0FBQyxDQUFDLENBQXVCO1lBQzNCLGFBQWEsR0FBRyxLQUFLLENBQUM7UUFDMUIsQ0FBQyxDQUFDO0lBQ04sQ0FBQyxDQUFDO0lBRUYsTUFBTSxjQUFjLEdBQUcsQ0FBQyxDQUF1QjtRQUMzQyxLQUFLLENBQUMsY0FBYyxDQUFDLEtBQUssQ0FBQyxLQUFLLEVBQUUsYUFBYSxDQUFDLFFBQVEsRUFBRSxFQUFFLGFBQWEsS0FBSyxLQUFLLENBQUMsT0FBTyxDQUFDLENBQUM7UUFDN0YsQ0FBQyxDQUFDLGVBQWUsRUFBRSxDQUFDO1FBQ3BCLENBQUMsQ0FBQyxjQUFjLEVBQUUsQ0FBQztJQUN2QixDQUFDLENBQUM7SUFFRixNQUFNLENBQUMsQ0FDSCxxQkFBQyxPQUFPLElBQUMsU0FBUyxFQUFDLGVBQWU7UUFDOUIscUJBQUMsRUFBRTtZQUFDLFdBQVM7WUFBRSxLQUFLLENBQUMsS0FBSyxHQUFHLENBQUUsQ0FBSztRQUNwQyxxQkFBQyxDQUFDLElBQUMsU0FBUyxFQUFDLE1BQU0sR0FBRSxLQUFLLENBQUMsSUFBSyxDQUFJO1FBQ3BDLHFCQUFDLElBQUksSUFBQyxJQUFJLEVBQUcsVUFBVSxHQUFHLEtBQUssQ0FBQyxLQUFPLEVBQUMsRUFBRSxFQUFHLFVBQVUsR0FBRyxLQUFLLENBQUMsS0FBTSxHQUFDLFdBQVcsR0FBSyxLQUFLLENBQUMsT0FBUyxFQUFDLFFBQVEsRUFBRSxjQUFlO1lBQzNILEtBQUssQ0FBQyxPQUFPLENBQUMsR0FBRyxDQUFDLENBQUMsTUFBTSxFQUFFLENBQUMsS0FBSyxDQUM5QixxQkFBQyxHQUFHLElBQUMsR0FBRyxFQUFFLENBQUU7Z0JBQ1IscUJBQUMsS0FBSyxJQUFDLElBQUksRUFBQyxPQUFPLEVBQUMsSUFBSSxFQUFDLE9BQU8sRUFBQyxFQUFFLEVBQUUsUUFBUSxHQUFHLEtBQUssQ0FBQyxLQUFLLENBQUMsUUFBUSxFQUFFLEdBQUcsR0FBRyxHQUFHLENBQUMsQ0FBQyxRQUFRLEVBQUksRUFBRSxLQUFLLEVBQUUsQ0FBQyxDQUFDLFFBQVEsRUFBRyxFQUFDLE9BQU8sRUFBRSxZQUFZLENBQUMsQ0FBQyxDQUFHLEVBQUc7Z0JBQ2pKLHFCQUFDLEtBQUssSUFBQyxPQUFPLEVBQUUsUUFBUSxHQUFHLEtBQUssQ0FBQyxLQUFLLENBQUMsUUFBUSxFQUFFLEdBQUcsR0FBRyxHQUFHLENBQUc7b0JBQUMsU0FBTztvQkFBQyxDQUFDLEdBQUcsQ0FBRSxDQUFRLENBQ2xGLENBQ1QsQ0FBRztZQUNKLHFCQUFDLEtBQUssSUFBQyxJQUFJLEVBQUMsUUFBUSxFQUFDLEtBQUssRUFBQyxRQUFRLEVBQUcsQ0FDbkM7UUFDUCxxQkFBQyxDQUFDLElBQUMsU0FBUyxFQUFDLFVBQVUsR0FBRyxLQUFLLENBQUMsUUFBVSxDQUFJLENBQ3hDLENBQ2IsQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGO2tCQUFlLFlBQVksQ0FBQyJ9
 
 /***/ },
-/* 209 */
+/* 205 */
 /*!****************************************************!*\
   !*** ./src/templates/presentation/ResultsPage.tsx ***!
   \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var React = __webpack_require__(/*! react */ 169);
-	var ResultsPage = function (props) {
+	const React = __webpack_require__(/*! react */ 169);
+	const ResultsPage = (props) => {
 	    return (React.createElement("div", {className: 'page results'}, 
 	        React.createElement("h1", null, "Results"), 
 	        React.createElement("p", null, props.score())));
 	};
-	exports.__esModule = true;
-	exports["default"] = ResultsPage;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ResultsPage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUmVzdWx0c1BhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJSZXN1bHRzUGFnZS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE1BQVksS0FBSyxXQUFNLE9BQU8sQ0FBQyxDQUFBO0FBRy9CLE1BQU0sV0FBVyxHQUEwQyxDQUFDLEtBQWtCO0lBQzFFLE1BQU0sQ0FBQyxDQUNILHFCQUFDLEdBQUcsSUFBQyxTQUFTLEVBQUMsY0FBYztRQUN6QixxQkFBQyxFQUFFLFNBQUMsU0FBTyxDQUFLO1FBQ2hCLHFCQUFDLENBQUMsU0FBRyxLQUFLLENBQUMsS0FBSyxFQUFJLENBQUksQ0FDdEIsQ0FDVCxDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBRUY7a0JBQWUsV0FBVyxDQUFDIn0=
 
 /***/ },
-/* 210 */
+/* 206 */
 /*!*****************************************************!*\
   !*** ./src/templates/presentation/TalkToUsPage.tsx ***!
   \*****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var React = __webpack_require__(/*! react */ 169);
-	var TalkToUsPage = function (props) {
+	const React = __webpack_require__(/*! react */ 169);
+	const TalkToUsPage = (props) => {
 	    return (React.createElement("div", {className: 'page talk_to_us'}, 
 	        React.createElement("p", null, "Please Talk to us")
 	    ));
 	};
-	exports.__esModule = true;
-	exports["default"] = TalkToUsPage;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = TalkToUsPage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGFsa1RvVXNQYWdlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVGFsa1RvVXNQYWdlLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsTUFBWSxLQUFLLFdBQU0sT0FBTyxDQUFDLENBQUE7QUFHL0IsTUFBTSxZQUFZLEdBQXVDLENBQUMsS0FBZTtJQUNqRSxNQUFNLENBQUEsQ0FDRixxQkFBQyxHQUFHLElBQUMsU0FBUyxFQUFDLGlCQUFpQjtRQUFDLHFCQUFDLENBQUMsU0FBQyxtQkFBaUIsQ0FBSTtLQUFNLENBQ2xFLENBQUM7QUFDVixDQUFDLENBQUM7QUFFRjtrQkFBZSxZQUFZLENBQUMifQ==
 
 /***/ },
-/* 211 */
+/* 207 */
 /*!*********************************************!*\
   !*** ./src/templates/presentation/Page.tsx ***!
   \*********************************************/
@@ -25300,90 +25148,89 @@
 	    }
 	    return t;
 	};
-	var React = __webpack_require__(/*! react */ 169);
-	var Page = function (props) {
+	const React = __webpack_require__(/*! react */ 169);
+	const Page = (props) => {
 	    return (React.createElement("section", {className: 'page_container'}, 
 	        React.createElement(props.childPage, __assign({}, props.pageData))
 	    ));
 	};
-	exports.__esModule = true;
-	exports["default"] = Page;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Page;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGFnZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBhZ2UudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBLE1BQVksS0FBSyxXQUFNLE9BQU8sQ0FBQyxDQUFBO0FBSy9CLE1BQU0sSUFBSSxHQUdMLENBQUMsS0FBSztJQUVQLE1BQU0sQ0FBQyxDQUFDLHFCQUFDLE9BQU8sSUFBQyxTQUFTLEVBQUMsZ0JBQWdCO1FBQ3ZDLG9CQUFDLEtBQUssQ0FBQyxTQUFTLGVBQUssS0FBSyxDQUFDLFFBQVEsRUFBRztLQUNoQyxDQUFDLENBQUM7QUFDaEIsQ0FBQyxDQUFDO0FBRUY7a0JBQWUsSUFBSSxDQUFDIn0=
 
 /***/ },
-/* 212 */
+/* 208 */
 /*!********************************!*\
   !*** ./src/templates/types.ts ***!
   \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Immutable = __webpack_require__(/*! immutable */ 213);
+	const Immutable = __webpack_require__(/*! immutable */ 209);
 	;
 	;
 	;
 	;
 	;
 	;
-	var isTopicPageData = function (page) {
+	const isTopicPageData = (page) => {
 	    return page.topic_id !== undefined;
 	};
-	exports.TutoralStateHelpers = function (state) {
-	    var CURRENT_TOPIC = function () {
-	        var page = state.COURSE_DATA.pages[state.CURRENT_PAGE];
+	exports.TutoralStateHelpers = (state) => {
+	    const CURRENT_TOPIC = () => {
+	        const page = state.COURSE_DATA.pages[state.CURRENT_PAGE];
 	        if (isTopicPageData(page)) {
 	            return page.topic_id;
 	        }
 	        else {
 	            return -1;
 	        }
-	    }, GET_TOPIC_TITLE_PAGE = function () {
+	    }, GET_TOPIC_TITLE_PAGE = () => {
 	        if (CURRENT_TOPIC() !== -1) {
-	            return state.COURSE_DATA.pages.findIndex(function (page) {
+	            return state.COURSE_DATA.pages.findIndex((page) => {
 	                return (page.topic_id === CURRENT_TOPIC() && page.type === 'topic_title');
 	            });
 	        }
 	        else {
 	            return -1;
 	        }
-	    }, GET_ALL_TOPIC_TITLES = function () {
-	        var title_pages = state.COURSE_DATA.pages.filter(function (page) {
+	    }, GET_ALL_TOPIC_TITLES = () => {
+	        const title_pages = state.COURSE_DATA.pages.filter((page) => {
 	            return page.type === 'topic_title';
 	        });
-	        return Immutable.Map().withMutations(function (map) {
-	            for (var _i = 0, title_pages_1 = title_pages; _i < title_pages_1.length; _i++) {
-	                var page = title_pages_1[_i];
+	        return Immutable.Map().withMutations((map) => {
+	            for (let page of title_pages) {
 	                map.set(page.topic_id, state.COURSE_DATA.pages.indexOf(page));
 	            }
 	        });
-	    }, GET_PAGES = function () {
-	        return Immutable.List().withMutations(function (list) {
+	    }, GET_PAGES = () => {
+	        return Immutable.List().withMutations((list) => {
 	            list.push({ type: 'welcome' });
-	            list.push.apply(list, state.COURSE_DATA.pages);
+	            list.push(...state.COURSE_DATA.pages);
 	            list.push({ type: 'results' });
 	            list.push({ type: 'talktous' });
 	        });
-	    }, GET_PAGE_LENGTH = function () {
+	    }, GET_PAGE_LENGTH = () => {
 	        return GET_PAGES().size;
-	    }, GET_PROPER_SCORE = function () {
+	    }, GET_PROPER_SCORE = () => {
 	        // Calculate the Hammings weight of the score. TODO: Make sure this works outside of 32 bit
-	        var v = state.CURRENT_SCORE - ((state.CURRENT_SCORE >> 1) & 0x55555555);
+	        let v = state.CURRENT_SCORE - ((state.CURRENT_SCORE >> 1) & 0x55555555);
 	        v = (v & 0x33333333) + ((v >> 2) & 0x33333333);
 	        return ((v + (v >> 4) & 0xF0F0F0F) * 0x1010101) >> 24;
 	    };
 	    return {
-	        CURRENT_TOPIC: CURRENT_TOPIC,
-	        GET_TOPIC_TITLE_PAGE: GET_TOPIC_TITLE_PAGE,
-	        GET_ALL_TOPIC_TITLES: GET_ALL_TOPIC_TITLES,
-	        GET_PAGES: GET_PAGES,
-	        GET_PAGE_LENGTH: GET_PAGE_LENGTH,
-	        GET_PROPER_SCORE: GET_PROPER_SCORE
+	        CURRENT_TOPIC,
+	        GET_TOPIC_TITLE_PAGE,
+	        GET_ALL_TOPIC_TITLES,
+	        GET_PAGES,
+	        GET_PAGE_LENGTH,
+	        GET_PROPER_SCORE
 	    };
 	};
-
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHlwZXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJ0eXBlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsTUFBWSxTQUFTLFdBQU0sV0FBVyxDQUFDLENBQUE7QUF1QnRDLENBQUM7QUFJRCxDQUFDO0FBSUQsQ0FBQztBQUlELENBQUM7QUFJRCxDQUFDO0FBU0QsQ0FBQztBQVVGLE1BQU0sZUFBZSxHQUFHLENBQUMsSUFBYztJQUNuQyxNQUFNLENBQWlCLElBQUssQ0FBQyxRQUFRLEtBQUssU0FBUyxDQUFDO0FBQ3hELENBQUMsQ0FBQztBQUVXLDJCQUFtQixHQUFHLENBQUMsS0FBdUI7SUFDdkQsTUFBTSxhQUFhLEdBQUc7UUFDbEIsTUFBTSxJQUFJLEdBQUcsS0FBSyxDQUFDLFdBQVcsQ0FBQyxLQUFLLENBQUMsS0FBSyxDQUFDLFlBQVksQ0FBQyxDQUFDO1FBQ3pELEVBQUUsQ0FBQyxDQUFDLGVBQWUsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUM7WUFDeEIsTUFBTSxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUM7UUFDekIsQ0FBQztRQUFDLElBQUksQ0FBQyxDQUFDO1lBQ0osTUFBTSxDQUFDLENBQUMsQ0FBQyxDQUFDO1FBQ2QsQ0FBQztJQUNMLENBQUMsRUFBRSxvQkFBb0IsR0FBRztRQUN0QixFQUFFLENBQUMsQ0FBQyxhQUFhLEVBQUUsS0FBSyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUM7WUFDekIsTUFBTSxDQUFDLEtBQUssQ0FBQyxXQUFXLENBQUMsS0FBSyxDQUFDLFNBQVMsQ0FBQyxDQUFDLElBQXNCO2dCQUM1RCxNQUFNLENBQUMsQ0FBQyxJQUFJLENBQUMsUUFBUSxLQUFLLGFBQWEsRUFBRSxJQUFJLElBQUksQ0FBQyxJQUFJLEtBQUssYUFBYSxDQUFDLENBQUM7WUFDOUUsQ0FBQyxDQUFDLENBQUM7UUFDUCxDQUFDO1FBQUMsSUFBSSxDQUFDLENBQUM7WUFDSixNQUFNLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFDZCxDQUFDO0lBQ0wsQ0FBQyxFQUFFLG9CQUFvQixHQUFHO1FBQ3RCLE1BQU0sV0FBVyxHQUNiLEtBQUssQ0FBQyxXQUFXLENBQUMsS0FBSyxDQUFDLE1BQU0sQ0FBQyxDQUFDLElBQUk7WUFDaEMsTUFBTSxDQUFDLElBQUksQ0FBQyxJQUFJLEtBQUssYUFBYSxDQUFDO1FBQ3ZDLENBQUMsQ0FBeUIsQ0FBQztRQUMvQixNQUFNLENBQUMsU0FBUyxDQUFDLEdBQUcsRUFBa0IsQ0FBQyxhQUFhLENBQUMsQ0FBQyxHQUFHO1lBQ3JELEdBQUcsQ0FBQyxDQUFDLElBQUksSUFBSSxJQUFJLFdBQVcsQ0FBQyxDQUFDLENBQUM7Z0JBQzNCLEdBQUcsQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLFFBQVEsRUFBRSxLQUFLLENBQUMsV0FBVyxDQUFDLEtBQUssQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQztZQUNsRSxDQUFDO1FBQ0wsQ0FBQyxDQUFDLENBQUM7SUFDUCxDQUFDLEVBQUUsU0FBUyxHQUFHO1FBQ1gsTUFBTSxDQUFDLFNBQVMsQ0FBQyxJQUFJLEVBQWUsQ0FBQyxhQUFhLENBQzlDLENBQUMsSUFBSTtZQUNELElBQUksQ0FBQyxJQUFJLENBQUMsRUFBRSxJQUFJLEVBQUUsU0FBUyxFQUFFLENBQUMsQ0FBQztZQUMvQixJQUFJLENBQUMsSUFBSSxDQUFDLEdBQUcsS0FBSyxDQUFDLFdBQVcsQ0FBQyxLQUFLLENBQUMsQ0FBQztZQUN0QyxJQUFJLENBQUMsSUFBSSxDQUFDLEVBQUUsSUFBSSxFQUFFLFNBQVMsRUFBRSxDQUFDLENBQUM7WUFDL0IsSUFBSSxDQUFDLElBQUksQ0FBQyxFQUFFLElBQUksRUFBRSxVQUFVLEVBQUUsQ0FBQyxDQUFDO1FBQ3BDLENBQUMsQ0FDSixDQUFDO0lBQ04sQ0FBQyxFQUFFLGVBQWUsR0FBRztRQUNqQixNQUFNLENBQUMsU0FBUyxFQUFFLENBQUMsSUFBSSxDQUFDO0lBQzVCLENBQUMsRUFBRSxnQkFBZ0IsR0FBRztRQUNsQiwyRkFBMkY7UUFDM0YsSUFBSSxDQUFDLEdBQUcsS0FBSyxDQUFDLGFBQWEsR0FBRyxDQUFDLENBQUMsS0FBSyxDQUFDLGFBQWEsSUFBSSxDQUFDLENBQUMsR0FBRyxVQUFVLENBQUMsQ0FBQztRQUN4RSxDQUFDLEdBQUcsQ0FBQyxDQUFDLEdBQUcsVUFBVSxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUMsR0FBRyxVQUFVLENBQUMsQ0FBQztRQUMvQyxNQUFNLENBQUMsQ0FBQyxDQUFDLENBQUMsR0FBRyxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUMsR0FBRyxTQUFTLENBQUMsR0FBRyxTQUFTLENBQUMsSUFBSSxFQUFFLENBQUM7SUFDMUQsQ0FBQyxDQUFDO0lBRUYsTUFBTSxDQUFDO1FBQ0gsYUFBYTtRQUNiLG9CQUFvQjtRQUNwQixvQkFBb0I7UUFDcEIsU0FBUztRQUNULGVBQWU7UUFDZixnQkFBZ0I7S0FDbkIsQ0FBQztBQUNOLENBQUMsQ0FBQyJ9
 
 /***/ },
-/* 213 */
+/* 209 */
 /*!***************************************!*\
   !*** ./~/immutable/dist/immutable.js ***!
   \***************************************/
@@ -30370,7 +30217,7 @@
 	}));
 
 /***/ },
-/* 214 */
+/* 210 */
 /*!**********************************!*\
   !*** ./src/templates/actions.ts ***!
   \**********************************/
@@ -30381,7 +30228,7 @@
 	exports.PREV_PAGE = 'PREV_PAGE';
 	exports.SET_PAGE = 'SET_PAGE';
 	exports.ANSWER_QUESTION = 'ANSWER_QUESTION';
-	exports.createAnswerQuestionAction = function (question_key, answer, correct) {
+	exports.createAnswerQuestionAction = (question_key, answer, correct) => {
 	    return {
 	        type: exports.ANSWER_QUESTION,
 	        question_key: question_key,
@@ -30389,81 +30236,81 @@
 	        correct: correct
 	    };
 	};
-	exports.createNextPageAction = function (page_length) {
+	exports.createNextPageAction = (page_length) => {
 	    return {
 	        type: exports.NEXT_PAGE,
 	        page_length: page_length
 	    };
 	};
-	exports.createPrevPageAction = function () {
+	exports.createPrevPageAction = () => {
 	    return {
 	        type: exports.PREV_PAGE
 	    };
 	};
-	exports.createSetPageAction = function (new_page) {
+	exports.createSetPageAction = (new_page) => {
 	    return {
 	        type: exports.SET_PAGE,
 	        new_page: new_page
 	    };
 	};
-
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWN0aW9ucy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFjdGlvbnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUVhLGlCQUFTLEdBQUcsV0FBVyxDQUFDO0FBQ3hCLGlCQUFTLEdBQUcsV0FBVyxDQUFDO0FBQ3hCLGdCQUFRLEdBQUcsVUFBVSxDQUFDO0FBQ3RCLHVCQUFlLEdBQUcsaUJBQWlCLENBQUM7QUFnQnBDLGtDQUEwQixHQUFHLENBQUMsWUFBb0IsRUFBRSxNQUFjLEVBQUUsT0FBZ0I7SUFDN0YsTUFBTSxDQUF1QjtRQUN6QixJQUFJLEVBQUUsdUJBQWU7UUFDckIsWUFBWSxFQUFFLFlBQVk7UUFDMUIsTUFBTSxFQUFFLE1BQU07UUFDZCxPQUFPLEVBQUUsT0FBTztLQUNuQixDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBR1csNEJBQW9CLEdBQUcsQ0FBQyxXQUFtQjtJQUNwRCxNQUFNLENBQWE7UUFDZixJQUFJLEVBQUUsaUJBQVM7UUFDZixXQUFXLEVBQUUsV0FBVztLQUMzQixDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBRVcsNEJBQW9CLEdBQUc7SUFDaEMsTUFBTSxDQUFhO1FBQ2YsSUFBSSxFQUFFLGlCQUFTO0tBQ2xCLENBQUM7QUFDTixDQUFDLENBQUM7QUFFVywyQkFBbUIsR0FBRyxDQUFDLFFBQWdCO0lBQ2hELE1BQU0sQ0FBZ0I7UUFDbEIsSUFBSSxFQUFFLGdCQUFRO1FBQ2QsUUFBUSxFQUFFLFFBQVE7S0FDckIsQ0FBQztBQUNOLENBQUMsQ0FBQyJ9
 
 /***/ },
-/* 215 */
+/* 211 */
 /*!******************************************************!*\
   !*** ./src/templates/container/ActivePageSelect.tsx ***!
   \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var react_redux_1 = __webpack_require__(/*! react-redux */ 190);
-	var actions_1 = __webpack_require__(/*! ../actions */ 214);
-	var types_1 = __webpack_require__(/*! ../types */ 212);
-	var PageSelect_1 = __webpack_require__(/*! ../presentation/PageSelect */ 216);
-	var mapStateToProps = function (state) {
+	const react_redux_1 = __webpack_require__(/*! react-redux */ 190);
+	const actions_1 = __webpack_require__(/*! ../actions */ 210);
+	const types_1 = __webpack_require__(/*! ../types */ 208);
+	const PageSelect_1 = __webpack_require__(/*! ../presentation/PageSelect */ 212);
+	const mapStateToProps = (state) => {
 	    return {
 	        topics: types_1.TutoralStateHelpers(state).GET_ALL_TOPIC_TITLES(),
 	        pageLength: types_1.TutoralStateHelpers(state).GET_PAGE_LENGTH()
 	    };
 	};
-	var mapDispatchToProps = function (dispatch) {
+	const mapDispatchToProps = (dispatch) => {
 	    return {
-	        goBack: function () {
+	        goBack() {
 	            dispatch(actions_1.createPrevPageAction());
 	        },
-	        goForward: function (page_length) {
+	        goForward(page_length) {
 	            dispatch(actions_1.createNextPageAction(page_length));
 	        },
-	        createGoToTopic: function (topics, topic) {
-	            return function () {
+	        createGoToTopic(topics, topic) {
+	            return () => {
 	                dispatch(actions_1.createSetPageAction(topics.get(topic) + 1));
 	            };
 	        }
 	    };
 	};
-	var ActivePageSelect = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PageSelect_1["default"]);
-	exports.__esModule = true;
-	exports["default"] = ActivePageSelect;
-
+	const ActivePageSelect = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PageSelect_1.default);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ActivePageSelect;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQWN0aXZlUGFnZVNlbGVjdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkFjdGl2ZVBhZ2VTZWxlY3QudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFHQSw4QkFBd0IsYUFBYSxDQUFDLENBQUE7QUFDdEMsMEJBQThFLFlBQVksQ0FBQyxDQUFBO0FBQzNGLHdCQUFzRCxVQUFVLENBQUMsQ0FBQTtBQUNqRSw2QkFBdUIsNEJBQTRCLENBQUMsQ0FBQTtBQUVwRCxNQUFNLGVBQWUsR0FBRyxDQUFDLEtBQXVCO0lBQzVDLE1BQU0sQ0FBQztRQUNILE1BQU0sRUFBRSwyQkFBbUIsQ0FBQyxLQUFLLENBQUMsQ0FBQyxvQkFBb0IsRUFBRTtRQUN6RCxVQUFVLEVBQUUsMkJBQW1CLENBQUMsS0FBSyxDQUFDLENBQUMsZUFBZSxFQUFFO0tBQzNELENBQUM7QUFDTixDQUFDLENBQUM7QUFFRixNQUFNLGtCQUFrQixHQUFHLENBQUMsUUFBb0M7SUFDNUQsTUFBTSxDQUFDO1FBQ0gsTUFBTTtZQUNGLFFBQVEsQ0FBQyw4QkFBb0IsRUFBRSxDQUFDLENBQUM7UUFDckMsQ0FBQztRQUNELFNBQVMsQ0FBQyxXQUFtQjtZQUN6QixRQUFRLENBQUMsOEJBQW9CLENBQUMsV0FBVyxDQUFDLENBQUMsQ0FBQztRQUNoRCxDQUFDO1FBQ0QsZUFBZSxDQUFDLE1BQXFDLEVBQUUsS0FBYTtZQUNoRSxNQUFNLENBQUM7Z0JBQ0gsUUFBUSxDQUFDLDZCQUFtQixDQUFDLE1BQU0sQ0FBQyxHQUFHLENBQUMsS0FBSyxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUN6RCxDQUFDLENBQUM7UUFDTixDQUFDO0tBQ0osQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGLE1BQU0sZ0JBQWdCLEdBQUcscUJBQU8sQ0FBQyxlQUFlLEVBQUUsa0JBQWtCLENBQUMsQ0FBQyxvQkFBVSxDQUFDLENBQUM7QUFFbEY7a0JBQWUsZ0JBQWdCLENBQUMifQ==
 
 /***/ },
-/* 216 */
+/* 212 */
 /*!***************************************************!*\
   !*** ./src/templates/presentation/PageSelect.tsx ***!
   \***************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var React = __webpack_require__(/*! react */ 169);
-	var PageSelect = function (props) {
-	    var completeGoForward = function () {
+	const React = __webpack_require__(/*! react */ 169);
+	const PageSelect = (props) => {
+	    const completeGoForward = () => {
 	        props.goForward(props.pageLength);
 	    };
 	    return (React.createElement("ul", {id: 'pageselect'}, 
 	        React.createElement("li", {className: 'arrow', onClick: props.goBack}, 
 	            React.createElement("a", {href: '#'}, "« ")
 	        ), 
-	        props.topics.map(function (topic, i) {
+	        props.topics.map((topic, i) => {
 	            return React.createElement("li", {key: i}, 
 	                React.createElement("a", {onClick: props.createGoToTopic(props.topics, i)}, i + 1)
 	            );
@@ -30472,20 +30319,20 @@
 	            React.createElement("a", {href: '#'}, "» ")
 	        )));
 	};
-	exports.__esModule = true;
-	exports["default"] = PageSelect;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = PageSelect;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGFnZVNlbGVjdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBhZ2VTZWxlY3QudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxNQUFZLEtBQUssV0FBTSxPQUFPLENBQUMsQ0FBQTtBQUcvQixNQUFNLFVBQVUsR0FBRyxDQUFDLEtBU25CO0lBQ0csTUFBTSxpQkFBaUIsR0FBRztRQUN0QixLQUFLLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxVQUFVLENBQUMsQ0FBQztJQUN0QyxDQUFDLENBQUM7SUFFRixNQUFNLENBQUMsQ0FDSCxxQkFBQyxFQUFFLElBQUMsRUFBRSxFQUFDLFlBQVk7UUFDZixxQkFBQyxFQUFFLElBQUMsU0FBUyxFQUFDLE9BQU8sRUFBQyxPQUFPLEVBQUUsS0FBSyxDQUFDLE1BQU87WUFBQyxxQkFBQyxDQUFDLElBQUMsSUFBSSxFQUFDLEdBQUcsR0FBQyxJQUFRLENBQUk7U0FBSztRQUN6RSxLQUFLLENBQUMsTUFBTSxDQUFDLEdBQUcsQ0FBQyxDQUFDLEtBQUssRUFBRSxDQUFDO1lBQ3ZCLE1BQU0sQ0FBQyxxQkFBQyxFQUFFLElBQUMsR0FBRyxFQUFFLENBQUU7Z0JBQUMscUJBQUMsQ0FBQyxJQUFDLE9BQU8sRUFBRSxLQUFLLENBQUMsZUFBZSxDQUFDLEtBQUssQ0FBQyxNQUFNLEVBQUUsQ0FBQyxDQUFHLEdBQUUsQ0FBQyxHQUFHLENBQUUsQ0FBSTthQUFLLENBQUM7UUFDN0YsQ0FBQyxDQUFDLENBQUMsT0FBTyxFQUFJO1FBQ2QscUJBQUMsRUFBRSxJQUFDLFNBQVMsRUFBQyxPQUFPLEVBQUMsT0FBTyxFQUFFLGlCQUFrQjtZQUFDLHFCQUFDLENBQUMsSUFBQyxJQUFJLEVBQUMsR0FBRyxHQUFDLElBQVEsQ0FBSTtTQUFLLENBQzlFLENBQUMsQ0FBQztBQUNmLENBQUMsQ0FBQztBQUVGO2tCQUFlLFVBQVUsQ0FBQyJ9
 
 /***/ },
-/* 217 */
+/* 213 */
 /*!***********************************!*\
   !*** ./src/templates/reducers.ts ***!
   \***********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var redux_1 = __webpack_require__(/*! redux */ 175);
-	var initialCurrentState = {
+	const redux_1 = __webpack_require__(/*! redux */ 175);
+	const initialCurrentState = {
 	    COURSE_DATA: {
 	        title: '',
 	        pages: []
@@ -30494,27 +30341,26 @@
 	    CURRENT_SCORE: 0
 	};
 	// Page increment needs number of pages to prevent out of range
-	var currentPageHandlers = {
-	    NEXT_PAGE: function (state, action) {
+	const currentPageHandlers = {
+	    NEXT_PAGE: (state, action) => {
 	        return state < action.page_length - 1 ? state + 1 : state;
 	    },
-	    PREV_PAGE: function (state, action) {
+	    PREV_PAGE: (state, action) => {
 	        return state > 0 ? state - 1 : state;
 	    },
-	    SET_PAGE: function (state, action) {
+	    SET_PAGE: (state, action) => {
 	        return action.new_page;
 	    }
 	};
-	var courseDataHandlers = {};
-	var currentScoreHandlers = {
-	    ANSWER_QUESTION: function (state, action) {
-	        var correctNum = action.correct ? 1 : 0;
+	const courseDataHandlers = {};
+	const currentScoreHandlers = {
+	    ANSWER_QUESTION: (state, action) => {
+	        let correctNum = action.correct ? 1 : 0;
 	        return (state | (correctNum << action.question_key));
 	    }
 	};
-	var createReducer = function (initalState, handlers) {
-	    return function (state, action) {
-	        if (state === void 0) { state = initalState; }
+	const createReducer = (initalState, handlers) => {
+	    return (state = initalState, action) => {
 	        if (handlers.hasOwnProperty(action.type)) {
 	            return (handlers[action.type](state, action));
 	        }
@@ -30523,26 +30369,26 @@
 	        }
 	    };
 	};
-	var reducers = redux_1.combineReducers({
+	const reducers = redux_1.combineReducers({
 	    COURSE_DATA: createReducer(initialCurrentState.COURSE_DATA, courseDataHandlers),
 	    CURRENT_PAGE: createReducer(initialCurrentState.CURRENT_PAGE, currentPageHandlers),
 	    CURRENT_SCORE: createReducer(initialCurrentState.CURRENT_SCORE, currentScoreHandlers)
 	});
-	exports.__esModule = true;
-	exports["default"] = reducers;
-
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = reducers;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVkdWNlcnMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJyZWR1Y2Vycy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsd0JBQXNELE9BQU8sQ0FBQyxDQUFBO0FBYzlELE1BQU0sbUJBQW1CLEdBQXFCO0lBQzFDLFdBQVcsRUFBRTtRQUNULEtBQUssRUFBRSxFQUFFO1FBQ1QsS0FBSyxFQUFFLEVBQUU7S0FDWjtJQUNELFlBQVksRUFBRSxDQUFDO0lBQ2YsYUFBYSxFQUFFLENBQUM7Q0FDbkIsQ0FBQztBQUVGLCtEQUErRDtBQUMvRCxNQUFNLG1CQUFtQixHQUEwQjtJQUMvQyxTQUFTLEVBQUUsQ0FBQyxLQUFhLEVBQUUsTUFBa0I7UUFDekMsTUFBTSxDQUFDLEtBQUssR0FBRyxNQUFNLENBQUMsV0FBVyxHQUFHLENBQUMsR0FBRyxLQUFLLEdBQUcsQ0FBQyxHQUFHLEtBQUssQ0FBQztJQUM5RCxDQUFDO0lBQ0QsU0FBUyxFQUFFLENBQUMsS0FBYSxFQUFFLE1BQWtCO1FBQ3pDLE1BQU0sQ0FBQyxLQUFLLEdBQUcsQ0FBQyxHQUFHLEtBQUssR0FBRyxDQUFDLEdBQUcsS0FBSyxDQUFDO0lBQ3pDLENBQUM7SUFDRCxRQUFRLEVBQUUsQ0FBQyxLQUFhLEVBQUUsTUFBcUI7UUFDM0MsTUFBTSxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUM7SUFDM0IsQ0FBQztDQUNKLENBQUM7QUFFRixNQUFNLGtCQUFrQixHQUEwQixFQUFFLENBQUM7QUFDckQsTUFBTSxvQkFBb0IsR0FBMEI7SUFDaEQsZUFBZSxFQUFFLENBQUMsS0FBYSxFQUFFLE1BQTRCO1FBQ3pELElBQUksVUFBVSxHQUFHLE1BQU0sQ0FBQyxPQUFPLEdBQUcsQ0FBQyxHQUFHLENBQUMsQ0FBQztRQUN4QyxNQUFNLENBQUEsQ0FBQyxLQUFLLEdBQUcsQ0FBQyxVQUFVLElBQUksTUFBTSxDQUFDLFlBQVksQ0FBQyxDQUFDLENBQUM7SUFDeEQsQ0FBQztDQUNKLENBQUM7QUFFRixNQUFNLGFBQWEsR0FBRyxDQUFJLFdBQWMsRUFBRSxRQUErQjtJQUNyRSxNQUFNLENBQUMsQ0FBQyxLQUFLLEdBQU0sV0FBVyxFQUFFLE1BQWM7UUFDMUMsRUFBRSxDQUFDLENBQUMsUUFBUSxDQUFDLGNBQWMsQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDO1lBQ3ZDLE1BQU0sQ0FBSSxDQUFDLFFBQVEsQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLENBQUMsS0FBSyxFQUFFLE1BQU0sQ0FBQyxDQUFDLENBQUM7UUFDckQsQ0FBQztRQUFDLElBQUksQ0FBQyxDQUFDO1lBQ0osTUFBTSxDQUFDLEtBQUssQ0FBQztRQUNqQixDQUFDO0lBQ0wsQ0FBQyxDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBRUYsTUFBTSxRQUFRLEdBQThCLHVCQUFlLENBQW1CO0lBQzFFLFdBQVcsRUFBRSxhQUFhLENBQUMsbUJBQW1CLENBQUMsV0FBVyxFQUFFLGtCQUFrQixDQUFDO0lBQy9FLFlBQVksRUFBRSxhQUFhLENBQUMsbUJBQW1CLENBQUMsWUFBWSxFQUFFLG1CQUFtQixDQUFDO0lBQ2xGLGFBQWEsRUFBRSxhQUFhLENBQUMsbUJBQW1CLENBQUMsYUFBYSxFQUFFLG9CQUFvQixDQUFDO0NBQ3hGLENBQUMsQ0FBQztBQUVIO2tCQUFlLFFBQVEsQ0FBQyJ9
 
 /***/ },
-/* 218 */
+/* 214 */
 /*!**************************!*\
   !*** ./~/axios/index.js ***!
   \**************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/axios */ 219);
+	module.exports = __webpack_require__(/*! ./lib/axios */ 215);
 
 /***/ },
-/* 219 */
+/* 215 */
 /*!******************************!*\
   !*** ./~/axios/lib/axios.js ***!
   \******************************/
@@ -30550,9 +30396,9 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./utils */ 220);
-	var bind = __webpack_require__(/*! ./helpers/bind */ 221);
-	var Axios = __webpack_require__(/*! ./core/Axios */ 222);
+	var utils = __webpack_require__(/*! ./utils */ 216);
+	var bind = __webpack_require__(/*! ./helpers/bind */ 217);
+	var Axios = __webpack_require__(/*! ./core/Axios */ 218);
 	
 	/**
 	 * Create an instance of Axios
@@ -30585,15 +30431,15 @@
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 240);
-	axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 241);
-	axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 237);
+	axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 236);
+	axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 237);
+	axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 233);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(/*! ./helpers/spread */ 242);
+	axios.spread = __webpack_require__(/*! ./helpers/spread */ 238);
 	
 	module.exports = axios;
 	
@@ -30602,7 +30448,7 @@
 
 
 /***/ },
-/* 220 */
+/* 216 */
 /*!******************************!*\
   !*** ./~/axios/lib/utils.js ***!
   \******************************/
@@ -30610,7 +30456,7 @@
 
 	'use strict';
 	
-	var bind = __webpack_require__(/*! ./helpers/bind */ 221);
+	var bind = __webpack_require__(/*! ./helpers/bind */ 217);
 	
 	/*global toString:true*/
 	
@@ -30910,7 +30756,7 @@
 
 
 /***/ },
-/* 221 */
+/* 217 */
 /*!*************************************!*\
   !*** ./~/axios/lib/helpers/bind.js ***!
   \*************************************/
@@ -30930,7 +30776,7 @@
 
 
 /***/ },
-/* 222 */
+/* 218 */
 /*!***********************************!*\
   !*** ./~/axios/lib/core/Axios.js ***!
   \***********************************/
@@ -30938,12 +30784,12 @@
 
 	'use strict';
 	
-	var defaults = __webpack_require__(/*! ./../defaults */ 223);
-	var utils = __webpack_require__(/*! ./../utils */ 220);
-	var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 234);
-	var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 235);
-	var isAbsoluteURL = __webpack_require__(/*! ./../helpers/isAbsoluteURL */ 238);
-	var combineURLs = __webpack_require__(/*! ./../helpers/combineURLs */ 239);
+	var defaults = __webpack_require__(/*! ./../defaults */ 219);
+	var utils = __webpack_require__(/*! ./../utils */ 216);
+	var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 230);
+	var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 231);
+	var isAbsoluteURL = __webpack_require__(/*! ./../helpers/isAbsoluteURL */ 234);
+	var combineURLs = __webpack_require__(/*! ./../helpers/combineURLs */ 235);
 	
 	/**
 	 * Create a new instance of Axios
@@ -31024,7 +30870,7 @@
 
 
 /***/ },
-/* 223 */
+/* 219 */
 /*!*********************************!*\
   !*** ./~/axios/lib/defaults.js ***!
   \*********************************/
@@ -31032,8 +30878,8 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(/*! ./utils */ 220);
-	var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 224);
+	var utils = __webpack_require__(/*! ./utils */ 216);
+	var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 220);
 	
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -31050,10 +30896,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(/*! ./adapters/xhr */ 225);
+	    adapter = __webpack_require__(/*! ./adapters/xhr */ 221);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(/*! ./adapters/http */ 225);
+	    adapter = __webpack_require__(/*! ./adapters/http */ 221);
 	  }
 	  return adapter;
 	}
@@ -31120,7 +30966,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 5)))
 
 /***/ },
-/* 224 */
+/* 220 */
 /*!****************************************************!*\
   !*** ./~/axios/lib/helpers/normalizeHeaderName.js ***!
   \****************************************************/
@@ -31128,7 +30974,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ../utils */ 220);
+	var utils = __webpack_require__(/*! ../utils */ 216);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -31141,7 +30987,7 @@
 
 
 /***/ },
-/* 225 */
+/* 221 */
 /*!*************************************!*\
   !*** ./~/axios/lib/adapters/xhr.js ***!
   \*************************************/
@@ -31149,13 +30995,13 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 220);
-	var settle = __webpack_require__(/*! ./../core/settle */ 226);
-	var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 229);
-	var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 230);
-	var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 231);
-	var createError = __webpack_require__(/*! ../core/createError */ 227);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(/*! ./../helpers/btoa */ 232);
+	var utils = __webpack_require__(/*! ./../utils */ 216);
+	var settle = __webpack_require__(/*! ./../core/settle */ 222);
+	var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 225);
+	var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 226);
+	var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 227);
+	var createError = __webpack_require__(/*! ../core/createError */ 223);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(/*! ./../helpers/btoa */ 228);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -31251,7 +31097,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 233);
+	      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 229);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -31305,6 +31151,10 @@
 	    if (config.cancelToken) {
 	      // Handle cancellation
 	      config.cancelToken.promise.then(function onCanceled(cancel) {
+	        if (!request) {
+	          return;
+	        }
+	
 	        request.abort();
 	        reject(cancel);
 	        // Clean up request
@@ -31324,7 +31174,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 5)))
 
 /***/ },
-/* 226 */
+/* 222 */
 /*!************************************!*\
   !*** ./~/axios/lib/core/settle.js ***!
   \************************************/
@@ -31332,7 +31182,7 @@
 
 	'use strict';
 	
-	var createError = __webpack_require__(/*! ./createError */ 227);
+	var createError = __webpack_require__(/*! ./createError */ 223);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -31358,7 +31208,7 @@
 
 
 /***/ },
-/* 227 */
+/* 223 */
 /*!*****************************************!*\
   !*** ./~/axios/lib/core/createError.js ***!
   \*****************************************/
@@ -31366,7 +31216,7 @@
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(/*! ./enhanceError */ 228);
+	var enhanceError = __webpack_require__(/*! ./enhanceError */ 224);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -31384,7 +31234,7 @@
 
 
 /***/ },
-/* 228 */
+/* 224 */
 /*!******************************************!*\
   !*** ./~/axios/lib/core/enhanceError.js ***!
   \******************************************/
@@ -31412,7 +31262,7 @@
 
 
 /***/ },
-/* 229 */
+/* 225 */
 /*!*****************************************!*\
   !*** ./~/axios/lib/helpers/buildURL.js ***!
   \*****************************************/
@@ -31420,7 +31270,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 220);
+	var utils = __webpack_require__(/*! ./../utils */ 216);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -31489,7 +31339,7 @@
 
 
 /***/ },
-/* 230 */
+/* 226 */
 /*!*********************************************!*\
   !*** ./~/axios/lib/helpers/parseHeaders.js ***!
   \*********************************************/
@@ -31497,7 +31347,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 220);
+	var utils = __webpack_require__(/*! ./../utils */ 216);
 	
 	/**
 	 * Parse headers into an object
@@ -31535,7 +31385,7 @@
 
 
 /***/ },
-/* 231 */
+/* 227 */
 /*!************************************************!*\
   !*** ./~/axios/lib/helpers/isURLSameOrigin.js ***!
   \************************************************/
@@ -31543,7 +31393,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 220);
+	var utils = __webpack_require__(/*! ./../utils */ 216);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -31612,7 +31462,7 @@
 
 
 /***/ },
-/* 232 */
+/* 228 */
 /*!*************************************!*\
   !*** ./~/axios/lib/helpers/btoa.js ***!
   \*************************************/
@@ -31657,7 +31507,7 @@
 
 
 /***/ },
-/* 233 */
+/* 229 */
 /*!****************************************!*\
   !*** ./~/axios/lib/helpers/cookies.js ***!
   \****************************************/
@@ -31665,7 +31515,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 220);
+	var utils = __webpack_require__(/*! ./../utils */ 216);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -31719,7 +31569,7 @@
 
 
 /***/ },
-/* 234 */
+/* 230 */
 /*!************************************************!*\
   !*** ./~/axios/lib/core/InterceptorManager.js ***!
   \************************************************/
@@ -31727,7 +31577,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 220);
+	var utils = __webpack_require__(/*! ./../utils */ 216);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -31780,7 +31630,7 @@
 
 
 /***/ },
-/* 235 */
+/* 231 */
 /*!*********************************************!*\
   !*** ./~/axios/lib/core/dispatchRequest.js ***!
   \*********************************************/
@@ -31788,10 +31638,10 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 220);
-	var transformData = __webpack_require__(/*! ./transformData */ 236);
-	var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 237);
-	var defaults = __webpack_require__(/*! ../defaults */ 223);
+	var utils = __webpack_require__(/*! ./../utils */ 216);
+	var transformData = __webpack_require__(/*! ./transformData */ 232);
+	var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 233);
+	var defaults = __webpack_require__(/*! ../defaults */ 219);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -31868,7 +31718,7 @@
 
 
 /***/ },
-/* 236 */
+/* 232 */
 /*!*******************************************!*\
   !*** ./~/axios/lib/core/transformData.js ***!
   \*******************************************/
@@ -31876,7 +31726,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 220);
+	var utils = __webpack_require__(/*! ./../utils */ 216);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -31897,7 +31747,7 @@
 
 
 /***/ },
-/* 237 */
+/* 233 */
 /*!****************************************!*\
   !*** ./~/axios/lib/cancel/isCancel.js ***!
   \****************************************/
@@ -31911,7 +31761,7 @@
 
 
 /***/ },
-/* 238 */
+/* 234 */
 /*!**********************************************!*\
   !*** ./~/axios/lib/helpers/isAbsoluteURL.js ***!
   \**********************************************/
@@ -31934,7 +31784,7 @@
 
 
 /***/ },
-/* 239 */
+/* 235 */
 /*!********************************************!*\
   !*** ./~/axios/lib/helpers/combineURLs.js ***!
   \********************************************/
@@ -31955,7 +31805,7 @@
 
 
 /***/ },
-/* 240 */
+/* 236 */
 /*!**************************************!*\
   !*** ./~/axios/lib/cancel/Cancel.js ***!
   \**************************************/
@@ -31983,7 +31833,7 @@
 
 
 /***/ },
-/* 241 */
+/* 237 */
 /*!*******************************************!*\
   !*** ./~/axios/lib/cancel/CancelToken.js ***!
   \*******************************************/
@@ -31991,7 +31841,7 @@
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(/*! ./Cancel */ 240);
+	var Cancel = __webpack_require__(/*! ./Cancel */ 236);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -32049,7 +31899,7 @@
 
 
 /***/ },
-/* 242 */
+/* 238 */
 /*!***************************************!*\
   !*** ./~/axios/lib/helpers/spread.js ***!
   \***************************************/

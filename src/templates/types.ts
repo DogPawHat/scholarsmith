@@ -49,9 +49,20 @@ export interface QuestionPageData extends PageData {
     submitQuestion: (question_key: number, answer: string, correct: boolean) => void;
 };
 
+export interface PageSelectData {
+    goBack: () => void;
+    goForward: (page_length: number) => void;
+    createGoToTopic: (
+        topics: Immutable.Map<number, number>,
+        topic: number
+    ) => () => void;
+    pageLength: number;
+    topics: Immutable.Map<number, number>;
+};
+
 export interface ResultsData {
     score: () => string;
-}
+};
 
 export type AnyTopicPageData = TopicTitlePageData | BasicPageData;
 

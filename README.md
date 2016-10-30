@@ -36,11 +36,39 @@ Pages consist of single .md files with yaml front matter describing the page. Qu
 
 ## How to Run
 
-`npm build`
+### [yarn](https://yarnpkg.com/)
 
-Then:
+```
+yarn
+yarn run build
+yarn run start
+```
 
-`npm start`
+#### Test
+
+`yarn test`
+
+#### Coverage
+
+`yarn run cover`
+
+### npm
+
+```
+npm install
+npm build
+npm run start
+```
+
+#### Test
+
+`npm test`
+
+#### Coverage
+
+`npm run cover`
+
+### Local Address
 
 Default address is
 
