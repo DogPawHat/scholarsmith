@@ -2,23 +2,27 @@ FROM mhart/alpine-node:base-7
 
 MAINTAINER Ciarán Curley version: 0.1.0
 
-RUN mkdir scholarsmith && \
-    mkdir .yarn
+RUN mkdir /opt && \
+    mkdir /opt/.yarn && \
+    mkdir /src && \
+    mkdir /src/scholarsmith
 
-COPY . scholarsmith/
+ADD https://yarnpkg.com/latest.tar.gz /opt/yarn.tar.gz
 
-ADD yarn-v0.16.1.tar.gz .yarn
+WORKDIR /src/scholarsmith
 
-RUN apk update
-    
-ENV PATH "$PATH:$HOME/.yarn/dist/bin"
+RUN apk update && \
+    apk add gcc g++ python make && \
+    tar zvxf /opt/yarn.tar.gz -C /opt/.yarn
 
-RUN cd scholarsmith && \
-    yarn
-RUN cd scholarsmith && \
+COPY . .
+
+ENV PATH "$PATH:/opt/.yarn/dist/bin"
+
+RUN yarn install --force && \
     yarn test && \
-    yarn build && \
+    yarn build
 
 
 EXPOSE 8080
-ENTRYPOINT ["./scholarsmith/node_modules/.bin/webpack-dev-server", "-d", "--host=0.0.0.0", "--content-base", "dist/"]
+ENTRYPOINT ["./node_modules/.bin/webpack-dev-server", "-d", "--host=0.0.0.0", "--content-base", "dist/"]
