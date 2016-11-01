@@ -72,4 +72,14 @@ npm run start
 
 Default address is
 
-`localhost:8080`
+`localhost:8080/webpack-dev-server/`
+
+### Docker
+
+With default docker settings:
+
+```
+docker build -t myimage .
+docker run -p 8080:8080 myimage
+192.168.99.100:8080/webpack-dev-server/
+```

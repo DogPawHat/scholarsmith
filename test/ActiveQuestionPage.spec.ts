@@ -5,9 +5,10 @@ import {shallow, mount} from 'enzyme';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {TutoralStateType, ContextData, PageTypes} from '../src/templates/types';
-import {createNextPageAction, createSetPageAction, createPrevPageAction} from '../src/templates/actions';
+import {createAnswerQuestionAction} from '../src/templates/actions';
 import reducers from '../src/templates/reducers';
-import VisiblePage from '../src/templates/container/VisablePage';
+import ActiveQuestionPage from '../src/templates/container/ActiveQuestionPage';
+
 
 const courseData: ContextData = {
     title: 'Hello!',
@@ -46,7 +47,9 @@ const courseData: ContextData = {
             ],
             correct: 2,
             feedback: 'Derp',
-            type: 'question'
+            index: 0,
+            type: 'question',
+            selectedAnswer: -1
         },
         {
             stem: 'Derp Question 2',
@@ -57,7 +60,9 @@ const courseData: ContextData = {
             ],
             correct: 2,
             feedback: 'Derp',
-            type: 'question'
+            index: 1,
+            type: 'question',
+            selectedAnswer: -1
         }
     ]
 };
@@ -68,15 +73,38 @@ const createProviderWrapper = (initialState: TutoralStateType) => {
         Provider,
         {store: testStore},
         React.createElement(
-            VisiblePage,
-            null
+            ActiveQuestionPage,
+            courseData.pages[5]
     ));
     const wrapper = mount(provider);
     return {testStore, wrapper};
 };
 
+test('test score 1', t => {
+    const initialState: TutoralStateType = {
+        COURSE_DATA: courseData,
+        CURRENT_PAGE: 3,
+        CURRENT_SCORE: 0
+    };
+    t.plan(1);
+    const providerOpts = createProviderWrapper(initialState);
+    providerOpts.testStore.dispatch(createAnswerQuestionAction(0, '2', true));
+    t.is(providerOpts.testStore.getState().CURRENT_SCORE, 1);
+});
 
-test('test state 1', t => {
+test('test score 2', t => {
+    const initialState: TutoralStateType = {
+        COURSE_DATA: courseData,
+        CURRENT_PAGE: 3,
+        CURRENT_SCORE: 0
+    };
+    t.plan(1);
+    const providerOpts = createProviderWrapper(initialState);
+    providerOpts.testStore.dispatch(createAnswerQuestionAction(0, '1', false));
+    t.is(providerOpts.testStore.getState().CURRENT_SCORE, 0);
+});
+
+test('test submit handlers', t => {
     const initialState: TutoralStateType = {
         COURSE_DATA: courseData,
         CURRENT_PAGE: 3,
@@ -84,21 +112,9 @@ test('test state 1', t => {
     };
     t.plan(2);
     const providerOpts = createProviderWrapper(initialState);
-    t.is(providerOpts.wrapper.html().indexOf('Second!'), -1);
-    providerOpts.testStore.dispatch(createNextPageAction(3));
-    t.is(providerOpts.wrapper.html().indexOf('Third!'), -1);
+    providerOpts.wrapper.find('input#radio_0_2').simulate('click');
+    providerOpts.wrapper.find('form').simulate('submit');
+    t.is(providerOpts.testStore.getState().CURRENT_SCORE, 1);
+    providerOpts.wrapper.find('form').simulate('submit');
+    t.is(providerOpts.testStore.getState().CURRENT_SCORE, 1);
 });
-
-test('test state 2', t => {
-    const initialState: TutoralStateType = {
-        COURSE_DATA: courseData,
-        CURRENT_PAGE: 3,
-        CURRENT_SCORE: 0
-    };
-    t.plan(2);
-    const providerOpts = createProviderWrapper(initialState);
-    t.is(providerOpts.wrapper.html().indexOf('Second!'), -1);
-    providerOpts.testStore.dispatch(createPrevPageAction());
-    t.is(providerOpts.wrapper.html().indexOf('Third!'), -1);
-});
-

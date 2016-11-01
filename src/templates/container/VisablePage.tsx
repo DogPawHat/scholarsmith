@@ -7,6 +7,7 @@ import WelcomePage from '../presentation/WelcomePage';
 import TopicTitlePage from '../presentation/TopicTitlePage';
 import BasicPage from '../presentation/BasicPage';
 import QuestionPage from '../presentation/QuestionPage';
+import ActiveQuestionPage from './ActiveQuestionPage';
 import ResultsPage from '../presentation/ResultsPage';
 import TalkToUsPage from '../presentation/TalkToUsPage';
 import Page from '../presentation/Page';
@@ -26,7 +27,7 @@ const RenderedPageTypes = {
     'welcome': WelcomePage,
     'topic_title': TopicTitlePage,
     'plain': BasicPage,
-    'question': QuestionPage,
+    'question': ActiveQuestionPage,
     'results': ResultsPage,
     'talktous': TalkToUsPage
 };

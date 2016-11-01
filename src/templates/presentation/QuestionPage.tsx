@@ -11,7 +11,11 @@ const QuestionPage: React.StatelessComponent<QuestionPageData> = (props) => {
     };
 
     const answerQuestion = (e: React.FormEvent<any>) => {
-        props.submitQuestion(props.index, currentAnswer.toString(), currentAnswer === props.correct);
+        // A selected answer of -1 indicates that the question 
+        // has not been previously answered
+        if (props.selectedAnswer === -1) {
+            props.submitQuestion(props.index, currentAnswer.toString(), currentAnswer === props.correct);
+        }
         e.stopPropagation();
         e.preventDefault();
     };

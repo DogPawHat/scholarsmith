@@ -1,6 +1,6 @@
 {
   "name": "scholarsmith",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "repository": {
     "url": "https://github.com/DogPawHat/scholarsmith",
     "type": "git"
@@ -33,7 +33,6 @@
     ],
     "all": true,
     "exclude": [
-      "src/templates/container/ActiveQuestionPage.tsx",
       "test/**/*",
       "dist/**/*",
       "coverage/**/*",

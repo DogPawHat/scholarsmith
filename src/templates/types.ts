@@ -47,6 +47,7 @@ export interface QuestionPageData extends PageData {
     feedback: string;
     index: number;
     submitQuestion: (question_key: number, answer: string, correct: boolean) => void;
+    selectedAnswer: number;
 };
 
 export interface PageSelectData {
