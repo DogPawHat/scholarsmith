@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:base-7
+FROM mhart/alpine-node:7
 
 MAINTAINER Ciarán Curley version: 0.1.0
 
