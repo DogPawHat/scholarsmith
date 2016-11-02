@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as Immutable from 'immutable';
 import {PageSelectData} from '../types';
 
 const PageSelect: React.StatelessComponent<PageSelectData> = (props) => {

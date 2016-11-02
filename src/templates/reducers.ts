@@ -1,7 +1,6 @@
-import {Reducer, Action, combineReducers, Store} from 'redux';
-import * as Immutable from 'immutable';
+import {Reducer, Action, combineReducers} from 'redux';
 import { AnswerQuestionAction, SetPageAction, PageAction} from './actions';
-import { TutoralStateType, COURSE_DATA, CURRENT_PAGE, CURRENT_SCORE, ContextData, AnyPageData} from './types';
+import { TutoralStateType} from './types';
 
 
 interface HandlerType {

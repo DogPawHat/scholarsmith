@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {safeLoadAll, safeLoad} from 'js-yaml';
 import * as fm from 'yaml-front-matter';

@@ -1,6 +1,4 @@
 import * as React from 'react';
-import WelcomePage from './WelcomePage';
-import QuestionPage from './QuestionPage';
 import {AnyPageData} from '../types';
 
 const Page: React.StatelessComponent<{
