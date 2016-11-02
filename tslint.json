@@ -1,5 +1,9 @@
 {
     "rules": {
+        "no-unused-variable": [
+            true,
+            "react"
+        ],
         "class-name": true,
         "comment-format": [
             true,

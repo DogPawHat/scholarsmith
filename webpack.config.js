@@ -13,7 +13,7 @@ var commonModule = {
 };
 
 var commonTsLint = {
-    emitErrors: true,
+    emitErrors: false,
     failOnHint: false
 }
 

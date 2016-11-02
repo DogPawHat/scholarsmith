@@ -51,7 +51,7 @@
 	__webpack_require__(/*! ../scss/app.scss */ 1);
 	const react_dom_1 = __webpack_require__(/*! react-dom */ 3);
 	const InnerBody_1 = __webpack_require__(/*! ../../templates/container/InnerBody */ 168);
-	const axios = __webpack_require__(/*! axios */ 215);
+	const axios = __webpack_require__(/*! axios */ 216);
 	axios.get('props.json').then((value) => {
 	    let body = value.data;
 	    react_dom_1.render(InnerBody_1.default(body), document.getElementById('root'));
@@ -21337,8 +21337,8 @@
 	const redux_1 = __webpack_require__(/*! redux */ 175);
 	const react_redux_1 = __webpack_require__(/*! react-redux */ 190);
 	const VisablePage_1 = __webpack_require__(/*! ./VisablePage */ 199);
-	const ActivePageSelect_1 = __webpack_require__(/*! ./ActivePageSelect */ 212);
-	const reducers_1 = __webpack_require__(/*! ../reducers */ 214);
+	const ActivePageSelect_1 = __webpack_require__(/*! ./ActivePageSelect */ 213);
+	const reducers_1 = __webpack_require__(/*! ../reducers */ 215);
 	const InnerBody = (props) => {
 	    const initialCurrentState = {
 	        COURSE_DATA: props,
@@ -23664,17 +23664,16 @@
 	const TopicTitlePage_1 = __webpack_require__(/*! ../presentation/TopicTitlePage */ 201);
 	const BasicPage_1 = __webpack_require__(/*! ../presentation/BasicPage */ 202);
 	const ActiveQuestionPage_1 = __webpack_require__(/*! ./ActiveQuestionPage */ 204);
-	const ResultsPage_1 = __webpack_require__(/*! ../presentation/ResultsPage */ 207);
-	const TalkToUsPage_1 = __webpack_require__(/*! ../presentation/TalkToUsPage */ 208);
-	const Page_1 = __webpack_require__(/*! ../presentation/Page */ 209);
-	const types_1 = __webpack_require__(/*! ../types */ 210);
-	const actions_1 = __webpack_require__(/*! ../actions */ 206);
+	const ActiveResultsPage_1 = __webpack_require__(/*! ./ActiveResultsPage */ 207);
+	const TalkToUsPage_1 = __webpack_require__(/*! ../presentation/TalkToUsPage */ 211);
+	const Page_1 = __webpack_require__(/*! ../presentation/Page */ 212);
+	const types_1 = __webpack_require__(/*! ../types */ 208);
 	const RenderedPageTypes = {
 	    'welcome': WelcomePage_1.default,
 	    'topic_title': TopicTitlePage_1.default,
 	    'plain': BasicPage_1.default,
 	    'question': ActiveQuestionPage_1.default,
-	    'results': ResultsPage_1.default,
+	    'results': ActiveResultsPage_1.default,
 	    'talktous': TalkToUsPage_1.default
 	};
 	const getRenderedPage = (id, pages) => {
@@ -23683,16 +23682,11 @@
 	const mapStateToProps = (state) => {
 	    return {
 	        childPage: getRenderedPage(state.CURRENT_PAGE, types_1.TutoralStateHelpers(state).GET_PAGES().toArray()),
-	        pageData: types_1.TutoralStateHelpers(state).GET_PAGES().get(state.CURRENT_PAGE),
-	        score: () => { return types_1.TutoralStateHelpers(state).GET_PROPER_SCORE(); }
+	        pageData: types_1.TutoralStateHelpers(state).GET_PAGES().get(state.CURRENT_PAGE)
 	    };
 	};
 	const mapDispatchToProps = (dispatch) => {
-	    return {
-	        submitQuestion: (question_key, answer, correct) => {
-	            dispatch(actions_1.createAnswerQuestionAction(question_key, answer, correct));
-	        }
-	    };
+	    return {};
 	};
 	const mergeProps = (mapStateToPropsResult, mapDispatchToPropsResult, ownProps) => {
 	    return {
@@ -23706,7 +23700,7 @@
 	const VisablePage = react_redux_1.connect(mapStateToProps, mapDispatchToProps, mergeProps)(Page_1.default);
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = VisablePage;
-	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVmlzYWJsZVBhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJWaXNhYmxlUGFnZS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBLDhCQUFzQixhQUFhLENBQUMsQ0FBQTtBQUlwQyw4QkFBd0IsNkJBQTZCLENBQUMsQ0FBQTtBQUN0RCxpQ0FBMkIsZ0NBQWdDLENBQUMsQ0FBQTtBQUM1RCw0QkFBc0IsMkJBQTJCLENBQUMsQ0FBQTtBQUVsRCxxQ0FBK0Isc0JBQXNCLENBQUMsQ0FBQTtBQUN0RCw4QkFBd0IsNkJBQTZCLENBQUMsQ0FBQTtBQUN0RCwrQkFBeUIsOEJBQThCLENBQUMsQ0FBQTtBQUN4RCx1QkFBaUIsc0JBQXNCLENBQUMsQ0FBQTtBQUV4Qyx3QkFPTyxVQUFVLENBQUMsQ0FBQTtBQUVsQiwwQkFBeUMsWUFBWSxDQUFDLENBQUE7QUFFdEQsTUFBTSxpQkFBaUIsR0FBRztJQUN0QixTQUFTLEVBQUUscUJBQVc7SUFDdEIsYUFBYSxFQUFFLHdCQUFjO0lBQzdCLE9BQU8sRUFBRSxtQkFBUztJQUNsQixVQUFVLEVBQUUsNEJBQWtCO0lBQzlCLFNBQVMsRUFBRSxxQkFBVztJQUN0QixVQUFVLEVBQUUsc0JBQVk7Q0FDM0IsQ0FBQztBQUVGLE1BQU0sZUFBZSxHQUFnRixDQUFDLEVBQUUsRUFBRSxLQUFLO0lBQzNHLE1BQU0sQ0FBQyxpQkFBaUIsQ0FBQyxLQUFLLENBQUMsRUFBRSxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUM7QUFDN0MsQ0FBQyxDQUFDO0FBRUYsTUFBTSxlQUFlLEdBQUcsQ0FBQyxLQUF1QjtJQUM1QyxNQUFNLENBQUM7UUFDSCxTQUFTLEVBQUUsZUFBZSxDQUFDLEtBQUssQ0FBQyxZQUFZLEVBQUUsMkJBQW1CLENBQUMsS0FBSyxDQUFDLENBQUMsU0FBUyxFQUFFLENBQUMsT0FBTyxFQUFFLENBQUM7UUFDaEcsUUFBUSxFQUFFLDJCQUFtQixDQUFDLEtBQUssQ0FBQyxDQUFDLFNBQVMsRUFBRSxDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsWUFBWSxDQUFDO1FBQ3hFLEtBQUssRUFBRSxRQUFRLE1BQU0sQ0FBQywyQkFBbUIsQ0FBQyxLQUFLLENBQUMsQ0FBQyxnQkFBZ0IsRUFBRSxDQUFDLENBQUMsQ0FBQztLQUN6RSxDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBRUYsTUFBTSxrQkFBa0IsR0FBRyxDQUFDLFFBQW9DO0lBQzVELE1BQU0sQ0FBQztRQUNILGNBQWMsRUFBRSxDQUFDLFlBQW9CLEVBQUUsTUFBYyxFQUFFLE9BQWdCO1lBQ25FLFFBQVEsQ0FBQyxvQ0FBMEIsQ0FBQyxZQUFZLEVBQUUsTUFBTSxFQUFFLE9BQU8sQ0FBQyxDQUFDLENBQUM7UUFDeEUsQ0FBQztLQUNKLENBQUM7QUFDTixDQUFDLENBQUM7QUFFRixNQUFNLFVBQVUsR0FBRyxDQUFDLHFCQUFxQixFQUFFLHdCQUF3QixFQUFFLFFBQVE7SUFFekUsTUFBTSxDQUFDO1FBQ0gsU0FBUyxFQUFFLHFCQUFxQixDQUFDLFNBQVM7UUFDMUMsUUFBUSxFQUFFLE1BQU0sQ0FBQyxNQUFNLENBQ25CLEVBQUUsRUFDRixxQkFBcUIsQ0FBQyxRQUFRLEVBQzlCO1lBQ0ksY0FBYyxFQUFFLHdCQUF3QixDQUFDLGNBQWM7WUFDdkQsS0FBSyxFQUFFLHFCQUFxQixDQUFDLEtBQUs7U0FDckMsQ0FDSjtLQUNKLENBQUM7QUFDTixDQUFDLENBQUM7QUFFRixNQUFNLFdBQVcsR0FBRyxxQkFBTyxDQUFDLGVBQWUsRUFBRSxrQkFBa0IsRUFBRSxVQUFVLENBQUMsQ0FBQyxjQUFJLENBQUMsQ0FBQztBQUduRjtrQkFBZSxXQUFXLENBQUMifQ==
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVmlzYWJsZVBhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJWaXNhYmxlUGFnZS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBLDhCQUFzQixhQUFhLENBQUMsQ0FBQTtBQUdwQyw4QkFBd0IsNkJBQTZCLENBQUMsQ0FBQTtBQUN0RCxpQ0FBMkIsZ0NBQWdDLENBQUMsQ0FBQTtBQUM1RCw0QkFBc0IsMkJBQTJCLENBQUMsQ0FBQTtBQUNsRCxxQ0FBK0Isc0JBQXNCLENBQUMsQ0FBQTtBQUN0RCxvQ0FBOEIscUJBQXFCLENBQUMsQ0FBQTtBQUNwRCwrQkFBeUIsOEJBQThCLENBQUMsQ0FBQTtBQUN4RCx1QkFBaUIsc0JBQXNCLENBQUMsQ0FBQTtBQUV4Qyx3QkFJTyxVQUFVLENBQUMsQ0FBQTtBQUVsQixNQUFNLGlCQUFpQixHQUFHO0lBQ3RCLFNBQVMsRUFBRSxxQkFBVztJQUN0QixhQUFhLEVBQUUsd0JBQWM7SUFDN0IsT0FBTyxFQUFFLG1CQUFTO0lBQ2xCLFVBQVUsRUFBRSw0QkFBa0I7SUFDOUIsU0FBUyxFQUFFLDJCQUFpQjtJQUM1QixVQUFVLEVBQUUsc0JBQVk7Q0FDM0IsQ0FBQztBQUVGLE1BQU0sZUFBZSxHQUFnRixDQUFDLEVBQUUsRUFBRSxLQUFLO0lBQzNHLE1BQU0sQ0FBQyxpQkFBaUIsQ0FBQyxLQUFLLENBQUMsRUFBRSxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUM7QUFDN0MsQ0FBQyxDQUFDO0FBRUYsTUFBTSxlQUFlLEdBQUcsQ0FBQyxLQUF1QjtJQUM1QyxNQUFNLENBQUM7UUFDSCxTQUFTLEVBQUUsZUFBZSxDQUFDLEtBQUssQ0FBQyxZQUFZLEVBQUUsMkJBQW1CLENBQUMsS0FBSyxDQUFDLENBQUMsU0FBUyxFQUFFLENBQUMsT0FBTyxFQUFFLENBQUM7UUFDaEcsUUFBUSxFQUFFLDJCQUFtQixDQUFDLEtBQUssQ0FBQyxDQUFDLFNBQVMsRUFBRSxDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsWUFBWSxDQUFDO0tBQzNFLENBQUM7QUFDTixDQUFDLENBQUM7QUFFRixNQUFNLGtCQUFrQixHQUFHLENBQUMsUUFBb0M7SUFDNUQsTUFBTSxDQUFDLEVBQ04sQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGLE1BQU0sVUFBVSxHQUFHLENBQUMscUJBQXFCLEVBQUUsd0JBQXdCLEVBQUUsUUFBUTtJQUV6RSxNQUFNLENBQUM7UUFDSCxTQUFTLEVBQUUscUJBQXFCLENBQUMsU0FBUztRQUMxQyxRQUFRLEVBQUUsTUFBTSxDQUFDLE1BQU0sQ0FDbkIsRUFBRSxFQUNGLHFCQUFxQixDQUFDLFFBQVEsRUFDOUI7WUFDSSxjQUFjLEVBQUUsd0JBQXdCLENBQUMsY0FBYztZQUN2RCxLQUFLLEVBQUUscUJBQXFCLENBQUMsS0FBSztTQUNyQyxDQUNKO0tBQ0osQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGLE1BQU0sV0FBVyxHQUFHLHFCQUFPLENBQUMsZUFBZSxFQUFFLGtCQUFrQixFQUFFLFVBQVUsQ0FBQyxDQUFDLGNBQUksQ0FBQyxDQUFDO0FBR25GO2tCQUFlLFdBQVcsQ0FBQyJ9
 
 /***/ },
 /* 200 */
@@ -25167,75 +25161,37 @@
 
 /***/ },
 /* 207 */
-/*!****************************************************!*\
-  !*** ./src/templates/presentation/ResultsPage.tsx ***!
-  \****************************************************/
+/*!*******************************************************!*\
+  !*** ./src/templates/container/ActiveResultsPage.tsx ***!
+  \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const React = __webpack_require__(/*! react */ 169);
-	const ResultsPage = (props) => {
-	    return (React.createElement("div", {className: 'page results'}, 
-	        React.createElement("h1", null, "Results"), 
-	        React.createElement("p", null, props.score())));
+	const react_redux_1 = __webpack_require__(/*! react-redux */ 190);
+	const types_1 = __webpack_require__(/*! ../types */ 208);
+	const ResultsPage_1 = __webpack_require__(/*! ../presentation/ResultsPage */ 210);
+	const mapStateToProps = (state) => {
+	    return {
+	        score: () => { return types_1.TutoralStateHelpers(state).GET_PROPER_SCORE().toString(); }
+	    };
 	};
+	const mapDispatchToProps = (dispatch) => {
+	    return {};
+	};
+	const ActiveResultsPage = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(ResultsPage_1.default);
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = ResultsPage;
-	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUmVzdWx0c1BhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJSZXN1bHRzUGFnZS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE1BQVksS0FBSyxXQUFNLE9BQU8sQ0FBQyxDQUFBO0FBRy9CLE1BQU0sV0FBVyxHQUEwQyxDQUFDLEtBQWtCO0lBQzFFLE1BQU0sQ0FBQyxDQUNILHFCQUFDLEdBQUcsSUFBQyxTQUFTLEVBQUMsY0FBYztRQUN6QixxQkFBQyxFQUFFLFNBQUMsU0FBTyxDQUFLO1FBQ2hCLHFCQUFDLENBQUMsU0FBRyxLQUFLLENBQUMsS0FBSyxFQUFJLENBQUksQ0FDdEIsQ0FDVCxDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBRUY7a0JBQWUsV0FBVyxDQUFDIn0=
+	exports.default = ActiveResultsPage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQWN0aXZlUmVzdWx0c1BhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJBY3RpdmVSZXN1bHRzUGFnZS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLDhCQUFzQixhQUFhLENBQUMsQ0FBQTtBQUVwQyx3QkFBb0QsVUFBVSxDQUFDLENBQUE7QUFDL0QsOEJBQXdCLDZCQUE2QixDQUFDLENBQUE7QUFJdEQsTUFBTSxlQUFlLEdBQUcsQ0FBQyxLQUF1QjtJQUM1QyxNQUFNLENBQUM7UUFDSCxLQUFLLEVBQUUsUUFBUSxNQUFNLENBQUMsMkJBQW1CLENBQUMsS0FBSyxDQUFDLENBQUMsZ0JBQWdCLEVBQUUsQ0FBQyxRQUFRLEVBQUUsQ0FBQyxDQUFDLENBQUM7S0FDcEYsQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGLE1BQU0sa0JBQWtCLEdBQUcsQ0FBQyxRQUFvQztJQUM1RCxNQUFNLENBQUMsRUFDTixDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBR0YsTUFBTSxpQkFBaUIsR0FBRyxxQkFBTyxDQUFDLGVBQWUsRUFBRSxrQkFBa0IsQ0FBQyxDQUFDLHFCQUFXLENBQUMsQ0FBQztBQUVwRjtrQkFBZSxpQkFBaUIsQ0FBQyJ9
 
 /***/ },
 /* 208 */
-/*!*****************************************************!*\
-  !*** ./src/templates/presentation/TalkToUsPage.tsx ***!
-  \*****************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	const React = __webpack_require__(/*! react */ 169);
-	const TalkToUsPage = (props) => {
-	    return (React.createElement("div", {className: 'page talk_to_us'}, 
-	        React.createElement("p", null, "Please Talk to us")
-	    ));
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = TalkToUsPage;
-	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGFsa1RvVXNQYWdlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVGFsa1RvVXNQYWdlLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsTUFBWSxLQUFLLFdBQU0sT0FBTyxDQUFDLENBQUE7QUFHL0IsTUFBTSxZQUFZLEdBQXVDLENBQUMsS0FBZTtJQUNqRSxNQUFNLENBQUEsQ0FDRixxQkFBQyxHQUFHLElBQUMsU0FBUyxFQUFDLGlCQUFpQjtRQUFDLHFCQUFDLENBQUMsU0FBQyxtQkFBaUIsQ0FBSTtLQUFNLENBQ2xFLENBQUM7QUFDVixDQUFDLENBQUM7QUFFRjtrQkFBZSxZQUFZLENBQUMifQ==
-
-/***/ },
-/* 209 */
-/*!*********************************************!*\
-  !*** ./src/templates/presentation/Page.tsx ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __assign = (this && this.__assign) || Object.assign || function(t) {
-	    for (var s, i = 1, n = arguments.length; i < n; i++) {
-	        s = arguments[i];
-	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-	            t[p] = s[p];
-	    }
-	    return t;
-	};
-	const React = __webpack_require__(/*! react */ 169);
-	const Page = (props) => {
-	    return (React.createElement("section", {className: 'page_container'}, 
-	        React.createElement(props.childPage, __assign({}, props.pageData))
-	    ));
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = Page;
-	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGFnZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBhZ2UudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBLE1BQVksS0FBSyxXQUFNLE9BQU8sQ0FBQyxDQUFBO0FBSy9CLE1BQU0sSUFBSSxHQUdMLENBQUMsS0FBSztJQUVQLE1BQU0sQ0FBQyxDQUFDLHFCQUFDLE9BQU8sSUFBQyxTQUFTLEVBQUMsZ0JBQWdCO1FBQ3ZDLG9CQUFDLEtBQUssQ0FBQyxTQUFTLGVBQUssS0FBSyxDQUFDLFFBQVEsRUFBRztLQUNoQyxDQUFDLENBQUM7QUFDaEIsQ0FBQyxDQUFDO0FBRUY7a0JBQWUsSUFBSSxDQUFDIn0=
-
-/***/ },
-/* 210 */
 /*!********************************!*\
   !*** ./src/templates/types.ts ***!
   \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const Immutable = __webpack_require__(/*! immutable */ 211);
+	const Immutable = __webpack_require__(/*! immutable */ 209);
 	;
 	;
 	;
@@ -25301,7 +25257,7 @@
 	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHlwZXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJ0eXBlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsTUFBWSxTQUFTLFdBQU0sV0FBVyxDQUFDLENBQUE7QUF1QnRDLENBQUM7QUFJRCxDQUFDO0FBSUQsQ0FBQztBQUlELENBQUM7QUFJRCxDQUFDO0FBVUQsQ0FBQztBQVdELENBQUM7QUFJRCxDQUFDO0FBTUYsTUFBTSxlQUFlLEdBQUcsQ0FBQyxJQUFjO0lBQ25DLE1BQU0sQ0FBaUIsSUFBSyxDQUFDLFFBQVEsS0FBSyxTQUFTLENBQUM7QUFDeEQsQ0FBQyxDQUFDO0FBRVcsMkJBQW1CLEdBQUcsQ0FBQyxLQUF1QjtJQUN2RCxNQUFNLGFBQWEsR0FBRztRQUNsQixNQUFNLElBQUksR0FBRyxLQUFLLENBQUMsV0FBVyxDQUFDLEtBQUssQ0FBQyxLQUFLLENBQUMsWUFBWSxDQUFDLENBQUM7UUFDekQsRUFBRSxDQUFDLENBQUMsZUFBZSxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUN4QixNQUFNLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQztRQUN6QixDQUFDO1FBQUMsSUFBSSxDQUFDLENBQUM7WUFDSixNQUFNLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFDZCxDQUFDO0lBQ0wsQ0FBQyxFQUFFLG9CQUFvQixHQUFHO1FBQ3RCLEVBQUUsQ0FBQyxDQUFDLGFBQWEsRUFBRSxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUN6QixNQUFNLENBQUMsS0FBSyxDQUFDLFdBQVcsQ0FBQyxLQUFLLENBQUMsU0FBUyxDQUFDLENBQUMsSUFBc0I7Z0JBQzVELE1BQU0sQ0FBQyxDQUFDLElBQUksQ0FBQyxRQUFRLEtBQUssYUFBYSxFQUFFLElBQUksSUFBSSxDQUFDLElBQUksS0FBSyxhQUFhLENBQUMsQ0FBQztZQUM5RSxDQUFDLENBQUMsQ0FBQztRQUNQLENBQUM7UUFBQyxJQUFJLENBQUMsQ0FBQztZQUNKLE1BQU0sQ0FBQyxDQUFDLENBQUMsQ0FBQztRQUNkLENBQUM7SUFDTCxDQUFDLEVBQUUsb0JBQW9CLEdBQUc7UUFDdEIsTUFBTSxXQUFXLEdBQ2IsS0FBSyxDQUFDLFdBQVcsQ0FBQyxLQUFLLENBQUMsTUFBTSxDQUFDLENBQUMsSUFBSTtZQUNoQyxNQUFNLENBQUMsSUFBSSxDQUFDLElBQUksS0FBSyxhQUFhLENBQUM7UUFDdkMsQ0FBQyxDQUF5QixDQUFDO1FBQy9CLE1BQU0sQ0FBQyxTQUFTLENBQUMsR0FBRyxFQUFrQixDQUFDLGFBQWEsQ0FBQyxDQUFDLEdBQUc7WUFDckQsR0FBRyxDQUFDLENBQUMsSUFBSSxJQUFJLElBQUksV0FBVyxDQUFDLENBQUMsQ0FBQztnQkFDM0IsR0FBRyxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsUUFBUSxFQUFFLEtBQUssQ0FBQyxXQUFXLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDO1lBQ2xFLENBQUM7UUFDTCxDQUFDLENBQUMsQ0FBQztJQUNQLENBQUMsRUFBRSxTQUFTLEdBQUc7UUFDWCxNQUFNLENBQUMsU0FBUyxDQUFDLElBQUksRUFBZSxDQUFDLGFBQWEsQ0FDOUMsQ0FBQyxJQUFJO1lBQ0QsSUFBSSxDQUFDLElBQUksQ0FBQyxFQUFFLElBQUksRUFBRSxTQUFTLEVBQUUsQ0FBQyxDQUFDO1lBQy9CLElBQUksQ0FBQyxJQUFJLENBQUMsR0FBRyxLQUFLLENBQUMsV0FBVyxDQUFDLEtBQUssQ0FBQyxDQUFDO1lBQ3RDLElBQUksQ0FBQyxJQUFJLENBQUMsRUFBRSxJQUFJLEVBQUUsU0FBUyxFQUFFLENBQUMsQ0FBQztZQUMvQixJQUFJLENBQUMsSUFBSSxDQUFDLEVBQUUsSUFBSSxFQUFFLFVBQVUsRUFBRSxDQUFDLENBQUM7UUFDcEMsQ0FBQyxDQUNKLENBQUM7SUFDTixDQUFDLEVBQUUsZUFBZSxHQUFHO1FBQ2pCLE1BQU0sQ0FBQyxTQUFTLEVBQUUsQ0FBQyxJQUFJLENBQUM7SUFDNUIsQ0FBQyxFQUFFLGdCQUFnQixHQUFHO1FBQ2xCLDJGQUEyRjtRQUMzRixJQUFJLENBQUMsR0FBRyxLQUFLLENBQUMsYUFBYSxHQUFHLENBQUMsQ0FBQyxLQUFLLENBQUMsYUFBYSxJQUFJLENBQUMsQ0FBQyxHQUFHLFVBQVUsQ0FBQyxDQUFDO1FBQ3hFLENBQUMsR0FBRyxDQUFDLENBQUMsR0FBRyxVQUFVLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQyxJQUFJLENBQUMsQ0FBQyxHQUFHLFVBQVUsQ0FBQyxDQUFDO1FBQy9DLE1BQU0sQ0FBQyxDQUFDLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQyxJQUFJLENBQUMsQ0FBQyxHQUFHLFNBQVMsQ0FBQyxHQUFHLFNBQVMsQ0FBQyxJQUFJLEVBQUUsQ0FBQztJQUMxRCxDQUFDLENBQUM7SUFFRixNQUFNLENBQUM7UUFDSCxhQUFhO1FBQ2Isb0JBQW9CO1FBQ3BCLG9CQUFvQjtRQUNwQixTQUFTO1FBQ1QsZUFBZTtRQUNmLGdCQUFnQjtLQUNuQixDQUFDO0FBQ04sQ0FBQyxDQUFDIn0=
 
 /***/ },
-/* 211 */
+/* 209 */
 /*!***************************************!*\
   !*** ./~/immutable/dist/immutable.js ***!
   \***************************************/
@@ -30288,7 +30244,69 @@
 	}));
 
 /***/ },
+/* 210 */
+/*!****************************************************!*\
+  !*** ./src/templates/presentation/ResultsPage.tsx ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	const React = __webpack_require__(/*! react */ 169);
+	const ResultsPage = (props) => {
+	    return (React.createElement("div", {className: 'page results'}, 
+	        React.createElement("h1", null, "Results"), 
+	        React.createElement("p", null, props.score())));
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ResultsPage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUmVzdWx0c1BhZ2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJSZXN1bHRzUGFnZS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE1BQVksS0FBSyxXQUFNLE9BQU8sQ0FBQyxDQUFBO0FBRy9CLE1BQU0sV0FBVyxHQUEwQyxDQUFDLEtBQUs7SUFDN0QsTUFBTSxDQUFDLENBQ0gscUJBQUMsR0FBRyxJQUFDLFNBQVMsRUFBQyxjQUFjO1FBQ3pCLHFCQUFDLEVBQUUsU0FBQyxTQUFPLENBQUs7UUFDaEIscUJBQUMsQ0FBQyxTQUFHLEtBQUssQ0FBQyxLQUFLLEVBQUksQ0FBSSxDQUN0QixDQUNULENBQUM7QUFDTixDQUFDLENBQUM7QUFFRjtrQkFBZSxXQUFXLENBQUMifQ==
+
+/***/ },
+/* 211 */
+/*!*****************************************************!*\
+  !*** ./src/templates/presentation/TalkToUsPage.tsx ***!
+  \*****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	const React = __webpack_require__(/*! react */ 169);
+	const TalkToUsPage = (props) => {
+	    return (React.createElement("div", {className: 'page talk_to_us'}, 
+	        React.createElement("p", null, "Please Talk to us")
+	    ));
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = TalkToUsPage;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGFsa1RvVXNQYWdlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVGFsa1RvVXNQYWdlLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsTUFBWSxLQUFLLFdBQU0sT0FBTyxDQUFDLENBQUE7QUFHL0IsTUFBTSxZQUFZLEdBQXVDLENBQUMsS0FBZTtJQUNqRSxNQUFNLENBQUEsQ0FDRixxQkFBQyxHQUFHLElBQUMsU0FBUyxFQUFDLGlCQUFpQjtRQUFDLHFCQUFDLENBQUMsU0FBQyxtQkFBaUIsQ0FBSTtLQUFNLENBQ2xFLENBQUM7QUFDVixDQUFDLENBQUM7QUFFRjtrQkFBZSxZQUFZLENBQUMifQ==
+
+/***/ },
 /* 212 */
+/*!*********************************************!*\
+  !*** ./src/templates/presentation/Page.tsx ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __assign = (this && this.__assign) || Object.assign || function(t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	            t[p] = s[p];
+	    }
+	    return t;
+	};
+	const React = __webpack_require__(/*! react */ 169);
+	const Page = (props) => {
+	    return (React.createElement("section", {className: 'page_container'}, 
+	        React.createElement(props.childPage, __assign({}, props.pageData))
+	    ));
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Page;
+	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGFnZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBhZ2UudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBLE1BQVksS0FBSyxXQUFNLE9BQU8sQ0FBQyxDQUFBO0FBSy9CLE1BQU0sSUFBSSxHQUdMLENBQUMsS0FBSztJQUVQLE1BQU0sQ0FBQyxDQUFDLHFCQUFDLE9BQU8sSUFBQyxTQUFTLEVBQUMsZ0JBQWdCO1FBQ3ZDLG9CQUFDLEtBQUssQ0FBQyxTQUFTLGVBQUssS0FBSyxDQUFDLFFBQVEsRUFBRztLQUNoQyxDQUFDLENBQUM7QUFDaEIsQ0FBQyxDQUFDO0FBRUY7a0JBQWUsSUFBSSxDQUFDIn0=
+
+/***/ },
+/* 213 */
 /*!******************************************************!*\
   !*** ./src/templates/container/ActivePageSelect.tsx ***!
   \******************************************************/
@@ -30297,8 +30315,8 @@
 	"use strict";
 	const react_redux_1 = __webpack_require__(/*! react-redux */ 190);
 	const actions_1 = __webpack_require__(/*! ../actions */ 206);
-	const types_1 = __webpack_require__(/*! ../types */ 210);
-	const PageSelect_1 = __webpack_require__(/*! ../presentation/PageSelect */ 213);
+	const types_1 = __webpack_require__(/*! ../types */ 208);
+	const PageSelect_1 = __webpack_require__(/*! ../presentation/PageSelect */ 214);
 	const mapStateToProps = (state) => {
 	    return {
 	        topics: types_1.TutoralStateHelpers(state).GET_ALL_TOPIC_TITLES(),
@@ -30326,7 +30344,7 @@
 	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQWN0aXZlUGFnZVNlbGVjdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkFjdGl2ZVBhZ2VTZWxlY3QudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFHQSw4QkFBd0IsYUFBYSxDQUFDLENBQUE7QUFDdEMsMEJBQThFLFlBQVksQ0FBQyxDQUFBO0FBQzNGLHdCQUFzRSxVQUFVLENBQUMsQ0FBQTtBQUNqRiw2QkFBdUIsNEJBQTRCLENBQUMsQ0FBQTtBQUVwRCxNQUFNLGVBQWUsR0FBRyxDQUFDLEtBQXVCO0lBQzVDLE1BQU0sQ0FBQztRQUNILE1BQU0sRUFBRSwyQkFBbUIsQ0FBQyxLQUFLLENBQUMsQ0FBQyxvQkFBb0IsRUFBRTtRQUN6RCxVQUFVLEVBQUUsMkJBQW1CLENBQUMsS0FBSyxDQUFDLENBQUMsZUFBZSxFQUFFO0tBQzNELENBQUM7QUFDTixDQUFDLENBQUM7QUFFRixNQUFNLGtCQUFrQixHQUFHLENBQUMsUUFBb0M7SUFDNUQsTUFBTSxDQUFDO1FBQ0gsTUFBTTtZQUNGLFFBQVEsQ0FBQyw4QkFBb0IsRUFBRSxDQUFDLENBQUM7UUFDckMsQ0FBQztRQUNELFNBQVMsQ0FBQyxXQUFtQjtZQUN6QixRQUFRLENBQUMsOEJBQW9CLENBQUMsV0FBVyxDQUFDLENBQUMsQ0FBQztRQUNoRCxDQUFDO1FBQ0QsZUFBZSxDQUFDLE1BQXFDLEVBQUUsS0FBYTtZQUNoRSxNQUFNLENBQUM7Z0JBQ0gsUUFBUSxDQUFDLDZCQUFtQixDQUFDLE1BQU0sQ0FBQyxHQUFHLENBQUMsS0FBSyxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUN6RCxDQUFDLENBQUM7UUFDTixDQUFDO0tBQ0osQ0FBQztBQUNOLENBQUMsQ0FBQztBQUVGLE1BQU0sZ0JBQWdCLEdBQUcscUJBQU8sQ0FBQyxlQUFlLEVBQUUsa0JBQWtCLENBQUMsQ0FBQyxvQkFBVSxDQUFDLENBQUM7QUFFbEY7a0JBQWUsZ0JBQWdCLENBQUMifQ==
 
 /***/ },
-/* 213 */
+/* 214 */
 /*!***************************************************!*\
   !*** ./src/templates/presentation/PageSelect.tsx ***!
   \***************************************************/
@@ -30356,7 +30374,7 @@
 	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGFnZVNlbGVjdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBhZ2VTZWxlY3QudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxNQUFZLEtBQUssV0FBTSxPQUFPLENBQUMsQ0FBQTtBQUkvQixNQUFNLFVBQVUsR0FBNkMsQ0FBQyxLQUFLO0lBQy9ELE1BQU0saUJBQWlCLEdBQUc7UUFDdEIsS0FBSyxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsVUFBVSxDQUFDLENBQUM7SUFDdEMsQ0FBQyxDQUFDO0lBRUYsTUFBTSxDQUFDLENBQ0gscUJBQUMsRUFBRSxJQUFDLEVBQUUsRUFBQyxZQUFZO1FBQ2YscUJBQUMsRUFBRSxJQUFDLFNBQVMsRUFBQyxPQUFPLEVBQUMsT0FBTyxFQUFFLEtBQUssQ0FBQyxNQUFPO1lBQUMscUJBQUMsQ0FBQyxJQUFDLElBQUksRUFBQyxHQUFHLEdBQUMsSUFBUSxDQUFJO1NBQUs7UUFDekUsS0FBSyxDQUFDLE1BQU0sQ0FBQyxHQUFHLENBQUMsQ0FBQyxLQUFLLEVBQUUsQ0FBQztZQUN2QixNQUFNLENBQUMscUJBQUMsRUFBRSxJQUFDLEdBQUcsRUFBRSxDQUFFO2dCQUFDLHFCQUFDLENBQUMsSUFBQyxPQUFPLEVBQUUsS0FBSyxDQUFDLGVBQWUsQ0FBQyxLQUFLLENBQUMsTUFBTSxFQUFFLENBQUMsQ0FBRyxHQUFFLENBQUMsR0FBRyxDQUFFLENBQUk7YUFBSyxDQUFDO1FBQzdGLENBQUMsQ0FBQyxDQUFDLE9BQU8sRUFBSTtRQUNkLHFCQUFDLEVBQUUsSUFBQyxTQUFTLEVBQUMsT0FBTyxFQUFDLE9BQU8sRUFBRSxpQkFBa0I7WUFBQyxxQkFBQyxDQUFDLElBQUMsSUFBSSxFQUFDLEdBQUcsR0FBQyxJQUFRLENBQUk7U0FBSyxDQUM5RSxDQUFDLENBQUM7QUFDZixDQUFDLENBQUM7QUFFRjtrQkFBZSxVQUFVLENBQUMifQ==
 
 /***/ },
-/* 214 */
+/* 215 */
 /*!***********************************!*\
   !*** ./src/templates/reducers.ts ***!
   \***********************************/
@@ -30411,16 +30429,16 @@
 	//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVkdWNlcnMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJyZWR1Y2Vycy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsd0JBQXNELE9BQU8sQ0FBQyxDQUFBO0FBYzlELE1BQU0sbUJBQW1CLEdBQXFCO0lBQzFDLFdBQVcsRUFBRTtRQUNULEtBQUssRUFBRSxFQUFFO1FBQ1QsS0FBSyxFQUFFLEVBQUU7S0FDWjtJQUNELFlBQVksRUFBRSxDQUFDO0lBQ2YsYUFBYSxFQUFFLENBQUM7Q0FDbkIsQ0FBQztBQUVGLCtEQUErRDtBQUMvRCxNQUFNLG1CQUFtQixHQUEwQjtJQUMvQyxTQUFTLEVBQUUsQ0FBQyxLQUFhLEVBQUUsTUFBa0I7UUFDekMsTUFBTSxDQUFDLEtBQUssR0FBRyxNQUFNLENBQUMsV0FBVyxHQUFHLENBQUMsR0FBRyxLQUFLLEdBQUcsQ0FBQyxHQUFHLEtBQUssQ0FBQztJQUM5RCxDQUFDO0lBQ0QsU0FBUyxFQUFFLENBQUMsS0FBYSxFQUFFLE1BQWtCO1FBQ3pDLE1BQU0sQ0FBQyxLQUFLLEdBQUcsQ0FBQyxHQUFHLEtBQUssR0FBRyxDQUFDLEdBQUcsS0FBSyxDQUFDO0lBQ3pDLENBQUM7SUFDRCxRQUFRLEVBQUUsQ0FBQyxLQUFhLEVBQUUsTUFBcUI7UUFDM0MsTUFBTSxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUM7SUFDM0IsQ0FBQztDQUNKLENBQUM7QUFFRixNQUFNLGtCQUFrQixHQUEwQixFQUFFLENBQUM7QUFDckQsTUFBTSxvQkFBb0IsR0FBMEI7SUFDaEQsZUFBZSxFQUFFLENBQUMsS0FBYSxFQUFFLE1BQTRCO1FBQ3pELElBQUksVUFBVSxHQUFHLE1BQU0sQ0FBQyxPQUFPLEdBQUcsQ0FBQyxHQUFHLENBQUMsQ0FBQztRQUN4QyxNQUFNLENBQUEsQ0FBQyxLQUFLLEdBQUcsQ0FBQyxVQUFVLElBQUksTUFBTSxDQUFDLFlBQVksQ0FBQyxDQUFDLENBQUM7SUFDeEQsQ0FBQztDQUNKLENBQUM7QUFFRixNQUFNLGFBQWEsR0FBRyxDQUFJLFdBQWMsRUFBRSxRQUErQjtJQUNyRSxNQUFNLENBQUMsQ0FBQyxLQUFLLEdBQU0sV0FBVyxFQUFFLE1BQWM7UUFDMUMsRUFBRSxDQUFDLENBQUMsUUFBUSxDQUFDLGNBQWMsQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDO1lBQ3ZDLE1BQU0sQ0FBSSxDQUFDLFFBQVEsQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLENBQUMsS0FBSyxFQUFFLE1BQU0sQ0FBQyxDQUFDLENBQUM7UUFDckQsQ0FBQztRQUFDLElBQUksQ0FBQyxDQUFDO1lBQ0osTUFBTSxDQUFDLEtBQUssQ0FBQztRQUNqQixDQUFDO0lBQ0wsQ0FBQyxDQUFDO0FBQ04sQ0FBQyxDQUFDO0FBRUYsTUFBTSxRQUFRLEdBQThCLHVCQUFlLENBQW1CO0lBQzFFLFdBQVcsRUFBRSxhQUFhLENBQUMsbUJBQW1CLENBQUMsV0FBVyxFQUFFLGtCQUFrQixDQUFDO0lBQy9FLFlBQVksRUFBRSxhQUFhLENBQUMsbUJBQW1CLENBQUMsWUFBWSxFQUFFLG1CQUFtQixDQUFDO0lBQ2xGLGFBQWEsRUFBRSxhQUFhLENBQUMsbUJBQW1CLENBQUMsYUFBYSxFQUFFLG9CQUFvQixDQUFDO0NBQ3hGLENBQUMsQ0FBQztBQUVIO2tCQUFlLFFBQVEsQ0FBQyJ9
 
 /***/ },
-/* 215 */
+/* 216 */
 /*!**************************!*\
   !*** ./~/axios/index.js ***!
   \**************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/axios */ 216);
+	module.exports = __webpack_require__(/*! ./lib/axios */ 217);
 
 /***/ },
-/* 216 */
+/* 217 */
 /*!******************************!*\
   !*** ./~/axios/lib/axios.js ***!
   \******************************/
@@ -30428,9 +30446,9 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./utils */ 217);
-	var bind = __webpack_require__(/*! ./helpers/bind */ 218);
-	var Axios = __webpack_require__(/*! ./core/Axios */ 219);
+	var utils = __webpack_require__(/*! ./utils */ 218);
+	var bind = __webpack_require__(/*! ./helpers/bind */ 219);
+	var Axios = __webpack_require__(/*! ./core/Axios */ 220);
 	
 	/**
 	 * Create an instance of Axios
@@ -30463,15 +30481,15 @@
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 237);
-	axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 238);
-	axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 234);
+	axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 238);
+	axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 239);
+	axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 235);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(/*! ./helpers/spread */ 239);
+	axios.spread = __webpack_require__(/*! ./helpers/spread */ 240);
 	
 	module.exports = axios;
 	
@@ -30480,7 +30498,7 @@
 
 
 /***/ },
-/* 217 */
+/* 218 */
 /*!******************************!*\
   !*** ./~/axios/lib/utils.js ***!
   \******************************/
@@ -30488,7 +30506,7 @@
 
 	'use strict';
 	
-	var bind = __webpack_require__(/*! ./helpers/bind */ 218);
+	var bind = __webpack_require__(/*! ./helpers/bind */ 219);
 	
 	/*global toString:true*/
 	
@@ -30788,7 +30806,7 @@
 
 
 /***/ },
-/* 218 */
+/* 219 */
 /*!*************************************!*\
   !*** ./~/axios/lib/helpers/bind.js ***!
   \*************************************/
@@ -30808,7 +30826,7 @@
 
 
 /***/ },
-/* 219 */
+/* 220 */
 /*!***********************************!*\
   !*** ./~/axios/lib/core/Axios.js ***!
   \***********************************/
@@ -30816,12 +30834,12 @@
 
 	'use strict';
 	
-	var defaults = __webpack_require__(/*! ./../defaults */ 220);
-	var utils = __webpack_require__(/*! ./../utils */ 217);
-	var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 231);
-	var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 232);
-	var isAbsoluteURL = __webpack_require__(/*! ./../helpers/isAbsoluteURL */ 235);
-	var combineURLs = __webpack_require__(/*! ./../helpers/combineURLs */ 236);
+	var defaults = __webpack_require__(/*! ./../defaults */ 221);
+	var utils = __webpack_require__(/*! ./../utils */ 218);
+	var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 232);
+	var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 233);
+	var isAbsoluteURL = __webpack_require__(/*! ./../helpers/isAbsoluteURL */ 236);
+	var combineURLs = __webpack_require__(/*! ./../helpers/combineURLs */ 237);
 	
 	/**
 	 * Create a new instance of Axios
@@ -30902,7 +30920,7 @@
 
 
 /***/ },
-/* 220 */
+/* 221 */
 /*!*********************************!*\
   !*** ./~/axios/lib/defaults.js ***!
   \*********************************/
@@ -30910,8 +30928,8 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(/*! ./utils */ 217);
-	var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 221);
+	var utils = __webpack_require__(/*! ./utils */ 218);
+	var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 222);
 	
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -30928,10 +30946,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(/*! ./adapters/xhr */ 222);
+	    adapter = __webpack_require__(/*! ./adapters/xhr */ 223);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(/*! ./adapters/http */ 222);
+	    adapter = __webpack_require__(/*! ./adapters/http */ 223);
 	  }
 	  return adapter;
 	}
@@ -30998,7 +31016,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 5)))
 
 /***/ },
-/* 221 */
+/* 222 */
 /*!****************************************************!*\
   !*** ./~/axios/lib/helpers/normalizeHeaderName.js ***!
   \****************************************************/
@@ -31006,7 +31024,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ../utils */ 217);
+	var utils = __webpack_require__(/*! ../utils */ 218);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -31019,7 +31037,7 @@
 
 
 /***/ },
-/* 222 */
+/* 223 */
 /*!*************************************!*\
   !*** ./~/axios/lib/adapters/xhr.js ***!
   \*************************************/
@@ -31027,13 +31045,13 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 217);
-	var settle = __webpack_require__(/*! ./../core/settle */ 223);
-	var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 226);
-	var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 227);
-	var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 228);
-	var createError = __webpack_require__(/*! ../core/createError */ 224);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(/*! ./../helpers/btoa */ 229);
+	var utils = __webpack_require__(/*! ./../utils */ 218);
+	var settle = __webpack_require__(/*! ./../core/settle */ 224);
+	var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 227);
+	var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 228);
+	var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 229);
+	var createError = __webpack_require__(/*! ../core/createError */ 225);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(/*! ./../helpers/btoa */ 230);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -31129,7 +31147,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 230);
+	      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 231);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -31206,7 +31224,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 5)))
 
 /***/ },
-/* 223 */
+/* 224 */
 /*!************************************!*\
   !*** ./~/axios/lib/core/settle.js ***!
   \************************************/
@@ -31214,7 +31232,7 @@
 
 	'use strict';
 	
-	var createError = __webpack_require__(/*! ./createError */ 224);
+	var createError = __webpack_require__(/*! ./createError */ 225);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -31240,7 +31258,7 @@
 
 
 /***/ },
-/* 224 */
+/* 225 */
 /*!*****************************************!*\
   !*** ./~/axios/lib/core/createError.js ***!
   \*****************************************/
@@ -31248,7 +31266,7 @@
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(/*! ./enhanceError */ 225);
+	var enhanceError = __webpack_require__(/*! ./enhanceError */ 226);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -31266,7 +31284,7 @@
 
 
 /***/ },
-/* 225 */
+/* 226 */
 /*!******************************************!*\
   !*** ./~/axios/lib/core/enhanceError.js ***!
   \******************************************/
@@ -31294,7 +31312,7 @@
 
 
 /***/ },
-/* 226 */
+/* 227 */
 /*!*****************************************!*\
   !*** ./~/axios/lib/helpers/buildURL.js ***!
   \*****************************************/
@@ -31302,7 +31320,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 217);
+	var utils = __webpack_require__(/*! ./../utils */ 218);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -31371,7 +31389,7 @@
 
 
 /***/ },
-/* 227 */
+/* 228 */
 /*!*********************************************!*\
   !*** ./~/axios/lib/helpers/parseHeaders.js ***!
   \*********************************************/
@@ -31379,7 +31397,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 217);
+	var utils = __webpack_require__(/*! ./../utils */ 218);
 	
 	/**
 	 * Parse headers into an object
@@ -31417,7 +31435,7 @@
 
 
 /***/ },
-/* 228 */
+/* 229 */
 /*!************************************************!*\
   !*** ./~/axios/lib/helpers/isURLSameOrigin.js ***!
   \************************************************/
@@ -31425,7 +31443,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 217);
+	var utils = __webpack_require__(/*! ./../utils */ 218);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -31494,7 +31512,7 @@
 
 
 /***/ },
-/* 229 */
+/* 230 */
 /*!*************************************!*\
   !*** ./~/axios/lib/helpers/btoa.js ***!
   \*************************************/
@@ -31539,7 +31557,7 @@
 
 
 /***/ },
-/* 230 */
+/* 231 */
 /*!****************************************!*\
   !*** ./~/axios/lib/helpers/cookies.js ***!
   \****************************************/
@@ -31547,7 +31565,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 217);
+	var utils = __webpack_require__(/*! ./../utils */ 218);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -31601,7 +31619,7 @@
 
 
 /***/ },
-/* 231 */
+/* 232 */
 /*!************************************************!*\
   !*** ./~/axios/lib/core/InterceptorManager.js ***!
   \************************************************/
@@ -31609,7 +31627,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 217);
+	var utils = __webpack_require__(/*! ./../utils */ 218);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -31662,7 +31680,7 @@
 
 
 /***/ },
-/* 232 */
+/* 233 */
 /*!*********************************************!*\
   !*** ./~/axios/lib/core/dispatchRequest.js ***!
   \*********************************************/
@@ -31670,10 +31688,10 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 217);
-	var transformData = __webpack_require__(/*! ./transformData */ 233);
-	var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 234);
-	var defaults = __webpack_require__(/*! ../defaults */ 220);
+	var utils = __webpack_require__(/*! ./../utils */ 218);
+	var transformData = __webpack_require__(/*! ./transformData */ 234);
+	var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 235);
+	var defaults = __webpack_require__(/*! ../defaults */ 221);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -31750,7 +31768,7 @@
 
 
 /***/ },
-/* 233 */
+/* 234 */
 /*!*******************************************!*\
   !*** ./~/axios/lib/core/transformData.js ***!
   \*******************************************/
@@ -31758,7 +31776,7 @@
 
 	'use strict';
 	
-	var utils = __webpack_require__(/*! ./../utils */ 217);
+	var utils = __webpack_require__(/*! ./../utils */ 218);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -31779,7 +31797,7 @@
 
 
 /***/ },
-/* 234 */
+/* 235 */
 /*!****************************************!*\
   !*** ./~/axios/lib/cancel/isCancel.js ***!
   \****************************************/
@@ -31793,7 +31811,7 @@
 
 
 /***/ },
-/* 235 */
+/* 236 */
 /*!**********************************************!*\
   !*** ./~/axios/lib/helpers/isAbsoluteURL.js ***!
   \**********************************************/
@@ -31816,7 +31834,7 @@
 
 
 /***/ },
-/* 236 */
+/* 237 */
 /*!********************************************!*\
   !*** ./~/axios/lib/helpers/combineURLs.js ***!
   \********************************************/
@@ -31837,7 +31855,7 @@
 
 
 /***/ },
-/* 237 */
+/* 238 */
 /*!**************************************!*\
   !*** ./~/axios/lib/cancel/Cancel.js ***!
   \**************************************/
@@ -31865,7 +31883,7 @@
 
 
 /***/ },
-/* 238 */
+/* 239 */
 /*!*******************************************!*\
   !*** ./~/axios/lib/cancel/CancelToken.js ***!
   \*******************************************/
@@ -31873,7 +31891,7 @@
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(/*! ./Cancel */ 237);
+	var Cancel = __webpack_require__(/*! ./Cancel */ 238);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -31931,7 +31949,7 @@
 
 
 /***/ },
-/* 239 */
+/* 240 */
 /*!***************************************!*\
   !*** ./~/axios/lib/helpers/spread.js ***!
   \***************************************/
