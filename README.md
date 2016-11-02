@@ -1,5 +1,7 @@
 # ScholarSmith
 
+[![Build Status](https://travis-ci.org/DogPawHat/scholarsmith.svg?branch=master)](https://travis-ci.org/DogPawHat/scholarsmith)
+
 Static Generator of E-Learning Content
 
 Mostly a learning exercise for React, Redux, Typescript, ES6 and a bunch of other stuff.
