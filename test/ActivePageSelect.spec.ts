@@ -116,16 +116,3 @@ test('go forward', t => {
     forward.simulate('click');
     t.equal(providerOpts.testStore.getState().CURRENT_PAGE, 4);
 });
-
-test('go to second topic', t => {
-    const initialState: TutoralStateType = {
-        COURSE_DATA: courseData,
-        CURRENT_PAGE: 3,
-        CURRENT_SCORE: 0
-    };
-    t.plan(1);
-    const providerOpts = createProviderWrapper(initialState);
-    const firstTopic = providerOpts.wrapper.find('li#topic_0');
-    firstTopic.simulate('click');
-    t.equal(providerOpts.testStore.getState().CURRENT_PAGE, 0);
-});
