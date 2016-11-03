@@ -23,22 +23,25 @@
     "require": [
       "ts-node/register"
     ],
-    "extension": [
-      ".tsx"
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
     ],
-    "reporter": [
-      "lcov",
-      "text",
-      "html"
+    "extension": [
+      ".tsx",
+      ".ts"
     ],
     "all": true,
     "exclude": [
+      "node_modules/**/*",
       "test/**/*",
       "dist/**/*",
       "coverage/**/*",
-      "webpack.config.js"
+      "webpack.config.js",
+      "src/yaml-front-matter.d.ts"
     ],
-    "sourceMap": true
+    "sourceMap": true,
+    "instrument": true
   },
   "license": "MIT",
   "devDependencies": {
