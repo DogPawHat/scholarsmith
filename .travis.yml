@@ -3,6 +3,12 @@ node_js:
     - "7"
 env:
   - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
 before_install:
   # Repo for newer Node.js versions
     - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
