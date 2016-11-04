@@ -99,7 +99,7 @@ test('go back', t => {
     };
     t.plan(1);
     const providerOpts = createProviderWrapper(initialState);
-    const back = providerOpts.wrapper.find('li.arrow').at(0);
+    const back = providerOpts.wrapper.find('li.arrow#a_back a');
     back.simulate('click');
     t.equal(providerOpts.testStore.getState().CURRENT_PAGE, 2);
 });
@@ -112,7 +112,20 @@ test('go forward', t => {
     };
     t.plan(1);
     const providerOpts = createProviderWrapper(initialState);
-    const forward = providerOpts.wrapper.find('li.arrow').at(1);
+    const forward = providerOpts.wrapper.find('li.arrow#a_forward a');
     forward.simulate('click');
     t.equal(providerOpts.testStore.getState().CURRENT_PAGE, 4);
+});
+
+test('go forward', t => {
+    const initialState: TutoralStateType = {
+        COURSE_DATA: courseData,
+        CURRENT_PAGE: 3,
+        CURRENT_SCORE: 0
+    };
+    t.plan(1);
+    const providerOpts = createProviderWrapper(initialState);
+    const firstTopic = providerOpts.wrapper.find('li#topic_0 a');
+    firstTopic.simulate('click');
+    t.equal(providerOpts.testStore.getState().CURRENT_PAGE, 1);
 });
