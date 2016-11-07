@@ -13,6 +13,19 @@ export interface PageAction extends Action {
     page_length?: number;
 }
 
+export interface ChangeAnswerAction extends Action {
+    question_key: number;
+    answer: string;
+}
+
+export const createChangeAnswererAction = (question_key: number, answer: string) => {
+    return <ChangeAnswerAction>{
+        type: ANSWER_QUESTION,
+        question_key: question_key,
+        answer: answer
+    };
+};
+
 export interface AnswerQuestionAction extends Action {
     question_key: number;
     answer: string;
