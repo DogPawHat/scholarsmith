@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 
@@ -25,7 +24,7 @@ const RenderedPageTypes = {
     'talktous': TalkToUsPage
 };
 
-const getRenderedPage: (id: number, pages: AnyPageData[]) => React.StatelessComponent<AnyPageData> = (id, pages) => {
+const getRenderedPage = (id: number, pages: AnyPageData[]) => {
     return RenderedPageTypes[pages[id].type];
 };
 
