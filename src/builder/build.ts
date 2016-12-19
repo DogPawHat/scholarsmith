@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server';
 import { safeLoadAll, safeLoad } from 'js-yaml';
 import * as fm from 'yaml-front-matter';
-import { statSync, readFile, writeFile } from 'mz/fs';
+import { stat, readFile, writeFile } from 'mz/fs';
 import { join } from 'path';
 import { ContextData, AnyPageData, TopicPageData, TopicTitlePageData, BasicPageData, QuestionPageData } from '../templates/types';
 import Body from '../templates/server/Body';
@@ -9,11 +9,15 @@ import TopicTitlePage from '../templates/presentation/TopicTitlePage';
 import BasicPage from '../templates/presentation/BasicPage';
 import QuestionPage from '../templates/presentation/QuestionPage';
 
-const getDirectories = (srcpath: string) => {
-    return readdirSync(srcpath).filter((file) => {
-        return statSync(join(srcpath, file)).isDirectory();
-    });
-};
+const routes = [
+
+]
+
+const returnPath
+
+
+
+
 
 const parseQuestions = async () => {
     let questions: QuestionPageData[] = [];
@@ -27,13 +31,6 @@ const parseQuestions = async () => {
 
     return questions.map((q, i) => { q.index = i; return q; });
 };
-
-const parseTopics = () => {
-    let pages: TopicPageData[] = [];
-    getDirectories('./tutorial/topics').map(parseTopic);
-    return pages;
-};
-
 
 const parseTopicTitle = async (file, i, files) => {
     let configFile = await readFile(file).toString();

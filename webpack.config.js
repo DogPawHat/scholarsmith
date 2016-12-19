@@ -9,16 +9,6 @@ const getDirectories = (srcpath: string) => {
     });
 };
 
-
-
-const routes = [
-    "/",
-    path.
-    "/questions",
-    "/results",
-    "/talktous"
-]
-
 const commonModule = {
     rules: [{
             test: /\.ts(x?)$/,
