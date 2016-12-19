@@ -1,6 +1,7 @@
-import {Reducer, Action, combineReducers} from 'redux';
-import { AnswerQuestionAction, SetPageAction, PageAction} from './actions';
+import { Reducer, Action, combineReducers } from 'redux';
+import { AnswerQuestionAction, SetPageAction, PageAction } from './actions';
 import { TutoralStateType} from './types';
+import { routerReducer } from 'react-router-redux';
 
 
 interface HandlerType {
@@ -11,7 +12,7 @@ interface HandlerCollectionType {
     [key: string]: HandlerType;
 }
 
-const initialCurrentState: TutoralStateType = {
+const initialCurrentState = {
     COURSE_DATA: {
         title: '',
         pages: []
@@ -54,7 +55,8 @@ const createReducer = <S>(initalState: S, handlers: HandlerCollectionType) => {
 const reducers: Reducer<TutoralStateType> = combineReducers<TutoralStateType>({
     COURSE_DATA: createReducer(initialCurrentState.COURSE_DATA, courseDataHandlers),
     CURRENT_PAGE: createReducer(initialCurrentState.CURRENT_PAGE, currentPageHandlers),
-    CURRENT_SCORE: createReducer(initialCurrentState.CURRENT_SCORE, currentScoreHandlers)
+    CURRENT_SCORE: createReducer(initialCurrentState.CURRENT_SCORE, currentScoreHandlers),
+    routing: routerReducer
 });
 
 export default reducers;

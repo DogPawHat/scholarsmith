@@ -7,7 +7,7 @@ const Page: React.StatelessComponent<{
 }> = (props) => {
 
     return (<section className='page_container'>
-        <props.childPage {...props.pageData}/>
+        { props.children }
     </section>);
 };
 

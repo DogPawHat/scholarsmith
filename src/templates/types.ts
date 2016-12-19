@@ -1,4 +1,5 @@
 import * as Immutable from 'immutable';
+import {ReactRouterReduxHistory} from 'react-router-redux';
 
 export type PageTypes = 'plain' |
     'topic_title' |
@@ -16,6 +17,7 @@ export interface TutoralStateType {
     COURSE_DATA: ContextData;
     CURRENT_PAGE: number;
     CURRENT_SCORE: number;
+    routing: ReactRouterReduxHistory
 }
 
 export interface ContextData {

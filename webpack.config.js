@@ -1,8 +1,25 @@
-var path = require('path');
-var webpack = require('webpack')
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack')
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const StaticSiteGeneratorPlugin = require("static-site-generator-webpack-plugin");
 
-var commonModule = {
+const getDirectories = (srcpath: string) => {
+    return readdirSync(srcpath).filter((file) => {
+        return statSync(join(srcpath, file)).isDirectory();
+    });
+};
+
+
+
+const routes = [
+    "/",
+    path.
+    "/questions",
+    "/results",
+    "/talktous"
+]
+
+const commonModule = {
     rules: [{
             test: /\.ts(x?)$/,
             loader: 'tslint-loader',
@@ -31,12 +48,12 @@ var commonModule = {
     ]
 };
 
-var commonTsLint = {
+const commonTsLint = {
     emitErrors: false,
     failOnHint: false
 }
 
-var commonPlugins = [
+const commonPlugins = [
     new ExtractTextPlugin("./styles.css"),
     new webpack.LoaderOptionsPlugin({
         options: {
@@ -46,7 +63,7 @@ var commonPlugins = [
     new webpack.optimize.UglifyJsPlugin()
 ]
 
-var commonResolve = {
+const commonResolve = {
     modules: [
         "node_modules",
         path.resolve(__dirname, "src")
@@ -79,8 +96,13 @@ module.exports = [{
             filename: 'builder.bundle.js'
         },
         target: 'node',
+        libraryTarget: 'umd',
+
         resolve: commonResolve,
         module: commonModule,
-        plugins: commonPlugins
+        plugins: [
+            ...commonPlugins,
+            new StaticSiteGeneratorPlugin('builder.bundle.js', paths)
+        ]
     }
 ];

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {createNextPageAction, createPrevPageAction, createSetPageAction} from '../actions';
 import { TutoralStateType, TutoralStateHelpers } from '../types';
 import PageSelect from '../presentation/PageSelect';
+import { s} from 'react-router-redux';
 
 const mapStateToProps = (state: TutoralStateType) => {
     return {
