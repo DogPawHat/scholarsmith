@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { Router} from 'react-router';
+
 import VisablePage from './VisablePage';
 import ActivePageSelect from './ActivePageSelect';
 import {ContextData, TutoralStateType} from '../types';
