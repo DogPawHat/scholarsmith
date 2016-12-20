@@ -16,7 +16,7 @@
     "build": "node dist/builder.bundle.js",
     "start": "webpack-dev-server -d --content-base dist/",
     "lint": "tslint -c tslint.json --test ./src",
-    "test": "tape -r ts-node/register ./test/*.spec.ts",
+    "test": "ts-node tape ./test/*.spec.ts",
     "cover": "nyc tape -r ts-node/register ./test/*.spec.ts"
   },
   "nyc": {
