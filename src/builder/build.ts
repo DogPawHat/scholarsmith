@@ -1,23 +1,40 @@
 import { renderToString } from 'react-dom/server';
 import { safeLoadAll, safeLoad } from 'js-yaml';
 import * as fm from 'yaml-front-matter';
-import { stat, readFile, writeFile } from 'mz/fs';
-import { join } from 'path';
+import { readdir, stat, readFile, writeFile } from 'mz/fs';
+import { join, resolve } from 'path';
 import { ContextData, AnyPageData, TopicPageData, TopicTitlePageData, BasicPageData, QuestionPageData } from '../templates/types';
 import Body from '../templates/server/Body';
 import TopicTitlePage from '../templates/presentation/TopicTitlePage';
 import BasicPage from '../templates/presentation/BasicPage';
 import QuestionPage from '../templates/presentation/QuestionPage';
 
-const routes = [
+const getRoutes = async () => {
+    return [
+        '/',
+        ...await getTopicPaths(),
+        ...await 
+]};
 
-]
+const getTopicPaths = async () => {
+    const topicPath = resolve(__dirname, 'tutorial', 'topics');
 
-const returnPath
+    const topicIndexes = (await readdir(topicPath)).filter((file) => {
+        return (await stat(file)).isDirectory();
+    });
 
+    const topicPages = topicIndexes.reduce<string[]>((a, b) => {
+        const pages = (await readdir(b)).filter((file) => {
+            return file.indexOf('.md') !== -1;
+        }).map((value) => {
+            return value.replace('.md', '').trim();
+        });
 
+        return [...a, ...pages];
+    }, []);
 
-
+    return [...topicIndexes, ...topicPages]
+}
 
 const parseQuestions = async () => {
     let questions: QuestionPageData[] = [];
@@ -25,7 +42,7 @@ const parseQuestions = async () => {
         await readFile('./tutorial/questions.yaml').toString(),
         (doc: QuestionPageData) => {
             doc.type = 'question';
-            questions.push(reanderToString(doc));
+            questions.push(renderToString(doc));
         }
     );
 
