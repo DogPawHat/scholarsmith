@@ -1,4 +1,6 @@
 import { renderToString } from 'react-dom/server';
+import { match, RoutingContext, createMemoryHistory } from 'react-router';
+import { compile } from 'handlebars';
 import { safeLoadAll, safeLoad } from 'js-yaml';
 import * as fm from 'yaml-front-matter';
 import { readdir, stat, readFile, writeFile } from 'mz/fs';
@@ -8,13 +10,7 @@ import Body from '../templates/server/Body';
 import TopicTitlePage from '../templates/presentation/TopicTitlePage';
 import BasicPage from '../templates/presentation/BasicPage';
 import QuestionPage from '../templates/presentation/QuestionPage';
-
-const getRoutes = async () => {
-    return [
-        '/',
-        ...await getTopicPaths(),
-        ...await 
-]};
+import routes from '../templates/routes';
 
 const getTopicPaths = async () => {
     const topicPath = resolve(__dirname, 'tutorial', 'topics');
@@ -33,57 +29,50 @@ const getTopicPaths = async () => {
         return [...a, ...pages];
     }, []);
 
-    return [...topicIndexes, ...topicPages]
-}
+    return [...topicIndexes, ...topicPages];
+};
 
 const parseQuestions = async () => {
-    let questions: QuestionPageData[] = [];
+    let questions: string[] = [];
     safeLoadAll(
         await readFile('./tutorial/questions.yaml').toString(),
         (doc: QuestionPageData) => {
             doc.type = 'question';
-            questions.push(renderToString(doc));
+            questions.push(
+                renderToString(QuestionPage(doc))
+            );
         }
     );
 
-    return questions.map((q, i) => { q.index = i; return q; });
+    return questions;
 };
 
-const parseTopicTitle = async (file, i, files) => {
-    let configFile = await readFile(file).toString();
+const sellQuestionsAndQuestionPaths = async () => {
+    const questions = await parseQuestions();
+    const quesitonPaths = questions.map((q, i, qs) => {
+        return `/questions/${i + 1}`;
+    });
 
-    let configYaml = safeLoad(configFile);
-    return renderToString(TopicTitlePage({
-        type: 'topic_title',
-        topic_id: i,
-        title: configYaml.title
-    }));
-};
-
-const parseTopicPage = async (file, i, files) => {
-    let contentObj: BasicPageData = fm.loadFront(
-        await readFile(file)
-    );
-    contentObj.topic_id = i;
-    return renderToString(BasicPage(contentObj));
-};
-
-
-
-
-const render = (locals) => {
-
-    let context: ContextData = {
-        title: 'Hello!',
-        pages: Array<AnyPageData>().concat(
-            ...parseTopics(),
-            ...parseQuestions()
-        )
+    return {
+        questions: questions,
+        questionPaths: quesitonPaths
     };
+};
 
-    writeFileSync('./dist/props.json', JSON.stringify(context));
-    let indexHtml = renderToMarkup(Body(context));
-    writeFileSync('./dist/index.html', indexHtml);
+const render = (locals, callback) => {
+    readFile('./src/server/index.hbs').then((file) => {
+        const history = createMemoryHistory();
+        const location = history.createLocation(locals.path);
+        const template = compile(file.toString());
+
+        match({ routes, location }, (error, redirectLocation, renderProps) => {
+
+            callback(null, template({
+                html: renderToString(RoutingContext(renderProps))
+            }));
+        });
+    });
+
 };
 
 export render;
