@@ -13,13 +13,6 @@ export type COURSE_DATA = 'COURSE_DATA';
 export type CURRENT_PAGE = 'CURRENT_PAGE';
 export type CURRENT_SCORE = 'CURRENT_SCORE';
 
-export interface TutoralStateType {
-    COURSE_DATA: ContextData;
-    CURRENT_PAGE: number;
-    CURRENT_SCORE: number;
-    routing: ReactRouterReduxHistory
-}
-
 export interface ContextData {
     title: string;
     pages: AnyPageData[];
@@ -30,18 +23,14 @@ export interface PageData {
 };
 
 export interface TopicPageData extends PageData {
-    topic_id: number;
 };
 
 export interface TopicTitlePageData extends TopicPageData {
     title: string;
 };
 
-export interface BasicPageData extends TopicPageData {
-    __content: string;
-};
-
 export interface QuestionPageData extends PageData {
+    type: 'question';
     stem: string;
     answers: Array<string>;
     correct: number;

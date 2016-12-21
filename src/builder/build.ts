@@ -38,9 +38,7 @@ const parseQuestions = async () => {
         await readFile('./tutorial/questions.yaml').toString(),
         (doc: QuestionPageData) => {
             doc.type = 'question';
-            questions.push(
-                renderToString(QuestionPage(doc))
-            );
+            questions.push(doc);
         }
     );
 

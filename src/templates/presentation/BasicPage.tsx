@@ -1,16 +1,15 @@
 import * as React from 'react';
-import {BasicPageData} from '../types';
-import * as Marked from 'marked';
+import {TopicPageData} from '../types';
 
-const getDangrousHtmlObject = (content: string) => {
-    return { __html: Marked(content) };
+export interface BasicPageData extends TopicPageData {
+    content: string;
 };
 
 const BasicPage: React.StatelessComponent<BasicPageData> = (props: BasicPageData) => {
-
-    const innerHtml = getDangrousHtmlObject(props.__content);
     return (
-        <article className='page basic' dangerouslySetInnerHTML={innerHtml} ></article>
+        <article className='page basic'
+        dangerouslySetInnerHTML={{__html: props.content}} >
+        </article>
     );
 };
 
